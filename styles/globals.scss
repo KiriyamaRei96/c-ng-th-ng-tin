@@ -2,6 +2,11 @@
   margin: 0;
 }
 
+@import "slick-carousel/slick/slick.css";
+
+@import "bootstrap/dist/css/bootstrap.css";
+@import 'antd/dist/antd.css';
+
 @font-face {
   font-family: 'Canela';
   src: url('../fonts/Canela-Regular.eot');
@@ -278,6 +283,32 @@ header {
       transform: scale(1);
       opacity: 1;
     }
+  }
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+  background: #fff;
+  pointer-events: auto;
+
+  &.nextarrow {
+    left: calc(100% + 16px);
+    display: flex;
+  }
+
+  &.prevarrow {
+    right: calc(100% + 16px);
+    display: flex;
   }
 }
 
@@ -643,13 +674,34 @@ footer {
   }
 }
 
-.pageBody {
-  display: grid;
-  padding: 100px 86px;
-  grid-template-columns: 26% 71%;
-  gap: 3%;
+.Info {
+  align-items: center;
 
-  .--navBar {}
+  span.type {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: #FB8500;
+  }
 
-  .--content {}
+  span.view,
+  span.date {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #5C626A;
+
+    i {
+      font-size: 12px;
+      margin-right: 6px;
+    }
+  }
+
+  .divider {
+    color: #2C2C2C;
+    font-size: 5px;
+    margin: 0 14px;
+  }
 }
