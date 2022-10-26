@@ -1,4 +1,3 @@
-
 import "../styles/globals.scss";
 
 import AppHeader from "../components/Layout/Header";
