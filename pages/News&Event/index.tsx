@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import Slider from "react-slick";
 import BreadCrumb from "../../components/BreadCrumb";
-import { NewsWrapper } from "./_component/Styled/Styled";
+import NewsWrapper from "./_component/Styled/Styled";
 
 export interface NewsEventProps {}
 

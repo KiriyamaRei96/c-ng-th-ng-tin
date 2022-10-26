@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContactWrapper=styled.div` .contactBanner {
+ const ContactWrapper=styled.div` .contactBanner {
     .Title {
         margin-bottom: 20px;
     }
@@ -114,3 +114,4 @@ export const ContactWrapper=styled.div` .contactBanner {
 }
 
 `
+export default ContactWrapper

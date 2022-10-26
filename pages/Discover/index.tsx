@@ -1,7 +1,7 @@
 import { Pagination } from "antd";
 import React from "react";
 import Slider from "react-slick";
-import { DiscoverWarpper } from "./_component/Styled/style";
+import DiscoverWarpper from "./_component/Styled/style";
 
 export interface DiscoverProps {}
 

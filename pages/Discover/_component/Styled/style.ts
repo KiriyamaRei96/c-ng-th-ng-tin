@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const DiscoverWarpper=styled.div` .discoverBanner {
+ const DiscoverWarpper=styled.div` .discoverBanner {
     position: relative;
 
     .--background {
@@ -1127,3 +1127,4 @@ export const DiscoverWarpper=styled.div` .discoverBanner {
 
 
 `
+export default DiscoverWarpper

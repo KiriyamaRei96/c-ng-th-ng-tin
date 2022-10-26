@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const NewsWrapper=styled.div` div.News {
+ const NewsWrapper=styled.div` div.News {
     padding: 100px 86px;
 
     h3 {
@@ -338,3 +338,4 @@ export const NewsWrapper=styled.div` div.News {
 
 
 `;
+export default NewsWrapper

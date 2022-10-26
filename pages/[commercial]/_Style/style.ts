@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CommercialWrapper=styled.div` .pageBody {
+const CommercialWrapper=styled.div` .pageBody {
     display: grid;
     padding: 100px 86px;
     grid-template-columns: 26% 71.5%;
@@ -102,3 +102,4 @@ export const CommercialWrapper=styled.div` .pageBody {
 }
 
 `;
+export default  CommercialWrapper

@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React from "react";
 import BreadCrumb from "../../components/BreadCrumb";
-import { ContactWrapper } from "./_component/styled/Style";
+import ContactWrapper from "./_component/styled/Style";
 
 export interface ContactProps {}
 

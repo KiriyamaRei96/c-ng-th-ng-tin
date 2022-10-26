@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { CommercialWrapper } from "./_Style/style";
+import CommercialWrapper from "./_Style/style";
 import BreadCrumb from "../../components/BreadCrumb";
 import Navbar from "./_component/Navbar";
 

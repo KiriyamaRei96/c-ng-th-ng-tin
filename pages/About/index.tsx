@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import * as React from "react";
 import BreadCrumb from "../../components/BreadCrumb";
-import { AboutWrapper } from "./_component/styled/style";
+import AboutWrapper from "./_component/styled/style";
 import icon7 from "./_Asset/icon-7.svg";
 import forest from "./_Asset/ic_forest.svg";
 import forest2 from "./_Asset/ic_forest(2).svg";

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const AboutWrapper=styled.div ` .aboutIntro {
+const AboutWrapper=styled.div ` .aboutIntro {
     padding: 100px 0;
 
     .--video {
@@ -323,3 +323,4 @@ export const AboutWrapper=styled.div ` .aboutIntro {
 }
 
 `
+export default AboutWrapper
