@@ -1,47 +1,116 @@
+import { Tag } from "antd";
+import { useRouter } from "next/router";
 import React from "react";
-import OptionGroup from "../component/OptionGroup";
+import OptionGroup from "./component/OptionGroup";
 
 export interface NavbarProps {}
 
 const Navbar = (props: NavbarProps) => {
+  const router = useRouter();
   return (
     <div className='--navBar'>
-      <div className='--searchWraper'>
-        <div className='d-flex'>
-          <span>Tìm kiếm</span>
-          <span className='--divider'></span>
-          <div className='d-flex'>
-            <input placeholder='Nhập từ khóa...' type='text' />
+      {router.asPath.includes("Hotel") ? (
+        <div className='--map'>
+          <iframe
+            src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59025.742842815074!2d103.4046501286144!3d22.387250681156605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x36d2a1867bf6f19d%3A0x34cc461c8d0001b8!2zVHAuIExhaSBDaMOidSwgTGFpIENow6J1LCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1666531776427!5m2!1svi!2s'
+            width='100%'
+            height='132'
+            style={{ borderRadius: "3px" }}
+            loading='lazy'
+          ></iframe>
+          <button>Chỉ đường</button>
+        </div>
+      ) : (
+        false
+      )}
+
+      <div className='--OptionList'>
+        <div className='--filTag'>
+          <div className='--tilte d-flex'>
+            <h5>Bộ lọc</h5>
             <button>
-              <i className='fa-solid fa-magnifying-glass'></i>
+              Bỏ bộ lọc <i className='fa-solid fa-x'></i>
             </button>
           </div>
+          <div className='d-flex --list'>
+            <Tag className=' filterItem' closable>
+              option 1
+            </Tag>
+            <Tag className=' filterItem' closable>
+              option 2
+            </Tag>
+          </div>
         </div>
-      </div>
-      <div className='--OptionList'>
         <OptionGroup
-          tilte={"Khu vực"}
+          title={"Khu vực"}
           optionType={"select"}
           optionArray={[
             {
-              tile: "option 1",
+              title: "option 1",
               active: true,
             },
             {
-              tile: "option 1",
+              title: "option 2",
+              active: true,
+            },
+            {
+              title: "option 3",
+              active: true,
+            },
+            {
+              title: "option 4",
               active: true,
             },
           ]}
         />
         <OptionGroup
-          tilte={"Loại hình"}
+          title={"Loại hình"}
           optionType={"checkbox"}
-          optionArray={[]}
+          optionArray={[
+            {
+              title: "option 1",
+              active: true,
+            },
+            {
+              title: "option 2",
+              active: true,
+            },
+            {
+              title: "option 3",
+              active: true,
+            },
+            {
+              title: "option 4",
+              active: true,
+            },
+          ]}
         />
+        {router.asPath.includes("Hotel") ? (
+          <OptionGroup title={"Xếp hạng sao"} optionType='stars'></OptionGroup>
+        ) : (
+          false
+        )}
         <OptionGroup
-          tilte={"Phù hợp"}
+          title={"Phù hợp"}
           optionType={"checkbox"}
-          optionArray={[]}
+          optionArray={[
+            {
+              title: "option 1",
+              active: true,
+            },
+            {
+              title: "option 2",
+              active: true,
+            },
+            {
+              title: "option 3",
+              active: true,
+            },
+            {
+              title: "option 4",
+              active: true,
+            },
+          ]}
         />
       </div>
     </div>
