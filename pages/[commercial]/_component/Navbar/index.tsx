@@ -86,7 +86,11 @@ const Navbar = (props: NavbarProps) => {
           ]}
         />
         {router.asPath.includes("Hotel") ? (
-          <OptionGroup title={"Xếp hạng sao"} optionType='stars'></OptionGroup>
+          <OptionGroup
+            title={"Xếp hạng sao"}
+            optionType={"stars"}
+            optionArray={undefined}
+          ></OptionGroup>
         ) : (
           false
         )}

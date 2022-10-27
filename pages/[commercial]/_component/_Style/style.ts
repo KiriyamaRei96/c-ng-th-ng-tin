@@ -493,6 +493,12 @@ const CommercialWrapper=styled.div` .pageBody {
 
 
             }
+
+            .restaurant {
+                flex-direction: column;
+                height: 326px;
+                box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+            }
         }
 
         .--list.--tour {
@@ -503,6 +509,11 @@ const CommercialWrapper=styled.div` .pageBody {
         .--list.--Hotel {
             grid-template-columns: repeat(2, 1fr);
             gap: 24px 24px;
+        }
+
+        .--list.--Restaurant {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px 1.25%;
         }
 
         .--pagination {
