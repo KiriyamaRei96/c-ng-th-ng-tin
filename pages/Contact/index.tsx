@@ -16,8 +16,8 @@ const Contact = (props: ContactProps) => {
             alt=""
           ></img>
           <div className="--Item">
-            <h1>Tin tức và Sự kiện</h1>
-            <BreadCrumb router={router.asPath} />
+            <h1>Liên Hệ</h1>
+            <BreadCrumb />
           </div>
         </div>
         <div className="contactForm">

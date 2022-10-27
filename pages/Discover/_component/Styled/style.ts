@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
- const DiscoverWarpper=styled.div` .discoverBanner {
+const DiscoverWarpper=styled.div` .discoverBanner {
     position: relative;
 
     .--background {
@@ -872,10 +872,17 @@ import styled from "styled-components";
     .slider_listLocation {
         position: relative;
 
+        .--warrper {
+            padding-right: calc(var(--bs-gutter-x) * 0.5);
+            padding-left: calc(var(--bs-gutter-x) * 0.5);
+            margin-top: var(--bs-gutter-y);
+        }
+
         .list_discover {
             .--img {
                 height: 330px;
             }
+
         }
 
         .arrow_detaildiscoverLocation {
@@ -907,6 +914,34 @@ import styled from "styled-components";
 
                 &.prevarrow {
                     left: -60px;
+                }
+            }
+        }
+
+        .slick-dots {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+            margin-top: 47px;
+
+            margin-bottom: 0;
+
+            li.slick-active {
+                background: #FB8500;
+            }
+
+            li {
+                width: 18.8px;
+                height: 18.8px;
+                background: #D9D9D9;
+                border-radius: 50%;
+                display: inline-block;
+                margin: 0 9.5px;
+
+                button {
+                    border: none;
+                    background: none;
+                    color: transparent;
                 }
             }
         }
@@ -1126,5 +1161,5 @@ import styled from "styled-components";
 }
 
 
-`
+`;
 export default DiscoverWarpper

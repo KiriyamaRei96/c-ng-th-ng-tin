@@ -1,0 +1,255 @@
+import Image from "next/image";
+import React from "react";
+import BreadCrumb from "../../../components/BreadCrumb";
+import EventsWrapper from "./_component/styled/stye";
+
+export interface EventDetailsProps {}
+
+const EventDetails = (props: EventDetailsProps) => {
+  return (
+    <EventsWrapper>
+      <div id="detailevent">
+        <div className="Banner d-flex">
+          <img
+            src="https://s3-alpha-sig.figma.com/img/e3df/aa8e/d78f505aded9934305676894ff52265d?Expires=1667779200&Signature=bMTTHii0BMQSGCNrfbsYwFXMuvR0qmnCN7WbqwhNFtsRsPq1GWxZ4Izs0C05SL6R-dGvV9V8AAuLeSXZe76MKK2nq1bM25FQg6uktzMZlgk~TmOXcfO4OYNJ4MgPBrnNpDetpV2HHIBc9rXTDrQK4OLEHAN5iMa5FvAKg0yEcSRu1lX7dyKle-3T1bLRJwZuvzvxMMcrAjIdRHLlJRYUxWzrOM3r6I24VULvIVZglZ7Q6N~5BPe~LP41X8rOHd9Xrf8yi69WmwxyMGp1f7vJIUe9D9IN3OmsOSQk9B7f45jNOdnyRUBcjoSrPi81CqmPqlGAV73yzqw3OZ2lD-ZLmw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+            alt=""
+          ></img>
+          <div className="--Item">
+            <h1>Sự kiện</h1>
+            <BreadCrumb />
+          </div>
+        </div>
+        <div className="detaileventContent detailnewsContent">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-9">
+                <div className="--left">
+                  <div className="subTitle">Chi tiết tin tức</div>
+                  <h2 className="--title">
+                    Cầu Kính Rồng Mây “Kỳ Quan Tiên Cảnh Của Đất Trời Lai Châu”{" "}
+                  </h2>
+                  <div className="--note d-flex">
+                    <div className="--item">
+                      <span>84 đánh giá</span>
+                    </div>
+                    <div className="--item">
+                      <i className="fa-regular fa-calendar"></i>
+                      <span>01/09/2022</span>
+                    </div>
+                    <div className="--item">
+                      <i className="fa-regular fa-eye"></i>
+                      <span>268</span>
+                    </div>
+                  </div>
+                  <div className="--des">
+                    Cầu kính Rồng Mây được xem là công trình cầu kính cao nhất
+                    Việt Nam tính đến thời điểm hiện tại. Công trình này tọa lạc
+                    trên đỉnh đèo Ô Quy Hồ thuộc địa phận huyện Tam Đường của
+                    tỉnh Lai Châu. Nơi đây còn được mệnh danh là Cổng trời trên
+                    đỉnh Ô Quy Hồ.
+                  </div>
+                  <article>
+                    Chủ tịch UBND tỉnh Quảng Trị Võ Văn Hưng vừa ký quyết định
+                    số 1355/QĐ-UBND ngày 20/5/2022 về việc thành lập Khu công
+                    nghiệp (KCN) Tây Bắc Hồ Xá, huyện Vĩnh Linh, tỉnh Quảng Trị.
+                    Theo đó, KCN Tây Bắc Hồ Xá có diện tích 214,77 ha nằm trên
+                    địa bàn các xã zVĩnh Long và xã Vĩnh Chấp, huyện Vĩnh Linh,
+                    do Công ty cổ phần Quang Anh Quảng Trị làm chủ đầu tư với
+                    tổng vốn đầu tư 925 tỷ đồng. Thời hạn hoạt động của KCN 50
+                    năm kể từ ngày được cấp Quyết định chủ trương đầu tư (từ
+                    ngày 19/3/2021 đến ngày 19/3/2071).
+                  </article>
+                  <div className="--backshare d-flex justify-content-between">
+                    <a href="" className="--back">
+                      <Image src={require("./_asset/icon-back.svg")} alt="" />{" "}
+                      Quay lại sự kiện
+                    </a>
+                    <ul>
+                      <li>Chia sẻ:</li>
+                      <li>
+                        <a href="">
+                          <Image src={require("./_asset/icon-tw.svg")} alt="" />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="">
+                          <Image src={require("./_asset/icon-fb.svg")} alt="" />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="">
+                          <Image src={require("./_asset/icon-in.svg")} alt="" />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="">
+                          <Image src={require("./_asset/icon-gg.svg")} alt="" />
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="--coment">
+                    <h3 className="--title">3 comments</h3>
+                    <div className="list_coment">
+                      <div className="--comentcustomer ">
+                        <div className="--item d-flex ">
+                          <div className="--avatar">
+                            <img
+                              src="https://s3-alpha-sig.figma.com/img/965d/8058/60ff1e1f9652e4ea4a3b63dc958178ac?Expires=1667779200&Signature=dVbRRWT53Q7bsXXwgSDAlS7MmM6Sp8qiNVZ7HI0iPb0Ov10UH16omt4FuuzVG8ntFrpbK4yyg9HT-tPb7LYTrQ3Rq9c6SYTvbb-3CCsOjI~-tDSPxc4spCDQ8aiOTNdKVOd8zEd708MZWUbOT7uRgM91OhUUNyJ9DPsG2JYLFA1MwevZHe2uUGk1HM4wxjI-VFnhKE8rea3Nfgze-oEHuxfvHo-fYtIS~0Do5B52donmyWQD7imTS6UNP9VNwoxkqcIxizllapA4zLe0h~A8ftb8ktcqYOOFXV4lOU3X95xiR3e14aSBMxDq0ByE8EXavMBoM2IEWF4fLgLqFlH0tw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                              alt=""
+                            />
+                          </div>
+                          <div className="--txt">
+                            <div className="--top d-flex justify-content-between align-items-center">
+                              <div className="--name_customer">
+                                <h6>Trịnh Tùng Anh</h6>
+                                <div className="--time">
+                                  <i className="fa-regular fa-calendar"></i>{" "}
+                                  01/09/2022
+                                </div>
+                              </div>
+                              <div className="--answer">
+                                <i className="fa-solid fa-reply"></i>Trả lời
+                              </div>
+                            </div>
+                            <article>
+                              Lorem Ipsum chỉ đơn giản là một đoạn văn bản giả,
+                              được dùng vào việc trình bày và dàn trang phục vụ
+                              cho in ấn. Lorem Ipsum đã được sử dụng như một văn
+                              bản
+                            </article>
+                          </div>
+                        </div>
+                        <div className="--item --feedback d-flex ">
+                          <div className="--avatar">
+                            <img
+                              src="https://s3-alpha-sig.figma.com/img/965d/8058/60ff1e1f9652e4ea4a3b63dc958178ac?Expires=1667779200&Signature=dVbRRWT53Q7bsXXwgSDAlS7MmM6Sp8qiNVZ7HI0iPb0Ov10UH16omt4FuuzVG8ntFrpbK4yyg9HT-tPb7LYTrQ3Rq9c6SYTvbb-3CCsOjI~-tDSPxc4spCDQ8aiOTNdKVOd8zEd708MZWUbOT7uRgM91OhUUNyJ9DPsG2JYLFA1MwevZHe2uUGk1HM4wxjI-VFnhKE8rea3Nfgze-oEHuxfvHo-fYtIS~0Do5B52donmyWQD7imTS6UNP9VNwoxkqcIxizllapA4zLe0h~A8ftb8ktcqYOOFXV4lOU3X95xiR3e14aSBMxDq0ByE8EXavMBoM2IEWF4fLgLqFlH0tw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                              alt=""
+                            />
+                          </div>
+                          <div className="--txt">
+                            <div className="--top d-flex justify-content-between align-items-center">
+                              <div className="--name_customer">
+                                <h6>Trịnh Tùng Anh</h6>
+                                <div className="--time">
+                                  <i className=" potision fa-regular fa-calendar"></i>{" "}
+                                  01/09/2022
+                                </div>
+                              </div>
+                              <div className="--answer">
+                                <i className="fa-solid fa-reply"></i>Trả lời
+                              </div>
+                            </div>
+                            <article>
+                              Lorem Ipsum chỉ đơn giản là một đoạn văn bản giả,
+                              được dùng vào việc trình bày và dàn trang phục vụ
+                              cho in ấn. Lorem Ipsum đã được sử dụng như một văn
+                              bản
+                            </article>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-3">
+                <div className="--right cardbook">
+                  <div className="--schedule ">
+                    <h3>Đặt chuyến đi của bạn</h3>
+                    <div className="--tab d-flex ">
+                      <div className="--item active">Khách sạn</div>
+                      <div className="--item">Thuê xe</div>
+                      <div className="--item">Xe Buýt</div>
+                    </div>
+                    <div className="form">
+                      <div className="form-group">
+                        <label htmlFor="">Điểm đến: </label>
+                        <div className="--select">
+                          <div className="--icon">
+                            <i className="potision fa-solid fa-location-dot"></i>
+                          </div>
+                          <select className="form-control" name="" id="">
+                            <option value="">Hà Giang</option>
+                          </select>
+                          <i className="fa-sharp fa-solid fa-chevron-down"></i>
+                        </div>
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="">Check - in: </label>
+                        <div className="--select">
+                          <div className="--icon">
+                            <i className=" potision fa-regular fa-calendar"></i>
+                          </div>
+                          <select className="form-control" name="" id="">
+                            <option value="">10/11/2022</option>
+                          </select>
+                          <i className="fa-sharp fa-solid fa-chevron-down"></i>
+                        </div>
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="">With:</label>
+                        <div className="--select">
+                          <div className="--icon">
+                            <i className=" potision fa-regular fa-calendar"></i>
+                          </div>
+                          <select className="form-control" name="" id="">
+                            <option value="">1 đêm</option>
+                          </select>
+                          <i className="fa-sharp fa-solid fa-chevron-down"></i>
+                        </div>
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="">Điểm đến: </label>
+                        <div className="--select">
+                          <div className="--icon">
+                            <i className="potision fa-regular fa-pen-to-square"></i>
+                          </div>
+                          <select className="form-control" name="" id="">
+                            <option value="">Booking.com</option>
+                          </select>
+                          <i className="fa-sharp fa-solid fa-chevron-down"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <button className="button_1 button_hover1">
+                      <i className="fa-sharp fa-solid fa-magnifying-glass"></i>{" "}
+                      Tìm kiếm
+                    </button>
+                  </div>
+                  <div className="--map">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3986.8466441825976!2d102.23802461470257!3d2.211509298388063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d1f1ccd4f2e3ed%3A0x4a2e89fc42f51eaf!2sBan%20Sin%20Ho%20Trading!5e0!3m2!1svi!2s!4v1666683463879!5m2!1svi!2s"
+                      width="600"
+                      height="450"
+                      style={{ border: "0" }}
+                      //   allowfullscreen=""
+                      loading="lazy"
+                      //   referrerpolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                  </div>
+                  <div className="--endow">
+                    <div className="--img">
+                      <img
+                        src="https://s3-alpha-sig.figma.com/img/f570/c2d2/3e50b9868c59964376c583f10ec6c7eb?Expires=1667779200&Signature=Bb0XJrPxHSWaitVZU623G4aEFeIUP-W906CmsydKLgnAUH95qEh4x8hiUpv3tHTxW5kk5J-rsrpbPjlVLRclxApTBzc0rTdEvAD4z3GwKQdttsrLD~9s2iaEOkFQLDOAxyuO4VJ2V96wiwYSrGDu9mXLiFTVy07yFK33BqaIVQtDFInqeGSsJl9jmHVMGdrqBUADeleiLmaughRsd4s9SS6frk7NrfVfynQxadOVzdwMFuPUnEuTJzdTYyBkVYfKz5Y1T9xGEoL3JFMcyg1zOAt~scDSxennAeiBTlRiO5E4QlRVssJvzCLUvVmEAjzszoamjP2OMdd2DaM8q3F9vA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                        alt=""
+                      />
+                    </div>
+                    <div className="--txt">
+                      <span>Kỳ nghỉ vui vẻ</span>
+                      <h2>Đặt phòng ngay</h2>
+                      <div className="--des">
+                        Giảm giá 15% cho tất cả các đặt phòng
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </EventsWrapper>
+  );
+};
+export default EventDetails;

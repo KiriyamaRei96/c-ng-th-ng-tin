@@ -10,6 +10,7 @@ export interface NewsEventProps {}
 
 const NewsEvent = (props: NewsEventProps) => {
   const router = useRouter();
+
   return (
     <NewsWrapper>
       <div id="News-Event">
@@ -20,7 +21,7 @@ const NewsEvent = (props: NewsEventProps) => {
           ></img>
           <div className="--Item">
             <h1>Tin tức và Sự kiện</h1>
-            <BreadCrumb router={router.asPath} />
+            <BreadCrumb />
           </div>
         </div>
         <div className="News">
@@ -48,7 +49,7 @@ const NewsEvent = (props: NewsEventProps) => {
               }}
               className="--hotSlider"
             >
-              <Link href="">
+              <Link href="/News&Event/News/1">
                 <div className="--item d-flex">
                   <img
                     src="https://s3-alpha-sig.figma.com/img/842f/57d6/9ac9ec4c2818cca45755f4c542e72473?Expires=1667779200&Signature=dlzEQTq8Y4fF~D2AWNlHzViJdGWd1Gu9OfS0yKohQ-yy8~7hMqXz8pB69rCUES0SlxsAOKJOr3aEV-f-u0NDJtZQKvdLOYI6QfyRucymH3e3nu1DD1u-ZwOh9nf8qqynO6~E555wC0BY1lLdz~0b6DLvgb-FvUxUrOo8S5-8oI3mNTqqdqSlBY5XN4erlI6jNzYNe8iApnr2ekpnPC0aYWYAFO3ptWkbmdNxwkPRRM801LlWoFx5GEe1mLKhmfQqu6ApQBbElVb~FbOWPWeGMrsxBc~mzf0XAR~bkYNIT0L5LwsWNoAMFu7tPBrMT7oXqr~64W7iaJYSsUeWpZDckw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
@@ -82,7 +83,7 @@ const NewsEvent = (props: NewsEventProps) => {
                       kính chịu lực trong suốt
                     </span>
 
-                    <Link href="">
+                    <Link href="/News&Event/News/1">
                       <a className="button_2 button_hover2">
                         Xem chi tiết
                         <i className="fa-sharp ms-2 fa-solid fa-arrow-right-long"></i>
@@ -91,7 +92,7 @@ const NewsEvent = (props: NewsEventProps) => {
                   </div>
                 </div>
               </Link>
-              <Link href="">
+              <Link href="/News&Event/News/1">
                 <div className="--item d-flex">
                   <img
                     src="https://s3-alpha-sig.figma.com/img/842f/57d6/9ac9ec4c2818cca45755f4c542e72473?Expires=1667779200&Signature=dlzEQTq8Y4fF~D2AWNlHzViJdGWd1Gu9OfS0yKohQ-yy8~7hMqXz8pB69rCUES0SlxsAOKJOr3aEV-f-u0NDJtZQKvdLOYI6QfyRucymH3e3nu1DD1u-ZwOh9nf8qqynO6~E555wC0BY1lLdz~0b6DLvgb-FvUxUrOo8S5-8oI3mNTqqdqSlBY5XN4erlI6jNzYNe8iApnr2ekpnPC0aYWYAFO3ptWkbmdNxwkPRRM801LlWoFx5GEe1mLKhmfQqu6ApQBbElVb~FbOWPWeGMrsxBc~mzf0XAR~bkYNIT0L5LwsWNoAMFu7tPBrMT7oXqr~64W7iaJYSsUeWpZDckw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
@@ -125,7 +126,7 @@ const NewsEvent = (props: NewsEventProps) => {
                       kính chịu lực trong suốt
                     </span>
 
-                    <Link href="">
+                    <Link href="/News&Event/News/1">
                       <a className="button_2 button_hover2">
                         Xem chi tiết
                         <i className="fa-sharp ms-2 fa-solid fa-arrow-right-long"></i>
@@ -134,7 +135,7 @@ const NewsEvent = (props: NewsEventProps) => {
                   </div>
                 </div>
               </Link>
-              <Link href="">
+              <Link href="/News&Event/News/1">
                 <div className="--item d-flex">
                   <img
                     src="https://s3-alpha-sig.figma.com/img/842f/57d6/9ac9ec4c2818cca45755f4c542e72473?Expires=1667779200&Signature=dlzEQTq8Y4fF~D2AWNlHzViJdGWd1Gu9OfS0yKohQ-yy8~7hMqXz8pB69rCUES0SlxsAOKJOr3aEV-f-u0NDJtZQKvdLOYI6QfyRucymH3e3nu1DD1u-ZwOh9nf8qqynO6~E555wC0BY1lLdz~0b6DLvgb-FvUxUrOo8S5-8oI3mNTqqdqSlBY5XN4erlI6jNzYNe8iApnr2ekpnPC0aYWYAFO3ptWkbmdNxwkPRRM801LlWoFx5GEe1mLKhmfQqu6ApQBbElVb~FbOWPWeGMrsxBc~mzf0XAR~bkYNIT0L5LwsWNoAMFu7tPBrMT7oXqr~64W7iaJYSsUeWpZDckw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
@@ -168,7 +169,7 @@ const NewsEvent = (props: NewsEventProps) => {
                       kính chịu lực trong suốt
                     </span>
 
-                    <Link href="">
+                    <Link href="/News&Event/News/1">
                       <a className="button_2 button_hover2">
                         Xem chi tiết
                         <i className="fa-sharp ms-2 fa-solid fa-arrow-right-long"></i>
@@ -186,7 +187,7 @@ const NewsEvent = (props: NewsEventProps) => {
               <h4>Tin quốc tế</h4>
             </div>
             <div className="--list">
-              <Link href="">
+              <Link href="/News&Event/News/1">
                 <div>
                   <img
                     src="https://s3-alpha-sig.figma.com/img/4838/c219/807d24ce68ed1af9675de2043b5ddbc7?Expires=1667779200&Signature=TZhDil6EzJhJ8pEol9qOSi~HFQgmOKnbLlMbIm~JQZBQEWNrUOeI5ZpEat0KVIeY6~lPfh3veqrK-1zz1i0UmgUWq5YDcYPhh3N30OpV4G0C6y2mp0YQlae3l2UV9DfndFw4Fh~J3Bi4eYD9XClABZMg~2tc3cwk5AFk6cgw1LcZsikk-l38dGY-t6T0EmaCbAJhkszx5L2T-ojLSb66enSkCc25hay0O239Fg-lfFzT8E92Cl5tgSX3y-Nc3PB0-VsRwNUxNwpqGUn3rhy2BntU8grQsSnedlYtiYKZuRiRlVeyO3IG2i1BxECz32wm6X5ugY5QN5hT5WKT-BPC~A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
@@ -220,7 +221,7 @@ const NewsEvent = (props: NewsEventProps) => {
                   </div>
                 </div>
               </Link>{" "}
-              <Link href="">
+              <Link href="/News&Event/News/1">
                 <div>
                   <img
                     src="https://s3-alpha-sig.figma.com/img/4838/c219/807d24ce68ed1af9675de2043b5ddbc7?Expires=1667779200&Signature=TZhDil6EzJhJ8pEol9qOSi~HFQgmOKnbLlMbIm~JQZBQEWNrUOeI5ZpEat0KVIeY6~lPfh3veqrK-1zz1i0UmgUWq5YDcYPhh3N30OpV4G0C6y2mp0YQlae3l2UV9DfndFw4Fh~J3Bi4eYD9XClABZMg~2tc3cwk5AFk6cgw1LcZsikk-l38dGY-t6T0EmaCbAJhkszx5L2T-ojLSb66enSkCc25hay0O239Fg-lfFzT8E92Cl5tgSX3y-Nc3PB0-VsRwNUxNwpqGUn3rhy2BntU8grQsSnedlYtiYKZuRiRlVeyO3IG2i1BxECz32wm6X5ugY5QN5hT5WKT-BPC~A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
@@ -254,7 +255,7 @@ const NewsEvent = (props: NewsEventProps) => {
                   </div>
                 </div>
               </Link>{" "}
-              <Link href="">
+              <Link href="/News&Event/News/1">
                 <div>
                   <img
                     src="https://s3-alpha-sig.figma.com/img/4838/c219/807d24ce68ed1af9675de2043b5ddbc7?Expires=1667779200&Signature=TZhDil6EzJhJ8pEol9qOSi~HFQgmOKnbLlMbIm~JQZBQEWNrUOeI5ZpEat0KVIeY6~lPfh3veqrK-1zz1i0UmgUWq5YDcYPhh3N30OpV4G0C6y2mp0YQlae3l2UV9DfndFw4Fh~J3Bi4eYD9XClABZMg~2tc3cwk5AFk6cgw1LcZsikk-l38dGY-t6T0EmaCbAJhkszx5L2T-ojLSb66enSkCc25hay0O239Fg-lfFzT8E92Cl5tgSX3y-Nc3PB0-VsRwNUxNwpqGUn3rhy2BntU8grQsSnedlYtiYKZuRiRlVeyO3IG2i1BxECz32wm6X5ugY5QN5hT5WKT-BPC~A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
@@ -288,7 +289,7 @@ const NewsEvent = (props: NewsEventProps) => {
                   </div>
                 </div>
               </Link>{" "}
-              <Link href="">
+              <Link href="/News&Event/News/1">
                 <div>
                   <img
                     src="https://s3-alpha-sig.figma.com/img/4838/c219/807d24ce68ed1af9675de2043b5ddbc7?Expires=1667779200&Signature=TZhDil6EzJhJ8pEol9qOSi~HFQgmOKnbLlMbIm~JQZBQEWNrUOeI5ZpEat0KVIeY6~lPfh3veqrK-1zz1i0UmgUWq5YDcYPhh3N30OpV4G0C6y2mp0YQlae3l2UV9DfndFw4Fh~J3Bi4eYD9XClABZMg~2tc3cwk5AFk6cgw1LcZsikk-l38dGY-t6T0EmaCbAJhkszx5L2T-ojLSb66enSkCc25hay0O239Fg-lfFzT8E92Cl5tgSX3y-Nc3PB0-VsRwNUxNwpqGUn3rhy2BntU8grQsSnedlYtiYKZuRiRlVeyO3IG2i1BxECz32wm6X5ugY5QN5hT5WKT-BPC~A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
@@ -322,7 +323,7 @@ const NewsEvent = (props: NewsEventProps) => {
                   </div>
                 </div>
               </Link>{" "}
-              <Link href="">
+              <Link href="/News&Event/News/1">
                 <div>
                   <img
                     src="https://s3-alpha-sig.figma.com/img/4838/c219/807d24ce68ed1af9675de2043b5ddbc7?Expires=1667779200&Signature=TZhDil6EzJhJ8pEol9qOSi~HFQgmOKnbLlMbIm~JQZBQEWNrUOeI5ZpEat0KVIeY6~lPfh3veqrK-1zz1i0UmgUWq5YDcYPhh3N30OpV4G0C6y2mp0YQlae3l2UV9DfndFw4Fh~J3Bi4eYD9XClABZMg~2tc3cwk5AFk6cgw1LcZsikk-l38dGY-t6T0EmaCbAJhkszx5L2T-ojLSb66enSkCc25hay0O239Fg-lfFzT8E92Cl5tgSX3y-Nc3PB0-VsRwNUxNwpqGUn3rhy2BntU8grQsSnedlYtiYKZuRiRlVeyO3IG2i1BxECz32wm6X5ugY5QN5hT5WKT-BPC~A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
@@ -356,7 +357,7 @@ const NewsEvent = (props: NewsEventProps) => {
                   </div>
                 </div>
               </Link>{" "}
-              <Link href="">
+              <Link href="/News&Event/News/1">
                 <div>
                   <img
                     src="https://s3-alpha-sig.figma.com/img/4838/c219/807d24ce68ed1af9675de2043b5ddbc7?Expires=1667779200&Signature=TZhDil6EzJhJ8pEol9qOSi~HFQgmOKnbLlMbIm~JQZBQEWNrUOeI5ZpEat0KVIeY6~lPfh3veqrK-1zz1i0UmgUWq5YDcYPhh3N30OpV4G0C6y2mp0YQlae3l2UV9DfndFw4Fh~J3Bi4eYD9XClABZMg~2tc3cwk5AFk6cgw1LcZsikk-l38dGY-t6T0EmaCbAJhkszx5L2T-ojLSb66enSkCc25hay0O239Fg-lfFzT8E92Cl5tgSX3y-Nc3PB0-VsRwNUxNwpqGUn3rhy2BntU8grQsSnedlYtiYKZuRiRlVeyO3IG2i1BxECz32wm6X5ugY5QN5hT5WKT-BPC~A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
@@ -435,7 +436,7 @@ const NewsEvent = (props: NewsEventProps) => {
               ),
             }}
           >
-            <Link href="">
+            <Link href="/News&Event/Events/1">
               <div className="--item">
                 <img
                   src="https://s3-alpha-sig.figma.com/img/69b6/ebad/83aac927ca294ee2cfec3e01530e160c?Expires=1667779200&Signature=bsXwVcbaW39MSqGXgRMG2I0Espt5m4AbuG6pnaeAKl0Z-zJBG~~rUjeW2gzIMKyVWH2hLqBmAqfo6ur533P-4fY6aovpBB7dGFDDjJWhOEI8TJCN0F7vxr1VDyHtPCnjIcAtz8Ioa2Z1SDUSqRoq28sf6BqxL7u3QwXbUfazZUxaeRv6NM~sVRXuvUQ1J1HJT7KSM9QU6ts1vFncatiYBWkBsktprGDTlWaTt4wRX7mRzLheD6FcP0ch9UNrzBTu5fAc8Izojr3u~WMouXMHtrLN~LiW7h5oaNrMUjkbdgN4ReZ-0mJuNHn3kTyojTt6IlJTviDMqeJe1GeK9aNycw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
@@ -455,7 +456,7 @@ const NewsEvent = (props: NewsEventProps) => {
                 </div>
               </div>
             </Link>
-            <Link href="">
+            <Link href="/News&Event/Events/1">
               <div className="--item">
                 <img
                   src="https://s3-alpha-sig.figma.com/img/69b6/ebad/83aac927ca294ee2cfec3e01530e160c?Expires=1667779200&Signature=bsXwVcbaW39MSqGXgRMG2I0Espt5m4AbuG6pnaeAKl0Z-zJBG~~rUjeW2gzIMKyVWH2hLqBmAqfo6ur533P-4fY6aovpBB7dGFDDjJWhOEI8TJCN0F7vxr1VDyHtPCnjIcAtz8Ioa2Z1SDUSqRoq28sf6BqxL7u3QwXbUfazZUxaeRv6NM~sVRXuvUQ1J1HJT7KSM9QU6ts1vFncatiYBWkBsktprGDTlWaTt4wRX7mRzLheD6FcP0ch9UNrzBTu5fAc8Izojr3u~WMouXMHtrLN~LiW7h5oaNrMUjkbdgN4ReZ-0mJuNHn3kTyojTt6IlJTviDMqeJe1GeK9aNycw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
@@ -475,7 +476,7 @@ const NewsEvent = (props: NewsEventProps) => {
                 </div>
               </div>
             </Link>
-            <Link href="">
+            <Link href="/News&Event/Events/1">
               <div className="--item">
                 <img
                   src="https://s3-alpha-sig.figma.com/img/69b6/ebad/83aac927ca294ee2cfec3e01530e160c?Expires=1667779200&Signature=bsXwVcbaW39MSqGXgRMG2I0Espt5m4AbuG6pnaeAKl0Z-zJBG~~rUjeW2gzIMKyVWH2hLqBmAqfo6ur533P-4fY6aovpBB7dGFDDjJWhOEI8TJCN0F7vxr1VDyHtPCnjIcAtz8Ioa2Z1SDUSqRoq28sf6BqxL7u3QwXbUfazZUxaeRv6NM~sVRXuvUQ1J1HJT7KSM9QU6ts1vFncatiYBWkBsktprGDTlWaTt4wRX7mRzLheD6FcP0ch9UNrzBTu5fAc8Izojr3u~WMouXMHtrLN~LiW7h5oaNrMUjkbdgN4ReZ-0mJuNHn3kTyojTt6IlJTviDMqeJe1GeK9aNycw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
@@ -495,7 +496,7 @@ const NewsEvent = (props: NewsEventProps) => {
                 </div>
               </div>
             </Link>
-            <Link href="">
+            <Link href="/News&Event/Events/1">
               <div className="--item">
                 <img
                   src="https://s3-alpha-sig.figma.com/img/69b6/ebad/83aac927ca294ee2cfec3e01530e160c?Expires=1667779200&Signature=bsXwVcbaW39MSqGXgRMG2I0Espt5m4AbuG6pnaeAKl0Z-zJBG~~rUjeW2gzIMKyVWH2hLqBmAqfo6ur533P-4fY6aovpBB7dGFDDjJWhOEI8TJCN0F7vxr1VDyHtPCnjIcAtz8Ioa2Z1SDUSqRoq28sf6BqxL7u3QwXbUfazZUxaeRv6NM~sVRXuvUQ1J1HJT7KSM9QU6ts1vFncatiYBWkBsktprGDTlWaTt4wRX7mRzLheD6FcP0ch9UNrzBTu5fAc8Izojr3u~WMouXMHtrLN~LiW7h5oaNrMUjkbdgN4ReZ-0mJuNHn3kTyojTt6IlJTviDMqeJe1GeK9aNycw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
@@ -515,7 +516,7 @@ const NewsEvent = (props: NewsEventProps) => {
                 </div>
               </div>
             </Link>
-            <Link href="">
+            <Link href="/News&Event/Events/1">
               <div className="--item">
                 <img
                   src="https://s3-alpha-sig.figma.com/img/69b6/ebad/83aac927ca294ee2cfec3e01530e160c?Expires=1667779200&Signature=bsXwVcbaW39MSqGXgRMG2I0Espt5m4AbuG6pnaeAKl0Z-zJBG~~rUjeW2gzIMKyVWH2hLqBmAqfo6ur533P-4fY6aovpBB7dGFDDjJWhOEI8TJCN0F7vxr1VDyHtPCnjIcAtz8Ioa2Z1SDUSqRoq28sf6BqxL7u3QwXbUfazZUxaeRv6NM~sVRXuvUQ1J1HJT7KSM9QU6ts1vFncatiYBWkBsktprGDTlWaTt4wRX7mRzLheD6FcP0ch9UNrzBTu5fAc8Izojr3u~WMouXMHtrLN~LiW7h5oaNrMUjkbdgN4ReZ-0mJuNHn3kTyojTt6IlJTviDMqeJe1GeK9aNycw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"

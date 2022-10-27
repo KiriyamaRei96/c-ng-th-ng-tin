@@ -1,4 +1,5 @@
 import { Pagination } from "antd";
+import Link from "next/link";
 import React from "react";
 import Slider from "react-slick";
 import DiscoverWarpper from "./_component/Styled/style";
@@ -92,7 +93,7 @@ const Discover = (props: DiscoverProps) => {
                   }}
                   className="row"
                 >
-                  <div>
+                  <Link href="/Discover/1">
                     <div className="--wrapper">
                       <div className="--item img_hover">
                         <a href="">
@@ -113,8 +114,8 @@ const Discover = (props: DiscoverProps) => {
                         </a>
                       </div>
                     </div>
-                  </div>
-                  <div>
+                  </Link>
+                  <Link href="/Discover/1">
                     <div className="--wrapper">
                       <div className="--item img_hover">
                         <a href="">
@@ -135,8 +136,8 @@ const Discover = (props: DiscoverProps) => {
                         </a>
                       </div>
                     </div>
-                  </div>
-                  <div>
+                  </Link>{" "}
+                  <Link href="/Discover/1">
                     <div className="--wrapper">
                       <div className="--item img_hover">
                         <a href="">
@@ -157,8 +158,8 @@ const Discover = (props: DiscoverProps) => {
                         </a>
                       </div>
                     </div>
-                  </div>
-                  <div>
+                  </Link>{" "}
+                  <Link href="/Discover/1">
                     <div className="--wrapper">
                       <div className="--item img_hover">
                         <a href="">
@@ -179,8 +180,8 @@ const Discover = (props: DiscoverProps) => {
                         </a>
                       </div>
                     </div>
-                  </div>
-                  <div>
+                  </Link>{" "}
+                  <Link href="/Discover/1">
                     <div className="--wrapper">
                       <div className="--item img_hover">
                         <a href="">
@@ -201,8 +202,8 @@ const Discover = (props: DiscoverProps) => {
                         </a>
                       </div>
                     </div>
-                  </div>
-                  <div>
+                  </Link>{" "}
+                  <Link href="/Discover/1">
                     <div className="--wrapper">
                       <div className="--item img_hover">
                         <a href="">
@@ -223,51 +224,7 @@ const Discover = (props: DiscoverProps) => {
                         </a>
                       </div>
                     </div>
-                  </div>
-                  <div>
-                    <div className="--wrapper">
-                      <div className="--item img_hover">
-                        <a href="">
-                          <div className="--img">
-                            <img
-                              src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-                              alt=""
-                            />
-                          </div>
-                          <div className="--txt">
-                            <div className="--type">Đèo - Núi</div>
-                            <h4>Đèo Ô Quy Hồ</h4>
-                            <div className="--location ">
-                              <img src="../img/icon-map1.svg" alt="" />
-                              <span>Huyện Tam Đường</span>
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="--wrapper">
-                      <div className="--item img_hover">
-                        <a href="">
-                          <div className="--img">
-                            <img
-                              src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-                              alt=""
-                            />
-                          </div>
-                          <div className="--txt">
-                            <div className="--type">Đèo - Núi</div>
-                            <h4>Đèo Ô Quy Hồ</h4>
-                            <div className="--location ">
-                              <img src="../img/icon-map1.svg" alt="" />
-                              <span>Huyện Tam Đường</span>
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                  </Link>
                 </Slider>
               </div>
               <div className="arrow_discoverBlock"></div>
@@ -314,7 +271,7 @@ const Discover = (props: DiscoverProps) => {
                     }}
                     className="row"
                   >
-                    <div>
+                    <Link href="/Discover/1">
                       <div className="--wrapper">
                         <div className="--item img_hover1">
                           <a href="">
@@ -335,8 +292,8 @@ const Discover = (props: DiscoverProps) => {
                           </a>
                         </div>
                       </div>
-                    </div>
-                    <div>
+                    </Link>{" "}
+                    <Link href="/Discover/1">
                       <div className="--wrapper">
                         <div className="--item img_hover1">
                           <a href="">
@@ -357,8 +314,8 @@ const Discover = (props: DiscoverProps) => {
                           </a>
                         </div>
                       </div>
-                    </div>
-                    <div>
+                    </Link>{" "}
+                    <Link href="/Discover/1">
                       <div className="--wrapper">
                         <div className="--item img_hover1">
                           <a href="">
@@ -379,8 +336,8 @@ const Discover = (props: DiscoverProps) => {
                           </a>
                         </div>
                       </div>
-                    </div>
-                    <div>
+                    </Link>{" "}
+                    <Link href="/Discover/1">
                       <div className="--wrapper">
                         <div className="--item img_hover1">
                           <a href="">
@@ -401,8 +358,8 @@ const Discover = (props: DiscoverProps) => {
                           </a>
                         </div>
                       </div>
-                    </div>
-                    <div>
+                    </Link>{" "}
+                    <Link href="/Discover/1">
                       <div className="--wrapper">
                         <div className="--item img_hover1">
                           <a href="">
@@ -423,8 +380,8 @@ const Discover = (props: DiscoverProps) => {
                           </a>
                         </div>
                       </div>
-                    </div>
-                    <div>
+                    </Link>{" "}
+                    <Link href="/Discover/1">
                       <div className="--wrapper">
                         <div className="--item img_hover1">
                           <a href="">
@@ -445,7 +402,29 @@ const Discover = (props: DiscoverProps) => {
                           </a>
                         </div>
                       </div>
-                    </div>
+                    </Link>{" "}
+                    <Link href="/Discover/1">
+                      <div className="--wrapper">
+                        <div className="--item img_hover1">
+                          <a href="">
+                            <div className="--img">
+                              <img
+                                src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                                alt=""
+                              />
+                            </div>
+                            <div className="--txt">
+                              <div className="--type">Đèo - Núi</div>
+                              <h4>Đèo Ô Quy Hồ</h4>
+                              <div className="--location ">
+                                <img src="../img/icon-map1.svg" alt="" />
+                                <span>Huyện Tam Đường</span>
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    </Link>
                   </Slider>
                 </div>
               </div>
@@ -519,86 +498,150 @@ const Discover = (props: DiscoverProps) => {
             <div className="--tab1">
               <div className="list_discoverSearch list_discover">
                 <div className="row">
-                  <div className="col-md-4">
-                    <div className="--item img_hover1">
-                      <a href="">
-                        <div className="--img">
-                          <img
-                            src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-                            alt=""
-                          />
-                        </div>
-                        <div className="--txt">
-                          <div className="--type">Đèo - Núi</div>
-                          <h4>Đèo Ô Quy Hồ</h4>
-                          <div className="--location ">
-                            <img src="../img/icon-map1.svg" alt="" />
-                            <span>Huyện Tam Đường</span>
-                          </div>
-                        </div>
-                      </a>
+                  <Link href="/Discover/1">
+                    <div className="col-md-4">
+                      <div className="--item img_hover1">
+                        <a href="">
+                          <>
+                            <div className="--img">
+                              <img
+                                src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                                alt=""
+                              />
+                            </div>
+                            <div className="--txt">
+                              <div className="--type">Đèo - Núi</div>
+                              <h4>Đèo Ô Quy Hồ</h4>
+                              <div className="--location ">
+                                <img src="../img/icon-map1.svg" alt="" />
+                                <span>Huyện Tam Đường</span>
+                              </div>
+                            </div>
+                          </>
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                  <div className="col-md-4">
-                    <div className="--item img_hover1">
-                      <a href="">
-                        <div className="--img">
-                          <img
-                            src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-                            alt=""
-                          />
-                        </div>
-                        <div className="--txt">
-                          <div className="--type">Đèo - Núi</div>
-                          <h4>Đèo Ô Quy Hồ</h4>
-                          <div className="--location ">
-                            <img src="../img/icon-map1.svg" alt="" />
-                            <span>Huyện Tam Đường</span>
-                          </div>
-                        </div>
-                      </a>
+                  </Link>
+                  <Link href="/Discover/1">
+                    <div className="col-md-4">
+                      <div className="--item img_hover1">
+                        <a href="">
+                          <>
+                            <div className="--img">
+                              <img
+                                src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                                alt=""
+                              />
+                            </div>
+                            <div className="--txt">
+                              <div className="--type">Đèo - Núi</div>
+                              <h4>Đèo Ô Quy Hồ</h4>
+                              <div className="--location ">
+                                <img src="../img/icon-map1.svg" alt="" />
+                                <span>Huyện Tam Đường</span>
+                              </div>
+                            </div>
+                          </>
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                  <div className="col-md-4">
-                    <div className="--item img_hover1">
-                      <a href="">
-                        <div className="--img">
-                          <img
-                            src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-                            alt=""
-                          />
-                        </div>
-                        <div className="--txt">
-                          <div className="--type">Đèo - Núi</div>
-                          <h4>Đèo Ô Quy Hồ</h4>
-                          <div className="--location ">
-                            <img src="../img/icon-map1.svg" alt="" />
-                            <span>Huyện Tam Đường</span>
-                          </div>
-                        </div>
-                      </a>
+                  </Link>
+                  <Link href="/Discover/1">
+                    <div className="col-md-4">
+                      <div className="--item img_hover1">
+                        <a href="">
+                          <>
+                            <div className="--img">
+                              <img
+                                src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                                alt=""
+                              />
+                            </div>
+                            <div className="--txt">
+                              <div className="--type">Đèo - Núi</div>
+                              <h4>Đèo Ô Quy Hồ</h4>
+                              <div className="--location ">
+                                <img src="../img/icon-map1.svg" alt="" />
+                                <span>Huyện Tam Đường</span>
+                              </div>
+                            </div>
+                          </>
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                  <div className="col-md-4">
-                    <div className="--item img_hover1">
-                      <a href="">
-                        <div className="--img">
-                          <img
-                            src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-                            alt=""
-                          />
-                        </div>
-                        <div className="--txt">
-                          <div className="--type">Đèo - Núi</div>
-                          <h4>Đèo Ô Quy Hồ</h4>
-                          <div className="--location ">
-                            <img src="../img/icon-map1.svg" alt="" />
-                            <span>Huyện Tam Đường</span>
-                          </div>
-                        </div>
-                      </a>
+                  </Link>
+                  <Link href="/Discover/1">
+                    <div className="col-md-4">
+                      <div className="--item img_hover1">
+                        <a href="">
+                          <>
+                            <div className="--img">
+                              <img
+                                src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                                alt=""
+                              />
+                            </div>
+                            <div className="--txt">
+                              <div className="--type">Đèo - Núi</div>
+                              <h4>Đèo Ô Quy Hồ</h4>
+                              <div className="--location ">
+                                <img src="../img/icon-map1.svg" alt="" />
+                                <span>Huyện Tam Đường</span>
+                              </div>
+                            </div>
+                          </>
+                        </a>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
+                  <Link href="/Discover/1">
+                    <div className="col-md-4">
+                      <div className="--item img_hover1">
+                        <a href="">
+                          <>
+                            <div className="--img">
+                              <img
+                                src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                                alt=""
+                              />
+                            </div>
+                            <div className="--txt">
+                              <div className="--type">Đèo - Núi</div>
+                              <h4>Đèo Ô Quy Hồ</h4>
+                              <div className="--location ">
+                                <img src="../img/icon-map1.svg" alt="" />
+                                <span>Huyện Tam Đường</span>
+                              </div>
+                            </div>
+                          </>
+                        </a>
+                      </div>
+                    </div>
+                  </Link>
+                  <Link href="/Discover/1">
+                    <div className="col-md-4">
+                      <div className="--item img_hover1">
+                        <a href="">
+                          <>
+                            <div className="--img">
+                              <img
+                                src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                                alt=""
+                              />
+                            </div>
+                            <div className="--txt">
+                              <div className="--type">Đèo - Núi</div>
+                              <h4>Đèo Ô Quy Hồ</h4>
+                              <div className="--location ">
+                                <img src="../img/icon-map1.svg" alt="" />
+                                <span>Huyện Tam Đường</span>
+                              </div>
+                            </div>
+                          </>
+                        </a>
+                      </div>
+                    </div>
+                  </Link>
                 </div>
               </div>
               <Pagination
@@ -620,102 +663,168 @@ const Discover = (props: DiscoverProps) => {
               <div className="row">
                 <div className="col-md-6">
                   <div className="list_discoverSearch2">
-                    <div className="--item d-flex align-items-center">
-                      <div className="--img">
-                        <img
-                          src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-                          alt=""
-                        />
+                    <Link href="/Discover/1">
+                      <div className="--item d-flex align-items-center">
+                        <div className="--img">
+                          <img
+                            src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                            alt=""
+                          />
+                        </div>
+                        <div className="--txt">
+                          <h4>Đèo Ô Quy Hồ</h4>
+                          <article>
+                            Tây Bắc biết đến như một chặng đường mang nhiều cảm
+                            xúc, với đặc điểm là núi non hiểm trở thì những con
+                            đường đèo chính
+                          </article>
+                        </div>
                       </div>
-                      <div className="--txt">
-                        <h4>Đèo Ô Quy Hồ</h4>
-                        <article>
-                          Tây Bắc biết đến như một chặng đường mang nhiều cảm
-                          xúc, với đặc điểm là núi non hiểm trở thì những con
-                          đường đèo chính
-                        </article>
+                    </Link>
+                    <Link href="/Discover/1">
+                      <div className="--item d-flex align-items-center">
+                        <div className="--img">
+                          <img
+                            src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                            alt=""
+                          />
+                        </div>
+                        <div className="--txt">
+                          <h4>Đèo Ô Quy Hồ</h4>
+                          <article>
+                            Tây Bắc biết đến như một chặng đường mang nhiều cảm
+                            xúc, với đặc điểm là núi non hiểm trở thì những con
+                            đường đèo chính
+                          </article>
+                        </div>
                       </div>
-                    </div>
-                    <div className="--item d-flex align-items-center">
-                      <div className="--img">
-                        <img
-                          src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-                          alt=""
-                        />
+                    </Link>{" "}
+                    <Link href="/Discover/1">
+                      <div className="--item d-flex align-items-center">
+                        <div className="--img">
+                          <img
+                            src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                            alt=""
+                          />
+                        </div>
+                        <div className="--txt">
+                          <h4>Đèo Ô Quy Hồ</h4>
+                          <article>
+                            Tây Bắc biết đến như một chặng đường mang nhiều cảm
+                            xúc, với đặc điểm là núi non hiểm trở thì những con
+                            đường đèo chính
+                          </article>
+                        </div>
                       </div>
-                      <div className="--txt">
-                        <h4>Đèo Ô Quy Hồ</h4>
-                        <article>
-                          Tây Bắc biết đến như một chặng đường mang nhiều cảm
-                          xúc, với đặc điểm là núi non hiểm trở thì những con
-                          đường đèo chính
-                        </article>
+                    </Link>{" "}
+                    <Link href="/Discover/1">
+                      <div className="--item d-flex align-items-center">
+                        <div className="--img">
+                          <img
+                            src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                            alt=""
+                          />
+                        </div>
+                        <div className="--txt">
+                          <h4>Đèo Ô Quy Hồ</h4>
+                          <article>
+                            Tây Bắc biết đến như một chặng đường mang nhiều cảm
+                            xúc, với đặc điểm là núi non hiểm trở thì những con
+                            đường đèo chính
+                          </article>
+                        </div>
                       </div>
-                    </div>
-                    <div className="--item d-flex align-items-center">
-                      <div className="--img">
-                        <img
-                          src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-                          alt=""
-                        />
+                    </Link>{" "}
+                    <Link href="/Discover/1">
+                      <div className="--item d-flex align-items-center">
+                        <div className="--img">
+                          <img
+                            src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                            alt=""
+                          />
+                        </div>
+                        <div className="--txt">
+                          <h4>Đèo Ô Quy Hồ</h4>
+                          <article>
+                            Tây Bắc biết đến như một chặng đường mang nhiều cảm
+                            xúc, với đặc điểm là núi non hiểm trở thì những con
+                            đường đèo chính
+                          </article>
+                        </div>
                       </div>
-                      <div className="--txt">
-                        <h4>Đèo Ô Quy Hồ</h4>
-                        <article>
-                          Tây Bắc biết đến như một chặng đường mang nhiều cảm
-                          xúc, với đặc điểm là núi non hiểm trở thì những con
-                          đường đèo chính
-                        </article>
+                    </Link>{" "}
+                    <Link href="/Discover/1">
+                      <div className="--item d-flex align-items-center">
+                        <div className="--img">
+                          <img
+                            src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                            alt=""
+                          />
+                        </div>
+                        <div className="--txt">
+                          <h4>Đèo Ô Quy Hồ</h4>
+                          <article>
+                            Tây Bắc biết đến như một chặng đường mang nhiều cảm
+                            xúc, với đặc điểm là núi non hiểm trở thì những con
+                            đường đèo chính
+                          </article>
+                        </div>
                       </div>
-                    </div>
-                    <div className="--item d-flex align-items-center">
-                      <div className="--img">
-                        <img
-                          src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-                          alt=""
-                        />
+                    </Link>{" "}
+                    <Link href="/Discover/1">
+                      <div className="--item d-flex align-items-center">
+                        <div className="--img">
+                          <img
+                            src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                            alt=""
+                          />
+                        </div>
+                        <div className="--txt">
+                          <h4>Đèo Ô Quy Hồ</h4>
+                          <article>
+                            Tây Bắc biết đến như một chặng đường mang nhiều cảm
+                            xúc, với đặc điểm là núi non hiểm trở thì những con
+                            đường đèo chính
+                          </article>
+                        </div>
                       </div>
-                      <div className="--txt">
-                        <h4>Đèo Ô Quy Hồ</h4>
-                        <article>
-                          Tây Bắc biết đến như một chặng đường mang nhiều cảm
-                          xúc, với đặc điểm là núi non hiểm trở thì những con
-                          đường đèo chính
-                        </article>
+                    </Link>{" "}
+                    <Link href="/Discover/1">
+                      <div className="--item d-flex align-items-center">
+                        <div className="--img">
+                          <img
+                            src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                            alt=""
+                          />
+                        </div>
+                        <div className="--txt">
+                          <h4>Đèo Ô Quy Hồ</h4>
+                          <article>
+                            Tây Bắc biết đến như một chặng đường mang nhiều cảm
+                            xúc, với đặc điểm là núi non hiểm trở thì những con
+                            đường đèo chính
+                          </article>
+                        </div>
                       </div>
-                    </div>
-                    <div className="--item d-flex align-items-center">
-                      <div className="--img">
-                        <img
-                          src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-                          alt=""
-                        />
+                    </Link>{" "}
+                    <Link href="/Discover/1">
+                      <div className="--item d-flex align-items-center">
+                        <div className="--img">
+                          <img
+                            src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                            alt=""
+                          />
+                        </div>
+                        <div className="--txt">
+                          <h4>Đèo Ô Quy Hồ</h4>
+                          <article>
+                            Tây Bắc biết đến như một chặng đường mang nhiều cảm
+                            xúc, với đặc điểm là núi non hiểm trở thì những con
+                            đường đèo chính
+                          </article>
+                        </div>
                       </div>
-                      <div className="--txt">
-                        <h4>Đèo Ô Quy Hồ</h4>
-                        <article>
-                          Tây Bắc biết đến như một chặng đường mang nhiều cảm
-                          xúc, với đặc điểm là núi non hiểm trở thì những con
-                          đường đèo chính
-                        </article>
-                      </div>
-                    </div>
-                    <div className="--item d-flex align-items-center">
-                      <div className="--img">
-                        <img
-                          src="https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-                          alt=""
-                        />
-                      </div>
-                      <div className="--txt">
-                        <h4>Đèo Ô Quy Hồ</h4>
-                        <article>
-                          Tây Bắc biết đến như một chặng đường mang nhiều cảm
-                          xúc, với đặc điểm là núi non hiểm trở thì những con
-                          đường đèo chính
-                        </article>
-                      </div>
-                    </div>
+                    </Link>
                   </div>
                 </div>
                 <div className="col-md-6">

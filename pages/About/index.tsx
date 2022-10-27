@@ -9,6 +9,7 @@ import forest3 from "./_Asset/ic_forest(3).svg";
 import forest4 from "./_Asset/ic_forest(4).svg";
 import Slider from "react-slick";
 import { DollarOutlined } from "@ant-design/icons";
+import Link from "next/link";
 export interface AboutProps {}
 const About = (props: AboutProps) => {
   const router = useRouter();
@@ -22,7 +23,7 @@ const About = (props: AboutProps) => {
           ></img>
           <div className="--Item">
             <h1>Về lai châu</h1>
-            <BreadCrumb router={router.asPath} />
+            <BreadCrumb />
           </div>
         </div>
         <div className="aboutIntro">
@@ -70,10 +71,12 @@ const About = (props: AboutProps) => {
                     đầy thử thách lại có hẳn một thiên đường chạm tới mây trời
                     cực ấn tượng.{" "}
                   </article>
-                  <a className="button_2 button_hover2" href="">
-                    Liên Hệ ngay{" "}
-                    <i className="fa-solid ms-2 fa-arrow-right-long"></i>
-                  </a>
+                  <Link href="/Contact">
+                    <a className="button_2 button_hover2">
+                      Liên Hệ ngay{" "}
+                      <i className="fa-solid ms-2 fa-arrow-right-long"></i>
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -171,10 +174,12 @@ const About = (props: AboutProps) => {
                     </div>
                     <div className="--txt">
                       <h4>Món ăn đặc trưng</h4>
-                      <a href="">
-                        Xem chi tiết
-                        <i className="fa-solid ms-2 fa-arrow-right-long"></i>
-                      </a>
+                      <Link href="/Restaurant">
+                        <a>
+                          Xem chi tiết
+                          <i className="fa-solid ms-2 fa-arrow-right-long"></i>
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -190,10 +195,12 @@ const About = (props: AboutProps) => {
                     </div>
                     <div className="--txt">
                       <h4>Món ăn đặc trưng</h4>
-                      <a href="">
-                        Xem chi tiết
-                        <i className="fa-solid ms-2 fa-arrow-right-long"></i>
-                      </a>
+                      <Link href="/Restaurant">
+                        <a>
+                          Xem chi tiết
+                          <i className="fa-solid ms-2 fa-arrow-right-long"></i>
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -209,10 +216,12 @@ const About = (props: AboutProps) => {
                     </div>
                     <div className="--txt">
                       <h4>Món ăn đặc trưng</h4>
-                      <a href="">
-                        Xem chi tiết
-                        <i className="fa-solid ms-2 fa-arrow-right-long"></i>
-                      </a>
+                      <Link href="/Restaurant">
+                        <a>
+                          Xem chi tiết
+                          <i className="fa-solid ms-2 fa-arrow-right-long"></i>
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -228,10 +237,12 @@ const About = (props: AboutProps) => {
                     </div>
                     <div className="--txt">
                       <h4>Món ăn đặc trưng</h4>
-                      <a href="">
-                        Xem chi tiết
-                        <i className="fa-solid ms-2 fa-arrow-right-long"></i>
-                      </a>
+                      <Link href="/Restaurant">
+                        <a>
+                          Xem chi tiết
+                          <i className="fa-solid ms-2 fa-arrow-right-long"></i>
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -247,10 +258,12 @@ const About = (props: AboutProps) => {
                     </div>
                     <div className="--txt">
                       <h4>Món ăn đặc trưng</h4>
-                      <a href="">
-                        Xem chi tiết
-                        <i className="fa-solid ms-2 fa-arrow-right-long"></i>
-                      </a>
+                      <Link href="/Restaurant">
+                        <a>
+                          Xem chi tiết
+                          <i className="fa-solid ms-2 fa-arrow-right-long"></i>
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -266,10 +279,12 @@ const About = (props: AboutProps) => {
                     </div>
                     <div className="--txt">
                       <h4>Món ăn đặc trưng</h4>
-                      <a href="">
-                        Xem chi tiết
-                        <i className="fa-solid ms-2 fa-arrow-right-long"></i>
-                      </a>
+                      <Link href="/Restaurant">
+                        <a>
+                          Xem chi tiết
+                          <i className="fa-solid ms-2 fa-arrow-right-long"></i>
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -285,10 +300,12 @@ const About = (props: AboutProps) => {
                     </div>
                     <div className="--txt">
                       <h4>Món ăn đặc trưng</h4>
-                      <a href="">
-                        Xem chi tiết
-                        <i className="fa-solid ms-2 fa-arrow-right-long"></i>
-                      </a>
+                      <Link href="/Restaurant">
+                        <a>
+                          Xem chi tiết
+                          <i className="fa-solid ms-2 fa-arrow-right-long"></i>
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -382,9 +399,12 @@ const About = (props: AboutProps) => {
           </div>
           <div className="--txt">
             <h1 className="Title">Lai Châu núi rừng Tây Bắc</h1>
-            <a href="">
-              Khám phá ngay<i className="fa-solid ms-2 fa-arrow-right-long"></i>
-            </a>
+            <Link href="/Discover">
+              <a>
+                Khám phá ngay
+                <i className="fa-solid ms-2 fa-arrow-right-long"></i>
+              </a>
+            </Link>
           </div>
         </div>
       </div>
