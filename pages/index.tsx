@@ -520,352 +520,370 @@ export default function Home() {
                 className='list_homeNews'
               >
                 <div key={uuid()} className='--item'>
-                  <Link href='/News&Event/News/1'>
-                    <div className='--itemNews d-flex'>
-                      <div className='--img img_hover'>
-                        <a href=''>
+                  <div className='--itemNews d-flex'>
+                    <div className='--img img_hover'>
+                      <Link href='/News&Event/News/1'>
+                        <a>
                           <img src={banner.src} alt='' />
                         </a>
-                      </div>
-                      <div className='--txt d-flex flex-column justify-content-between'>
-                        <div className='--top'>
-                          <div className='--cate'>Tin Địa Phương</div>
+                      </Link>
+                    </div>
+                    <div className='--txt d-flex flex-column justify-content-between'>
+                      <div className='--top'>
+                        <div className='--cate'>Tin Địa Phương</div>
+                        <Link href='/News&Event/News/1'>
                           <a href=''>
                             <h6>
                               Cầu kính Rồng Mây “Kỳ quan tiên cảnh của đất trời
                               Lai Châu”
                             </h6>
                           </a>
-                        </div>
-                        <div className='--bot d-flex'>
-                          <div className='--time d-flex align-items-center'>
-                            <div className='--icon'>
-                              <Image
-                                src={require("./_asset/icon-time.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>01/09/2022</span>
-                          </div>
-                          <div className='--view d-flex align-items-center'>
+                        </Link>
+                      </div>
+                      <div className='--bot d-flex'>
+                        <div className='--time d-flex align-items-center'>
+                          <div className='--icon'>
                             <Image
-                              src={require("./_asset/icon-eye.svg")}
+                              src={require("./_asset/icon-time.svg")}
                               alt=''
-                            />{" "}
-                            268
+                            />
                           </div>
+                          <span>01/09/2022</span>
+                        </div>
+                        <div className='--view d-flex align-items-center'>
+                          <Image
+                            src={require("./_asset/icon-eye.svg")}
+                            alt=''
+                          />{" "}
+                          268
                         </div>
                       </div>
                     </div>
-                  </Link>
-                  <Link href='/News&Event/News/1'>
-                    <div className='--itemNews d-flex'>
-                      <div className='--img img_hover'>
-                        <a href=''>
+                  </div>
+                  <div className='--itemNews d-flex'>
+                    <div className='--img img_hover'>
+                      <Link href='/News&Event/News/1'>
+                        <a>
                           <img src={banner.src} alt='' />
                         </a>
-                      </div>
-                      <div className='--txt d-flex flex-column justify-content-between'>
-                        <div className='--top'>
-                          <div className='--cate'>Tin Địa Phương</div>
+                      </Link>
+                    </div>
+                    <div className='--txt d-flex flex-column justify-content-between'>
+                      <div className='--top'>
+                        <div className='--cate'>Tin Địa Phương</div>
+                        <Link href='/News&Event/News/1'>
                           <a href=''>
                             <h6>
                               Cầu kính Rồng Mây “Kỳ quan tiên cảnh của đất trời
                               Lai Châu”
                             </h6>
                           </a>
-                        </div>
-                        <div className='--bot d-flex'>
-                          <div className='--time d-flex align-items-center'>
-                            <div className='--icon'>
-                              <Image
-                                src={require("./_asset/icon-time.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>01/09/2022</span>
-                          </div>
-                          <div className='--view d-flex align-items-center'>
+                        </Link>
+                      </div>
+                      <div className='--bot d-flex'>
+                        <div className='--time d-flex align-items-center'>
+                          <div className='--icon'>
                             <Image
-                              src={require("./_asset/icon-eye.svg")}
+                              src={require("./_asset/icon-time.svg")}
                               alt=''
-                            />{" "}
-                            268
+                            />
                           </div>
+                          <span>01/09/2022</span>
+                        </div>
+                        <div className='--view d-flex align-items-center'>
+                          <Image
+                            src={require("./_asset/icon-eye.svg")}
+                            alt=''
+                          />{" "}
+                          268
                         </div>
                       </div>
                     </div>
-                  </Link>
-                  <Link href='/News&Event/News/1'>
-                    <div className='--itemNews d-flex'>
-                      <div className='--img img_hover'>
-                        <a href=''>
+                  </div>{" "}
+                  <div className='--itemNews d-flex'>
+                    <div className='--img img_hover'>
+                      <Link href='/News&Event/News/1'>
+                        <a>
                           <img src={banner.src} alt='' />
                         </a>
-                      </div>
-                      <div className='--txt d-flex flex-column justify-content-between'>
-                        <div className='--top'>
-                          <div className='--cate'>Tin Địa Phương</div>
+                      </Link>
+                    </div>
+                    <div className='--txt d-flex flex-column justify-content-between'>
+                      <div className='--top'>
+                        <div className='--cate'>Tin Địa Phương</div>
+                        <Link href='/News&Event/News/1'>
                           <a href=''>
                             <h6>
                               Cầu kính Rồng Mây “Kỳ quan tiên cảnh của đất trời
                               Lai Châu”
                             </h6>
                           </a>
-                        </div>
-                        <div className='--bot d-flex'>
-                          <div className='--time d-flex align-items-center'>
-                            <div className='--icon'>
-                              <Image
-                                src={require("./_asset/icon-time.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>01/09/2022</span>
-                          </div>
-                          <div className='--view d-flex align-items-center'>
+                        </Link>
+                      </div>
+                      <div className='--bot d-flex'>
+                        <div className='--time d-flex align-items-center'>
+                          <div className='--icon'>
                             <Image
-                              src={require("./_asset/icon-eye.svg")}
+                              src={require("./_asset/icon-time.svg")}
                               alt=''
-                            />{" "}
-                            268
+                            />
                           </div>
+                          <span>01/09/2022</span>
+                        </div>
+                        <div className='--view d-flex align-items-center'>
+                          <Image
+                            src={require("./_asset/icon-eye.svg")}
+                            alt=''
+                          />{" "}
+                          268
                         </div>
                       </div>
                     </div>
-                  </Link>
+                  </div>
                 </div>
                 <div key={uuid()} className='--item'>
-                  <Link href='/News&Event/News/1'>
-                    <div className='--itemNews d-flex'>
-                      <div className='--img img_hover'>
-                        <a href=''>
+                  <div className='--itemNews d-flex'>
+                    <div className='--img img_hover'>
+                      <Link href='/News&Event/News/1'>
+                        <a>
                           <img src={banner.src} alt='' />
                         </a>
-                      </div>
-                      <div className='--txt d-flex flex-column justify-content-between'>
-                        <div className='--top'>
-                          <div className='--cate'>Tin Địa Phương</div>
+                      </Link>
+                    </div>
+                    <div className='--txt d-flex flex-column justify-content-between'>
+                      <div className='--top'>
+                        <div className='--cate'>Tin Địa Phương</div>
+                        <Link href='/News&Event/News/1'>
                           <a href=''>
                             <h6>
                               Cầu kính Rồng Mây “Kỳ quan tiên cảnh của đất trời
                               Lai Châu”
                             </h6>
                           </a>
-                        </div>
-                        <div className='--bot d-flex'>
-                          <div className='--time d-flex align-items-center'>
-                            <div className='--icon'>
-                              <Image
-                                src={require("./_asset/icon-time.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>01/09/2022</span>
-                          </div>
-                          <div className='--view d-flex align-items-center'>
+                        </Link>
+                      </div>
+                      <div className='--bot d-flex'>
+                        <div className='--time d-flex align-items-center'>
+                          <div className='--icon'>
                             <Image
-                              src={require("./_asset/icon-eye.svg")}
+                              src={require("./_asset/icon-time.svg")}
                               alt=''
-                            />{" "}
-                            268
+                            />
                           </div>
+                          <span>01/09/2022</span>
+                        </div>
+                        <div className='--view d-flex align-items-center'>
+                          <Image
+                            src={require("./_asset/icon-eye.svg")}
+                            alt=''
+                          />{" "}
+                          268
                         </div>
                       </div>
                     </div>
-                  </Link>
-                  <Link href='/News&Event/News/1'>
-                    <div className='--itemNews d-flex'>
-                      <div className='--img img_hover'>
-                        <a href=''>
+                  </div>
+                  <div className='--itemNews d-flex'>
+                    <div className='--img img_hover'>
+                      <Link href='/News&Event/News/1'>
+                        <a>
                           <img src={banner.src} alt='' />
                         </a>
-                      </div>
-                      <div className='--txt d-flex flex-column justify-content-between'>
-                        <div className='--top'>
-                          <div className='--cate'>Tin Địa Phương</div>
+                      </Link>
+                    </div>
+                    <div className='--txt d-flex flex-column justify-content-between'>
+                      <div className='--top'>
+                        <div className='--cate'>Tin Địa Phương</div>
+                        <Link href='/News&Event/News/1'>
                           <a href=''>
                             <h6>
                               Cầu kính Rồng Mây “Kỳ quan tiên cảnh của đất trời
                               Lai Châu”
                             </h6>
                           </a>
-                        </div>
-                        <div className='--bot d-flex'>
-                          <div className='--time d-flex align-items-center'>
-                            <div className='--icon'>
-                              <Image
-                                src={require("./_asset/icon-time.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>01/09/2022</span>
-                          </div>
-                          <div className='--view d-flex align-items-center'>
+                        </Link>
+                      </div>
+                      <div className='--bot d-flex'>
+                        <div className='--time d-flex align-items-center'>
+                          <div className='--icon'>
                             <Image
-                              src={require("./_asset/icon-eye.svg")}
+                              src={require("./_asset/icon-time.svg")}
                               alt=''
-                            />{" "}
-                            268
+                            />
                           </div>
+                          <span>01/09/2022</span>
+                        </div>
+                        <div className='--view d-flex align-items-center'>
+                          <Image
+                            src={require("./_asset/icon-eye.svg")}
+                            alt=''
+                          />{" "}
+                          268
                         </div>
                       </div>
                     </div>
-                  </Link>
-                  <Link href='/News&Event/News/1'>
-                    <div className='--itemNews d-flex'>
-                      <div className='--img img_hover'>
-                        <a href=''>
+                  </div>{" "}
+                  <div className='--itemNews d-flex'>
+                    <div className='--img img_hover'>
+                      <Link href='/News&Event/News/1'>
+                        <a>
                           <img src={banner.src} alt='' />
                         </a>
-                      </div>
-                      <div className='--txt d-flex flex-column justify-content-between'>
-                        <div className='--top'>
-                          <div className='--cate'>Tin Địa Phương</div>
+                      </Link>
+                    </div>
+                    <div className='--txt d-flex flex-column justify-content-between'>
+                      <div className='--top'>
+                        <div className='--cate'>Tin Địa Phương</div>
+                        <Link href='/News&Event/News/1'>
                           <a href=''>
                             <h6>
                               Cầu kính Rồng Mây “Kỳ quan tiên cảnh của đất trời
                               Lai Châu”
                             </h6>
                           </a>
-                        </div>
-                        <div className='--bot d-flex'>
-                          <div className='--time d-flex align-items-center'>
-                            <div className='--icon'>
-                              <Image
-                                src={require("./_asset/icon-time.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>01/09/2022</span>
-                          </div>
-                          <div className='--view d-flex align-items-center'>
+                        </Link>
+                      </div>
+                      <div className='--bot d-flex'>
+                        <div className='--time d-flex align-items-center'>
+                          <div className='--icon'>
                             <Image
-                              src={require("./_asset/icon-eye.svg")}
+                              src={require("./_asset/icon-time.svg")}
                               alt=''
-                            />{" "}
-                            268
+                            />
                           </div>
+                          <span>01/09/2022</span>
+                        </div>
+                        <div className='--view d-flex align-items-center'>
+                          <Image
+                            src={require("./_asset/icon-eye.svg")}
+                            alt=''
+                          />{" "}
+                          268
                         </div>
                       </div>
                     </div>
-                  </Link>
+                  </div>
                 </div>{" "}
                 <div key={uuid()} className='--item'>
-                  <Link href='/News&Event/News/1'>
-                    <div className='--itemNews d-flex'>
-                      <div className='--img img_hover'>
-                        <a href=''>
+                  <div className='--itemNews d-flex'>
+                    <div className='--img img_hover'>
+                      <Link href='/News&Event/News/1'>
+                        <a>
                           <img src={banner.src} alt='' />
                         </a>
-                      </div>
-                      <div className='--txt d-flex flex-column justify-content-between'>
-                        <div className='--top'>
-                          <div className='--cate'>Tin Địa Phương</div>
+                      </Link>
+                    </div>
+                    <div className='--txt d-flex flex-column justify-content-between'>
+                      <div className='--top'>
+                        <div className='--cate'>Tin Địa Phương</div>
+                        <Link href='/News&Event/News/1'>
                           <a href=''>
                             <h6>
                               Cầu kính Rồng Mây “Kỳ quan tiên cảnh của đất trời
                               Lai Châu”
                             </h6>
                           </a>
-                        </div>
-                        <div className='--bot d-flex'>
-                          <div className='--time d-flex align-items-center'>
-                            <div className='--icon'>
-                              <Image
-                                src={require("./_asset/icon-time.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>01/09/2022</span>
-                          </div>
-                          <div className='--view d-flex align-items-center'>
+                        </Link>
+                      </div>
+                      <div className='--bot d-flex'>
+                        <div className='--time d-flex align-items-center'>
+                          <div className='--icon'>
                             <Image
-                              src={require("./_asset/icon-eye.svg")}
+                              src={require("./_asset/icon-time.svg")}
                               alt=''
-                            />{" "}
-                            268
+                            />
                           </div>
+                          <span>01/09/2022</span>
+                        </div>
+                        <div className='--view d-flex align-items-center'>
+                          <Image
+                            src={require("./_asset/icon-eye.svg")}
+                            alt=''
+                          />{" "}
+                          268
                         </div>
                       </div>
                     </div>
-                  </Link>
-                  <Link href='/News&Event/News/1'>
-                    <div className='--itemNews d-flex'>
-                      <div className='--img img_hover'>
-                        <a href=''>
+                  </div>
+                  <div className='--itemNews d-flex'>
+                    <div className='--img img_hover'>
+                      <Link href='/News&Event/News/1'>
+                        <a>
                           <img src={banner.src} alt='' />
                         </a>
-                      </div>
-                      <div className='--txt d-flex flex-column justify-content-between'>
-                        <div className='--top'>
-                          <div className='--cate'>Tin Địa Phương</div>
+                      </Link>
+                    </div>
+                    <div className='--txt d-flex flex-column justify-content-between'>
+                      <div className='--top'>
+                        <div className='--cate'>Tin Địa Phương</div>
+                        <Link href='/News&Event/News/1'>
                           <a href=''>
                             <h6>
                               Cầu kính Rồng Mây “Kỳ quan tiên cảnh của đất trời
                               Lai Châu”
                             </h6>
                           </a>
-                        </div>
-                        <div className='--bot d-flex'>
-                          <div className='--time d-flex align-items-center'>
-                            <div className='--icon'>
-                              <Image
-                                src={require("./_asset/icon-time.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>01/09/2022</span>
-                          </div>
-                          <div className='--view d-flex align-items-center'>
+                        </Link>
+                      </div>
+                      <div className='--bot d-flex'>
+                        <div className='--time d-flex align-items-center'>
+                          <div className='--icon'>
                             <Image
-                              src={require("./_asset/icon-eye.svg")}
+                              src={require("./_asset/icon-time.svg")}
                               alt=''
-                            />{" "}
-                            268
+                            />
                           </div>
+                          <span>01/09/2022</span>
+                        </div>
+                        <div className='--view d-flex align-items-center'>
+                          <Image
+                            src={require("./_asset/icon-eye.svg")}
+                            alt=''
+                          />{" "}
+                          268
                         </div>
                       </div>
                     </div>
-                  </Link>
-                  <Link href='/News&Event/News/1'>
-                    <div className='--itemNews d-flex'>
-                      <div className='--img img_hover'>
-                        <a href=''>
+                  </div>{" "}
+                  <div className='--itemNews d-flex'>
+                    <div className='--img img_hover'>
+                      <Link href='/News&Event/News/1'>
+                        <a>
                           <img src={banner.src} alt='' />
                         </a>
-                      </div>
-                      <div className='--txt d-flex flex-column justify-content-between'>
-                        <div className='--top'>
-                          <div className='--cate'>Tin Địa Phương</div>
+                      </Link>
+                    </div>
+                    <div className='--txt d-flex flex-column justify-content-between'>
+                      <div className='--top'>
+                        <div className='--cate'>Tin Địa Phương</div>
+                        <Link href='/News&Event/News/1'>
                           <a href=''>
                             <h6>
                               Cầu kính Rồng Mây “Kỳ quan tiên cảnh của đất trời
                               Lai Châu”
                             </h6>
                           </a>
-                        </div>
-                        <div className='--bot d-flex'>
-                          <div className='--time d-flex align-items-center'>
-                            <div className='--icon'>
-                              <Image
-                                src={require("./_asset/icon-time.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>01/09/2022</span>
-                          </div>
-                          <div className='--view d-flex align-items-center'>
+                        </Link>
+                      </div>
+                      <div className='--bot d-flex'>
+                        <div className='--time d-flex align-items-center'>
+                          <div className='--icon'>
                             <Image
-                              src={require("./_asset/icon-eye.svg")}
+                              src={require("./_asset/icon-time.svg")}
                               alt=''
-                            />{" "}
-                            268
+                            />
                           </div>
+                          <span>01/09/2022</span>
+                        </div>
+                        <div className='--view d-flex align-items-center'>
+                          <Image
+                            src={require("./_asset/icon-eye.svg")}
+                            alt=''
+                          />{" "}
+                          268
                         </div>
                       </div>
                     </div>
-                  </Link>
+                  </div>
                 </div>
               </Slider>
               <div className='--botnews'>
