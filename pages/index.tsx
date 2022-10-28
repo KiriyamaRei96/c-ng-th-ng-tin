@@ -20,82 +20,93 @@ import HomeDiscover1 from "../components/Home/HomeDiscover1";
 export default function Home() {
   return (
     <HomeWrapper>
-      <div id="home">
-        <div className="homeBanner">
-          <div className="--background">
-            <img src={banner.src} alt="" />
+      <div id='home'>
+        <div className='homeBanner'>
+          <div className='--background'>
+            <img src={banner.src} alt='' />
           </div>
-          <div className="--txt">
-            <div className="--name">Lai Châu</div>
-            <div className="--des">Điểm đến thiên đường</div>
+          <div className='--txt'>
+            <div className='--name'>Lai Châu</div>
+            <div className='--des'>Điểm đến thiên đường</div>
             <ul>
               <li>30 Điểm khám phá</li>
               <li>1000+ Checked in</li>
             </ul>
-            <Link href="/News&Event/News/1">
+            <Link href='/News&Event/News/1'>
               <a>
                 Tìm hiểu thêm
-                <i className="fa-sharp fa-solid fa-arrow-right"></i>
+                <i className='fa-sharp fa-solid fa-arrow-right'></i>
               </a>
             </Link>
           </div>
-          <div className="container-fluid">
-            <div className="filter">
-              <div className="form-group">
-                <div className="--icon">
-                  <img src={iconMap.src} alt="" />
+          <div className='container-fluid'>
+            <div className='filter'>
+              <div className='form-group'>
+                <div className='--icon'>
+                  <img src={iconMap.src} alt='' />
                 </div>
-                <div className="--txtform">
-                  <label htmlFor="">Điểm đến</label>
-                  <input type="text" placeholder="Ví dụ: Ô Quy Hồ" />
+                <div className='--txtform'>
+                  <label htmlFor=''>Điểm đến</label>
+                  <input type='text' placeholder='Ví dụ: Ô Quy Hồ' />
                 </div>
               </div>
-              <div className="form-group">
-                <div className="--icon">
-                  <img src={iconSign.src} alt="" />
+              <div className='form-group'>
+                <div className='--icon'>
+                  <img src={iconSign.src} alt='' />
                 </div>
-                <div className="--txtform">
-                  <label htmlFor="">Thời gian</label>
-                  <select name="" id="">
-                    <option value="">Chọn thời gian</option>
-                    <option value="">abc</option>
-                    <option value="">xyz</option>
+                <div className='--txtform'>
+                  <label htmlFor=''>Thời gian</label>
+                  <select name='' id=''>
+                    <option value=''>Chọn thời gian</option>
+                    <option value=''>abc</option>
+                    <option value=''>xyz</option>
                   </select>
                 </div>
               </div>
-              <div className="form-group">
-                <div className="--icon">
-                  <img src={iconMap.src} alt="" />
+              <div className='form-group'>
+                <div className='--icon'>
+                  <img src={iconMap.src} alt='' />
                 </div>
-                <div className="--txtform">
-                  <label htmlFor="">Loại hình</label>
-                  <select name="" id="">
-                    <option value="">Chọn loại hình</option>
-                    <option value="">abc</option>
-                    <option value="">xyz</option>
+                <div className='--txtform'>
+                  <label htmlFor=''>Loại hình</label>
+                  <select name='' id=''>
+                    <option value=''>Chọn loại hình</option>
+                    <option value=''>abc</option>
+                    <option value=''>xyz</option>
                   </select>
                 </div>
               </div>
-              <div className="form-group">
-                <button className="button_1 button_hover1">Khám phá</button>
+              <div className='form-group'>
+                <button className='button_1 button_hover1'>Khám phá</button>
               </div>
             </div>
           </div>
+          <div class='social'>
+            <a class='arrow_hover' href=''>
+              <i class='fa-brands fa-facebook-f'></i>
+            </a>
+            <a class='arrow_hover' href=''>
+              <i class='fa-solid fa-envelope'></i>
+            </a>
+            <a class='arrow_hover' href=''>
+              <i class='fa-solid fa-phone'></i>
+            </a>
+          </div>
         </div>
-        <div className="homeIntro">
-          <div className="container-fluid">
-            <div className="--content">
-              <div className="row">
-                <div className="col-md-6">
-                  <div className="--left">
-                    <img src={img36.src} alt="" />
+        <div className='homeIntro'>
+          <div className='container-fluid'>
+            <div className='--content'>
+              <div className='row'>
+                <div className='col-md-6'>
+                  <div className='--left'>
+                    <img src={img36.src} alt='' />
                   </div>
                 </div>
-                <div className="col-md-6">
-                  <div className="--right">
-                    <div className="subTitle">KHám phá Lai Châu</div>
-                    <h1 className="Title">Sự hùng vĩ của núi rừng Tây Bắc</h1>
-                    <div className="--des">
+                <div className='col-md-6'>
+                  <div className='--right'>
+                    <div className='subTitle'>KHám phá Lai Châu</div>
+                    <h1 className='Title'>Sự hùng vĩ của núi rừng Tây Bắc</h1>
+                    <div className='--des'>
                       Lai Châu là tỉnh biên giới phía Tây Bắc của Tổ quốc, cách
                       Thủ đô Hà Nội 385 km về phía Đông Nam. Nơi đây vừa hoang
                       sơ, đầy thử thách lại có hẳn một thiên đường chạm tới mây
@@ -123,22 +134,22 @@ export default function Home() {
                         <span>(02)</span>
                       </li>
                     </ul>
-                    <Link href="/Discover">
-                      <a className="button_2 button_hover2" href="">
+                    <Link href='/Discover'>
+                      <a className='button_2 button_hover2' href=''>
                         Xem tất cả{" "}
-                        <i className="fa-sharp ms-2 fa-solid fa-arrow-right-long"></i>
+                        <i className='fa-sharp ms-2 fa-solid fa-arrow-right-long'></i>
                       </a>
                     </Link>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="list_homeIntro d-flex flex-wrap">
-              <div className="--item d-flex flex-column align-items-center">
-                <div className="--icon">
-                  <img src={icon1.src} alt="" />
+            <div className='list_homeIntro d-flex flex-wrap'>
+              <div className='--item d-flex flex-column align-items-center'>
+                <div className='--icon'>
+                  <img src={icon1.src} alt='' />
                 </div>
-                <div className="--txt">
+                <div className='--txt'>
                   <h4>Thiên nhiên hùng vĩ</h4>
                   <article>
                     Acclaimed purveyors of some of the worlds best cruises, we
@@ -147,11 +158,11 @@ export default function Home() {
                   </article>
                 </div>
               </div>
-              <div className="--item d-flex flex-column align-items-center">
-                <div className="--icon">
-                  <img src={icon2.src} alt="" />
+              <div className='--item d-flex flex-column align-items-center'>
+                <div className='--icon'>
+                  <img src={icon2.src} alt='' />
                 </div>
-                <div className="--txt">
+                <div className='--txt'>
                   <h4>Trải nghiệm đáng nhớ</h4>
                   <article>
                     Acclaimed purveyors of some of the worlds best cruises, we
@@ -160,11 +171,11 @@ export default function Home() {
                   </article>
                 </div>
               </div>
-              <div className="--item d-flex flex-column align-items-center">
-                <div className="--icon">
-                  <img src={icon3.src} alt="" />
+              <div className='--item d-flex flex-column align-items-center'>
+                <div className='--icon'>
+                  <img src={icon3.src} alt='' />
                 </div>
-                <div className="--txt">
+                <div className='--txt'>
                   <h4>Khách sạn, nhà nghỉ</h4>
                   <article>
                     Acclaimed purveyors of some of the worlds best cruises, we
@@ -173,11 +184,11 @@ export default function Home() {
                   </article>
                 </div>
               </div>
-              <div className="--item d-flex flex-column align-items-center">
-                <div className="--icon">
-                  <img src={icon4.src} alt="" />
+              <div className='--item d-flex flex-column align-items-center'>
+                <div className='--icon'>
+                  <img src={icon4.src} alt='' />
                 </div>
-                <div className="--txt">
+                <div className='--txt'>
                   <h4>Món ăn đặc trưng</h4>
                   <article>
                     Acclaimed purveyors of some of the worlds best cruises, we
@@ -186,11 +197,11 @@ export default function Home() {
                   </article>
                 </div>
               </div>
-              <div className="--item d-flex flex-column align-items-center">
-                <div className="--icon">
-                  <img src={icon5.src} alt="" />
+              <div className='--item d-flex flex-column align-items-center'>
+                <div className='--icon'>
+                  <img src={icon5.src} alt='' />
                 </div>
-                <div className="--txt">
+                <div className='--txt'>
                   <h4>Núi rừng, hang động</h4>
                   <article>
                     Acclaimed purveyors of some of the worlds best cruises, we
@@ -199,11 +210,11 @@ export default function Home() {
                   </article>
                 </div>
               </div>
-              <div className="--item d-flex flex-column align-items-center">
-                <div className="--icon">
-                  <img src={icon6.src} alt="" />
+              <div className='--item d-flex flex-column align-items-center'>
+                <div className='--icon'>
+                  <img src={icon6.src} alt='' />
                 </div>
-                <div className="--txt">
+                <div className='--txt'>
                   <h4>Cắm trại </h4>
                   <article>
                     Acclaimed purveyors of some of the worlds best cruises, we
@@ -215,12 +226,12 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="homeDiscover">
-          <div className="container-fluid">
-            <div className="subTitle text-center">KHám phá Lai Châu</div>
-            <h1 className="Title text-center">Khám phá điểm đến nổi bật</h1>
+        <div className='homeDiscover'>
+          <div className='container-fluid'>
+            <div className='subTitle text-center'>KHám phá Lai Châu</div>
+            <h1 className='Title text-center'>Khám phá điểm đến nổi bật</h1>
           </div>
-          <div className="container-fluid pe-0">
+          <div className='container-fluid pe-0'>
             <Slider
               key={uuid()}
               {...{
@@ -242,21 +253,21 @@ export default function Home() {
                   },
                 ],
               }}
-              className="list_homeDiscover"
+              className='list_homeDiscover'
             >
-              <Link href="/Discover/1" key={uuid()}>
-                <div className="--item">
-                  <div className="--img">
-                    <img src={banner.src} alt="" />
+              <div>
+                <div className='--item'>
+                  <div className='--img'>
+                    <img src={banner.src} alt='' />
                   </div>
-                  <div className="--txt">
-                    <div className="--subtitle">Đèo - Núi</div>
-                    <h4 className="--name">Đèo Ô Quy Hồ</h4>
-                    <div className="--bot d-flex justify-content-between align-items-end">
-                      <div className="--des">
-                        <div className="--location d-flex align-items-center">
-                          <div className="--icon me-2">
-                            <img src="./_asset/icon-map1.svg" alt="" />
+                  <div className='--txt'>
+                    <div className='--subtitle'>Đèo - Núi</div>
+                    <h4 className='--name'>Đèo Ô Quy Hồ</h4>
+                    <div className='--bot d-flex justify-content-between align-items-end'>
+                      <div className='--des'>
+                        <div className='--location d-flex align-items-center'>
+                          <div className='--icon me-2'>
+                            <img src='./_asset/icon-map1.svg' alt='' />
                           </div>
                           Huyện Tam Đường, Tỉnh Lai Châu
                         </div>
@@ -268,26 +279,28 @@ export default function Home() {
                           thuộc Yên Bái)
                         </article>
                       </div>
-                      <a className="--viewdetail button_hover1" href="">
-                        <i className="fa-solid fa-arrow-right"></i>
-                      </a>
+                      <Link href='/Discover/1' key={uuid()}>
+                        <a className='--viewdetail button_hover1' href=''>
+                          <i className='fa-solid fa-arrow-right'></i>
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
-              </Link>
-              <Link href="/Discover/1" key={uuid()}>
-                <div className="--item">
-                  <div className="--img">
-                    <img src={banner.src} alt="" />
+              </div>
+              <div>
+                <div className='--item'>
+                  <div className='--img'>
+                    <img src={banner.src} alt='' />
                   </div>
-                  <div className="--txt">
-                    <div className="--subtitle">Đèo - Núi</div>
-                    <h4 className="--name">Đèo Ô Quy Hồ</h4>
-                    <div className="--bot d-flex justify-content-between align-items-end">
-                      <div className="--des">
-                        <div className="--location d-flex align-items-center">
-                          <div className="--icon me-2">
-                            <img src="./_asset/icon-map1.svg" alt="" />
+                  <div className='--txt'>
+                    <div className='--subtitle'>Đèo - Núi</div>
+                    <h4 className='--name'>Đèo Ô Quy Hồ</h4>
+                    <div className='--bot d-flex justify-content-between align-items-end'>
+                      <div className='--des'>
+                        <div className='--location d-flex align-items-center'>
+                          <div className='--icon me-2'>
+                            <img src='./_asset/icon-map1.svg' alt='' />
                           </div>
                           Huyện Tam Đường, Tỉnh Lai Châu
                         </div>
@@ -299,26 +312,28 @@ export default function Home() {
                           thuộc Yên Bái)
                         </article>
                       </div>
-                      <a className="--viewdetail button_hover1" href="">
-                        <i className="fa-solid fa-arrow-right"></i>
-                      </a>
+                      <Link href='/Discover/1' key={uuid()}>
+                        <a className='--viewdetail button_hover1' href=''>
+                          <i className='fa-solid fa-arrow-right'></i>
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
-              </Link>{" "}
-              <Link href="/Discover/1" key={uuid()}>
-                <div className="--item">
-                  <div className="--img">
-                    <img src={banner.src} alt="" />
+              </div>
+              <div>
+                <div className='--item'>
+                  <div className='--img'>
+                    <img src={banner.src} alt='' />
                   </div>
-                  <div className="--txt">
-                    <div className="--subtitle">Đèo - Núi</div>
-                    <h4 className="--name">Đèo Ô Quy Hồ</h4>
-                    <div className="--bot d-flex justify-content-between align-items-end">
-                      <div className="--des">
-                        <div className="--location d-flex align-items-center">
-                          <div className="--icon me-2">
-                            <img src="./_asset/icon-map1.svg" alt="" />
+                  <div className='--txt'>
+                    <div className='--subtitle'>Đèo - Núi</div>
+                    <h4 className='--name'>Đèo Ô Quy Hồ</h4>
+                    <div className='--bot d-flex justify-content-between align-items-end'>
+                      <div className='--des'>
+                        <div className='--location d-flex align-items-center'>
+                          <div className='--icon me-2'>
+                            <img src='./_asset/icon-map1.svg' alt='' />
                           </div>
                           Huyện Tam Đường, Tỉnh Lai Châu
                         </div>
@@ -330,26 +345,28 @@ export default function Home() {
                           thuộc Yên Bái)
                         </article>
                       </div>
-                      <a className="--viewdetail button_hover1" href="">
-                        <i className="fa-solid fa-arrow-right"></i>
-                      </a>
+                      <Link href='/Discover/1' key={uuid()}>
+                        <a className='--viewdetail button_hover1' href=''>
+                          <i className='fa-solid fa-arrow-right'></i>
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
-              </Link>{" "}
-              <Link href="/Discover/1" key={uuid()}>
-                <div className="--item">
-                  <div className="--img">
-                    <img src={banner.src} alt="" />
+              </div>
+              <div>
+                <div className='--item'>
+                  <div className='--img'>
+                    <img src={banner.src} alt='' />
                   </div>
-                  <div className="--txt">
-                    <div className="--subtitle">Đèo - Núi</div>
-                    <h4 className="--name">Đèo Ô Quy Hồ</h4>
-                    <div className="--bot d-flex justify-content-between align-items-end">
-                      <div className="--des">
-                        <div className="--location d-flex align-items-center">
-                          <div className="--icon me-2">
-                            <img src="./_asset/icon-map1.svg" alt="" />
+                  <div className='--txt'>
+                    <div className='--subtitle'>Đèo - Núi</div>
+                    <h4 className='--name'>Đèo Ô Quy Hồ</h4>
+                    <div className='--bot d-flex justify-content-between align-items-end'>
+                      <div className='--des'>
+                        <div className='--location d-flex align-items-center'>
+                          <div className='--icon me-2'>
+                            <img src='./_asset/icon-map1.svg' alt='' />
                           </div>
                           Huyện Tam Đường, Tỉnh Lai Châu
                         </div>
@@ -361,26 +378,28 @@ export default function Home() {
                           thuộc Yên Bái)
                         </article>
                       </div>
-                      <a className="--viewdetail button_hover1" href="">
-                        <i className="fa-solid fa-arrow-right"></i>
-                      </a>
+                      <Link href='/Discover/1' key={uuid()}>
+                        <a className='--viewdetail button_hover1' href=''>
+                          <i className='fa-solid fa-arrow-right'></i>
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
-              </Link>{" "}
-              <Link href="/Discover/1" key={uuid()}>
-                <div className="--item">
-                  <div className="--img">
-                    <img src={banner.src} alt="" />
+              </div>
+              <div>
+                <div className='--item'>
+                  <div className='--img'>
+                    <img src={banner.src} alt='' />
                   </div>
-                  <div className="--txt">
-                    <div className="--subtitle">Đèo - Núi</div>
-                    <h4 className="--name">Đèo Ô Quy Hồ</h4>
-                    <div className="--bot d-flex justify-content-between align-items-end">
-                      <div className="--des">
-                        <div className="--location d-flex align-items-center">
-                          <div className="--icon me-2">
-                            <img src="./_asset/icon-map1.svg" alt="" />
+                  <div className='--txt'>
+                    <div className='--subtitle'>Đèo - Núi</div>
+                    <h4 className='--name'>Đèo Ô Quy Hồ</h4>
+                    <div className='--bot d-flex justify-content-between align-items-end'>
+                      <div className='--des'>
+                        <div className='--location d-flex align-items-center'>
+                          <div className='--icon me-2'>
+                            <img src='./_asset/icon-map1.svg' alt='' />
                           </div>
                           Huyện Tam Đường, Tỉnh Lai Châu
                         </div>
@@ -392,130 +411,70 @@ export default function Home() {
                           thuộc Yên Bái)
                         </article>
                       </div>
-                      <a className="--viewdetail button_hover1" href="">
-                        <i className="fa-solid fa-arrow-right"></i>
-                      </a>
+                      <Link href='/Discover/1' key={uuid()}>
+                        <a className='--viewdetail button_hover1' href=''>
+                          <i className='fa-solid fa-arrow-right'></i>
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
-              </Link>{" "}
-              <Link href="/Discover/1" key={uuid()}>
-                <div className="--item">
-                  <div className="--img">
-                    <img src={banner.src} alt="" />
-                  </div>
-                  <div className="--txt">
-                    <div className="--subtitle">Đèo - Núi</div>
-                    <h4 className="--name">Đèo Ô Quy Hồ</h4>
-                    <div className="--bot d-flex justify-content-between align-items-end">
-                      <div className="--des">
-                        <div className="--location d-flex align-items-center">
-                          <div className="--icon me-2">
-                            <img src="./_asset/icon-map1.svg" alt="" />
-                          </div>
-                          Huyện Tam Đường, Tỉnh Lai Châu
-                        </div>
-                        <article>
-                          Đây là một trong những cung đường đèo hiểm trở bậc
-                          nhất của núi rừng Tây Bắc. Giữ kỷ lục về độ dài lên
-                          tới gần 50 km, dài hơn đèo Pha Đin (32 km, nằm ở ranh
-                          giới Sơn La và Điện Biên) hay đèo Khau Phạ (40 km,
-                          thuộc Yên Bái)
-                        </article>
-                      </div>
-                      <a className="--viewdetail button_hover1" href="">
-                        <i className="fa-solid fa-arrow-right"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </Link>{" "}
-              <Link href="/Discover/1" key={uuid()}>
-                <div className="--item">
-                  <div className="--img">
-                    <img src={banner.src} alt="" />
-                  </div>
-                  <div className="--txt">
-                    <div className="--subtitle">Đèo - Núi</div>
-                    <h4 className="--name">Đèo Ô Quy Hồ</h4>
-                    <div className="--bot d-flex justify-content-between align-items-end">
-                      <div className="--des">
-                        <div className="--location d-flex align-items-center">
-                          <div className="--icon me-2">
-                            <img src="./_asset/icon-map1.svg" alt="" />
-                          </div>
-                          Huyện Tam Đường, Tỉnh Lai Châu
-                        </div>
-                        <article>
-                          Đây là một trong những cung đường đèo hiểm trở bậc
-                          nhất của núi rừng Tây Bắc. Giữ kỷ lục về độ dài lên
-                          tới gần 50 km, dài hơn đèo Pha Đin (32 km, nằm ở ranh
-                          giới Sơn La và Điện Biên) hay đèo Khau Phạ (40 km,
-                          thuộc Yên Bái)
-                        </article>
-                      </div>
-                      <a className="--viewdetail button_hover1" href="">
-                        <i className="fa-solid fa-arrow-right"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </Link>
+              </div>
             </Slider>
           </div>
-          <a href="" className="--viewall button_2 button_hover2">
-            Xem tất cả <i className="fa-solid ms-2 fa-arrow-right-long"></i>
+          <a href='' className='--viewall button_2 button_hover2'>
+            Xem tất cả <i className='fa-solid ms-2 fa-arrow-right-long'></i>
           </a>
         </div>
-        <div className="homeMap">
-          <div className="subTitle text-center">Du lịch Lai Châu</div>
-          <h1 className="Title text-center">Khám phá Tour360</h1>
+        <div className='homeMap'>
+          <div className='subTitle text-center'>Du lịch Lai Châu</div>
+          <h1 className='Title text-center'>Khám phá Tour360</h1>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59025.742842815074!2d103.4046501286144!3d22.387250681156605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x36d2a1867bf6f19d%3A0x34cc461c8d0001b8!2zVHAuIExhaSBDaMOidSwgTGFpIENow6J1LCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1666531776427!5m2!1svi!2s"
-            width="600"
-            height="450"
+            src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59025.742842815074!2d103.4046501286144!3d22.387250681156605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x36d2a1867bf6f19d%3A0x34cc461c8d0001b8!2zVHAuIExhaSBDaMOidSwgTGFpIENow6J1LCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1666531776427!5m2!1svi!2s'
+            width='600'
+            height='450'
             style={{ border: "0" }}
-            loading="lazy"
+            loading='lazy'
           ></iframe>
         </div>
-        <div className="homeNews">
-          <div className="subTitle text-center">Điểm nhấn nổi bật</div>
-          <h1 className="Title text-center">Tin tức & sự kiện</h1>
-          <div className="--content d-flex">
-            <div className="--left">
-              <div className="--img">
-                <img src={banner.src} alt="" />
+        <div className='homeNews'>
+          <div className='subTitle text-center'>Điểm nhấn nổi bật</div>
+          <h1 className='Title text-center'>Tin tức & sự kiện</h1>
+          <div className='--content d-flex'>
+            <div className='--left'>
+              <div className='--img'>
+                <img src={banner.src} alt='' />
               </div>
-              <div className="--txt">
-                <div className="--cate">Sự kiện nổi bật</div>
-                <div className="--subtitle">Hội thảo phát triển</div>
-                <a href="">
+              <div className='--txt'>
+                <div className='--cate'>Sự kiện nổi bật</div>
+                <div className='--subtitle'>Hội thảo phát triển</div>
+                <a href=''>
                   <h1>
                     <p>Du lịch cộng đồng</p>
                     <p>Gắn với Metaverse</p>
                   </h1>
                 </a>
-                <div className="--time d-flex align-items-center">
-                  <div className="--icon">
-                    <img src="./_asset/icon-time.svg" alt="" />
+                <div className='--time d-flex align-items-center'>
+                  <div className='--icon'>
+                    <img src='./_asset/icon-time.svg' alt='' />
                   </div>
                   Từ ngày 18 - 20/10/2022
                 </div>
-                <div className="--location d-flex align-items-center">
-                  <div className="--icon">
-                    <img src="./_asset/icon-map1.svg" alt="" />
+                <div className='--location d-flex align-items-center'>
+                  <div className='--icon'>
+                    <img src='./_asset/icon-map1.svg' alt='' />
                   </div>
                   Bản Lao Chải, xã Khun Há, huyện Tam Đường, tỉnh Lai Châu
                 </div>
-                <Link href="/News&Event">
-                  <a className="--viewdetail">
+                <Link href='/News&Event'>
+                  <a className='--viewdetail'>
                     Tìm hiểu thêm
-                    <i className="fa-solid ms-2 fa-arrow-right-long"></i>
+                    <i className='fa-solid ms-2 fa-arrow-right-long'></i>
                   </a>
                 </Link>
               </div>
             </div>
-            <div className="--right">
+            <div className='--right'>
               <Slider
                 key={uuid()}
                 {...{
@@ -526,7 +485,10 @@ export default function Home() {
                   slidesToScroll: 1,
                   arrows: false,
                   fade: true,
-
+                  beforeChange: (c, n) => {
+                    console.log(c);
+                    console.log(n);
+                  },
                   responsive: [
                     {
                       breakpoint: 768,
@@ -537,287 +499,287 @@ export default function Home() {
                     },
                   ],
                 }}
-                className="list_homeNews"
+                className='list_homeNews'
               >
-                <div key={uuid()} className="--item">
-                  <Link href="/News&Event/News/1">
-                    <div className="--itemNews d-flex">
-                      <div className="--img img_hover">
-                        <a href="">
-                          <img src={banner.src} alt="" />
+                <div key={uuid()} className='--item'>
+                  <Link href='/News&Event/News/1'>
+                    <div className='--itemNews d-flex'>
+                      <div className='--img img_hover'>
+                        <a href=''>
+                          <img src={banner.src} alt='' />
                         </a>
                       </div>
-                      <div className="--txt d-flex flex-column justify-content-between">
-                        <div className="--top">
-                          <div className="--cate">Tin Địa Phương</div>
-                          <a href="">
+                      <div className='--txt d-flex flex-column justify-content-between'>
+                        <div className='--top'>
+                          <div className='--cate'>Tin Địa Phương</div>
+                          <a href=''>
                             <h6>
                               Cầu kính Rồng Mây “Kỳ quan tiên cảnh của đất trời
                               Lai Châu”
                             </h6>
                           </a>
                         </div>
-                        <div className="--bot d-flex">
-                          <div className="--time d-flex align-items-center">
-                            <div className="--icon">
-                              <img src="./_asset/icon-time.svg" alt="" />
+                        <div className='--bot d-flex'>
+                          <div className='--time d-flex align-items-center'>
+                            <div className='--icon'>
+                              <img src='./_asset/icon-time.svg' alt='' />
                             </div>
                             <span>01/09/2022</span>
                           </div>
-                          <div className="--view d-flex align-items-center">
-                            <img src="./_asset/icon-eye.svg" alt="" /> 268
+                          <div className='--view d-flex align-items-center'>
+                            <img src='./_asset/icon-eye.svg' alt='' /> 268
                           </div>
                         </div>
                       </div>
                     </div>
                   </Link>
-                  <Link href="/News&Event/News/1">
-                    <div className="--itemNews d-flex">
-                      <div className="--img img_hover">
-                        <a href="">
-                          <img src={banner.src} alt="" />
+                  <Link href='/News&Event/News/1'>
+                    <div className='--itemNews d-flex'>
+                      <div className='--img img_hover'>
+                        <a href=''>
+                          <img src={banner.src} alt='' />
                         </a>
                       </div>
-                      <div className="--txt d-flex flex-column justify-content-between">
-                        <div className="--top">
-                          <div className="--cate">Tin Địa Phương</div>
-                          <a href="">
+                      <div className='--txt d-flex flex-column justify-content-between'>
+                        <div className='--top'>
+                          <div className='--cate'>Tin Địa Phương</div>
+                          <a href=''>
                             <h6>
                               Cầu kính Rồng Mây “Kỳ quan tiên cảnh của đất trời
                               Lai Châu”
                             </h6>
                           </a>
                         </div>
-                        <div className="--bot d-flex">
-                          <div className="--time d-flex align-items-center">
-                            <div className="--icon">
-                              <img src="./_asset/icon-time.svg" alt="" />
+                        <div className='--bot d-flex'>
+                          <div className='--time d-flex align-items-center'>
+                            <div className='--icon'>
+                              <img src='./_asset/icon-time.svg' alt='' />
                             </div>
                             <span>01/09/2022</span>
                           </div>
-                          <div className="--view d-flex align-items-center">
-                            <img src="./_asset/icon-eye.svg" alt="" /> 268
+                          <div className='--view d-flex align-items-center'>
+                            <img src='./_asset/icon-eye.svg' alt='' /> 268
                           </div>
                         </div>
                       </div>
                     </div>
                   </Link>
-                  <Link href="/News&Event/News/1">
-                    <div className="--itemNews d-flex">
-                      <div className="--img img_hover">
-                        <a href="">
-                          <img src={banner.src} alt="" />
+                  <Link href='/News&Event/News/1'>
+                    <div className='--itemNews d-flex'>
+                      <div className='--img img_hover'>
+                        <a href=''>
+                          <img src={banner.src} alt='' />
                         </a>
                       </div>
-                      <div className="--txt d-flex flex-column justify-content-between">
-                        <div className="--top">
-                          <div className="--cate">Tin Địa Phương</div>
-                          <a href="">
+                      <div className='--txt d-flex flex-column justify-content-between'>
+                        <div className='--top'>
+                          <div className='--cate'>Tin Địa Phương</div>
+                          <a href=''>
                             <h6>
                               Cầu kính Rồng Mây “Kỳ quan tiên cảnh của đất trời
                               Lai Châu”
                             </h6>
                           </a>
                         </div>
-                        <div className="--bot d-flex">
-                          <div className="--time d-flex align-items-center">
-                            <div className="--icon">
-                              <img src="./_asset/icon-time.svg" alt="" />
+                        <div className='--bot d-flex'>
+                          <div className='--time d-flex align-items-center'>
+                            <div className='--icon'>
+                              <img src='./_asset/icon-time.svg' alt='' />
                             </div>
                             <span>01/09/2022</span>
                           </div>
-                          <div className="--view d-flex align-items-center">
-                            <img src="./_asset/icon-eye.svg" alt="" /> 268
+                          <div className='--view d-flex align-items-center'>
+                            <img src='./_asset/icon-eye.svg' alt='' /> 268
                           </div>
                         </div>
                       </div>
                     </div>
                   </Link>
                 </div>
-                <div key={uuid()} className="--item">
-                  <Link href="/News&Event/News/1">
-                    <div className="--itemNews d-flex">
-                      <div className="--img img_hover">
-                        <a href="">
-                          <img src={banner.src} alt="" />
+                <div key={uuid()} className='--item'>
+                  <Link href='/News&Event/News/1'>
+                    <div className='--itemNews d-flex'>
+                      <div className='--img img_hover'>
+                        <a href=''>
+                          <img src={banner.src} alt='' />
                         </a>
                       </div>
-                      <div className="--txt d-flex flex-column justify-content-between">
-                        <div className="--top">
-                          <div className="--cate">Tin Địa Phương</div>
-                          <a href="">
+                      <div className='--txt d-flex flex-column justify-content-between'>
+                        <div className='--top'>
+                          <div className='--cate'>Tin Địa Phương</div>
+                          <a href=''>
                             <h6>
                               Cầu kính Rồng Mây “Kỳ quan tiên cảnh của đất trời
                               Lai Châu”
                             </h6>
                           </a>
                         </div>
-                        <div className="--bot d-flex">
-                          <div className="--time d-flex align-items-center">
-                            <div className="--icon">
-                              <img src="./_asset/icon-time.svg" alt="" />
+                        <div className='--bot d-flex'>
+                          <div className='--time d-flex align-items-center'>
+                            <div className='--icon'>
+                              <img src='./_asset/icon-time.svg' alt='' />
                             </div>
                             <span>01/09/2022</span>
                           </div>
-                          <div className="--view d-flex align-items-center">
-                            <img src="./_asset/icon-eye.svg" alt="" /> 268
+                          <div className='--view d-flex align-items-center'>
+                            <img src='./_asset/icon-eye.svg' alt='' /> 268
                           </div>
                         </div>
                       </div>
                     </div>
                   </Link>
-                  <Link href="/News&Event/News/1">
-                    <div className="--itemNews d-flex">
-                      <div className="--img img_hover">
-                        <a href="">
-                          <img src={banner.src} alt="" />
+                  <Link href='/News&Event/News/1'>
+                    <div className='--itemNews d-flex'>
+                      <div className='--img img_hover'>
+                        <a href=''>
+                          <img src={banner.src} alt='' />
                         </a>
                       </div>
-                      <div className="--txt d-flex flex-column justify-content-between">
-                        <div className="--top">
-                          <div className="--cate">Tin Địa Phương</div>
-                          <a href="">
+                      <div className='--txt d-flex flex-column justify-content-between'>
+                        <div className='--top'>
+                          <div className='--cate'>Tin Địa Phương</div>
+                          <a href=''>
                             <h6>
                               Cầu kính Rồng Mây “Kỳ quan tiên cảnh của đất trời
                               Lai Châu”
                             </h6>
                           </a>
                         </div>
-                        <div className="--bot d-flex">
-                          <div className="--time d-flex align-items-center">
-                            <div className="--icon">
-                              <img src="./_asset/icon-time.svg" alt="" />
+                        <div className='--bot d-flex'>
+                          <div className='--time d-flex align-items-center'>
+                            <div className='--icon'>
+                              <img src='./_asset/icon-time.svg' alt='' />
                             </div>
                             <span>01/09/2022</span>
                           </div>
-                          <div className="--view d-flex align-items-center">
-                            <img src="./_asset/icon-eye.svg" alt="" /> 268
+                          <div className='--view d-flex align-items-center'>
+                            <img src='./_asset/icon-eye.svg' alt='' /> 268
                           </div>
                         </div>
                       </div>
                     </div>
                   </Link>
-                  <Link href="/News&Event/News/1">
-                    <div className="--itemNews d-flex">
-                      <div className="--img img_hover">
-                        <a href="">
-                          <img src={banner.src} alt="" />
+                  <Link href='/News&Event/News/1'>
+                    <div className='--itemNews d-flex'>
+                      <div className='--img img_hover'>
+                        <a href=''>
+                          <img src={banner.src} alt='' />
                         </a>
                       </div>
-                      <div className="--txt d-flex flex-column justify-content-between">
-                        <div className="--top">
-                          <div className="--cate">Tin Địa Phương</div>
-                          <a href="">
+                      <div className='--txt d-flex flex-column justify-content-between'>
+                        <div className='--top'>
+                          <div className='--cate'>Tin Địa Phương</div>
+                          <a href=''>
                             <h6>
                               Cầu kính Rồng Mây “Kỳ quan tiên cảnh của đất trời
                               Lai Châu”
                             </h6>
                           </a>
                         </div>
-                        <div className="--bot d-flex">
-                          <div className="--time d-flex align-items-center">
-                            <div className="--icon">
-                              <img src="./_asset/icon-time.svg" alt="" />
+                        <div className='--bot d-flex'>
+                          <div className='--time d-flex align-items-center'>
+                            <div className='--icon'>
+                              <img src='./_asset/icon-time.svg' alt='' />
                             </div>
                             <span>01/09/2022</span>
                           </div>
-                          <div className="--view d-flex align-items-center">
-                            <img src="./_asset/icon-eye.svg" alt="" /> 268
+                          <div className='--view d-flex align-items-center'>
+                            <img src='./_asset/icon-eye.svg' alt='' /> 268
                           </div>
                         </div>
                       </div>
                     </div>
                   </Link>
                 </div>{" "}
-                <div key={uuid()} className="--item">
-                  <Link href="/News&Event/News/1">
-                    <div className="--itemNews d-flex">
-                      <div className="--img img_hover">
-                        <a href="">
-                          <img src={banner.src} alt="" />
+                <div key={uuid()} className='--item'>
+                  <Link href='/News&Event/News/1'>
+                    <div className='--itemNews d-flex'>
+                      <div className='--img img_hover'>
+                        <a href=''>
+                          <img src={banner.src} alt='' />
                         </a>
                       </div>
-                      <div className="--txt d-flex flex-column justify-content-between">
-                        <div className="--top">
-                          <div className="--cate">Tin Địa Phương</div>
-                          <a href="">
+                      <div className='--txt d-flex flex-column justify-content-between'>
+                        <div className='--top'>
+                          <div className='--cate'>Tin Địa Phương</div>
+                          <a href=''>
                             <h6>
                               Cầu kính Rồng Mây “Kỳ quan tiên cảnh của đất trời
                               Lai Châu”
                             </h6>
                           </a>
                         </div>
-                        <div className="--bot d-flex">
-                          <div className="--time d-flex align-items-center">
-                            <div className="--icon">
-                              <img src="./_asset/icon-time.svg" alt="" />
+                        <div className='--bot d-flex'>
+                          <div className='--time d-flex align-items-center'>
+                            <div className='--icon'>
+                              <img src='./_asset/icon-time.svg' alt='' />
                             </div>
                             <span>01/09/2022</span>
                           </div>
-                          <div className="--view d-flex align-items-center">
-                            <img src="./_asset/icon-eye.svg" alt="" /> 268
+                          <div className='--view d-flex align-items-center'>
+                            <img src='./_asset/icon-eye.svg' alt='' /> 268
                           </div>
                         </div>
                       </div>
                     </div>
                   </Link>
-                  <Link href="/News&Event/News/1">
-                    <div className="--itemNews d-flex">
-                      <div className="--img img_hover">
-                        <a href="">
-                          <img src={banner.src} alt="" />
+                  <Link href='/News&Event/News/1'>
+                    <div className='--itemNews d-flex'>
+                      <div className='--img img_hover'>
+                        <a href=''>
+                          <img src={banner.src} alt='' />
                         </a>
                       </div>
-                      <div className="--txt d-flex flex-column justify-content-between">
-                        <div className="--top">
-                          <div className="--cate">Tin Địa Phương</div>
-                          <a href="">
+                      <div className='--txt d-flex flex-column justify-content-between'>
+                        <div className='--top'>
+                          <div className='--cate'>Tin Địa Phương</div>
+                          <a href=''>
                             <h6>
                               Cầu kính Rồng Mây “Kỳ quan tiên cảnh của đất trời
                               Lai Châu”
                             </h6>
                           </a>
                         </div>
-                        <div className="--bot d-flex">
-                          <div className="--time d-flex align-items-center">
-                            <div className="--icon">
-                              <img src="./_asset/icon-time.svg" alt="" />
+                        <div className='--bot d-flex'>
+                          <div className='--time d-flex align-items-center'>
+                            <div className='--icon'>
+                              <img src='./_asset/icon-time.svg' alt='' />
                             </div>
                             <span>01/09/2022</span>
                           </div>
-                          <div className="--view d-flex align-items-center">
-                            <img src="./_asset/icon-eye.svg" alt="" /> 268
+                          <div className='--view d-flex align-items-center'>
+                            <img src='./_asset/icon-eye.svg' alt='' /> 268
                           </div>
                         </div>
                       </div>
                     </div>
                   </Link>
-                  <Link href="/News&Event/News/1">
-                    <div className="--itemNews d-flex">
-                      <div className="--img img_hover">
-                        <a href="">
-                          <img src={banner.src} alt="" />
+                  <Link href='/News&Event/News/1'>
+                    <div className='--itemNews d-flex'>
+                      <div className='--img img_hover'>
+                        <a href=''>
+                          <img src={banner.src} alt='' />
                         </a>
                       </div>
-                      <div className="--txt d-flex flex-column justify-content-between">
-                        <div className="--top">
-                          <div className="--cate">Tin Địa Phương</div>
-                          <a href="">
+                      <div className='--txt d-flex flex-column justify-content-between'>
+                        <div className='--top'>
+                          <div className='--cate'>Tin Địa Phương</div>
+                          <a href=''>
                             <h6>
                               Cầu kính Rồng Mây “Kỳ quan tiên cảnh của đất trời
                               Lai Châu”
                             </h6>
                           </a>
                         </div>
-                        <div className="--bot d-flex">
-                          <div className="--time d-flex align-items-center">
-                            <div className="--icon">
-                              <img src="./_asset/icon-time.svg" alt="" />
+                        <div className='--bot d-flex'>
+                          <div className='--time d-flex align-items-center'>
+                            <div className='--icon'>
+                              <img src='./_asset/icon-time.svg' alt='' />
                             </div>
                             <span>01/09/2022</span>
                           </div>
-                          <div className="--view d-flex align-items-center">
-                            <img src="./_asset/icon-eye.svg" alt="" /> 268
+                          <div className='--view d-flex align-items-center'>
+                            <img src='./_asset/icon-eye.svg' alt='' /> 268
                           </div>
                         </div>
                       </div>
@@ -825,34 +787,34 @@ export default function Home() {
                   </Link>
                 </div>
               </Slider>
-              <div className="--botnews">
-                <a href="" className="--viewall">
+              <div className='--botnews'>
+                <a href='' className='--viewall'>
                   Xem tất cả{" "}
-                  <i className="fa-solid ms-2 fa-arrow-right-long"></i>
+                  <i className='fa-solid ms-2 fa-arrow-right-long'></i>
                 </a>
               </div>
             </div>
           </div>
         </div>
-        <div className="homeDiscover1">
-          <div className="container-fluid">
-            <div className="subTitle text-center">KHám phá Lai Châu</div>
-            <h1 className="Title text-center">
+        <div className='homeDiscover1'>
+          <div className='container-fluid'>
+            <div className='subTitle text-center'>KHám phá Lai Châu</div>
+            <h1 className='Title text-center'>
               Lịch trình thú vị không thể bỏ lỡ
             </h1>
-            <div className="slider_homeDiscover1">
-              <div className="list_homeDiscover1">
+            <div className='slider_homeDiscover1'>
+              <div className='list_homeDiscover1'>
                 <HomeDiscover1
                   banner={banner}
                   iconTime={iconTime}
                   iconMap2={iconMap2}
                 ></HomeDiscover1>
               </div>
-              <div className="arrow_homeDiscover1"></div>
+              <div className='arrow_homeDiscover1'></div>
             </div>
           </div>
-          <div className="partent">
-            <img src={partent.src} alt="" />
+          <div className='partent'>
+            <img src={partent.src} alt='' />
           </div>
         </div>
       </div>

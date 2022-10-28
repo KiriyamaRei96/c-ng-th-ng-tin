@@ -8,6 +8,7 @@ import logo2 from "../../pages/_asset/logo-partner2.png";
 import logo3 from "../../pages/_asset/logo-partner3.png";
 import globe from "../../pages/_asset/globe.svg";
 import chart from "../../pages/_asset/chart-simple.svg";
+import Link from "next/link";
 
 const Footer = (props: FooterProps) => {
   return (
@@ -79,39 +80,54 @@ const Footer = (props: FooterProps) => {
             <h4 className='--title'>Về Lai Châu</h4>
             <ul>
               <li>
-                <a href=''>
-                  <i className='fa-solid fa-angle-right'></i>Trang chủ
-                </a>
+                <Link href='/'>
+                  <a>
+                    <i className='fa-solid fa-angle-right'></i>Trang chủ
+                  </a>
+                </Link>
               </li>
               <li>
-                <a href=''>
-                  <i className='fa-solid fa-angle-right'></i>Về chúng tôi
-                </a>
+                <Link href='/About'>
+                  <a>
+                    <i className='fa-solid fa-angle-right'></i>Về chúng tôi
+                  </a>
+                </Link>
               </li>
               <li>
-                <a href=''>
-                  <i className='fa-solid fa-angle-right'></i>Địa điểm tham gian
-                </a>
+                <Link href='/Discover'>
+                  <a>
+                    <i className='fa-solid fa-angle-right'></i>Địa điểm tham
+                    gian
+                  </a>
+                </Link>
               </li>
               <li>
-                <a href=''>
-                  <i className='fa-solid fa-angle-right'></i>Tour du lịch
-                </a>
+                <Link href='http://localhost:3000/Tour'>
+                  <a>
+                    <i className='fa-solid fa-angle-right'></i>Tour du lịch
+                  </a>
+                </Link>
               </li>
               <li>
-                <a href=''>
-                  <i className='fa-solid fa-angle-right'></i>Video & ảnh
-                </a>
+                <Link href=''>
+                  <a>
+                    <i className='fa-solid fa-angle-right'></i>Video & ảnh
+                  </a>
+                </Link>
               </li>
               <li>
-                <a href=''>
-                  <i className='fa-solid fa-angle-right'></i>Lưu trú
-                </a>
+                <Link href='/Hotel'>
+                  <a>
+                    <i className='fa-solid fa-angle-right'></i>Lưu trú
+                  </a>
+                </Link>
               </li>
               <li>
-                <a href=''>
-                  <i className='fa-solid fa-angle-right'></i>Tiện ích
-                </a>
+                <Link href='/Utilities'>
+                  <a>
+                    <i className='fa-solid fa-angle-right'></i>Tiện ích
+                  </a>
+                </Link>
               </li>
             </ul>
           </div>

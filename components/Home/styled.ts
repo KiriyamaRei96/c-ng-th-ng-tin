@@ -90,6 +90,65 @@ const HomeWrapper=styled.div` .homeBanner {
     }
   }
 
+  .social {
+    position: fixed;
+    bottom: 40px;
+    right: 36px;
+    display: flex;
+    flex-flow: column;
+    z-index: 99;
+
+    a {
+      background: #FFF;
+      position: relative;
+      text-decoration: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-bottom: 8px;
+      color: var(--color-1);
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+
+      &:nth-child(3) {
+        animation: phonering-alo-circle-img-anim 1s infinite ease-in-out;
+      }
+    }
+  }
+
+  @-webkit-keyframes phonering-alo-circle-img-anim {
+    0% {
+      -webkit-transform: rotate(0) scale(1) skew(1deg);
+    }
+
+    10% {
+      -webkit-transform: rotate(-25deg) scale(1) skew(1deg);
+    }
+
+    20% {
+      -webkit-transform: rotate(25deg) scale(1) skew(1deg);
+    }
+
+    30% {
+      -webkit-transform: rotate(-25deg) scale(1) skew(1deg);
+    }
+
+    40% {
+      -webkit-transform: rotate(25deg) scale(1) skew(1deg);
+    }
+
+    50% {
+      -webkit-transform: rotate(0) scale(1) skew(1deg);
+    }
+
+    100% {
+      -webkit-transform: rotate(0) scale(1) skew(1deg);
+    }
+  }
+
   .filter {
     display: flex;
     filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.05));
@@ -875,6 +934,7 @@ const HomeWrapper=styled.div` .homeBanner {
     .slick-track,
     .slick-list {
       display: flex;
+      justify-content: center;
     }
 
     .slick-dots {
@@ -885,6 +945,7 @@ const HomeWrapper=styled.div` .homeBanner {
       padding-left: 0;
       margin-bottom: 0;
       text-align: center;
+      padding-right: 0;
 
       button {
         border: none;

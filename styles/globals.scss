@@ -217,6 +217,56 @@ header {
   }
 }
 
+header.white {
+
+
+
+  background: #FFF !important;
+
+  .--item-menu {
+
+    a {
+      color: #5C626A !important;
+    }
+
+    &.active {
+
+
+      &::after {
+
+        border-bottom: 2px solid #5C626A;
+      }
+
+
+    }
+  }
+
+
+
+  .search {
+    input {
+      border: 1px solid #DCDCDC;
+
+      &::placeholder {
+        color: #D1D1D1;
+      }
+    }
+
+    i {
+      color: #5C626A;
+    }
+  }
+
+  .language {
+    color: #5C626A;
+
+    select {
+      color: #5C626A !important;
+    }
+  }
+
+}
+
 .button_1 {
   background: var(--color-1);
   height: 40px;

@@ -590,60 +590,60 @@ const CommercialWrapper=styled.div` .pageBody {
 
 
 
-            // .ranks {
-            //     margin-top: auto;
+            .ranks {
+                margin-top: auto;
 
 
-            //     &>div {
-            //         display: flex;
+                &>div {
+                    display: flex;
 
-            //         padding: 0 2px;
-            //         align-items: baseline;
+                    padding: 0 2px;
+                    align-items: baseline;
 
-            //         border: 1px solid #DCDCDC;
-            //         border-radius: 4px;
+                    border: 1px solid #DCDCDC;
+                    border-radius: 4px;
 
-            //         span {
-            //             margin-left: 2px;
-            //         }
+                    span {
+                        margin-left: 2px;
+                    }
 
-            //     }
+                }
 
-            //     /* Line */
+                /* Line */
 
-            //     .views {
-            //         font-size: 12px;
+                .views {
+                    font-size: 12px;
 
-            //         line-height: 16px;
-            //         margin-left: 8px;
+                    line-height: 16px;
+                    margin-left: 8px;
 
-            //         color: #6F7378;
-            //         display: flex;
+                    color: #6F7378;
+                    display: flex;
 
-            //         align-items: center;
+                    align-items: center;
 
-            //         i {
-            //             font-weight: 900;
-            //         }
+                    i {
+                        font-weight: 900;
+                    }
 
-            //     }
+                }
 
-            //     li {
-            //         margin-right: 1px;
+                li {
+                    margin-right: 1px;
 
-            //     }
+                }
 
 
 
-            //     .ant-rate-star {
-            //         height: fit-content;
+                .ant-rate-star {
+                    height: fit-content;
 
-            //         svg {
-            //             width: 14px;
-            //             height: 16px;
-            //         }
-            //     }
-            // }
+                    svg {
+                        width: 14px;
+                        height: 16px;
+                    }
+                }
+            }
 
 
         }

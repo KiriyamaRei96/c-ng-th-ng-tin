@@ -6,6 +6,61 @@ const NewsDetailWarpper=styled.div` .detailnewsBanner {
     }
 }
 
+.--backshare {
+    margin-top: 40px;
+
+    a {
+        text-decoration: none;
+    }
+
+    .--back {
+        padding: 10px 24px;
+        background: #FFFFFF;
+        border: 1px solid #E7E7E7;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        color: #6F7378;
+
+        img {
+            margin-right: 8px;
+        }
+    }
+
+    ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin-bottom: 0;
+        align-items: center;
+
+        li {
+            margin-left: 8px;
+
+            &:first-child {
+                margin-right: 20px;
+            }
+
+            &:nth-child(n+2) {
+                border: 1px solid #EBEBEB;
+                box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+                border-radius: 42px;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+
+                img {
+                    width: 18px;
+                }
+            }
+        }
+    }
+}
+
 .detailnewsContent {
     padding: 100px 0;
 
