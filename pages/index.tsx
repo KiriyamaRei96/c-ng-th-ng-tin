@@ -20,6 +20,7 @@ import HomeDiscover1 from "../components/Home/HomeDiscover1";
 import Image from "next/image";
 export default function Home() {
   const sliderRef: any = useRef();
+  console.log(sliderRef);
   const [current, setCurrent] = useState(0);
   return (
     <HomeWrapper>
@@ -533,10 +534,7 @@ export default function Home() {
                         <div className='--cate'>Tin Địa Phương</div>
                         <Link href='/News&Event/News/1'>
                           <a href=''>
-                            <h6>
-                              Cầu kính Rồng Mây “Kỳ quan tiên cảnh của đất trời
-                              Lai Châu”
-                            </h6>
+                            <h6>Test</h6>
                           </a>
                         </Link>
                       </div>
@@ -888,38 +886,29 @@ export default function Home() {
               </Slider>
               <div className='--botnews'>
                 <ul className='slick-dots'>
-                  <li className={current === 0 ? "slick-active" : ""}>
-                    <button
-                      onClick={() => {
-                        if (sliderRef?.current) {
-                          sliderRef?.current?.slickGoTo(0);
-                        }
-                      }}
-                    >
-                      1
-                    </button>
+                  <li
+                    onClick={() => {
+                      sliderRef?.current?.slickGoTo(0);
+                    }}
+                    className={current === 0 ? "slick-active" : ""}
+                  >
+                    <button>1</button>
                   </li>
-                  <li className={current === 1 ? "slick-active" : ""}>
-                    <button
-                      onClick={() => {
-                        if (sliderRef?.current) {
-                          sliderRef?.current?.slickGoTo(1);
-                        }
-                      }}
-                    >
-                      2
-                    </button>
+                  <li
+                    onClick={() => {
+                      sliderRef?.current?.slickGoTo(1);
+                    }}
+                    className={current === 1 ? "slick-active" : ""}
+                  >
+                    <button>2</button>
                   </li>
-                  <li className={current === 2 ? "slick-active" : ""}>
-                    <button
-                      onClick={() => {
-                        if (sliderRef?.current) {
-                          sliderRef?.current?.slickGoTo(2);
-                        }
-                      }}
-                    >
-                      3
-                    </button>
+                  <li
+                    onClick={() => {
+                      sliderRef?.current?.slickGoTo(2);
+                    }}
+                    className={current === 2 ? "slick-active" : ""}
+                  >
+                    <button>3</button>
                   </li>
                 </ul>
                 <Link href='/News&Event'>

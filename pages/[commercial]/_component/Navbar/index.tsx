@@ -68,19 +68,19 @@ const Navbar = (props: NavbarProps) => {
           optionType={"checkbox"}
           optionArray={[
             {
-              title: "option 1",
+              title: "Resort",
               active: true,
             },
             {
-              title: "option 2",
+              title: "Sân vườn",
               active: true,
             },
             {
-              title: "option 3",
+              title: "Địa điểm ẩm thực",
               active: true,
             },
             {
-              title: "option 4",
+              title: "Quán cóc - vỉa hè",
               active: true,
             },
           ]}
@@ -99,19 +99,19 @@ const Navbar = (props: NavbarProps) => {
           optionType={"checkbox"}
           optionArray={[
             {
-              title: "option 1",
+              title: "Resort",
               active: true,
             },
             {
-              title: "option 2",
+              title: "Khách sạn",
               active: true,
             },
             {
-              title: "option 3",
+              title: "Nhà nghỉ",
               active: true,
             },
             {
-              title: "option 4",
+              title: "Homestay",
               active: true,
             },
           ]}
