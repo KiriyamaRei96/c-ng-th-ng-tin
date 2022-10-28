@@ -1236,7 +1236,11 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
                 background: #FB8500;
             }
 
+
+
             li {
+
+
                 width: 18.8px;
                 height: 18.8px;
                 background: #D9D9D9;
@@ -1244,12 +1248,17 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
                 display: inline-block;
                 margin: 0 9.5px;
 
+
+
+
                 button {
                     border: none;
                     background: none;
                     color: transparent;
                 }
             }
+
+
         }
 
         .arrow_servicediscover1 {
