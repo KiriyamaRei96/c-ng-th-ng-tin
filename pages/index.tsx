@@ -81,15 +81,15 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div class='social'>
-            <a class='arrow_hover' href=''>
-              <i class='fa-brands fa-facebook-f'></i>
+          <div className='social'>
+            <a className='arrow_hover' href=''>
+              <i className='fa-brands fa-facebook-f'></i>
             </a>
-            <a class='arrow_hover' href=''>
-              <i class='fa-solid fa-envelope'></i>
+            <a className='arrow_hover' href=''>
+              <i className='fa-solid fa-envelope'></i>
             </a>
-            <a class='arrow_hover' href=''>
-              <i class='fa-solid fa-phone'></i>
+            <a className='arrow_hover' href=''>
+              <i className='fa-solid fa-phone'></i>
             </a>
           </div>
         </div>
