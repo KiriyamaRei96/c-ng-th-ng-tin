@@ -474,7 +474,7 @@ export default function Home() {
                 </a>
                 <div className='--time d-flex align-items-center'>
                   <div className='--icon'>
-                    <img src='./_asset/icon-time.svg' alt='' />
+                    <Image src={require("./_asset/icon-time.svg")} alt='' />
                   </div>
                   Từ ngày 18 - 20/10/2022
                 </div>
@@ -540,12 +540,19 @@ export default function Home() {
                         <div className='--bot d-flex'>
                           <div className='--time d-flex align-items-center'>
                             <div className='--icon'>
-                              <img src='./_asset/icon-time.svg' alt='' />
+                              <Image
+                                src={require("./_asset/icon-time.svg")}
+                                alt=''
+                              />
                             </div>
                             <span>01/09/2022</span>
                           </div>
                           <div className='--view d-flex align-items-center'>
-                            <img src='./_asset/icon-eye.svg' alt='' /> 268
+                            <Image
+                              src={require("./_asset/icon-eye.svg")}
+                              alt=''
+                            />{" "}
+                            268
                           </div>
                         </div>
                       </div>
@@ -571,12 +578,19 @@ export default function Home() {
                         <div className='--bot d-flex'>
                           <div className='--time d-flex align-items-center'>
                             <div className='--icon'>
-                              <img src='./_asset/icon-time.svg' alt='' />
+                              <Image
+                                src={require("./_asset/icon-time.svg")}
+                                alt=''
+                              />
                             </div>
                             <span>01/09/2022</span>
                           </div>
                           <div className='--view d-flex align-items-center'>
-                            <img src='./_asset/icon-eye.svg' alt='' /> 268
+                            <Image
+                              src={require("./_asset/icon-eye.svg")}
+                              alt=''
+                            />{" "}
+                            268
                           </div>
                         </div>
                       </div>
@@ -602,12 +616,19 @@ export default function Home() {
                         <div className='--bot d-flex'>
                           <div className='--time d-flex align-items-center'>
                             <div className='--icon'>
-                              <img src='./_asset/icon-time.svg' alt='' />
+                              <Image
+                                src={require("./_asset/icon-time.svg")}
+                                alt=''
+                              />
                             </div>
                             <span>01/09/2022</span>
                           </div>
                           <div className='--view d-flex align-items-center'>
-                            <img src='./_asset/icon-eye.svg' alt='' /> 268
+                            <Image
+                              src={require("./_asset/icon-eye.svg")}
+                              alt=''
+                            />{" "}
+                            268
                           </div>
                         </div>
                       </div>
@@ -635,12 +656,19 @@ export default function Home() {
                         <div className='--bot d-flex'>
                           <div className='--time d-flex align-items-center'>
                             <div className='--icon'>
-                              <img src='./_asset/icon-time.svg' alt='' />
+                              <Image
+                                src={require("./_asset/icon-time.svg")}
+                                alt=''
+                              />
                             </div>
                             <span>01/09/2022</span>
                           </div>
                           <div className='--view d-flex align-items-center'>
-                            <img src='./_asset/icon-eye.svg' alt='' /> 268
+                            <Image
+                              src={require("./_asset/icon-eye.svg")}
+                              alt=''
+                            />{" "}
+                            268
                           </div>
                         </div>
                       </div>
@@ -666,12 +694,19 @@ export default function Home() {
                         <div className='--bot d-flex'>
                           <div className='--time d-flex align-items-center'>
                             <div className='--icon'>
-                              <img src='./_asset/icon-time.svg' alt='' />
+                              <Image
+                                src={require("./_asset/icon-time.svg")}
+                                alt=''
+                              />
                             </div>
                             <span>01/09/2022</span>
                           </div>
                           <div className='--view d-flex align-items-center'>
-                            <img src='./_asset/icon-eye.svg' alt='' /> 268
+                            <Image
+                              src={require("./_asset/icon-eye.svg")}
+                              alt=''
+                            />{" "}
+                            268
                           </div>
                         </div>
                       </div>
@@ -697,12 +732,19 @@ export default function Home() {
                         <div className='--bot d-flex'>
                           <div className='--time d-flex align-items-center'>
                             <div className='--icon'>
-                              <img src='./_asset/icon-time.svg' alt='' />
+                              <Image
+                                src={require("./_asset/icon-time.svg")}
+                                alt=''
+                              />
                             </div>
                             <span>01/09/2022</span>
                           </div>
                           <div className='--view d-flex align-items-center'>
-                            <img src='./_asset/icon-eye.svg' alt='' /> 268
+                            <Image
+                              src={require("./_asset/icon-eye.svg")}
+                              alt=''
+                            />{" "}
+                            268
                           </div>
                         </div>
                       </div>
@@ -730,12 +772,19 @@ export default function Home() {
                         <div className='--bot d-flex'>
                           <div className='--time d-flex align-items-center'>
                             <div className='--icon'>
-                              <img src='./_asset/icon-time.svg' alt='' />
+                              <Image
+                                src={require("./_asset/icon-time.svg")}
+                                alt=''
+                              />
                             </div>
                             <span>01/09/2022</span>
                           </div>
                           <div className='--view d-flex align-items-center'>
-                            <img src='./_asset/icon-eye.svg' alt='' /> 268
+                            <Image
+                              src={require("./_asset/icon-eye.svg")}
+                              alt=''
+                            />{" "}
+                            268
                           </div>
                         </div>
                       </div>
@@ -761,12 +810,19 @@ export default function Home() {
                         <div className='--bot d-flex'>
                           <div className='--time d-flex align-items-center'>
                             <div className='--icon'>
-                              <img src='./_asset/icon-time.svg' alt='' />
+                              <Image
+                                src={require("./_asset/icon-time.svg")}
+                                alt=''
+                              />
                             </div>
                             <span>01/09/2022</span>
                           </div>
                           <div className='--view d-flex align-items-center'>
-                            <img src='./_asset/icon-eye.svg' alt='' /> 268
+                            <Image
+                              src={require("./_asset/icon-eye.svg")}
+                              alt=''
+                            />{" "}
+                            268
                           </div>
                         </div>
                       </div>
@@ -792,12 +848,19 @@ export default function Home() {
                         <div className='--bot d-flex'>
                           <div className='--time d-flex align-items-center'>
                             <div className='--icon'>
-                              <img src='./_asset/icon-time.svg' alt='' />
+                              <Image
+                                src={require("./_asset/icon-time.svg")}
+                                alt=''
+                              />
                             </div>
                             <span>01/09/2022</span>
                           </div>
                           <div className='--view d-flex align-items-center'>
-                            <img src='./_asset/icon-eye.svg' alt='' /> 268
+                            <Image
+                              src={require("./_asset/icon-eye.svg")}
+                              alt=''
+                            />{" "}
+                            268
                           </div>
                         </div>
                       </div>
@@ -841,10 +904,12 @@ export default function Home() {
                     </button>
                   </li>
                 </ul>
-                <a href='' className='--viewall'>
-                  Xem tất cả{" "}
-                  <i className='fa-solid ms-2 fa-arrow-right-long'></i>
-                </a>
+                <Link href='/News&Event'>
+                  <a className='--viewall'>
+                    Xem tất cả{" "}
+                    <i className='fa-solid ms-2 fa-arrow-right-long'></i>
+                  </a>
+                </Link>
               </div>
             </div>
           </div>
