@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import HomeWrapper from "../components/Home/styled";
 import Slider from "react-slick";
 import { v4 as uuid } from "uuid";
@@ -17,7 +17,10 @@ import iconMap2 from "./_asset/icon-map2.svg";
 import partent from "./_asset/partent.png";
 import Link from "next/link";
 import HomeDiscover1 from "../components/Home/HomeDiscover1";
+import Image from "next/image";
 export default function Home() {
+  const sliderRef: any = useRef();
+  const [current, setCurrent] = useState(0);
   return (
     <HomeWrapper>
       <div id='home'>
@@ -267,7 +270,10 @@ export default function Home() {
                       <div className='--des'>
                         <div className='--location d-flex align-items-center'>
                           <div className='--icon me-2'>
-                            <img src='./_asset/icon-map1.svg' alt='' />
+                            <Image
+                              src={require("./_asset/icon-map1.svg")}
+                              alt=''
+                            />
                           </div>
                           Huyện Tam Đường, Tỉnh Lai Châu
                         </div>
@@ -300,7 +306,10 @@ export default function Home() {
                       <div className='--des'>
                         <div className='--location d-flex align-items-center'>
                           <div className='--icon me-2'>
-                            <img src='./_asset/icon-map1.svg' alt='' />
+                            <Image
+                              src={require("./_asset/icon-map1.svg")}
+                              alt=''
+                            />
                           </div>
                           Huyện Tam Đường, Tỉnh Lai Châu
                         </div>
@@ -333,7 +342,10 @@ export default function Home() {
                       <div className='--des'>
                         <div className='--location d-flex align-items-center'>
                           <div className='--icon me-2'>
-                            <img src='./_asset/icon-map1.svg' alt='' />
+                            <Image
+                              src={require("./_asset/icon-map1.svg")}
+                              alt=''
+                            />
                           </div>
                           Huyện Tam Đường, Tỉnh Lai Châu
                         </div>
@@ -366,7 +378,10 @@ export default function Home() {
                       <div className='--des'>
                         <div className='--location d-flex align-items-center'>
                           <div className='--icon me-2'>
-                            <img src='./_asset/icon-map1.svg' alt='' />
+                            <Image
+                              src={require("./_asset/icon-map1.svg")}
+                              alt=''
+                            />
                           </div>
                           Huyện Tam Đường, Tỉnh Lai Châu
                         </div>
@@ -399,7 +414,10 @@ export default function Home() {
                       <div className='--des'>
                         <div className='--location d-flex align-items-center'>
                           <div className='--icon me-2'>
-                            <img src='./_asset/icon-map1.svg' alt='' />
+                            <Image
+                              src={require("./_asset/icon-map1.svg")}
+                              alt=''
+                            />
                           </div>
                           Huyện Tam Đường, Tỉnh Lai Châu
                         </div>
@@ -462,7 +480,7 @@ export default function Home() {
                 </div>
                 <div className='--location d-flex align-items-center'>
                   <div className='--icon'>
-                    <img src='./_asset/icon-map1.svg' alt='' />
+                    <Image src={require("./_asset/icon-map1.svg")} alt='' />
                   </div>
                   Bản Lao Chải, xã Khun Há, huyện Tam Đường, tỉnh Lai Châu
                 </div>
@@ -476,9 +494,10 @@ export default function Home() {
             </div>
             <div className='--right'>
               <Slider
+                ref={sliderRef}
                 key={uuid()}
                 {...{
-                  dots: true,
+                  dots: false,
                   infinite: true,
                   speed: 300,
                   slidesToShow: 1,
@@ -486,8 +505,7 @@ export default function Home() {
                   arrows: false,
                   fade: true,
                   beforeChange: (c, n) => {
-                    console.log(c);
-                    console.log(n);
+                    setCurrent(n);
                   },
                   responsive: [
                     {
@@ -788,6 +806,41 @@ export default function Home() {
                 </div>
               </Slider>
               <div className='--botnews'>
+                <ul className='slick-dots'>
+                  <li className={current === 0 ? "slick-active" : ""}>
+                    <button
+                      onClick={() => {
+                        if (sliderRef?.current) {
+                          sliderRef?.current?.slickGoTo(0);
+                        }
+                      }}
+                    >
+                      1
+                    </button>
+                  </li>
+                  <li className={current === 1 ? "slick-active" : ""}>
+                    <button
+                      onClick={() => {
+                        if (sliderRef?.current) {
+                          sliderRef?.current?.slickGoTo(1);
+                        }
+                      }}
+                    >
+                      2
+                    </button>
+                  </li>
+                  <li className={current === 2 ? "slick-active" : ""}>
+                    <button
+                      onClick={() => {
+                        if (sliderRef?.current) {
+                          sliderRef?.current?.slickGoTo(2);
+                        }
+                      }}
+                    >
+                      3
+                    </button>
+                  </li>
+                </ul>
                 <a href='' className='--viewall'>
                   Xem tất cả{" "}
                   <i className='fa-solid ms-2 fa-arrow-right-long'></i>

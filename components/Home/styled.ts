@@ -670,7 +670,7 @@ const HomeWrapper=styled.div` .homeBanner {
 
     .--botnews {
       display: flex;
-      flex-flow: row-reverse;
+
       align-items: center;
       margin-top: 18px;
       justify-content: space-between;

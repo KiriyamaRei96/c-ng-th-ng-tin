@@ -1,4 +1,5 @@
 import { Pagination } from "antd";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import Slider from "react-slick";
@@ -108,7 +109,10 @@ const Discover = (props: DiscoverProps) => {
                             <div className='--type'>Đèo - Núi</div>
                             <h4>Đèo Ô Quy Hồ</h4>
                             <div className='--location '>
-                              <img src='../img/icon-map1.svg' alt='' />
+                              <Image
+                                src={require("../../Asset/icon-map1.svg")}
+                                alt=''
+                              />
                               <span>Huyện Tam Đường</span>
                             </div>
                           </div>
@@ -130,7 +134,10 @@ const Discover = (props: DiscoverProps) => {
                             <div className='--type'>Đèo - Núi</div>
                             <h4>Đèo Ô Quy Hồ</h4>
                             <div className='--location '>
-                              <img src='../img/icon-map1.svg' alt='' />
+                              <Image
+                                src={require("../../Asset/icon-map1.svg")}
+                                alt=''
+                              />
                               <span>Huyện Tam Đường</span>
                             </div>
                           </div>
@@ -152,7 +159,10 @@ const Discover = (props: DiscoverProps) => {
                             <div className='--type'>Đèo - Núi</div>
                             <h4>Đèo Ô Quy Hồ</h4>
                             <div className='--location '>
-                              <img src='../img/icon-map1.svg' alt='' />
+                              <Image
+                                src={require("../../Asset/icon-map1.svg")}
+                                alt=''
+                              />
                               <span>Huyện Tam Đường</span>
                             </div>
                           </div>
@@ -174,7 +184,10 @@ const Discover = (props: DiscoverProps) => {
                             <div className='--type'>Đèo - Núi</div>
                             <h4>Đèo Ô Quy Hồ</h4>
                             <div className='--location '>
-                              <img src='../img/icon-map1.svg' alt='' />
+                              <Image
+                                src={require("../../Asset/icon-map1.svg")}
+                                alt=''
+                              />
                               <span>Huyện Tam Đường</span>
                             </div>
                           </div>
@@ -196,7 +209,10 @@ const Discover = (props: DiscoverProps) => {
                             <div className='--type'>Đèo - Núi</div>
                             <h4>Đèo Ô Quy Hồ</h4>
                             <div className='--location '>
-                              <img src='../img/icon-map1.svg' alt='' />
+                              <Image
+                                src={require("../../Asset/icon-map1.svg")}
+                                alt=''
+                              />
                               <span>Huyện Tam Đường</span>
                             </div>
                           </div>
@@ -218,7 +234,10 @@ const Discover = (props: DiscoverProps) => {
                             <div className='--type'>Đèo - Núi</div>
                             <h4>Đèo Ô Quy Hồ</h4>
                             <div className='--location '>
-                              <img src='../img/icon-map1.svg' alt='' />
+                              <Image
+                                src={require("../../Asset/icon-map1.svg")}
+                                alt=''
+                              />
                               <span>Huyện Tam Đường</span>
                             </div>
                           </div>
@@ -286,7 +305,10 @@ const Discover = (props: DiscoverProps) => {
                               <div className='--type'>Đèo - Núi</div>
                               <h4>Đèo Ô Quy Hồ</h4>
                               <div className='--location '>
-                                <img src='../img/icon-map1.svg' alt='' />
+                                <Image
+                                  src={require("../../Asset/icon-map1.svg")}
+                                  alt=''
+                                />
                                 <span>Huyện Tam Đường</span>
                               </div>
                             </div>
@@ -308,7 +330,10 @@ const Discover = (props: DiscoverProps) => {
                               <div className='--type'>Đèo - Núi</div>
                               <h4>Đèo Ô Quy Hồ</h4>
                               <div className='--location '>
-                                <img src='../img/icon-map1.svg' alt='' />
+                                <Image
+                                  src={require("../../Asset/icon-map1.svg")}
+                                  alt=''
+                                />
                                 <span>Huyện Tam Đường</span>
                               </div>
                             </div>
@@ -330,7 +355,10 @@ const Discover = (props: DiscoverProps) => {
                               <div className='--type'>Đèo - Núi</div>
                               <h4>Đèo Ô Quy Hồ</h4>
                               <div className='--location '>
-                                <img src='../img/icon-map1.svg' alt='' />
+                                <Image
+                                  src={require("../../Asset/icon-map1.svg")}
+                                  alt=''
+                                />
                                 <span>Huyện Tam Đường</span>
                               </div>
                             </div>
@@ -352,7 +380,10 @@ const Discover = (props: DiscoverProps) => {
                               <div className='--type'>Đèo - Núi</div>
                               <h4>Đèo Ô Quy Hồ</h4>
                               <div className='--location '>
-                                <img src='../img/icon-map1.svg' alt='' />
+                                <Image
+                                  src={require("../../Asset/icon-map1.svg")}
+                                  alt=''
+                                />
                                 <span>Huyện Tam Đường</span>
                               </div>
                             </div>
@@ -374,7 +405,10 @@ const Discover = (props: DiscoverProps) => {
                               <div className='--type'>Đèo - Núi</div>
                               <h4>Đèo Ô Quy Hồ</h4>
                               <div className='--location '>
-                                <img src='../img/icon-map1.svg' alt='' />
+                                <Image
+                                  src={require("../../Asset/icon-map1.svg")}
+                                  alt=''
+                                />
                                 <span>Huyện Tam Đường</span>
                               </div>
                             </div>
@@ -396,7 +430,10 @@ const Discover = (props: DiscoverProps) => {
                               <div className='--type'>Đèo - Núi</div>
                               <h4>Đèo Ô Quy Hồ</h4>
                               <div className='--location '>
-                                <img src='../img/icon-map1.svg' alt='' />
+                                <Image
+                                  src={require("../../Asset/icon-map1.svg")}
+                                  alt=''
+                                />
                                 <span>Huyện Tam Đường</span>
                               </div>
                             </div>
@@ -418,7 +455,10 @@ const Discover = (props: DiscoverProps) => {
                               <div className='--type'>Đèo - Núi</div>
                               <h4>Đèo Ô Quy Hồ</h4>
                               <div className='--location '>
-                                <img src='../img/icon-map1.svg' alt='' />
+                                <Image
+                                  src={require("../../Asset/icon-map1.svg")}
+                                  alt=''
+                                />
                                 <span>Huyện Tam Đường</span>
                               </div>
                             </div>
@@ -525,7 +565,10 @@ const Discover = (props: DiscoverProps) => {
                                 <div className='--type'>Đèo - Núi</div>
                                 <h4>Đèo Ô Quy Hồ</h4>
                                 <div className='--location '>
-                                  <img src='../img/icon-map1.svg' alt='' />
+                                  <Image
+                                    src={require("../../Asset/icon-map1.svg")}
+                                    alt=''
+                                  />
                                   <span>Huyện Tam Đường</span>
                                 </div>
                               </div>
@@ -549,7 +592,10 @@ const Discover = (props: DiscoverProps) => {
                                 <div className='--type'>Đèo - Núi</div>
                                 <h4>Đèo Ô Quy Hồ</h4>
                                 <div className='--location '>
-                                  <img src='../img/icon-map1.svg' alt='' />
+                                  <Image
+                                    src={require("../../Asset/icon-map1.svg")}
+                                    alt=''
+                                  />
                                   <span>Huyện Tam Đường</span>
                                 </div>
                               </div>
@@ -573,7 +619,10 @@ const Discover = (props: DiscoverProps) => {
                                 <div className='--type'>Đèo - Núi</div>
                                 <h4>Đèo Ô Quy Hồ</h4>
                                 <div className='--location '>
-                                  <img src='../img/icon-map1.svg' alt='' />
+                                  <Image
+                                    src={require("../../Asset/icon-map1.svg")}
+                                    alt=''
+                                  />
                                   <span>Huyện Tam Đường</span>
                                 </div>
                               </div>
@@ -597,7 +646,10 @@ const Discover = (props: DiscoverProps) => {
                                 <div className='--type'>Đèo - Núi</div>
                                 <h4>Đèo Ô Quy Hồ</h4>
                                 <div className='--location '>
-                                  <img src='../img/icon-map1.svg' alt='' />
+                                  <Image
+                                    src={require("../../Asset/icon-map1.svg")}
+                                    alt=''
+                                  />
                                   <span>Huyện Tam Đường</span>
                                 </div>
                               </div>
@@ -621,7 +673,10 @@ const Discover = (props: DiscoverProps) => {
                                 <div className='--type'>Đèo - Núi</div>
                                 <h4>Đèo Ô Quy Hồ</h4>
                                 <div className='--location '>
-                                  <img src='../img/icon-map1.svg' alt='' />
+                                  <Image
+                                    src={require("../../Asset/icon-map1.svg")}
+                                    alt=''
+                                  />
                                   <span>Huyện Tam Đường</span>
                                 </div>
                               </div>
@@ -645,7 +700,10 @@ const Discover = (props: DiscoverProps) => {
                                 <div className='--type'>Đèo - Núi</div>
                                 <h4>Đèo Ô Quy Hồ</h4>
                                 <div className='--location '>
-                                  <img src='../img/icon-map1.svg' alt='' />
+                                  <Image
+                                    src={require("../../Asset/icon-map1.svg")}
+                                    alt=''
+                                  />
                                   <span>Huyện Tam Đường</span>
                                 </div>
                               </div>
