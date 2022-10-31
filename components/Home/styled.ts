@@ -652,7 +652,10 @@ const HomeWrapper=styled.div` .homeBanner {
         color: transparent;
       }
 
-      li {
+
+
+      li,
+      label {
         display: inline-block;
         width: 6px;
         height: 6px;
@@ -662,9 +665,22 @@ const HomeWrapper=styled.div` .homeBanner {
         border-radius: 50%;
         cursor: pointer;
 
+
+
         &.slick-active {
           background: var(--color-1);
         }
+
+
+      }
+
+      .test {
+        display: none;
+      }
+
+      .test:checked+label {
+        background: var(--color-1);
+
       }
     }
 
