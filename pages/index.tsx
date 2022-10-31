@@ -506,15 +506,9 @@ export default function Home() {
                   slidesToScroll: 1,
                   arrows: false,
                   fade: true,
-<<<<<<< HEAD
-                  beforeChange: (c, n) => {
-                    console.log();
-                  },
-=======
                   // beforeChange: (c, n) => {
                   //   setCurrent(n);
                   // },
->>>>>>> 67652c5c2483f0e984cc471bfef6854eb6e3e2e5
                   responsive: [
                     {
                       breakpoint: 768,
@@ -897,12 +891,7 @@ export default function Home() {
                   <label
                     htmlFor="1"
                     onClick={() => {
-                      console.log(
-                        sliderRef.current.innerSlider.list.querySelector(
-                          ".slick-current"
-                        ).dataset.index
-                      );
-                      sliderRef.current?.slickGoTo(0);
+                      sliderRef?.current?.slickGoTo(0);
                     }}
                     // className={current === 0 ? "slick-active" : ""}
                   ></label>
@@ -910,12 +899,7 @@ export default function Home() {
                   <label
                     htmlFor="2"
                     onClick={() => {
-                      console.log(
-                        sliderRef.current.innerSlider.list.querySelector(
-                          ".slick-current"
-                        ).dataset.index
-                      );
-                      sliderRef.current?.slickGoTo(1);
+                      sliderRef?.current?.slickGoTo(1);
                     }}
                     // className={current === 1 ? "slick-active" : ""}
                   ></label>
@@ -923,12 +907,7 @@ export default function Home() {
                   <label
                     htmlFor="3"
                     onClick={() => {
-                      console.log(
-                        sliderRef.current.innerSlider.list.querySelector(
-                          ".slick-current"
-                        ).dataset.index
-                      );
-                      sliderRef.current?.slickGoTo(2);
+                      sliderRef?.current?.slickGoTo(2);
                     }}
                     // className={current === 2 ? "slick-active" : ""}
                   ></label>
