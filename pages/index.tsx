@@ -506,7 +506,7 @@ export default function Home() {
                   arrows: false,
                   fade: true,
                   beforeChange: (c, n) => {
-                    setCurrent(n);
+                    console.log();
                   },
                   responsive: [
                     {
@@ -888,7 +888,12 @@ export default function Home() {
                 <ul className='slick-dots'>
                   <li
                     onClick={() => {
-                      sliderRef?.current?.slickGoTo(0);
+                      console.log(
+                        sliderRef.current.innerSlider.list.querySelector(
+                          ".slick-current"
+                        ).dataset.index
+                      );
+                      sliderRef.current?.slickGoTo(0);
                     }}
                     className={current === 0 ? "slick-active" : ""}
                   >
@@ -896,7 +901,12 @@ export default function Home() {
                   </li>
                   <li
                     onClick={() => {
-                      sliderRef?.current?.slickGoTo(1);
+                      console.log(
+                        sliderRef.current.innerSlider.list.querySelector(
+                          ".slick-current"
+                        ).dataset.index
+                      );
+                      sliderRef.current?.slickGoTo(1);
                     }}
                     className={current === 1 ? "slick-active" : ""}
                   >
@@ -904,7 +914,12 @@ export default function Home() {
                   </li>
                   <li
                     onClick={() => {
-                      sliderRef?.current?.slickGoTo(2);
+                      console.log(
+                        sliderRef.current.innerSlider.list.querySelector(
+                          ".slick-current"
+                        ).dataset.index
+                      );
+                      sliderRef.current?.slickGoTo(2);
                     }}
                     className={current === 2 ? "slick-active" : ""}
                   >
