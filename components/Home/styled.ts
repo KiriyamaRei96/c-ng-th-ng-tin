@@ -46,7 +46,7 @@ const HomeWrapper=styled.div` .homeBanner {
       font-family: var(--font-Canela);
     }
 
-    ul {
+    span {
       display: flex;
       justify-content: center;
       list-style: none;
@@ -54,24 +54,24 @@ const HomeWrapper=styled.div` .homeBanner {
       padding-left: 0;
       font-size: 14px;
 
-      li {
-        position: relative;
+      // li {
+      //   position: relative;
 
-        &:nth-child(n + 2) {
-          margin-left: 24px;
+      //   &:nth-child(n + 2) {
+      //     margin-left: 24px;
 
-          &::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            border-left: 1px solid #fff;
-            height: 12px;
-            opacity: 0.5;
-            right: calc(100% + 12px);
-            transform: translate(0, -50%);
-          }
-        }
-      }
+      //     &::before {
+      //       content: "";
+      //       position: absolute;
+      //       top: 50%;
+      //       border-left: 1px solid #fff;
+      //       height: 12px;
+      //       opacity: 0.5;
+      //       right: calc(100% + 12px);
+      //       transform: translate(0, -50%);
+      //     }
+      //   }
+      // }
     }
 
     a {

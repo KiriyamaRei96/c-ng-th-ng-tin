@@ -19,18 +19,19 @@ const AppHeader = (props: AppHeaderProps) => {
       }
     });
   }, []);
-  // console.log(router);
+
   return (
     <>
       {Object.keys(router.query).length === 2 ||
-      router.asPath.includes("Utilities") ? (
-        <header className='white'>
-          <div className='container-fluid'>
-            <div className='header d-flex justify-content-between align-items-center'>
-              <div className='logo'>
-                <Image src={require("../../Asset/logo-2.png")} alt='' />
+      router.asPath.includes("Utilities") ||
+      router.pathname.includes("discoverDetail") ? (
+        <header className="white">
+          <div className="container-fluid">
+            <div className="header d-flex justify-content-between align-items-center">
+              <div className="logo">
+                <Image src={require("../../Asset/logo-2.png")} alt="" />
               </div>
-              <div className='menu d-flex'>
+              <div className="menu d-flex">
                 <div
                   className={
                     router.asPath.length === 1
@@ -38,7 +39,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/'>
+                  <Link href="/">
                     <a>Trang chủ</a>
                   </Link>
                 </div>
@@ -49,7 +50,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/About'>
+                  <Link href="/About">
                     <a>Giới thiệu</a>
                   </Link>
                 </div>
@@ -60,7 +61,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Discover'>
+                  <Link href="/Discover">
                     <a>Điểm du lịch</a>
                   </Link>
                 </div>
@@ -71,7 +72,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Hotel'>
+                  <Link href="/Hotel">
                     <a>Lưu trú</a>
                   </Link>
                 </div>
@@ -82,7 +83,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Tour'>
+                  <Link href="/Tour">
                     <a>Lữ hành</a>
                   </Link>
                 </div>
@@ -93,7 +94,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Restaurant'>
+                  <Link href="/Restaurant">
                     <a>Ẩm thực</a>
                   </Link>
                 </div>
@@ -104,7 +105,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/News&Event'>
+                  <Link href="/News&Event">
                     <a>Tin tức</a>
                   </Link>
                 </div>
@@ -115,24 +116,24 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Contact'>
+                  <Link href="/Contact">
                     <a>Liên hệ</a>
                   </Link>
                 </div>
               </div>
-              <div className='header_right d-flex align-items-center'>
-                <div className='search'>
-                  <input type='text' placeholder='Tìm kiếm' />
-                  <i className='fa-solid fa-magnifying-glass'></i>
+              <div className="header_right d-flex align-items-center">
+                <div className="search">
+                  <input type="text" placeholder="Tìm kiếm" />
+                  <i className="fa-solid fa-magnifying-glass"></i>
                 </div>
-                <div className='language d-flex'>
-                  <Image src={require("../../Asset/languagevn.svg")} alt='' />
-                  <div className='select'>
-                    <select className='form-control' name='' id=''>
-                      <option value=''>Tiếng việt</option>
-                      <option value=''>English</option>
+                <div className="language d-flex">
+                  <Image src={require("../../Asset/languagevn.svg")} alt="" />
+                  <div className="select">
+                    <select className="form-control" name="" id="">
+                      <option value="">Tiếng việt</option>
+                      <option value="">English</option>
                     </select>
-                    <i className='fa-sfa-caret-down'></i>
+                    <i className="fa-sfa-caret-down"></i>
                   </div>
                 </div>
               </div>
@@ -143,14 +144,15 @@ const AppHeader = (props: AppHeaderProps) => {
         false
       )}
       {Object.keys(router.query).length < 2 &&
-      !router.asPath.includes("Utilities") ? (
+      !router.asPath.includes("Utilities") &&
+      !router.pathname.includes("discoverDetail") ? (
         <header className={change ? "change" : ""}>
-          <div className='container-fluid'>
-            <div className='header d-flex justify-content-between align-items-center'>
-              <div className='logo'>
-                <img src={logo.src} alt='' />
+          <div className="container-fluid">
+            <div className="header d-flex justify-content-between align-items-center">
+              <div className="logo">
+                <img src={logo.src} alt="" />
               </div>
-              <div className='menu d-flex'>
+              <div className="menu d-flex">
                 <div
                   className={
                     router.asPath.length === 1
@@ -158,7 +160,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/'>
+                  <Link href="/">
                     <a>Trang chủ</a>
                   </Link>
                 </div>
@@ -169,7 +171,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/About'>
+                  <Link href="/About">
                     <a>Giới thiệu</a>
                   </Link>
                 </div>
@@ -180,7 +182,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Discover'>
+                  <Link href="/Discover">
                     <a>Điểm du lịch</a>
                   </Link>
                 </div>
@@ -191,7 +193,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Hotel'>
+                  <Link href="/Hotel">
                     <a>Lưu trú</a>
                   </Link>
                 </div>
@@ -202,7 +204,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Tour'>
+                  <Link href="/Tour">
                     <a>Lữ hành</a>
                   </Link>
                 </div>
@@ -213,7 +215,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Restaurant'>
+                  <Link href="/Restaurant">
                     <a>Ẩm thực</a>
                   </Link>
                 </div>
@@ -224,7 +226,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/News&Event'>
+                  <Link href="/News&Event">
                     <a>Tin tức</a>
                   </Link>
                 </div>
@@ -235,24 +237,24 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Contact'>
+                  <Link href="/Contact">
                     <a>Liên hệ</a>
                   </Link>
                 </div>
               </div>
-              <div className='header_right d-flex align-items-center'>
-                <div className='search'>
-                  <input type='text' placeholder='Tìm kiếm' />
-                  <i className='fa-solid fa-magnifying-glass'></i>
+              <div className="header_right d-flex align-items-center">
+                <div className="search">
+                  <input type="text" placeholder="Tìm kiếm" />
+                  <i className="fa-solid fa-magnifying-glass"></i>
                 </div>
-                <div className='language d-flex'>
-                  <img src={langlogo.src} alt='' />
-                  <div className='select'>
-                    <select className='form-control' name='' id=''>
-                      <option value=''>Tiếng việt</option>
-                      <option value=''>English</option>
+                <div className="language d-flex">
+                  <img src={langlogo.src} alt="" />
+                  <div className="select">
+                    <select className="form-control" name="" id="">
+                      <option value="">Tiếng việt</option>
+                      <option value="">English</option>
                     </select>
-                    <i className='fa-solid fa-caret-down'></i>
+                    <i className="fa-solid fa-caret-down"></i>
                   </div>
                 </div>
               </div>

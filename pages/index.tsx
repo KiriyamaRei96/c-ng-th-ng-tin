@@ -29,15 +29,30 @@ export async function getServerSideProps() {
   const homeBanner = await res.data?.snippets?.find(
     (item) => item["snippet_name"] === "HomeBanner"
   );
+
+  const homeIntro = await res.data?.snippets?.find(
+    (item) => item["snippet_name"] === "homeIntro"
+  );
+  const listHomeIntro = await res.data?.snippets?.find(
+    (item) => item["snippet_name"] === "listHomeIntro"
+  );
+  const homeDiscover = await res.data?.snippets?.find(
+    (item) => item["snippet_name"] === "homeDiscover"
+  );
   const err = res;
   return {
-    props: { err, homeBanner },
+    props: { homeIntro, homeBanner, listHomeIntro, homeDiscover },
   };
 }
 
-export default function Home({ err, homeBanner }) {
+export default function Home({
+  homeIntro,
+  homeBanner,
+  listHomeIntro,
+  homeDiscover,
+}) {
   const sliderRef: any = useRef();
-
+  console.log(homeDiscover);
   // const [current, setCurrent] = useState(0);
   return (
     <HomeWrapper>
@@ -47,12 +62,9 @@ export default function Home({ err, homeBanner }) {
             <img src={homeBanner.image["path_1024px"]} alt="" />
           </div>
           <div className="--txt">
-            <div className="--name">Lai Châu</div>
-            <div className="--des">Điểm đến thiên đường</div>
-            <ul>
-              <li>30 Điểm khám phá</li>
-              <li>1000+ Checked in</li>
-            </ul>
+            <div className="--name">{homeBanner.subTitle}</div>
+            <div className="--des">{homeBanner.title}</div>
+            <span>{homeBanner.description}</span>
             <Link href={homeBanner.link}>
               <a>
                 Tìm hiểu thêm
@@ -120,19 +132,14 @@ export default function Home({ err, homeBanner }) {
               <div className="row">
                 <div className="col-md-6">
                   <div className="--left">
-                    <img src={img36.src} alt="" />
+                    <img src={homeIntro.image["path"]} alt="" />
                   </div>
                 </div>
                 <div className="col-md-6">
                   <div className="--right">
-                    <div className="subTitle">KHám phá Lai Châu</div>
-                    <h1 className="Title">Sự hùng vĩ của núi rừng Tây Bắc</h1>
-                    <div className="--des">
-                      Lai Châu là tỉnh biên giới phía Tây Bắc của Tổ quốc, cách
-                      Thủ đô Hà Nội 385 km về phía Đông Nam. Nơi đây vừa hoang
-                      sơ, đầy thử thách lại có hẳn một thiên đường chạm tới mây
-                      trời cực ấn tượng.{" "}
-                    </div>
+                    <div className="subTitle">{homeIntro.subTitle}</div>
+                    <h1 className="Title">{homeIntro.title}</h1>
+                    <div className="--des">{homeIntro.description}</div>
                     <ul>
                       <li>
                         <span>Đèo - Núi</span>
@@ -155,9 +162,9 @@ export default function Home({ err, homeBanner }) {
                         <span>(02)</span>
                       </li>
                     </ul>
-                    <Link href="/Discover">
-                      <a className="button_2 button_hover2" href="">
-                        Xem tất cả{" "}
+                    <Link href={homeIntro.link}>
+                      <a className="button_2 button_hover2">
+                        Xem tất cả
                         <i className="fa-sharp ms-2 fa-solid fa-arrow-right-long"></i>
                       </a>
                     </Link>
@@ -166,91 +173,27 @@ export default function Home({ err, homeBanner }) {
               </div>
             </div>
             <div className="list_homeIntro d-flex flex-wrap">
-              <div className="--item d-flex flex-column align-items-center">
-                <div className="--icon">
-                  <img src={icon1.src} alt="" />
+              {listHomeIntro.articles.map((item) => (
+                <div
+                  key={uuid()}
+                  className="--item d-flex flex-column align-items-center"
+                >
+                  <div className="--icon">
+                    <img src={item.image.path} alt="" />
+                  </div>
+                  <div className="--txt">
+                    <h4>{item.title}</h4>
+                    <article>{item.description}</article>
+                  </div>
                 </div>
-                <div className="--txt">
-                  <h4>Thiên nhiên hùng vĩ</h4>
-                  <article>
-                    Acclaimed purveyors of some of the worlds best cruises, we
-                    specialize in axhilarating expeditions to remote corners of
-                    the earth.
-                  </article>
-                </div>
-              </div>
-              <div className="--item d-flex flex-column align-items-center">
-                <div className="--icon">
-                  <img src={icon2.src} alt="" />
-                </div>
-                <div className="--txt">
-                  <h4>Trải nghiệm đáng nhớ</h4>
-                  <article>
-                    Acclaimed purveyors of some of the worlds best cruises, we
-                    specialize in axhilarating expeditions to remote corners of
-                    the earth.
-                  </article>
-                </div>
-              </div>
-              <div className="--item d-flex flex-column align-items-center">
-                <div className="--icon">
-                  <img src={icon3.src} alt="" />
-                </div>
-                <div className="--txt">
-                  <h4>Khách sạn, nhà nghỉ</h4>
-                  <article>
-                    Acclaimed purveyors of some of the worlds best cruises, we
-                    specialize in axhilarating expeditions to remote corners of
-                    the earth.
-                  </article>
-                </div>
-              </div>
-              <div className="--item d-flex flex-column align-items-center">
-                <div className="--icon">
-                  <img src={icon4.src} alt="" />
-                </div>
-                <div className="--txt">
-                  <h4>Món ăn đặc trưng</h4>
-                  <article>
-                    Acclaimed purveyors of some of the worlds best cruises, we
-                    specialize in axhilarating expeditions to remote corners of
-                    the earth.
-                  </article>
-                </div>
-              </div>
-              <div className="--item d-flex flex-column align-items-center">
-                <div className="--icon">
-                  <img src={icon5.src} alt="" />
-                </div>
-                <div className="--txt">
-                  <h4>Núi rừng, hang động</h4>
-                  <article>
-                    Acclaimed purveyors of some of the worlds best cruises, we
-                    specialize in axhilarating expeditions to remote corners of
-                    the earth.
-                  </article>
-                </div>
-              </div>
-              <div className="--item d-flex flex-column align-items-center">
-                <div className="--icon">
-                  <img src={icon6.src} alt="" />
-                </div>
-                <div className="--txt">
-                  <h4>Cắm trại </h4>
-                  <article>
-                    Acclaimed purveyors of some of the worlds best cruises, we
-                    specialize in axhilarating expeditions to remote corners of
-                    the earth.
-                  </article>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
         <div className="homeDiscover">
           <div className="container-fluid">
-            <div className="subTitle text-center">KHám phá Lai Châu</div>
-            <h1 className="Title text-center">Khám phá điểm đến nổi bật</h1>
+            <div className="subTitle text-center">{homeDiscover.subTitle}</div>
+            <h1 className="Title text-center">{homeDiscover.title}</h1>
           </div>
           <div className="container-fluid pe-0">
             <Slider
@@ -276,186 +219,38 @@ export default function Home({ err, homeBanner }) {
               }}
               className="list_homeDiscover"
             >
-              <div>
-                <div className="--item">
-                  <div className="--img">
-                    <img src={banner.src} alt="" />
-                  </div>
-                  <div className="--txt">
-                    <div className="--subtitle">Đèo - Núi</div>
-                    <h4 className="--name">Đèo Ô Quy Hồ</h4>
-                    <div className="--bot d-flex justify-content-between align-items-end">
-                      <div className="--des">
-                        <div className="--location d-flex align-items-center">
-                          <div className="--icon me-2">
-                            <Image
-                              src={require("./_asset/icon-map1.svg")}
-                              alt=""
-                            />
+              {homeDiscover.articles.map((item) => (
+                <div key={uuid()}>
+                  <div className="--item">
+                    <div className="--img">
+                      <img src={item.image.path} alt="" />
+                    </div>
+                    <div className="--txt">
+                      <div className="--subtitle">{item.subTitle}</div>
+                      <h4 className="--name">{item.title}</h4>
+                      <div className="--bot d-flex justify-content-between align-items-end">
+                        <div className="--des">
+                          <div className="--location d-flex align-items-center">
+                            <div className="--icon me-2">
+                              <Image
+                                src={require("./_asset/icon-map1.svg")}
+                                alt=""
+                              />
+                            </div>
+                            Huyện Tam Đường, Tỉnh Lai Châu
                           </div>
-                          Huyện Tam Đường, Tỉnh Lai Châu
+                          <article>{item.description}</article>
                         </div>
-                        <article>
-                          Đây là một trong những cung đường đèo hiểm trở bậc
-                          nhất của núi rừng Tây Bắc. Giữ kỷ lục về độ dài lên
-                          tới gần 50 km, dài hơn đèo Pha Đin (32 km, nằm ở ranh
-                          giới Sơn La và Điện Biên) hay đèo Khau Phạ (40 km,
-                          thuộc Yên Bái)
-                        </article>
+                        <Link href="/Discover/1" key={uuid()}>
+                          <a className="--viewdetail button_hover1" href="">
+                            <i className="fa-solid fa-arrow-right"></i>
+                          </a>
+                        </Link>
                       </div>
-                      <Link href="/Discover/1" key={uuid()}>
-                        <a className="--viewdetail button_hover1" href="">
-                          <i className="fa-solid fa-arrow-right"></i>
-                        </a>
-                      </Link>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div>
-                <div className="--item">
-                  <div className="--img">
-                    <img src={banner.src} alt="" />
-                  </div>
-                  <div className="--txt">
-                    <div className="--subtitle">Đèo - Núi</div>
-                    <h4 className="--name">Đèo Ô Quy Hồ</h4>
-                    <div className="--bot d-flex justify-content-between align-items-end">
-                      <div className="--des">
-                        <div className="--location d-flex align-items-center">
-                          <div className="--icon me-2">
-                            <Image
-                              src={require("./_asset/icon-map1.svg")}
-                              alt=""
-                            />
-                          </div>
-                          Huyện Tam Đường, Tỉnh Lai Châu
-                        </div>
-                        <article>
-                          Đây là một trong những cung đường đèo hiểm trở bậc
-                          nhất của núi rừng Tây Bắc. Giữ kỷ lục về độ dài lên
-                          tới gần 50 km, dài hơn đèo Pha Đin (32 km, nằm ở ranh
-                          giới Sơn La và Điện Biên) hay đèo Khau Phạ (40 km,
-                          thuộc Yên Bái)
-                        </article>
-                      </div>
-                      <Link href="/Discover/1" key={uuid()}>
-                        <a className="--viewdetail button_hover1" href="">
-                          <i className="fa-solid fa-arrow-right"></i>
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div className="--item">
-                  <div className="--img">
-                    <img src={banner.src} alt="" />
-                  </div>
-                  <div className="--txt">
-                    <div className="--subtitle">Đèo - Núi</div>
-                    <h4 className="--name">Đèo Ô Quy Hồ</h4>
-                    <div className="--bot d-flex justify-content-between align-items-end">
-                      <div className="--des">
-                        <div className="--location d-flex align-items-center">
-                          <div className="--icon me-2">
-                            <Image
-                              src={require("./_asset/icon-map1.svg")}
-                              alt=""
-                            />
-                          </div>
-                          Huyện Tam Đường, Tỉnh Lai Châu
-                        </div>
-                        <article>
-                          Đây là một trong những cung đường đèo hiểm trở bậc
-                          nhất của núi rừng Tây Bắc. Giữ kỷ lục về độ dài lên
-                          tới gần 50 km, dài hơn đèo Pha Đin (32 km, nằm ở ranh
-                          giới Sơn La và Điện Biên) hay đèo Khau Phạ (40 km,
-                          thuộc Yên Bái)
-                        </article>
-                      </div>
-                      <Link href="/Discover/1" key={uuid()}>
-                        <a className="--viewdetail button_hover1" href="">
-                          <i className="fa-solid fa-arrow-right"></i>
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div className="--item">
-                  <div className="--img">
-                    <img src={banner.src} alt="" />
-                  </div>
-                  <div className="--txt">
-                    <div className="--subtitle">Đèo - Núi</div>
-                    <h4 className="--name">Đèo Ô Quy Hồ</h4>
-                    <div className="--bot d-flex justify-content-between align-items-end">
-                      <div className="--des">
-                        <div className="--location d-flex align-items-center">
-                          <div className="--icon me-2">
-                            <Image
-                              src={require("./_asset/icon-map1.svg")}
-                              alt=""
-                            />
-                          </div>
-                          Huyện Tam Đường, Tỉnh Lai Châu
-                        </div>
-                        <article>
-                          Đây là một trong những cung đường đèo hiểm trở bậc
-                          nhất của núi rừng Tây Bắc. Giữ kỷ lục về độ dài lên
-                          tới gần 50 km, dài hơn đèo Pha Đin (32 km, nằm ở ranh
-                          giới Sơn La và Điện Biên) hay đèo Khau Phạ (40 km,
-                          thuộc Yên Bái)
-                        </article>
-                      </div>
-                      <Link href="/Discover/1" key={uuid()}>
-                        <a className="--viewdetail button_hover1" href="">
-                          <i className="fa-solid fa-arrow-right"></i>
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div className="--item">
-                  <div className="--img">
-                    <img src={banner.src} alt="" />
-                  </div>
-                  <div className="--txt">
-                    <div className="--subtitle">Đèo - Núi</div>
-                    <h4 className="--name">Đèo Ô Quy Hồ</h4>
-                    <div className="--bot d-flex justify-content-between align-items-end">
-                      <div className="--des">
-                        <div className="--location d-flex align-items-center">
-                          <div className="--icon me-2">
-                            <Image
-                              src={require("./_asset/icon-map1.svg")}
-                              alt=""
-                            />
-                          </div>
-                          Huyện Tam Đường, Tỉnh Lai Châu
-                        </div>
-                        <article>
-                          Đây là một trong những cung đường đèo hiểm trở bậc
-                          nhất của núi rừng Tây Bắc. Giữ kỷ lục về độ dài lên
-                          tới gần 50 km, dài hơn đèo Pha Đin (32 km, nằm ở ranh
-                          giới Sơn La và Điện Biên) hay đèo Khau Phạ (40 km,
-                          thuộc Yên Bái)
-                        </article>
-                      </div>
-                      <Link href="/Discover/1" key={uuid()}>
-                        <a className="--viewdetail button_hover1" href="">
-                          <i className="fa-solid fa-arrow-right"></i>
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              ))}
             </Slider>
           </div>
           <a href="" className="--viewall button_2 button_hover2">
