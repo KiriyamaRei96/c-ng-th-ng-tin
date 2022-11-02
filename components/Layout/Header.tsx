@@ -19,7 +19,7 @@ const AppHeader = (props: AppHeaderProps) => {
       }
     });
   }, []);
-  console.log(router);
+  // console.log(router);
   return (
     <>
       {Object.keys(router.query).length === 2 ||
