@@ -5,4 +5,8 @@ const callApi = axios.create({
   timeout: 1000,
   headers: { "x-token": token },
 });
-export default callApi;
+
+const getHome = callApi(`v2/page/Home?locale=vi`)
+  .then((res) => res.data)
+  .catch((err) => console.error(err));
+export default getHome;
