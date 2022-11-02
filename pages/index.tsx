@@ -19,13 +19,11 @@ import Link from "next/link";
 import HomeDiscover1 from "../components/Home/HomeDiscover1";
 import Image from "next/image";
 import { Radio } from "antd";
-import callApi, { token } from "../Api/Axios";
+import callApi from "../Api/Axios";
 
 export async function getServerSideProps() {
   const res = await callApi
-    .get("/v2/page/Home?locale=vi", {
-      headers: { "x-token": token },
-    })
+    .get("/v2/page/Home?locale=vi")
     .then((res) => res.data)
     .catch((err) => console.error(err));
   const homeBanner = await res.data?.snippets?.find(
