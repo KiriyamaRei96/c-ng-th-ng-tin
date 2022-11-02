@@ -23,7 +23,7 @@ import callApi from "../Api/Axios";
 
 export async function getStaticProps() {
   const res = await callApi
-    .get("v2/page/Home?locale=vi")
+    .get(`v2/page/Home?locale=vi`)
     .then((res) => res.data)
     .catch((err) => console.error(err));
   const homeBanner = res.data.snippets.find(
@@ -31,7 +31,7 @@ export async function getStaticProps() {
   );
 
   return {
-    props: { data: res.data, homeBanner },
+    props: { homeBanner },
   };
 }
 
