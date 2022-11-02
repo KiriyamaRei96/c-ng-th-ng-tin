@@ -22,8 +22,7 @@ import { Radio } from "antd";
 import callApi from "../Api/Axios";
 
 export async function getStaticProps() {
-  const res = await callApi
-    .get(`v2/page/Home?locale=vi`)
+  const res = await callApi(`v2/page/Home?locale=vi`)
     .then((res) => res.data)
     .catch((err) => console.error(err));
   const homeBanner = res.data.snippets.find(
