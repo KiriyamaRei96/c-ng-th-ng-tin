@@ -21,7 +21,7 @@ import Image from "next/image";
 import { Radio } from "antd";
 import callApi, { api, token } from "../Api/Axios";
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const res = await fetch(
     `https://demo2.starfruit.com.vn/api/v2/page/Home?locale=vi`,
     {
