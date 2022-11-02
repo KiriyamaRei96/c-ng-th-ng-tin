@@ -19,7 +19,7 @@ import Link from "next/link";
 import HomeDiscover1 from "../components/Home/HomeDiscover1";
 import Image from "next/image";
 import { Radio } from "antd";
-import callApi, { api, token } from "../Api/Axios";
+import callApi from "../Api/Axios";
 
 export async function getServerSideProps() {
   // const res = await fetch(`${api}/v2/page/Home?locale=vi`, {
