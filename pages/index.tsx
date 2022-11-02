@@ -23,14 +23,18 @@ import callApi, { api, token } from "../Api/Axios";
 
 export async function getServerSideProps() {
   const api = process.env.NEXT_PUBLIC_API;
-  const res = await fetch(`${api}/v2/page/Home?locale=vi`, {
-    headers: { "x-token": "b05bc2639558e35144dd2946655535" },
-  })
-    .then((res) => res.json())
+  const token = process.env.NEXT_PUBLIC_X_TOKEN;
+  // const res = await fetch(`${api}/v2/page/Home?locale=vi`, {
+  //   headers: { "x-token": token },
+  // })
+  //   .then((res) => res.json())
+  //   .then((res) => res.data)
+  //   .catch((err) => console.error(err));
+  const res = await callApi
+    .get("/v2/page/Home?locale=vi")
     .then((res) => res.data)
     .catch((err) => console.error(err));
-
-  const homeBanner = await res?.snippets?.find(
+  const homeBanner = await res.data?.snippets?.find(
     (item) => item["snippet_name"] === "HomeBanner"
   );
 

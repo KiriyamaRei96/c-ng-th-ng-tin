@@ -1,9 +1,9 @@
 import axios from "axios";
-export const token = process.env.DB_X_TOKEN;
+export const token = process.env.NEXT_PUBLIC_X_TOKEN;
 
 const callApi = axios.create({
-  baseURL: process.env.DB_API,
-  timeout: 1000,
+  baseURL: process.env.NEXT_PUBLIC_API,
+ 
   headers: { "x-token": token },
 });
 export default callApi;
