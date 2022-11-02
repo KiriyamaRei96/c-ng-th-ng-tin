@@ -22,8 +22,6 @@ import { Radio } from "antd";
 import callApi, { api, token } from "../Api/Axios";
 
 export async function getServerSideProps() {
-  const api = process.env.NEXT_PUBLIC_API;
-  const token = process.env.NEXT_PUBLIC_X_TOKEN;
   // const res = await fetch(`${api}/v2/page/Home?locale=vi`, {
   //   headers: { "x-token": token },
   // })
