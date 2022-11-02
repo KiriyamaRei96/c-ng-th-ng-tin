@@ -35,15 +35,16 @@ export async function getServerSideProps() {
   const homeBanner = await res.data?.snippets?.find(
     (item) => item["snippet_name"] === "HomeBanner"
   );
-
+  const err = res;
   return {
-    props: { homeBanner },
+    props: { err, homeBanner },
   };
 }
 
-export default function Home({ data, homeBanner }) {
+export default function Home({ err, homeBanner }) {
   const sliderRef: any = useRef();
-  // console.log(homeBanner);
+  console.log(homeBanner);
+  console.log(err);
 
   // const [current, setCurrent] = useState(0);
   return (
