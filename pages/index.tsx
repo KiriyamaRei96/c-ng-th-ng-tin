@@ -19,14 +19,12 @@ import Link from "next/link";
 import HomeDiscover1 from "../components/Home/HomeDiscover1";
 import Image from "next/image";
 import { Radio } from "antd";
-import callApi from "../Api/Axios";
+import callApi, { api, token } from "../Api/Axios";
 
 import axios from "axios";
-
 export async function getStaticProps() {
-  const api = process.env.DB_API;
   const res = await fetch(`${api}/v2/page/Home?locale=vi`, {
-    headers: { "x-token": process.env.DB_X_TOKEN },
+    headers: { "x-token": token },
   })
     .then((res) => res.json())
     .then((res) => res.data)
