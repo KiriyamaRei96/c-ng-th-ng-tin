@@ -19,17 +19,13 @@ import Link from "next/link";
 import HomeDiscover1 from "../components/Home/HomeDiscover1";
 import Image from "next/image";
 import { Radio } from "antd";
-import callApi from "../Api/Axios";
+import callApi, { token } from "../Api/Axios";
 
 export async function getServerSideProps() {
-  // const res = await fetch(`${api}/v2/page/Home?locale=vi`, {
-  //   headers: { "x-token": token },
-  // })
-  //   .then((res) => res.json())
-  //   .then((res) => res.data)
-  //   .catch((err) => console.error(err));
   const res = await callApi
-    .get("/v2/page/Home?locale=vi")
+    .get("/v2/page/Home?locale=vi", {
+      headers: { "x-token": token },
+    })
     .then((res) => res.data)
     .catch((err) => console.error(err));
   const homeBanner = await res.data?.snippets?.find(
@@ -43,8 +39,6 @@ export async function getServerSideProps() {
 
 export default function Home({ err, homeBanner }) {
   const sliderRef: any = useRef();
-  console.log(homeBanner);
-  console.log(err);
 
   // const [current, setCurrent] = useState(0);
   return (
