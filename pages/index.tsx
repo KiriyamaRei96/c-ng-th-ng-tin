@@ -20,10 +20,15 @@ import HomeDiscover1 from "../components/Home/HomeDiscover1";
 import Image from "next/image";
 import { Radio } from "antd";
 import callApi from "../Api/Axios";
-import getHome from "../Api/Axios";
+
+import axios from "axios";
 
 export async function getStaticProps() {
-  const res = await getHome;
+  const res = await callApi(
+    `https://demo2.starfruit.com.vn/api/v2/page/Home?locale=vi`
+  )
+    .then((res) => res.data)
+    .catch((err) => console.error(err));
   const homeBanner = res.data.snippets.find(
     (item) => item["snippet_name"] === "HomeBanner"
   );
