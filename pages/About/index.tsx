@@ -189,73 +189,17 @@ const About = ({
             <div className='subTitle text-center'>{aboutWhy.subTitle}</div>
             <h1 className='Title text-center'>{aboutWhy.title}</h1>
             <div className='list_Why'>
-              <div className='--item'>
-                <div className='--top'>
-                  <i className='fa-solid fa-coins'></i>
+              {aboutWhy.articles?.map((item, id) => (
+                <div key={uuid()} className='--item'>
+                  <div className='--top'>
+                    <img src={item.image.path} alt='' />
 
-                  <h4>Giá tốt nhất</h4>
+                    <h4>{item.title}</h4>
+                  </div>
+                  <div className='--des'>{item.description}</div>
+                  <div className='--number'>{`0${id + 1}`}</div>
                 </div>
-                <div className='--des'>
-                  Lorem Ipsum is simply a piece of dummy text, used for
-                  presentation and layout for print. Lorem Ipsum has been used.
-                </div>
-                <div className='--number'>01</div>
-              </div>
-              <div className='--item'>
-                <div className='--top'>
-                  <i className='fa-solid fa-map-location-dot'></i>
-                  <h4>Nhiều lựa chọn các chuyến tham quan</h4>
-                </div>
-                <div className='--des'>
-                  Lorem Ipsum is simply a piece of dummy text, used for
-                  presentation and layout for print. Lorem Ipsum has been used.
-                </div>
-                <div className='--number'>02</div>
-              </div>
-              <div className='--item'>
-                <div className='--top'>
-                  <i className='fa-solid fa-check-to-slot'></i>
-                  <h4>Nhà điều hành tour đủ điều kiện</h4>
-                </div>
-                <div className='--des'>
-                  Lorem Ipsum is simply a piece of dummy text, used for
-                  presentation and layout for print. Lorem Ipsum has been used.
-                </div>
-                <div className='--number'>03</div>
-              </div>
-              <div className='--item'>
-                <div className='--top'>
-                  <i className='fa-solid fa-thumbs-up'></i>
-                  <h4>Hướng dẫn viên chuyên nghiệp</h4>
-                </div>
-                <div className='--des'>
-                  Lorem Ipsum is simply a piece of dummy text, used for
-                  presentation and layout for print. Lorem Ipsum has been used.
-                </div>
-                <div className='--number'>04</div>
-              </div>
-              <div className='--item'>
-                <div className='--top'>
-                  <i className='fa-solid fa-circle-check'></i>
-                  <h4>Đặt chỗ nhanh</h4>
-                </div>
-                <div className='--des'>
-                  Lorem Ipsum is simply a piece of dummy text, used for
-                  presentation and layout for print. Lorem Ipsum has been used.
-                </div>
-                <div className='--number'>05</div>
-              </div>
-              <div className='--item'>
-                <div className='--top'>
-                  <i className='fa-solid fa-baseball'></i>
-                  <h4>Nhiều khu vui chơi</h4>
-                </div>
-                <div className='--des'>
-                  Lorem Ipsum is simply a piece of dummy text, used for
-                  presentation and layout for print. Lorem Ipsum has been used.
-                </div>
-                <div className='--number'>06</div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

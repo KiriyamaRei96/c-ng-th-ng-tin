@@ -247,10 +247,8 @@ const AboutWrapper=styled.div ` .aboutIntro {
             margin-bottom: 14px;
             align-items: flex-start;
 
-            i {
+            img {
                 margin-right: 1rem;
-                font-size: 30px;
-                color: var(--color-1);
             }
 
             h4 {
@@ -322,5 +320,5 @@ const AboutWrapper=styled.div ` .aboutIntro {
     }
 }
 
-`
-export default AboutWrapper
+`;
+export default AboutWrapper;
