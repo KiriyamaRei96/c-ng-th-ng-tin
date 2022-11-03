@@ -113,39 +113,44 @@ const DiscoverWarpper=styled.div` .discoverBanner {
                 }
             }
 
-            .--number {
-                font-size: 18px;
-                font-weight: 600;
 
-                .line {
-                    width: 132px;
-                    height: 2px;
-                    background: #FFF;
-                    margin: 0 10px;
-                }
-            }
+        }
+    }
+}
 
-            .--arrow {
-                display: flex;
+.Slider-action {
+    .--number {
+        font-size: 18px;
+        font-weight: 600;
 
-                i {
-                    width: 38px;
-                    height: 38px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    border: 1px solid #FFF;
-                    cursor: pointer;
-                    border-radius: 50%;
+        .line {
+            width: 132px;
+            height: 2px;
+            background: #FFF;
+            margin: 0 10px;
+        }
+    }
 
-                    &.nextarrow {
-                        margin-left: 24px;
-                    }
-                }
+    .--arrow {
+        display: flex;
+
+        i {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #FFF;
+            cursor: pointer;
+            border-radius: 50%;
+
+            &.nextarrow {
+                margin-left: 24px;
             }
         }
     }
 }
+
 
 .discoverBlock {
     padding: 100px 0;

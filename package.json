@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
+    "@fancyapps/ui": "^4.0.31",
     "@reduxjs/toolkit": "^1.8.6",
     "@types/react-redux": "^7.1.24",
     "antd": "^4.23.6",
