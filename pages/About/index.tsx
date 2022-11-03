@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import * as React from "react";
 import BreadCrumb from "../../components/BreadCrumb";
 import AboutWrapper from "./_component/styled/style";
-import icon7 from "./_Asset/icon-7.svg";
+import { v4 as uuid } from "uuid";
 import forest from "./_Asset/ic_forest.svg";
 import forest2 from "./_Asset/ic_forest(2).svg";
 import forest3 from "./_Asset/ic_forest(3).svg";
@@ -10,20 +10,74 @@ import forest4 from "./_Asset/ic_forest(4).svg";
 import Slider from "react-slick";
 import { DollarOutlined } from "@ant-design/icons";
 import Link from "next/link";
+import callApi from "../../Api/Axios";
+import Image from "next/image";
+export async function getServerSideProps() {
+  const res = await callApi
+    .get("/v2/page/about?locale=vi")
+    .then((res) => res.data)
+    .catch((err) => console.error(err));
 
-export interface AboutProps {}
-const About = (props: AboutProps) => {
+  const aboutBanner = await res.data?.snippets?.find(
+    (item) => item["snippet_name"] === "aboutBanner"
+  );
+  const aboutIntroLeft = await res.data?.snippets?.find(
+    (item) => item["snippet_name"] === "aboutIntroLeft"
+  );
+  const aboutIntroContent = await res.data?.snippets?.find(
+    (item) => item["snippet_name"] === "aboutIntroContent"
+  );
+  const listAboutIntro = await res.data?.snippets?.find(
+    (item) => item["snippet_name"] === "listAboutIntro"
+  );
+  const aboutDiscover = await res.data?.snippets?.find(
+    (item) => item["snippet_name"] === "aboutDiscover"
+  );
+  const aboutWhy = await res.data?.snippets?.find(
+    (item) => item["snippet_name"] === "aboutWhy"
+  );
+  return {
+    props: {
+      aboutBanner,
+      aboutIntroLeft,
+      aboutIntroContent,
+      listAboutIntro,
+      aboutDiscover,
+      aboutWhy,
+    },
+  };
+}
+export interface AboutProps {
+  aboutBanner: any;
+  aboutIntroLeft: any;
+  aboutIntroContent: any;
+  listAboutIntro: any;
+  aboutDiscover: any;
+  aboutWhy: any;
+}
+const About = ({
+  aboutBanner,
+  aboutIntroLeft,
+  aboutIntroContent,
+  listAboutIntro,
+  aboutDiscover,
+  aboutWhy,
+}: AboutProps) => {
+  console.log(aboutWhy);
+  const introBanner = aboutIntroLeft.articles.find(
+    (item) => item.title === "banner"
+  );
+  const introIcon = aboutIntroLeft.articles.find(
+    (item) => item.title === "icon"
+  );
   const router = useRouter();
   return (
     <AboutWrapper>
       <div id='about'>
         <div className='Banner d-flex'>
-          <img
-            src='https://s3-alpha-sig.figma.com/img/4240/6d23/5929410165f69cffef9df49d39f6d165?Expires=1667779200&Signature=DK5EvCM9TWgrO7RMyyBy6ltzu3AIblUQ0WYHsAEkluiNQtExRRRwpRMZ0bEmq-nBbRHxptpEZH7LwQNogIwBNIMGmVab2kXvdmIfPbKuoAJD95HDbArLS1D5IUCoJUbLKm2ipvhKbbsSGaAD93Ru5EqFrOrEO6xSculexI1m1QmS~kLvedHott6IeiSe2u9rYE4OABPbF6j8PmEJrAC6pLmuO7vib1BgByxsfEJyWjBt2kaMsMAlGkUDHLdDsjRGmcT4e-sCk54LZDU61SZIaTQNu81-haX9KObkxPkEKugJSOu5szCczdUT8a8KK8jH6uswG0KP3WrpyXi8sTkqUw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
-            alt=''
-          ></img>
+          <img src={aboutBanner.image.path} alt=''></img>
           <div className='--Item'>
-            <h1>Về lai châu</h1>
+            <h1>{aboutBanner.title}</h1>
             <BreadCrumb />
           </div>
         </div>
@@ -34,10 +88,7 @@ const About = (props: AboutProps) => {
                 <div className='--left'>
                   <div className='--video'>
                     <div className='--img'>
-                      <img
-                        src='https://s3-alpha-sig.figma.com/img/6d5b/d3de/b990f594c6446c41e8a90df549de7cfe?Expires=1667779200&Signature=WmrDI4jMcYuOvXKCtY3LPm5BFi7J~CfwR~6Z2DzwAy2c84-OBmgntSSDRBM1ePYmXOVsttBCByQp2haHqwRshPPKhLRRuULMnZaF6h-tr8AQsN3gzThiFIMYaBKuIaSYW9eErIgL12Pjr9Kh83v8pgCFrW8hjQCeSutbaRnos6bdcsvHls7dGCzJjl7mr4NIKuL0K8qwWrYem0fgMsFHaaZtdcjkkpsxtg5vhqQ8JJsrSUrzRFC8og0E32vDrlj9nHvuCfJtdsJX6XHHyckANJyR3AVLRvZ1XLrACkqo5aBPi8Tvx71na2D1WcnSGFbt-6TbuwsWg9UbRMhFhmz4Dg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
-                        alt=''
-                      />
+                      <img src={introBanner.image.path} alt='' />
                     </div>
                     <a href='' className='play'>
                       <i className='fa-solid fa-play'></i>
@@ -45,34 +96,26 @@ const About = (props: AboutProps) => {
                   </div>
                   <div className='--card '>
                     <div className='--icon'>
-                      <img src={icon7.src} alt='' />
+                      <img src={introIcon.image.path} alt='' />
                     </div>
-                    <h4>
-                      Cổng Thông Tin
-                      <br /> Du lịch Tỉnh Lai Châu
-                    </h4>
+
+                    <h4
+                      dangerouslySetInnerHTML={{ __html: introIcon.content }}
+                    ></h4>
                   </div>
                 </div>
               </div>
               <div className='col-md-6'>
                 <div className='--content'>
-                  <div className='subTitle'>KHám phá Lai Châu</div>
-                  <h1 className='Title'>
-                    Lai Châu Sự hùng vĩ của núi rừng Tây Bắc
-                  </h1>
-                  <div className='--des'>
-                    Lai Châu là tỉnh biên giới phía Tây Bắc của Tổ quốc, cách
-                    Thủ đô Hà Nội 385 km về phía Đông Nam. Nơi đây vừa hoang sơ,
-                    đầy thử thách lại có hẳn một thiên đường chạm tới mây trời
-                    cực ấn tượng.{" "}
-                  </div>
-                  <article>
-                    Lai Châu là tỉnh biên giới phía Tây Bắc của Tổ quốc, cách
-                    Thủ đô Hà Nội 385 km về phía Đông Nam. Nơi đây vừa hoang sơ,
-                    đầy thử thách lại có hẳn một thiên đường chạm tới mây trời
-                    cực ấn tượng.{" "}
-                  </article>
-                  <Link href='/Contact'>
+                  <div className='subTitle'>{aboutIntroContent.subTitle}</div>
+                  <h1 className='Title'>{aboutIntroContent.title}</h1>
+                  <div className='--des'>{aboutIntroContent.description}</div>
+                  <article
+                    dangerouslySetInnerHTML={{
+                      __html: aboutIntroContent.content,
+                    }}
+                  ></article>
+                  <Link href={aboutIntroContent.link}>
                     <a className='button_2 button_hover2'>
                       Liên Hệ ngay{" "}
                       <i className='fa-solid ms-2 fa-arrow-right-long'></i>
@@ -82,49 +125,24 @@ const About = (props: AboutProps) => {
               </div>
             </div>
             <div className='list_aboutIntro d-flex'>
-              <div className='--item d-flex'>
-                <div className='--icon'>
-                  <img src={forest.src} alt='' />
+              {listAboutIntro.articles.map((item) => (
+                <div key={uuid()} className='--item d-flex'>
+                  <div className='--icon'>
+                    <img src={item.image.path} alt='' />
+                  </div>
+                  <div className='--txt d-flex flex-column justify-content-center'>
+                    <h4>{item.title}</h4>
+                    <span>{item.subTitle}</span>
+                  </div>
                 </div>
-                <div className='--txt d-flex flex-column justify-content-center'>
-                  <h4>16,284+</h4>
-                  <span>Chuyến du lịch và nghỉ lễ</span>
-                </div>
-              </div>
-              <div className='--item d-flex'>
-                <div className='--icon'>
-                  <img src={forest2.src} alt='' />
-                </div>
-                <div className='--txt d-flex flex-column justify-content-center'>
-                  <h4>16,284+</h4>
-                  <span>Chuyến du lịch và nghỉ lễ</span>
-                </div>
-              </div>
-              <div className='--item d-flex'>
-                <div className='--icon'>
-                  <img src={forest3.src} alt='' />
-                </div>
-                <div className='--txt d-flex flex-column justify-content-center'>
-                  <h4>16,284+</h4>
-                  <span>Chuyến du lịch và nghỉ lễ</span>
-                </div>
-              </div>
-              <div className='--item d-flex'>
-                <div className='--icon'>
-                  <img src={forest4.src} alt='' />
-                </div>
-                <div className='--txt d-flex flex-column justify-content-center'>
-                  <h4>16,284+</h4>
-                  <span>Chuyến du lịch và nghỉ lễ</span>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
         <div className='aboutDiscover'>
           <div className='container-fluid'>
-            <div className='subTitle text-center'>KHám phá Lai Châu</div>
-            <h1 className='Title text-center'>Độc đáo Lai Châu</h1>
+            <div className='subTitle text-center'>{aboutDiscover.subTitle}</div>
+            <h1 className='Title text-center'>{aboutDiscover.title}</h1>
             <Slider
               {...{
                 dots: true,
@@ -145,181 +163,31 @@ const About = (props: AboutProps) => {
               }}
               className='list_aboutDiscover'
             >
-              <div>
-                <div className='--warpper'>
-                  <div className='--item'>
-                    <div className='--img img_hover'>
-                      <img
-                        src='https://s3-alpha-sig.figma.com/img/936a/03f0/14a029a97ca1d1ac5425c55c7e79af87?Expires=1667779200&Signature=MnhOX-tvGHcyi~0gqSrq5c9eKeeGjUYXWa5Z2WGr7Wi95lGMCGTcnLeGfM3L-Q0SgWFy9dkTzHsLDr1EALZlkjZZCQSqdtcR8z9rlQs0ooRL-wBdrBUDjug3qeAK6T1gZCZM1ljNEsumy6JvIr1LaFJ~F~6xORmJ1KS8WJJgetFO6M-J4Fc9tUKBpz37i-JVUf2swa6hqP2X2jWy8PwR211g79avSCUJpePKLs56qi3SixpfzBXkLIW155ibakYVBXzD0UBBF70T~5rSDsinUfdOA98uoBSi01ynW1qLXyTGXjNN58luftqh~V3D-vB1qb7wxjAwWghGLir41jY-qw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
-                        alt=''
-                      />
-                    </div>
-                    <div className='--txt'>
-                      <h4>Món ăn đặc trưng</h4>
-                      <a href=''>
-                        Xem chi tiết
-                        <i className='fa-solid ms-2 fa-arrow-right-long'></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div className='--warpper'>
-                  <div className='--item'>
-                    <div className='--img img_hover'>
-                      <img
-                        src='https://s3-alpha-sig.figma.com/img/936a/03f0/14a029a97ca1d1ac5425c55c7e79af87?Expires=1667779200&Signature=MnhOX-tvGHcyi~0gqSrq5c9eKeeGjUYXWa5Z2WGr7Wi95lGMCGTcnLeGfM3L-Q0SgWFy9dkTzHsLDr1EALZlkjZZCQSqdtcR8z9rlQs0ooRL-wBdrBUDjug3qeAK6T1gZCZM1ljNEsumy6JvIr1LaFJ~F~6xORmJ1KS8WJJgetFO6M-J4Fc9tUKBpz37i-JVUf2swa6hqP2X2jWy8PwR211g79avSCUJpePKLs56qi3SixpfzBXkLIW155ibakYVBXzD0UBBF70T~5rSDsinUfdOA98uoBSi01ynW1qLXyTGXjNN58luftqh~V3D-vB1qb7wxjAwWghGLir41jY-qw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
-                        alt=''
-                      />
-                    </div>
-                    <div className='--txt'>
-                      <h4>Món ăn đặc trưng</h4>
-                      <Link href='/Restaurant'>
-                        <a>
+              {aboutDiscover.articles.map((item) => (
+                <div key={uuid()}>
+                  <div className='--warpper'>
+                    <div className='--item'>
+                      <div className='--img img_hover'>
+                        <img src={item.image.path} alt='' />
+                      </div>
+                      <div className='--txt'>
+                        <h4>{item.title}</h4>
+                        <a href=''>
                           Xem chi tiết
                           <i className='fa-solid ms-2 fa-arrow-right-long'></i>
                         </a>
-                      </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>{" "}
-              <div>
-                <div className='--warpper'>
-                  <div className='--item'>
-                    <div className='--img img_hover'>
-                      <img
-                        src='https://s3-alpha-sig.figma.com/img/936a/03f0/14a029a97ca1d1ac5425c55c7e79af87?Expires=1667779200&Signature=MnhOX-tvGHcyi~0gqSrq5c9eKeeGjUYXWa5Z2WGr7Wi95lGMCGTcnLeGfM3L-Q0SgWFy9dkTzHsLDr1EALZlkjZZCQSqdtcR8z9rlQs0ooRL-wBdrBUDjug3qeAK6T1gZCZM1ljNEsumy6JvIr1LaFJ~F~6xORmJ1KS8WJJgetFO6M-J4Fc9tUKBpz37i-JVUf2swa6hqP2X2jWy8PwR211g79avSCUJpePKLs56qi3SixpfzBXkLIW155ibakYVBXzD0UBBF70T~5rSDsinUfdOA98uoBSi01ynW1qLXyTGXjNN58luftqh~V3D-vB1qb7wxjAwWghGLir41jY-qw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
-                        alt=''
-                      />
-                    </div>
-                    <div className='--txt'>
-                      <h4>Món ăn đặc trưng</h4>
-                      <Link href='/Restaurant'>
-                        <a>
-                          Xem chi tiết
-                          <i className='fa-solid ms-2 fa-arrow-right-long'></i>
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>{" "}
-              <div>
-                <div className='--warpper'>
-                  <div className='--item'>
-                    <div className='--img img_hover'>
-                      <img
-                        src='https://s3-alpha-sig.figma.com/img/936a/03f0/14a029a97ca1d1ac5425c55c7e79af87?Expires=1667779200&Signature=MnhOX-tvGHcyi~0gqSrq5c9eKeeGjUYXWa5Z2WGr7Wi95lGMCGTcnLeGfM3L-Q0SgWFy9dkTzHsLDr1EALZlkjZZCQSqdtcR8z9rlQs0ooRL-wBdrBUDjug3qeAK6T1gZCZM1ljNEsumy6JvIr1LaFJ~F~6xORmJ1KS8WJJgetFO6M-J4Fc9tUKBpz37i-JVUf2swa6hqP2X2jWy8PwR211g79avSCUJpePKLs56qi3SixpfzBXkLIW155ibakYVBXzD0UBBF70T~5rSDsinUfdOA98uoBSi01ynW1qLXyTGXjNN58luftqh~V3D-vB1qb7wxjAwWghGLir41jY-qw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
-                        alt=''
-                      />
-                    </div>
-                    <div className='--txt'>
-                      <h4>Món ăn đặc trưng</h4>
-                      <Link href='/Restaurant'>
-                        <a>
-                          Xem chi tiết
-                          <i className='fa-solid ms-2 fa-arrow-right-long'></i>
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>{" "}
-              <div>
-                <div className='--warpper'>
-                  <div className='--item'>
-                    <div className='--img img_hover'>
-                      <img
-                        src='https://s3-alpha-sig.figma.com/img/936a/03f0/14a029a97ca1d1ac5425c55c7e79af87?Expires=1667779200&Signature=MnhOX-tvGHcyi~0gqSrq5c9eKeeGjUYXWa5Z2WGr7Wi95lGMCGTcnLeGfM3L-Q0SgWFy9dkTzHsLDr1EALZlkjZZCQSqdtcR8z9rlQs0ooRL-wBdrBUDjug3qeAK6T1gZCZM1ljNEsumy6JvIr1LaFJ~F~6xORmJ1KS8WJJgetFO6M-J4Fc9tUKBpz37i-JVUf2swa6hqP2X2jWy8PwR211g79avSCUJpePKLs56qi3SixpfzBXkLIW155ibakYVBXzD0UBBF70T~5rSDsinUfdOA98uoBSi01ynW1qLXyTGXjNN58luftqh~V3D-vB1qb7wxjAwWghGLir41jY-qw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
-                        alt=''
-                      />
-                    </div>
-                    <div className='--txt'>
-                      <h4>Món ăn đặc trưng</h4>
-                      <Link href='/Restaurant'>
-                        <a>
-                          Xem chi tiết
-                          <i className='fa-solid ms-2 fa-arrow-right-long'></i>
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>{" "}
-              <div>
-                <div className='--warpper'>
-                  <div className='--item'>
-                    <div className='--img img_hover'>
-                      <img
-                        src='https://s3-alpha-sig.figma.com/img/936a/03f0/14a029a97ca1d1ac5425c55c7e79af87?Expires=1667779200&Signature=MnhOX-tvGHcyi~0gqSrq5c9eKeeGjUYXWa5Z2WGr7Wi95lGMCGTcnLeGfM3L-Q0SgWFy9dkTzHsLDr1EALZlkjZZCQSqdtcR8z9rlQs0ooRL-wBdrBUDjug3qeAK6T1gZCZM1ljNEsumy6JvIr1LaFJ~F~6xORmJ1KS8WJJgetFO6M-J4Fc9tUKBpz37i-JVUf2swa6hqP2X2jWy8PwR211g79avSCUJpePKLs56qi3SixpfzBXkLIW155ibakYVBXzD0UBBF70T~5rSDsinUfdOA98uoBSi01ynW1qLXyTGXjNN58luftqh~V3D-vB1qb7wxjAwWghGLir41jY-qw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
-                        alt=''
-                      />
-                    </div>
-                    <div className='--txt'>
-                      <h4>Món ăn đặc trưng</h4>
-                      <Link href='/Restaurant'>
-                        <a>
-                          Xem chi tiết
-                          <i className='fa-solid ms-2 fa-arrow-right-long'></i>
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>{" "}
-              <div>
-                <div className='--warpper'>
-                  <div className='--item'>
-                    <div className='--img img_hover'>
-                      <img
-                        src='https://s3-alpha-sig.figma.com/img/936a/03f0/14a029a97ca1d1ac5425c55c7e79af87?Expires=1667779200&Signature=MnhOX-tvGHcyi~0gqSrq5c9eKeeGjUYXWa5Z2WGr7Wi95lGMCGTcnLeGfM3L-Q0SgWFy9dkTzHsLDr1EALZlkjZZCQSqdtcR8z9rlQs0ooRL-wBdrBUDjug3qeAK6T1gZCZM1ljNEsumy6JvIr1LaFJ~F~6xORmJ1KS8WJJgetFO6M-J4Fc9tUKBpz37i-JVUf2swa6hqP2X2jWy8PwR211g79avSCUJpePKLs56qi3SixpfzBXkLIW155ibakYVBXzD0UBBF70T~5rSDsinUfdOA98uoBSi01ynW1qLXyTGXjNN58luftqh~V3D-vB1qb7wxjAwWghGLir41jY-qw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
-                        alt=''
-                      />
-                    </div>
-                    <div className='--txt'>
-                      <h4>Món ăn đặc trưng</h4>
-                      <Link href='/Restaurant'>
-                        <a>
-                          Xem chi tiết
-                          <i className='fa-solid ms-2 fa-arrow-right-long'></i>
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>{" "}
-              <div>
-                <div className='--warpper'>
-                  <div className='--item'>
-                    <div className='--img img_hover'>
-                      <img
-                        src='https://s3-alpha-sig.figma.com/img/936a/03f0/14a029a97ca1d1ac5425c55c7e79af87?Expires=1667779200&Signature=MnhOX-tvGHcyi~0gqSrq5c9eKeeGjUYXWa5Z2WGr7Wi95lGMCGTcnLeGfM3L-Q0SgWFy9dkTzHsLDr1EALZlkjZZCQSqdtcR8z9rlQs0ooRL-wBdrBUDjug3qeAK6T1gZCZM1ljNEsumy6JvIr1LaFJ~F~6xORmJ1KS8WJJgetFO6M-J4Fc9tUKBpz37i-JVUf2swa6hqP2X2jWy8PwR211g79avSCUJpePKLs56qi3SixpfzBXkLIW155ibakYVBXzD0UBBF70T~5rSDsinUfdOA98uoBSi01ynW1qLXyTGXjNN58luftqh~V3D-vB1qb7wxjAwWghGLir41jY-qw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
-                        alt=''
-                      />
-                    </div>
-                    <div className='--txt'>
-                      <h4>Món ăn đặc trưng</h4>
-                      <Link href='/Restaurant'>
-                        <a>
-                          Xem chi tiết
-                          <i className='fa-solid ms-2 fa-arrow-right-long'></i>
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              ))}
             </Slider>
           </div>
         </div>
         <div className='aboutWhy'>
           <div className='container-fluid'>
-            <div className='subTitle text-center'>Tại sao chọn Lai Châu</div>
-            <h1 className='Title text-center'>
-              Những tiện ích khi du lịch Lai Châu đem lại
-            </h1>
+            <div className='subTitle text-center'>{aboutWhy.subTitle}</div>
+            <h1 className='Title text-center'>{aboutWhy.title}</h1>
             <div className='list_Why'>
               <div className='--item'>
                 <div className='--top'>

@@ -577,6 +577,13 @@ const HomeWrapper=styled.div` .homeBanner {
       p {
         font-family: var(--font-Canela);
         margin-bottom: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        /* number of lines to show */
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
 
         &:nth-child(1) {
           font-size: 58px;
@@ -587,6 +594,7 @@ const HomeWrapper=styled.div` .homeBanner {
         &:nth-child(2) {
           font-size: 44px;
           line-height: 46px;
+
         }
       }
     }

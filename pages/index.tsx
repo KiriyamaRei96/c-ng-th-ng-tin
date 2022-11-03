@@ -235,15 +235,15 @@ export default function Home({
               }}
               className='list_homeDiscover'
             >
-              {homeDiscover.relations.map((item) => (
+              {homeDiscover?.relations?.map((item) => (
                 <div key={uuid()}>
                   <div className='--item'>
                     <div className='--img'>
-                      <img src={item.featureImage.path} alt='' />
+                      <img src={item?.featureImage?.path} alt='' />
                     </div>
                     <div className='--txt'>
                       <div className='--subtitle'>
-                        {item.pointType.map((type) => type.title)}
+                        {item?.pointType?.map((type) => type.title)}
                       </div>
                       <h4 className='--name'>{item.title}</h4>
                       <div className='--bot d-flex justify-content-between align-items-end'>
@@ -294,7 +294,7 @@ export default function Home({
               }}
               defaultZoom={12}
             >
-              {homeMap.relations.map((item) => (
+              {homeMap?.relations?.map((item) => (
                 <Marker
                   key={uuid()}
                   lat={item.lat}
@@ -463,11 +463,71 @@ export default function Home({
             <h1 className='Title text-center'>{homeDiscover1.title}</h1>
             <div className='slider_homeDiscover1'>
               <div className='list_homeDiscover1'>
-                <HomeDiscover1
-                  banner={banner}
-                  iconTime={iconTime}
-                  iconMap2={iconMap2}
-                ></HomeDiscover1>
+                <Slider
+                  {...{
+                    dots: true,
+                    infinite: true,
+                    speed: 800,
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    arrows: true,
+
+                    nextArrow: (
+                      <div>
+                        <i className='fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long'></i>
+                      </div>
+                    ),
+                    prevArrow: (
+                      <div>
+                        <i className='fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long'></i>
+                      </div>
+                    ),
+                    responsive: [
+                      {
+                        breakpoint: 768,
+                        settings: {
+                          slidesToShow: 1,
+                          slidesToScroll: 1,
+                        },
+                      },
+                    ],
+                  }}
+                  className='row'
+                >
+                  {homeDiscover1.relations.map((item) => (
+                    <div key={uuid()} className='col-md-3'>
+                      <Link href='/News&Event/News/1'>
+                        <div className='--item'>
+                          <div className='--img img_hover'>
+                            <a href=''>
+                              <img src={item.featureImage.path} alt='' />
+                            </a>
+                          </div>
+                          <div className='--txt'>
+                            <a href=''>
+                              <h4>{item.title}</h4>
+                            </a>
+                            <article>{item.description}</article>
+                            <div className='--bot'>
+                              <div className='--time'>
+                                <div className='--icon'>
+                                  <img src={iconTime.src} alt='' />
+                                </div>
+                                <span>2N1Đ</span>
+                              </div>
+                              <div className='--location'>
+                                <div className='--icon'>
+                                  <img src={iconMap2.src} alt='' />
+                                </div>
+                                <span>{item?.destinationsType?.title}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    </div>
+                  ))}
+                </Slider>
               </div>
               <div className='arrow_homeDiscover1'></div>
             </div>
