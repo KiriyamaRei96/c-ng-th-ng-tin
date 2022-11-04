@@ -9,7 +9,7 @@ import DiscoverWarpper from "./_component/Styled/style";
 import { v4 as uuid } from "uuid";
 import DiscoverSearch from "./_component/DiscoverSearch";
 import { useAppDispatch, useAppSelector } from "../../ReduxStore/hooks";
-import pointSelector from "./_slice/slice";
+import { pointSelector } from "./_slice/slice";
 export async function getServerSideProps() {
   // page
   const page = await callApi
