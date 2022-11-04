@@ -12,4 +12,5 @@ export const pointSlice = createSlice({
     });
   },
 });
-export const pointSelector = (state) => state.point;
+const pointSelector = (state) => state.point;
+export default pointSelector;
