@@ -1,5 +1,5 @@
 import { put, takeLatest } from "redux-saga/effects";
-import callApi from "../../../Api/Axios";
+import callApi from "../../Api/Axios";
 function* getpoints(action) {
   console.log(action);
   try {
