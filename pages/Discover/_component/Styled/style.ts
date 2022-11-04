@@ -118,7 +118,17 @@ const DiscoverWarpper=styled.div` .discoverBanner {
     }
 }
 
+.sliderWarpper {
+    position: relative;
+}
+
 .Slider-action {
+    position: absolute;
+    color: #FFF;
+    bottom: 54px;
+    right: 108px;
+    width: 390px;
+
     .--number {
         font-size: 18px;
         font-weight: 600;
@@ -133,6 +143,7 @@ const DiscoverWarpper=styled.div` .discoverBanner {
 
     .--arrow {
         display: flex;
+        color: #FFF;
 
         i {
             width: 38px;
@@ -147,6 +158,14 @@ const DiscoverWarpper=styled.div` .discoverBanner {
             &.nextarrow {
                 margin-left: 24px;
             }
+        }
+
+        i:hover {
+            color: var(--color-1);
+            border: 1px solid var(--color-1);
+
+
+
         }
     }
 }
@@ -315,6 +334,10 @@ const DiscoverWarpper=styled.div` .discoverBanner {
         .--title {
             margin-bottom: 100px;
             position: relative;
+
+            .Title {
+                width: 55%;
+            }
 
             &::after {
                 content: '';
