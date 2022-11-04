@@ -2,7 +2,7 @@ import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
 // ...
 import createSagaMiddleware from "redux-saga";
-import pointSlice from "../pages/Discover/_slice/slice";
+import { pointSlice } from "../pages/Discover/_slice/slice";
 const sagaMiddleware = createSagaMiddleware();
 import rootSaga from "./rootSaga";
 export const store = configureStore({

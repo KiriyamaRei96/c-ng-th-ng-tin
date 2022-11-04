@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
 
-const pointSlice = createSlice({
+export const pointSlice = createSlice({
   name: "point",
   initialState: {
     pointArr: [],
@@ -21,5 +21,5 @@ const pointSlice = createSlice({
       });
   },
 });
-export default pointSlice;
-export const pointSelector = (state) => state.point;
+const pointSelector = (state) => state.point;
+export default pointSelector;
