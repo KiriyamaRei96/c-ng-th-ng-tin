@@ -4,7 +4,9 @@ import { HYDRATE } from "next-redux-wrapper";
 export const pointSlice = createSlice({
   name: "point",
   initialState: {
+    pagination: {},
     pointArr: [],
+    searchArr: [],
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -17,6 +19,12 @@ export const pointSlice = createSlice({
       })
       .addCase("SET_POINT", (state, action: any) => {
         state.pointArr = action.payload;
+        return state;
+      })
+      .addCase("SET_SEARCH_POINT", (state, action: any) => {
+        state.pagination = action.payload.paginationVariables;
+        state.searchArr = action.payload.data;
+
         return state;
       });
   },

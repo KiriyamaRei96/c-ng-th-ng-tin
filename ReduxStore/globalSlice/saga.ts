@@ -1,11 +1,9 @@
 import { debounce, put, takeLatest } from "redux-saga/effects";
 import callApi from "../../Api/Axios";
-function* getpoints(action) {
+function* getlanguage(action) {
   try {
     const res = yield callApi
-      .get(
-        "/v2/point_list?page=1&limit=100000&order_key=sort&locale=vi&search="
-      )
+      .get("v2/language")
       .then((res) => res.data)
       .catch((err) => console.error(err));
     yield put({ type: "SET_POINT", payload: res.data });
@@ -14,12 +12,10 @@ function* getpoints(action) {
   }
 }
 
-function* searchPoints(action) {
+function* getDistrict(action) {
   try {
     const res = yield callApi
-      .get(
-        `/v2/point_list?page=${action.payload.page}&limit=${action.payload.limit}&order_key=${action.payload.order}&locale=vi&search=${action.payload.search}`
-      )
+      .get(`/api/v2/district/list?locale=vi`)
       .then((res) => res.data)
       .catch((err) => console.error(err));
 
@@ -28,8 +24,8 @@ function* searchPoints(action) {
     console.error(err);
   }
 }
-function* pointSaga() {
-  yield takeLatest("GET_POINT", getpoints);
-  yield takeLatest("SEARCH_POINT", searchPoints);
+function* globalSaga() {
+  yield takeLatest("GET_LANG", getlanguage);
+  yield takeLatest("GET_DISTRICT", getDistrict);
 }
-export default pointSaga;
+export default globalSaga;
