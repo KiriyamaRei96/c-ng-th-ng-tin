@@ -21,5 +21,5 @@ const pointSlice = createSlice({
       });
   },
 });
-export const pointSelector = (state) => state.point;
 export default pointSlice;
+export const pointSelector = (state) => state.point;
