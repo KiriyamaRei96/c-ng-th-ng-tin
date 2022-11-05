@@ -9,7 +9,7 @@ export interface DiscoverItemProps {
 const DiscoverItem = ({ searchArr }: DiscoverItemProps) => {
   return (
     <div className="list_discoverSearch2">
-      {searchArr.map((item) => (
+      {searchArr?.map((item) => (
         <Link key={uuid()} href={`/Discover/${item.id}`}>
           <div className="--item d-flex align-items-center">
             <div className="--img">
