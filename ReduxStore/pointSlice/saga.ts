@@ -13,12 +13,26 @@ function* getpoints(action) {
     console.error(err);
   }
 }
-
-function* searchPoints(action) {
+function* getPointType(action) {
   try {
     const res = yield callApi
       .get(
-        `/v2/point_list?page=${action.payload.page}&limit=${action.payload.limit}&order_key=${action.payload.order}&locale=vi&search=${action.payload.search}`
+        "/v2/pointType/list?locale=vi"
+      )
+      .then((res) => res.data)
+      .catch((err) => console.error(err));
+    yield put({ type: "SET_POINT_TYPE", payload: res.data });
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+function* searchPoints(action) {
+  const data = new URLSearchParams(action.payload).toString();
+  try {
+    const res = yield callApi
+      .get(
+        `/v2/point_list?${data}`
       )
       .then((res) => res.data)
       .catch((err) => console.error(err));
@@ -30,6 +44,8 @@ function* searchPoints(action) {
 }
 function* pointSaga() {
   yield takeLatest("GET_POINT", getpoints);
+  yield takeLatest("GET_POINT_TYPE", getPointType);
+
   yield takeLatest("SEARCH_POINT", searchPoints);
 }
 export default pointSaga;

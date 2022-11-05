@@ -7,6 +7,8 @@ export const pointSlice = createSlice({
     pagination: {},
     pointArr: [],
     searchArr: [],
+    pointType: [],
+
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -19,6 +21,10 @@ export const pointSlice = createSlice({
       })
       .addCase("SET_POINT", (state, action: any) => {
         state.pointArr = action.payload;
+        return state;
+      })
+      .addCase("SET_POINT_TYPE", (state, action: any) => {
+        state.pointType = action.payload;
         return state;
       })
       .addCase("SET_SEARCH_POINT", (state, action: any) => {

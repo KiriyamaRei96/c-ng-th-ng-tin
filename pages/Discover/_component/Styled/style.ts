@@ -570,6 +570,7 @@ const DiscoverWarpper=styled.div` .discoverBanner {
             background: #FFF;
             padding: 16px;
             margin-bottom: 20px;
+            cursor: pointer;
         }
 
         .--img {

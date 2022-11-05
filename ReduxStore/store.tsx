@@ -2,11 +2,12 @@ import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
 // ...
 import createSagaMiddleware from "redux-saga";
+import { globalSlice } from "./globalSlice/slice";
 import { pointSlice } from "./pointSlice/slice";
 const sagaMiddleware = createSagaMiddleware();
 import rootSaga from "./rootSaga";
 export const store = configureStore({
-  reducer: { point: pointSlice.reducer },
+  reducer: { point: pointSlice.reducer, global: globalSlice.reducer },
   middleware: (getDefaultMiddleware) => [sagaMiddleware],
 });
 sagaMiddleware.run(rootSaga);

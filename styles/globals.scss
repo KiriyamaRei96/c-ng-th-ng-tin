@@ -185,8 +185,14 @@ header {
   .language {
     color: #FFF;
 
+    img {
+      width: 25px;
+    }
+
     .select {
       position: relative;
+
+
 
       i {
         position: absolute;

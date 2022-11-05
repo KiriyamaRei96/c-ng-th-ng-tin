@@ -69,6 +69,11 @@ export default function Home({
 }) {
   const sliderRef: any = useRef();
 
+  const handleApiLoaded = (map, maps) => {
+    const bound = new maps.LatLngBounds();
+    console.log(bound);
+  };
+
   const chunkArr = chunk(3, homeNews.relations);
   return (
     <HomeWrapper>
@@ -312,6 +317,9 @@ export default function Home({
                   lng: 105.8380794988938,
                 }}
                 defaultZoom={12}
+                onGoogleApiLoaded={({ map, maps }) =>
+                  handleApiLoaded(map, maps)
+                }
               >
                 {homeMap?.relations?.map((item) => (
                   <Marker

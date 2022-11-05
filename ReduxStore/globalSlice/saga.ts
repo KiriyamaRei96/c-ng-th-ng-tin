@@ -6,7 +6,7 @@ function* getlanguage(action) {
       .get("v2/language")
       .then((res) => res.data)
       .catch((err) => console.error(err));
-    yield put({ type: "SET_POINT", payload: res.data });
+    yield put({ type: "SET_LANG", payload: res.data });
   } catch (err) {
     console.error(err);
   }
@@ -15,11 +15,11 @@ function* getlanguage(action) {
 function* getDistrict(action) {
   try {
     const res = yield callApi
-      .get(`/api/v2/district/list?locale=vi`)
+      .get(`/v2/district/list?locale=vi`)
       .then((res) => res.data)
       .catch((err) => console.error(err));
 
-    yield put({ type: "SET_SEARCH_POINT", payload: res });
+    yield put({ type: "SET_DISTRICT", payload: res.data });
   } catch (err) {
     console.error(err);
   }

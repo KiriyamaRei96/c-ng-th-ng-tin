@@ -4,12 +4,20 @@ import langlogo from "../../pages/_asset/languagevn.svg";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
-
+import { useAppDispatch, useAppSelector } from "../../ReduxStore/hooks";
+import globalSelector, { changeLang } from "../../ReduxStore/globalSlice/slice";
+import { v4 as uuid } from "uuid";
 export interface AppHeaderProps {}
 
 const AppHeader = (props: AppHeaderProps) => {
   const [change, setChange] = useState(false);
   const router = useRouter();
+  const language = useAppSelector(globalSelector).language;
+  const languageArr = useAppSelector(globalSelector).languageArr;
+
+  const districtArr = useAppSelector(globalSelector).districtArr;
+
+  const dispatch = useAppDispatch();
   useEffect(() => {
     window.addEventListener("scroll", (e) => {
       if (window.scrollY >= 100) {
@@ -18,8 +26,18 @@ const AppHeader = (props: AppHeaderProps) => {
         setChange(false);
       }
     });
+    if (languageArr.length === 0) {
+      dispatch({ type: "GET_LANG" });
+    }
+    if (districtArr.length === 0) {
+      dispatch({ type: "GET_DISTRICT" });
+    }
   }, []);
-
+  const languageMap = {
+    vi: "Tiếng Việt",
+    en: "Tiếng Anh",
+    ja: "Tiếng Nhật",
+  };
   return (
     <>
       {Object.keys(router.query).length === 2 ||
@@ -127,11 +145,22 @@ const AppHeader = (props: AppHeaderProps) => {
                   <i className="fa-solid fa-magnifying-glass"></i>
                 </div>
                 <div className="language d-flex">
-                  <Image src={require("../../Asset/languagevn.svg")} alt="" />
+                  <img src={languageArr[language]?.icon} alt="" />
                   <div className="select">
-                    <select className="form-control" name="" id="">
-                      <option value="">Tiếng việt</option>
-                      <option value="">English</option>
+                    <select
+                      value={language}
+                      onChange={(e) => {
+                        dispatch(changeLang(e.target.value));
+                      }}
+                      className="form-control"
+                      name=""
+                      id=""
+                    >
+                      {Object.keys(languageArr)?.map((key) => (
+                        <option key={uuid()} value={key}>
+                          {languageMap[key]}
+                        </option>
+                      ))}
                     </select>
                     <i className="fa-sfa-caret-down"></i>
                   </div>
@@ -248,11 +277,22 @@ const AppHeader = (props: AppHeaderProps) => {
                   <i className="fa-solid fa-magnifying-glass"></i>
                 </div>
                 <div className="language d-flex">
-                  <img src={langlogo.src} alt="" />
+                  <img src={languageArr[language]?.icon} alt="" />
                   <div className="select">
-                    <select className="form-control" name="" id="">
-                      <option value="">Tiếng việt</option>
-                      <option value="">English</option>
+                    <select
+                      value={language}
+                      onChange={(e) => {
+                        dispatch(changeLang(e.target.value));
+                      }}
+                      className="form-control"
+                      name=""
+                      id=""
+                    >
+                      {Object.keys(languageArr)?.map((key) => (
+                        <option key={uuid()} value={key}>
+                          {languageMap[key]}
+                        </option>
+                      ))}
                     </select>
                     <i className="fa-solid fa-caret-down"></i>
                   </div>
