@@ -696,6 +696,20 @@ footer {
   }
 }
 
+.marker-content {
+  flex-direction: column;
+
+  span {
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+
+    object-fit: cover;
+  }
+}
+
 .Banner {
 
   position: relative;

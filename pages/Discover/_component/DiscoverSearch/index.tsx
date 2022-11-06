@@ -1,6 +1,6 @@
 import { Pagination } from "antd";
 import Link from "next/link";
-import React, { memo, useCallback, useEffect, useState } from "react";
+import React, { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../ReduxStore/hooks";
 import pointSelector from "../../../../ReduxStore/pointSlice/slice";
 import { v4 as uuid } from "uuid";
@@ -10,6 +10,7 @@ import useDebounce from "../../../../funcion/debounce";
 import DiscoverCardList from "./component/discoverCard";
 import globalSelector from "../../../../ReduxStore/globalSlice/slice";
 import DiscoverItem from "./component/DiscoverItem";
+import Map from "../../../../components/Map";
 export interface IdiscoverSearchProps {}
 
 const DiscoverSearch = (props: IdiscoverSearchProps) => {
@@ -70,9 +71,9 @@ const DiscoverSearch = (props: IdiscoverSearchProps) => {
     }
   }, [debouncedSearchTerm, limit, district, pointType]);
   const router = useRouter();
-
+  const list: any = useRef();
   return (
-    <div className="discoverSearch">
+    <div ref={list} className="discoverSearch">
       <div className="container-fluid">
         <h1 className="Title">Khám phá địa điểm</h1>
         <div className="filter">
@@ -190,6 +191,12 @@ const DiscoverSearch = (props: IdiscoverSearchProps) => {
             <Pagination
               className="--pagination"
               onChange={(page, size) => {
+                const top = list?.current?.offsetTop;
+                window.scrollTo({
+                  top,
+                  behavior: "smooth",
+                });
+
                 dispatch({
                   type: "SEARCH_POINT",
                   payload: {
@@ -225,15 +232,7 @@ const DiscoverSearch = (props: IdiscoverSearchProps) => {
               </div>
               <div className="col-md-6">
                 <div className="--map">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3986.8466441825976!2d102.23802461470257!3d2.211509298388063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d1f1ccd4f2e3ed%3A0x4a2e89fc42f51eaf!2sBan%20Sin%20Ho%20Trading!5e0!3m2!1svi!2s!4v1666683463879!5m2!1svi!2s"
-                    width="600"
-                    height="450"
-                    style={{ border: "0" }}
-                    // allowFullScreen=""
-                    loading="lazy"
-                    // referrerpolicy="no-referrer-when-downgrade"
-                  ></iframe>
+                  <Map arr={searchArr} height="100%" />
                 </div>
               </div>
             </div>
@@ -244,23 +243,7 @@ const DiscoverSearch = (props: IdiscoverSearchProps) => {
         ) : (
           false
         )}
-        {select === "map" ? (
-          <div className="--tab3">
-            <div className="--map">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3986.8466441825976!2d102.23802461470257!3d2.211509298388063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d1f1ccd4f2e3ed%3A0x4a2e89fc42f51eaf!2sBan%20Sin%20Ho%20Trading!5e0!3m2!1svi!2s!4v1666683463879!5m2!1svi!2s"
-                width="600"
-                height="450"
-                style={{ border: "0" }}
-                // allowFullScreen=""
-                loading="lazy"
-                // referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-          </div>
-        ) : (
-          false
-        )}
+        {select === "map" ? <Map arr={searchArr} height="450px" /> : false}
       </div>
     </div>
   );

@@ -3,11 +3,16 @@ import { createWrapper } from "next-redux-wrapper";
 // ...
 import createSagaMiddleware from "redux-saga";
 import { globalSlice } from "./globalSlice/slice";
+import { newsEventsSlice } from "./newSlice/slice";
 import { pointSlice } from "./pointSlice/slice";
 const sagaMiddleware = createSagaMiddleware();
 import rootSaga from "./rootSaga";
 export const store = configureStore({
-  reducer: { point: pointSlice.reducer, global: globalSlice.reducer },
+  reducer: {
+    point: pointSlice.reducer,
+    global: globalSlice.reducer,
+    newsEvents: newsEventsSlice.reducer,
+  },
   middleware: (getDefaultMiddleware) => [sagaMiddleware],
 });
 sagaMiddleware.run(rootSaga);

@@ -1,11 +1,28 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React from "react";
+import callApi from "../../../Api/Axios";
 import BreadCrumb from "../../../components/BreadCrumb";
 import EventsWrapper from "./_component/styled/stye";
+export async function getServerSideProps(context) {
+  const id = context.query?.index?.replace("detail~", "");
 
-export interface EventDetailsProps {}
+  const res = await callApi
+    .get(`/v2/event_detail/${id}`)
+    .then((res) => res.data)
+    .catch((err) => console.error(err));
+  const data = res.data;
 
-const EventDetails = (props: EventDetailsProps) => {
+  return {
+    props: { data },
+  };
+}
+export interface EventDetailsProps {
+  data: any;
+}
+
+const EventDetails = ({ data }: EventDetailsProps) => {
+  const router = useRouter();
   return (
     <EventsWrapper>
       <div id="detailevent">
@@ -25,42 +42,24 @@ const EventDetails = (props: EventDetailsProps) => {
               <div className="col-md-9">
                 <div className="--left">
                   <div className="subTitle">Chi tiết tin tức</div>
-                  <h2 className="--title">
-                    Cầu Kính Rồng Mây “Kỳ Quan Tiên Cảnh Của Đất Trời Lai Châu”{" "}
-                  </h2>
+                  <h2 className="--title">{data.title}</h2>
                   <div className="--note d-flex">
                     <div className="--item">
                       <span>84 đánh giá</span>
                     </div>
                     <div className="--item">
                       <i className="fa-regular fa-calendar"></i>
-                      <span>01/09/2022</span>
+                      <span>{data.date}</span>
                     </div>
                     <div className="--item">
                       <i className="fa-regular fa-eye"></i>
                       <span>268</span>
                     </div>
                   </div>
-                  <div className="--des">
-                    Cầu kính Rồng Mây được xem là công trình cầu kính cao nhất
-                    Việt Nam tính đến thời điểm hiện tại. Công trình này tọa lạc
-                    trên đỉnh đèo Ô Quy Hồ thuộc địa phận huyện Tam Đường của
-                    tỉnh Lai Châu. Nơi đây còn được mệnh danh là Cổng trời trên
-                    đỉnh Ô Quy Hồ.
-                  </div>
-                  <article>
-                    Chủ tịch UBND tỉnh Quảng Trị Võ Văn Hưng vừa ký quyết định
-                    số 1355/QĐ-UBND ngày 20/5/2022 về việc thành lập Khu công
-                    nghiệp (KCN) Tây Bắc Hồ Xá, huyện Vĩnh Linh, tỉnh Quảng Trị.
-                    Theo đó, KCN Tây Bắc Hồ Xá có diện tích 214,77 ha nằm trên
-                    địa bàn các xã zVĩnh Long và xã Vĩnh Chấp, huyện Vĩnh Linh,
-                    do Công ty cổ phần Quang Anh Quảng Trị làm chủ đầu tư với
-                    tổng vốn đầu tư 925 tỷ đồng. Thời hạn hoạt động của KCN 50
-                    năm kể từ ngày được cấp Quyết định chủ trương đầu tư (từ
-                    ngày 19/3/2021 đến ngày 19/3/2071).
-                  </article>
+                  <div className="--des">{data.description}</div>
+                  <div dangerouslySetInnerHTML={{ __html: data.content }}></div>
                   <div className="--backshare d-flex justify-content-between">
-                    <a href="" className="--back">
+                    <a onClick={() => router.back()} className="--back">
                       <Image src={require("./_asset/icon-back.svg")} alt="" />{" "}
                       Quay lại sự kiện
                     </a>

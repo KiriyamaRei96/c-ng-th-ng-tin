@@ -1,22 +1,24 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import HomeWrapper from "../components/Home/styled";
 import Slider from "react-slick";
 import { v4 as uuid } from "uuid";
 import banner from "./_asset/banner.png";
 import iconMap from "./_asset/icon-map.svg";
 import iconSign from "./_asset/icon-sign.svg";
-import GoogleMapReact from "google-map-react";
 
 import iconTime from "./_asset/icon-time.svg";
 import iconMap2 from "./_asset/icon-map2.svg";
 import partent from "./_asset/partent.png";
 import Link from "next/link";
-import HomeDiscover1 from "../components/Home/HomeDiscover1";
+
 import Image from "next/image";
 import { Radio } from "antd";
 import callApi from "../Api/Axios";
 import { Marker } from "../components/Marker";
 import chunk from "../funcion/chunk";
+import { useAppDispatch, useAppSelector } from "../ReduxStore/hooks";
+import pointSelector from "../ReduxStore/pointSlice/slice";
+import Map from "../components/Map";
 
 export async function getServerSideProps() {
   const res = await callApi
@@ -68,11 +70,15 @@ export default function Home({
   homeDiscover1,
 }) {
   const sliderRef: any = useRef();
-
-  const handleApiLoaded = (map, maps) => {
-    const bound = new maps.LatLngBounds();
-    console.log(bound);
-  };
+  const pointArr = useAppSelector(pointSelector).pointArr;
+  const dispatch = useAppDispatch();
+  const [arr, setArr] = useState([]);
+  useEffect(() => {
+    if (pointArr.length === 0) {
+      dispatch({ type: "GET_POINT" });
+    }
+    setArr(pointArr);
+  }, [pointArr]);
 
   const chunkArr = chunk(3, homeNews.relations);
   return (
@@ -307,35 +313,11 @@ export default function Home({
           <div className="homeMap">
             <div className="subTitle text-center">{homeMap.subTitle}</div>
             <h1 className="Title text-center">{homeMap.title}</h1>
-            <div style={{ width: "100%", height: "450px" }}>
-              <GoogleMapReact
-                bootstrapURLKeys={{
-                  key: process.env.NEXT_PUBLIC_GOOGLE_KEY,
-                }}
-                defaultCenter={{
-                  lat: 21.027105947174572,
-                  lng: 105.8380794988938,
-                }}
-                defaultZoom={12}
-                onGoogleApiLoaded={({ map, maps }) =>
-                  handleApiLoaded(map, maps)
-                }
-              >
-                {homeMap?.relations?.map((item) => (
-                  <Marker
-                    key={uuid()}
-                    lat={item.lat}
-                    lng={item.lng}
-                    child={
-                      <div className="marker-container d-flex">
-                        {/* <div className='--item'></div> */}
-                        <i className="fa-solid fa-location-dot"></i>
-                      </div>
-                    }
-                  ></Marker>
-                ))}
-              </GoogleMapReact>
-            </div>
+            {pointArr.length > 0 ? (
+              <Map height="450px" arr={pointArr} />
+            ) : (
+              false
+            )}
           </div>
         ) : (
           false
@@ -375,7 +357,7 @@ export default function Home({
                     Bản Lao Chải, xã Khun Há, huyện Tam Đường, tỉnh Lai Châu
                   </div>
                   <Link
-                    href={`/News&Event/${homeNews.relations[0].type}/${homeNews.relations[0].id}`}
+                    href={`/News&Event/${homeNews.relations[0].type}/detail~${homeNews.relations[0].id}`}
                   >
                     <a className="--viewdetail">
                       Tìm hiểu thêm
@@ -395,7 +377,6 @@ export default function Home({
                     slidesToShow: 1,
                     slidesToScroll: 1,
                     arrows: false,
-                    fade: true,
 
                     responsive: [
                       {
@@ -414,7 +395,9 @@ export default function Home({
                       {item?.map((news) => (
                         <div key={uuid()} className="--itemNews d-flex">
                           <div className="--img img_hover">
-                            <Link href={`/News&Event/${news.type}/${news.id}`}>
+                            <Link
+                              href={`/News&Event/${news.type}/detail~${news.id}`}
+                            >
                               <a>
                                 <img src={news.featureImage?.path} alt="" />
                               </a>
@@ -424,7 +407,7 @@ export default function Home({
                             <div className="--top">
                               <div className="--cate">{news.type}</div>
                               <Link
-                                href={`/News&Event/${news.type}/${news.id}`}
+                                href={`/News&Event/${news.type}/detail~${news.id}`}
                               >
                                 <a href="">
                                   <h6>{news.title}</h6>
@@ -469,11 +452,6 @@ export default function Home({
                         <label
                           htmlFor={id.toString()}
                           onClick={() => {
-                            console.log(
-                              sliderRef.current.innerSlider.list.querySelector(
-                                ".slick-current"
-                              ).dataset.index
-                            );
                             sliderRef.current?.slickGoTo(id);
                           }}
                         ></label>
@@ -535,7 +513,7 @@ export default function Home({
                   >
                     {homeDiscover1.relations?.map((item) => (
                       <div key={uuid()} className="col-md-3">
-                        <Link href="/News&Event/News/1">
+                        <Link href={`/Tour/${item.id}`}>
                           <div className="--item">
                             <div className="--img img_hover">
                               <a href="">
