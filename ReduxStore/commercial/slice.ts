@@ -6,13 +6,22 @@ export const commercialSlice = createSlice({
   initialState: {
     listType: "",
     pagination: {},
-
+    filter:{},
     searchArr: [],
-    categoryArr: [],
+   
+    restaurantCategory:[],
+    restaurantType:[],
+    hotelType:[],
+    tourType:[],
+    destinationsType:[]
   },
   reducers: {
     setType: (state, action) => {
       state.listType = action.payload;
+    },
+    setFilter: (state, action) => {
+     
+      state.filter = {...state.filter,...action.payload}
     },
   },
   extraReducers: (builder) => {
@@ -29,13 +38,15 @@ export const commercialSlice = createSlice({
         state.pagination = action.payload.paginationVariables;
         return state;
       })
-      .addCase("SET_CATEGORY", (state, action: any) => {
-        state.categoryArr = action.payload.data;
-
+      .addCase('SET_TYPES', (state, action: any) => {
+       
+        Object.keys(action.payload).forEach(item=>
+          state[item]=action.payload[item].data)
         return state;
-      });
+      })
+    
   },
 });
 const commercialSelector = (state) => state.commercial;
-export const { setType } = commercialSlice.actions;
+export const { setType ,setFilter} = commercialSlice.actions;
 export default commercialSelector;

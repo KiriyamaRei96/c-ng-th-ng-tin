@@ -1,5 +1,5 @@
 import { Pagination, Select } from "antd";
-import React, { useEffect, useRef, useState } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 import HotelCard from "../HotelCard";
 import RestaurantCard from "../RestaurantCard";
 import { v4 as uuid } from "uuid";
@@ -16,6 +16,8 @@ const List = (props: ListProps) => {
   const dispatch = useAppDispatch();
   const searchArr = useAppSelector(commercialSelector).searchArr;
   const pagination = useAppSelector(commercialSelector).pagination;
+  const filter = useAppSelector(commercialSelector).filter;
+
   const [page, setPage] = useState<Number>(1);
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("");
@@ -37,33 +39,33 @@ const List = (props: ListProps) => {
         order_key: sort,
       },
     });
-  }, [debouncedSearchTerm, page, sort]);
+  }, [debouncedSearchTerm, page, sort, filter]);
 
   return (
     <>
-      <div ref={list} className='search d-flex'>
-        <div className='--input'>
+      <div ref={list} className="search d-flex">
+        <div className="--input">
           <input
             value={search}
             onChange={(e) => {
               setSearch(e.target.value);
             }}
-            type='text'
-            placeholder='nhập để tìm kiếm'
+            type="text"
+            placeholder="nhập để tìm kiếm"
           />
-          <i className='fa-solid fa-magnifying-glass'></i>
+          <i className="fa-solid fa-magnifying-glass"></i>
         </div>
-        <div className='--select'>
+        <div className="--select">
           <span>Sắp xếp</span>
           <Select
             onChange={(value) => {
               setSort(value);
             }}
-            className='--item'
-            placeholder='Sắp xếp'
+            className="--item"
+            placeholder="Sắp xếp"
           >
-            <Select.Option value='o_creationDate'>Gần nhất</Select.Option>
-            <Select.Option value='sort'>Theo thứ tự</Select.Option>
+            <Select.Option value="o_creationDate">Gần nhất</Select.Option>
+            <Select.Option value="sort">Theo thứ tự</Select.Option>
           </Select>
         </div>
       </div>
@@ -72,7 +74,7 @@ const List = (props: ListProps) => {
       {router.asPath.includes("Restaurant") ? <h2>Nhà hàng nổi bật</h2> : false}
 
       {router.asPath.includes("Tour") ? (
-        <div className='--list --tour'>
+        <div className="--list --tour">
           {searchArr.map((i) => (
             <TourCard
               id={i.id}
@@ -88,9 +90,10 @@ const List = (props: ListProps) => {
         false
       )}
       {router.asPath.includes("Hotel") ? (
-        <div className='--list --Hotel'>
+        <div className="--list --Hotel">
           {searchArr.map((i) => (
             <HotelCard
+              galaley={i.galleries}
               title={i.title}
               address={i.address}
               img={i.featureImage?.path}
@@ -104,7 +107,7 @@ const List = (props: ListProps) => {
         false
       )}
       {router.asPath.includes("Restaurant") ? (
-        <div className='--list --Restaurant'>
+        <div className="--list --Restaurant">
           {searchArr.map((i) => (
             <RestaurantCard
               title={i.title}
@@ -120,13 +123,13 @@ const List = (props: ListProps) => {
         false
       )}
       <Pagination
-        className='--pagination'
+        className="--pagination"
         itemRender={(_, type, originalElement) => {
           if (type === "prev") {
-            return <i className='fa-solid fa-angles-left'></i>;
+            return <i className="fa-solid fa-angles-left"></i>;
           }
           if (type === "next") {
-            return <i className='fa-solid fa-angles-right'></i>;
+            return <i className="fa-solid fa-angles-right"></i>;
           }
           return originalElement;
         }}
@@ -146,4 +149,4 @@ const List = (props: ListProps) => {
     </>
   );
 };
-export default List;
+export default memo(List);
