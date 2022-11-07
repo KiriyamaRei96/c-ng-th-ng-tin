@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import CommercialWrapper from "./_component/_Style/style";
@@ -11,26 +11,29 @@ import HotelCard from "./_component/HotelCard";
 import RestaurantCard from "./_component/RestaurantCard";
 import Slider from "react-slick";
 import callApi from "../../Api/Axios";
+import { useAppDispatch, useAppSelector } from "../../ReduxStore/hooks";
+import commercialSelector from "../../ReduxStore/commercial/slice";
+import List from "./_component/List/List";
 
 export async function getServerSideProps(context) {
-  console.log(context.query);
-  let page;
+  let type;
   switch (context.query.commercial) {
     case "Restaurant":
-      page = await callApi
-        .get("/v2/page/Restaurant?locale=vi")
-        .then((res) => res.data)
-        .catch((err) => console.error(err));
-
+      type = "Restaurant";
       break;
     case "Tour":
-      page = await callApi
-        .get("/v2/page/Tour?locale=vi")
-        .then((res) => res.data)
-        .catch((err) => console.error(err));
+      type = "Tour";
 
       break;
+    case "Hotel":
+      type = "Hotel";
+      break;
   }
+  const page = await callApi
+    .get(`/v2/page/${type}?locale=vi`)
+    .then((res) => res.data)
+    .catch((err) => console.error(err));
+
   const banner =
     (await page?.data?.snippets?.find(
       (item) => item["snippet_name"] === "banner"
@@ -53,15 +56,32 @@ export interface CommercialProps {
 }
 const Commercial = ({ banner, hotMenu }: CommercialProps) => {
   const router = useRouter();
+  const searchArr = useAppSelector(commercialSelector).searchArr;
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    const listType =
+      router.query.commercial === "Restaurant"
+        ? "restaurant_list"
+        : router.query.commercial === "Tour"
+        ? "tour_list"
+        : "hotel_list";
 
-  const testArr = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
+    dispatch({
+      type: "GET_SEARCH_COMMERCIAL",
+      payload: {
+        listType,
+        params: { page: 1, limit: 9 },
+      },
+    });
+  }, [router.query.commercial]);
+
   return (
     <CommercialWrapper>
       <div id='hotel'>
         <div className='Banner d-flex'>
-          <img src={banner.image?.path} alt=''></img>
+          <img src={banner?.image?.path} alt=''></img>
           <div className='--Item'>
-            <h1>{banner.title}</h1>
+            <h1>{banner?.title}</h1>
 
             <BreadCrumb />
           </div>
@@ -84,116 +104,8 @@ const Commercial = ({ banner, hotMenu }: CommercialProps) => {
             ) : (
               false
             )}
-            <div className='search d-flex'>
-              <div className='--input'>
-                <input type='text' placeholder='nhập để tìm kiếm' />
-                <i className='fa-solid fa-magnifying-glass'></i>
-              </div>
-              <div className='--select'>
-                <span>Sắp xếp</span>
-                <Select className='--item' defaultValue={"1"}>
-                  <Select.Option value='1'>Gần nhất</Select.Option>
-                </Select>
-              </div>
-            </div>
+            <List />
 
-            {router.asPath.includes("Tour") ? <h2>Tour nổi bật</h2> : false}
-            {router.asPath.includes("Restaurant") ? (
-              <h2>Nhà hàng nổi bật</h2>
-            ) : (
-              false
-            )}
-
-            {router.asPath.includes("Tour") ? (
-              <div className='--list --tour'>
-                {testArr.map((i) => (
-                  <TourCard key={uuid()} />
-                ))}
-              </div>
-            ) : (
-              false
-            )}
-            {router.asPath.includes("Hotel") ? (
-              <div className='--list --Hotel'>
-                {testArr.map((i) => (
-                  <HotelCard key={uuid()} />
-                ))}
-              </div>
-            ) : (
-              false
-            )}
-            {router.asPath.includes("Restaurant") ? (
-              <div className='--list --Restaurant'>
-                {testArr.map((i) => (
-                  <RestaurantCard key={uuid()} />
-                ))}
-              </div>
-            ) : (
-              false
-            )}
-
-            <Pagination
-              className='--pagination'
-              itemRender={(_, type, originalElement) => {
-                if (type === "prev") {
-                  return <i className='fa-solid fa-angles-left'></i>;
-                }
-                if (type === "next") {
-                  return <i className='fa-solid fa-angles-right'></i>;
-                }
-                return originalElement;
-              }}
-              total={48}
-              pageSize={6}
-            />
-            {router.asPath.includes("Tour") ? (
-              <div className='tour-sliderWarpper'>
-                <h3>Món ăn nổi bật</h3>
-                <Slider
-                  {...{
-                    className: "TourSlider",
-                    dots: true,
-                    infinite: true,
-                    speed: 500,
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    arrows: true,
-                    nextArrow: (
-                      <div>
-                        <i className='fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long'></i>
-                      </div>
-                    ),
-
-                    prevArrow: (
-                      <div>
-                        <i className='fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long'></i>
-                      </div>
-                    ),
-                  }}
-                >
-                  <div className='--warpper'>
-                    <TourCard key={uuid()} />
-                  </div>
-                  <div className='--warpper'>
-                    <TourCard key={uuid()} />
-                  </div>
-                  <div className='--warpper'>
-                    <TourCard key={uuid()} />
-                  </div>
-                  <div className='--warpper'>
-                    <TourCard key={uuid()} />
-                  </div>
-                  <div className='--warpper'>
-                    <TourCard key={uuid()} />
-                  </div>
-                  <div className='--warpper'>
-                    <TourCard key={uuid()} />
-                  </div>
-                </Slider>
-              </div>
-            ) : (
-              false
-            )}
             {router.asPath.includes("Hotel") ? (
               <div className='Hotel-sliderWarpper'>
                 <h3>Các điểm đến ưa chuộng</h3>
