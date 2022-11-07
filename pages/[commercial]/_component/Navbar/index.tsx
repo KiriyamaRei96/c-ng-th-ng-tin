@@ -1,12 +1,15 @@
 import { Tag } from "antd";
 import { useRouter } from "next/router";
 import React from "react";
+import globalSelector from "../../../../ReduxStore/globalSlice/slice";
+import { useAppDispatch, useAppSelector } from "../../../../ReduxStore/hooks";
 import OptionGroup from "./component/OptionGroup";
 
 export interface NavbarProps {}
 
 const Navbar = (props: NavbarProps) => {
   const router = useRouter();
+  const districtArr = useAppSelector(globalSelector).districtArr;
   return (
     <div className='--navBar'>
       {router.asPath.includes("Hotel") ? (
@@ -44,24 +47,10 @@ const Navbar = (props: NavbarProps) => {
         <OptionGroup
           title={"Khu vực"}
           optionType={"select"}
-          optionArray={[
-            {
-              title: "option 1",
-              active: true,
-            },
-            {
-              title: "option 2",
-              active: true,
-            },
-            {
-              title: "option 3",
-              active: true,
-            },
-            {
-              title: "option 4",
-              active: true,
-            },
-          ]}
+          optionArray={districtArr.map((item) => ({
+            title: item.title,
+            value: item.id,
+          }))}
         />
         <OptionGroup
           title={"Loại hình"}

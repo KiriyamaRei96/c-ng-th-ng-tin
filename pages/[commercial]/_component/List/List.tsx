@@ -1,27 +1,47 @@
 import { Pagination, Select } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import HotelCard from "../HotelCard";
 import RestaurantCard from "../RestaurantCard";
 import { v4 as uuid } from "uuid";
 import { useRouter } from "next/router";
 import TourCard from "../TourCard";
 import commercialSelector from "../../../../ReduxStore/commercial/slice";
-import { useAppSelector } from "../../../../ReduxStore/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../ReduxStore/hooks";
+import useDebounce from "../../../../funcion/debounce";
 
 export interface ListProps {}
 
 const List = (props: ListProps) => {
   const router = useRouter();
-
+  const dispatch = useAppDispatch();
   const searchArr = useAppSelector(commercialSelector).searchArr;
   const pagination = useAppSelector(commercialSelector).pagination;
   const [page, setPage] = useState<Number>(1);
   const [search, setSearch] = useState("");
+  const [sort, setSort] = useState("");
+  const debouncedSearchTerm = useDebounce(search, 500);
+  const list: any = useRef();
 
-  
+  useEffect(() => {
+    setPage(1);
+    setSearch("");
+    setSort("");
+  }, [router.query.commercial]);
+  useEffect(() => {
+    dispatch({
+      type: "GET_SEARCH_COMMERCIAL",
+      payload: {
+        limit: 9,
+        page,
+        search,
+        order_key: sort,
+      },
+    });
+  }, [debouncedSearchTerm, page, sort]);
+
   return (
     <>
-      <div className='search d-flex'>
+      <div ref={list} className='search d-flex'>
         <div className='--input'>
           <input
             value={search}
@@ -35,8 +55,15 @@ const List = (props: ListProps) => {
         </div>
         <div className='--select'>
           <span>Sắp xếp</span>
-          <Select className='--item' defaultValue={"1"}>
-            <Select.Option value='1'>Gần nhất</Select.Option>
+          <Select
+            onChange={(value) => {
+              setSort(value);
+            }}
+            className='--item'
+            placeholder='Sắp xếp'
+          >
+            <Select.Option value='o_creationDate'>Gần nhất</Select.Option>
+            <Select.Option value='sort'>Theo thứ tự</Select.Option>
           </Select>
         </div>
       </div>
@@ -63,7 +90,14 @@ const List = (props: ListProps) => {
       {router.asPath.includes("Hotel") ? (
         <div className='--list --Hotel'>
           {searchArr.map((i) => (
-            <HotelCard key={uuid()} />
+            <HotelCard
+              title={i.title}
+              address={i.address}
+              img={i.featureImage?.path}
+              id={i.id}
+              key={uuid()}
+              rate={i.star}
+            />
           ))}
         </div>
       ) : (
@@ -97,6 +131,12 @@ const List = (props: ListProps) => {
           return originalElement;
         }}
         onChange={(e) => {
+          const top = list?.current?.offsetTop;
+          window.scrollTo({
+            top,
+            behavior: "smooth",
+          });
+
           setPage(e);
         }}
         current={pagination.current}

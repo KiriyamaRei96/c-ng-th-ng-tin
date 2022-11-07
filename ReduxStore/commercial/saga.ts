@@ -1,10 +1,12 @@
-import { debounce, put, takeLatest } from "redux-saga/effects";
+import { debounce, put, select, takeLatest } from "redux-saga/effects";
 import callApi from "../../Api/Axios";
 function* searchCommercial(action) {
+  const state = yield select();
+  const listType = state.commercial.listType;
   try {
-    const params = new URLSearchParams(action.payload.params).toString();
+    const params = new URLSearchParams(action.payload).toString();
     const res = yield callApi
-      .get(`/v2/${action.payload.listType}?${params}`)
+      .get(`/v2/${listType}?${params}`)
       .then((res) => res.data)
       .catch((err) => console.error(err));
 

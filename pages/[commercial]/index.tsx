@@ -12,7 +12,7 @@ import RestaurantCard from "./_component/RestaurantCard";
 import Slider from "react-slick";
 import callApi from "../../Api/Axios";
 import { useAppDispatch, useAppSelector } from "../../ReduxStore/hooks";
-import commercialSelector from "../../ReduxStore/commercial/slice";
+import commercialSelector, { setType } from "../../ReduxStore/commercial/slice";
 import List from "./_component/List/List";
 
 export async function getServerSideProps(context) {
@@ -65,12 +65,12 @@ const Commercial = ({ banner, hotMenu }: CommercialProps) => {
         : router.query.commercial === "Tour"
         ? "tour_list"
         : "hotel_list";
-
+    dispatch(setType(listType));
     dispatch({
       type: "GET_SEARCH_COMMERCIAL",
       payload: {
-        listType,
-        params: { page: 1, limit: 9 },
+        page: 1,
+        limit: 9,
       },
     });
   }, [router.query.commercial]);
