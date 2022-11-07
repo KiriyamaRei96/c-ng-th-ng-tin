@@ -19,25 +19,17 @@ const Map = ({ arr, height }: MapProps) => {
 
       //extend the bounds to include each marker's position
       bounds.extend(marker.position);
-      console.log(arr[i].title);
-      const contentElemnt = ` <div
-      class='marker-content d-flex'>
-      <img src='${arr[i].featureImage.path}'></img>
-          <span>${arr[i].title}</span> 
-        </div>`;
-      var infowindow = new maps.InfoWindow({
-        content: contentElemnt,
-        maxWidth: 160,
-      });
-      infowindow.open(map, marker);
+
       maps.event.addListener(
         marker,
         "click",
         (function (marker, i) {
           return function () {
-            const contentElemnt = ` <div>
-            <span>${arr[i].title}</span> 
-          </div>`;
+            const contentElemnt = ` <div
+            class='marker-content d-flex'>
+            <img src='${arr[i].featureImage.path}'></img>
+                <span>${arr[i].title}</span> 
+              </div>`;
             var infowindow = new maps.InfoWindow({
               content: contentElemnt,
               maxWidth: 160,

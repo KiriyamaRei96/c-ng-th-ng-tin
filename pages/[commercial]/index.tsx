@@ -10,40 +10,58 @@ import { v4 as uuid } from "uuid";
 import HotelCard from "./_component/HotelCard";
 import RestaurantCard from "./_component/RestaurantCard";
 import Slider from "react-slick";
-export interface HotelProps {}
+import callApi from "../../Api/Axios";
 
-// export async function getStaticPaths() {
-//   return {
-//     paths: [
-//       { params: { commercial: "Hotel" } },
-//       { params: { commercial: "Tour" } },
-//       { params: { commercial: "Restaurant" } },
-//     ],
-//     fallback: false, // can also be true or 'blocking'
-//   };
-// }
-// export async function getStaticProps(context) {
-//   return {
-//     // Passed to the page component as props
-//     props: {},
-//   };
-// }
-export default function Hotel(props: HotelProps) {
+export async function getServerSideProps(context) {
+  console.log(context.query);
+  let page;
+  switch (context.query.commercial) {
+    case "Restaurant":
+      page = await callApi
+        .get("/v2/page/Restaurant?locale=vi")
+        .then((res) => res.data)
+        .catch((err) => console.error(err));
+
+      break;
+    case "Tour":
+      page = await callApi
+        .get("/v2/page/Tour?locale=vi")
+        .then((res) => res.data)
+        .catch((err) => console.error(err));
+
+      break;
+  }
+  const banner =
+    (await page?.data?.snippets?.find(
+      (item) => item["snippet_name"] === "banner"
+    )) || null;
+  const hotMenu =
+    (await page?.data?.snippets?.find(
+      (item) => item["snippet_name"] === "hotMenu"
+    )) || null;
+
+  return {
+    props: {
+      banner,
+      hotMenu,
+    },
+  };
+}
+export interface CommercialProps {
+  banner: any;
+  hotMenu?: any;
+}
+const Commercial = ({ banner, hotMenu }: CommercialProps) => {
   const router = useRouter();
-  console.log(router.asPath);
+
   const testArr = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
   return (
     <CommercialWrapper>
       <div id='hotel'>
         <div className='Banner d-flex'>
-          <img
-            src='https://s3-alpha-sig.figma.com/img/d8ac/63e6/03b01bdd9c92c6ccc3fe3f2d56f90502?Expires=1667779200&Signature=Rnbo00VPHCwYeRxdp3xCXeVCoWRHtSpYT2m5mHgBmB5Olf3P-5cDGXuj0mvU~j9F-BhXq9~oxYiosMBFAFvGeq~iIG0Em625jWr-MmAoQRs-gL2Ek9ncnv9~pU~cfQOlTGC1Yc7TKNf5BRteRog8tLoryJFz6q~6JVkiMwpUt9PH4M3Gx~PfWTJO0A5iwVrvaVz9QPZ2fHMuXLMIqTuaEnjIuealoaSn42v3ipIbi15H~3xOs-08OC~BC5TIfvelayGWHpCxFMBOxzpBwCWH-4lY26cLSpNk7FARDxknFh2g7-d5OASdmsuLj9FRnsy-Ge6UtRNMqNd5cY8XlaXQDg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
-            alt=''
-          ></img>
+          <img src={banner.image?.path} alt=''></img>
           <div className='--Item'>
-            {router.asPath.includes("Tour") ? <h1>Lữ Hành</h1> : false}
-            {router.asPath.includes("Hotel") ? <h1>Lưu Trú</h1> : false}
-            {router.asPath.includes("Restaurant") ? <h1>Ẩm Thực</h1> : false}
+            <h1>{banner.title}</h1>
 
             <BreadCrumb />
           </div>
@@ -51,45 +69,16 @@ export default function Hotel(props: HotelProps) {
         <div className='pageBody'>
           <Navbar />
           <div className='--content'>
-            {router.asPath.includes("Restaurant") ? (
+            {hotMenu ? (
               <div className='hot-menu'>
-                <h2>Món ăn nổi bật</h2>
+                <h2>{hotMenu.title}</h2>
                 <div className='d-flex'>
-                  <div>
-                    <img
-                      src='https://s3-alpha-sig.figma.com/img/fd5e/89a0/5d7f7dfbb4c51cca38c7ec1b7ccff056?Expires=1667779200&Signature=OULLwAAGKVAus5nivdwhH8LQtiu0RxmSP~pCDEEoS5E4gCF05OGNRrvarJAYYm01vaZLMd-IYSyVQylupitAKFXD1AIJ1PYWCjv3XBydJY2BFAcaX4jgiuEGOCbBZEcow6FC~Rn9RggPWdb2hvZPjTQQ12WeIeelSFy5wV4xtaeVQKLopkDxthC9-Fsk9eUnX66ILUdANP2wNXD--JVLjg062cq9GePG1wi2Ys4Wd9Tcy5A3Ka3ne~tHpo~Pn-Y3aK0LY-sQEQFwWmzcnNVLohUcRGv9BLtMnEqpI4CwaW-mUwClsHeBKaHEOe9l9zS0tmbI7BSBvR2ZtXLyLrD0jQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
-                      alt=''
-                    />
-                    <span>Món nhật</span>
-                  </div>
-                  <div>
-                    <img
-                      src='https://s3-alpha-sig.figma.com/img/fd5e/89a0/5d7f7dfbb4c51cca38c7ec1b7ccff056?Expires=1667779200&Signature=OULLwAAGKVAus5nivdwhH8LQtiu0RxmSP~pCDEEoS5E4gCF05OGNRrvarJAYYm01vaZLMd-IYSyVQylupitAKFXD1AIJ1PYWCjv3XBydJY2BFAcaX4jgiuEGOCbBZEcow6FC~Rn9RggPWdb2hvZPjTQQ12WeIeelSFy5wV4xtaeVQKLopkDxthC9-Fsk9eUnX66ILUdANP2wNXD--JVLjg062cq9GePG1wi2Ys4Wd9Tcy5A3Ka3ne~tHpo~Pn-Y3aK0LY-sQEQFwWmzcnNVLohUcRGv9BLtMnEqpI4CwaW-mUwClsHeBKaHEOe9l9zS0tmbI7BSBvR2ZtXLyLrD0jQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
-                      alt=''
-                    />
-                    <span>Món nhật</span>
-                  </div>
-                  <div>
-                    <img
-                      src='https://s3-alpha-sig.figma.com/img/fd5e/89a0/5d7f7dfbb4c51cca38c7ec1b7ccff056?Expires=1667779200&Signature=OULLwAAGKVAus5nivdwhH8LQtiu0RxmSP~pCDEEoS5E4gCF05OGNRrvarJAYYm01vaZLMd-IYSyVQylupitAKFXD1AIJ1PYWCjv3XBydJY2BFAcaX4jgiuEGOCbBZEcow6FC~Rn9RggPWdb2hvZPjTQQ12WeIeelSFy5wV4xtaeVQKLopkDxthC9-Fsk9eUnX66ILUdANP2wNXD--JVLjg062cq9GePG1wi2Ys4Wd9Tcy5A3Ka3ne~tHpo~Pn-Y3aK0LY-sQEQFwWmzcnNVLohUcRGv9BLtMnEqpI4CwaW-mUwClsHeBKaHEOe9l9zS0tmbI7BSBvR2ZtXLyLrD0jQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
-                      alt=''
-                    />
-                    <span>Món nhật</span>
-                  </div>
-                  <div>
-                    <img
-                      src='https://s3-alpha-sig.figma.com/img/fd5e/89a0/5d7f7dfbb4c51cca38c7ec1b7ccff056?Expires=1667779200&Signature=OULLwAAGKVAus5nivdwhH8LQtiu0RxmSP~pCDEEoS5E4gCF05OGNRrvarJAYYm01vaZLMd-IYSyVQylupitAKFXD1AIJ1PYWCjv3XBydJY2BFAcaX4jgiuEGOCbBZEcow6FC~Rn9RggPWdb2hvZPjTQQ12WeIeelSFy5wV4xtaeVQKLopkDxthC9-Fsk9eUnX66ILUdANP2wNXD--JVLjg062cq9GePG1wi2Ys4Wd9Tcy5A3Ka3ne~tHpo~Pn-Y3aK0LY-sQEQFwWmzcnNVLohUcRGv9BLtMnEqpI4CwaW-mUwClsHeBKaHEOe9l9zS0tmbI7BSBvR2ZtXLyLrD0jQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
-                      alt=''
-                    />
-                    <span>Món nhật</span>
-                  </div>
-                  <div>
-                    <img
-                      src='https://s3-alpha-sig.figma.com/img/fd5e/89a0/5d7f7dfbb4c51cca38c7ec1b7ccff056?Expires=1667779200&Signature=OULLwAAGKVAus5nivdwhH8LQtiu0RxmSP~pCDEEoS5E4gCF05OGNRrvarJAYYm01vaZLMd-IYSyVQylupitAKFXD1AIJ1PYWCjv3XBydJY2BFAcaX4jgiuEGOCbBZEcow6FC~Rn9RggPWdb2hvZPjTQQ12WeIeelSFy5wV4xtaeVQKLopkDxthC9-Fsk9eUnX66ILUdANP2wNXD--JVLjg062cq9GePG1wi2Ys4Wd9Tcy5A3Ka3ne~tHpo~Pn-Y3aK0LY-sQEQFwWmzcnNVLohUcRGv9BLtMnEqpI4CwaW-mUwClsHeBKaHEOe9l9zS0tmbI7BSBvR2ZtXLyLrD0jQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
-                      alt=''
-                    />
-                    <span>Món nhật</span>
-                  </div>
+                  {hotMenu?.articles?.map((item) => (
+                    <div key={uuid()}>
+                      <img src={item?.image?.path} alt='' />
+                      <span>{item?.title}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             ) : (
@@ -304,4 +293,5 @@ export default function Hotel(props: HotelProps) {
       </div>
     </CommercialWrapper>
   );
-}
+};
+export default Commercial;
