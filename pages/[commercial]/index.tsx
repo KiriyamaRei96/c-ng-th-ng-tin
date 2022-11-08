@@ -49,19 +49,35 @@ export async function getServerSideProps(context) {
     (await page?.data?.snippets?.find(
       (item) => item["snippet_name"] === "navBar"
     )) || null;
-
+  const hotTour =
+    (await page?.data?.snippets?.find(
+      (item) => item["snippet_name"] === "hotTour"
+    )) || null;
+  const hotPoint =
+    (await page?.data?.snippets?.find(
+      (item) => item["snippet_name"] === "hotPoint"
+    )) || null;
   return {
     props: {
       banner,
       hotMenu,
+      hotTour,
+      hotPoint,
     },
   };
 }
 export interface CommercialProps {
   banner: any;
   hotMenu?: any;
+  hotTour?: any;
+  hotPoint?: any;
 }
-const Commercial = ({ banner, hotMenu }: CommercialProps) => {
+const Commercial = ({
+  banner,
+  hotMenu,
+  hotTour,
+  hotPoint,
+}: CommercialProps) => {
   const router = useRouter();
   const searchArr = useAppSelector(commercialSelector).searchArr;
   const dispatch = useAppDispatch();
@@ -117,9 +133,9 @@ const Commercial = ({ banner, hotMenu }: CommercialProps) => {
             )}
             <List />
 
-            {router.asPath.includes("Hotel") ? (
+            {hotPoint ? (
               <div className='Hotel-sliderWarpper'>
-                <h3>Các điểm đến ưa chuộng</h3>
+                <h3>{hotPoint.title}</h3>
                 <Slider
                   {...{
                     className: "HotelSlider",
@@ -131,81 +147,60 @@ const Commercial = ({ banner, hotMenu }: CommercialProps) => {
                     arrows: false,
                   }}
                 >
-                  <div className='--warpper'>
-                    <div className='placeCard d-flex'>
-                      <img
-                        src='https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
-                        alt=''
-                      />
-                      <h4>Bạch Mộc Lương Tử</h4>
-                      <span>
-                        Đỉnh Bạch Mộc Lương Tử thuộc địa phận xã Sin Suối Hồ,
-                        huyện Phong Thổ. Với độ cao 3.045m so với mực nước biển,
-                        Bạch Mộc Lương Tử là một trong năm ngọn núi cao nhất
-                      </span>
-                      <Link href='/Discover/1'>Tìm hiểu thêm</Link>
+                  {hotPoint?.relations?.map((item) => (
+                    <div key={uuid()} className='--warpper'>
+                      <div className='placeCard d-flex'>
+                        <img src={item.featureImage?.path} alt='' />
+                        <h4>{item.tilte}</h4>
+                        <span>{item.highlights}</span>
+                        <Link href='/Discover/1'>Tìm hiểu thêm</Link>
+                      </div>
                     </div>
-                  </div>{" "}
-                  <div className='--warpper'>
-                    <div className='placeCard d-flex'>
-                      <img
-                        src='https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
-                        alt=''
+                  ))}
+                </Slider>
+              </div>
+            ) : (
+              false
+            )}
+            {hotTour ? (
+              <div className='tour-sliderWarpper'>
+                <h3>{hotTour.title}</h3>
+                <Slider
+                  {...{
+                    className: "TourSlider",
+                    dots: true,
+                    infinite: true,
+                    speed: 500,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    arrows: true,
+                    nextArrow: (
+                      <div>
+                        <i className='fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long'></i>
+                      </div>
+                    ),
+
+                    prevArrow: (
+                      <div>
+                        <i className='fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long'></i>
+                      </div>
+                    ),
+                  }}
+                >
+                  {hotTour.relations?.map((item) => (
+                    <div key={uuid()} className='--warpper'>
+                      <TourCard
+                        id={item.id}
+                        img={item.featureImage?.path}
+                        key={uuid()}
+                        tilte={item.title}
+                        plan={
+                          item.plan ? item.plan : "Chưa có kế hoạch du lịch"
+                        }
+                        pointCategory={item.destinationsType.title}
                       />
-                      <h4>Bạch Mộc Lương Tử</h4>
-                      <span>
-                        Đỉnh Bạch Mộc Lương Tử thuộc địa phận xã Sin Suối Hồ,
-                        huyện Phong Thổ. Với độ cao 3.045m so với mực nước biển,
-                        Bạch Mộc Lương Tử là một trong năm ngọn núi cao nhất
-                      </span>
-                      <Link href='/Discover/1'>Tìm hiểu thêm</Link>
                     </div>
-                  </div>{" "}
-                  <div className='--warpper'>
-                    <div className='placeCard d-flex'>
-                      <img
-                        src='https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
-                        alt=''
-                      />
-                      <h4>Bạch Mộc Lương Tử</h4>
-                      <span>
-                        Đỉnh Bạch Mộc Lương Tử thuộc địa phận xã Sin Suối Hồ,
-                        huyện Phong Thổ. Với độ cao 3.045m so với mực nước biển,
-                        Bạch Mộc Lương Tử là một trong năm ngọn núi cao nhất
-                      </span>
-                      <Link href='/Discover/1'>Tìm hiểu thêm</Link>
-                    </div>
-                  </div>{" "}
-                  <div className='--warpper'>
-                    <div className='placeCard d-flex'>
-                      <img
-                        src='https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
-                        alt=''
-                      />
-                      <h4>Bạch Mộc Lương Tử</h4>
-                      <span>
-                        Đỉnh Bạch Mộc Lương Tử thuộc địa phận xã Sin Suối Hồ,
-                        huyện Phong Thổ. Với độ cao 3.045m so với mực nước biển,
-                        Bạch Mộc Lương Tử là một trong năm ngọn núi cao nhất
-                      </span>
-                      <Link href='/Discover/1'>Tìm hiểu thêm</Link>
-                    </div>
-                  </div>{" "}
-                  <div className='--warpper'>
-                    <div className='placeCard d-flex'>
-                      <img
-                        src='https://s3-alpha-sig.figma.com/img/3ea9/7bc7/7bea6167027c880272921aea3b476602?Expires=1667779200&Signature=Kw~u8tpZjZH~EaPL2xmG003mmJ3bCkCMJQcCJ86Rer48khtBQl7-N1zRBwTZRtB44QD-IT2pvm1NvzGrK29rigfGlyukWH2OGkQqxPfztMooHPxEfCjNjEBC67yJf4~G4firV2FGPTBYo1DkcpQafrN6VtP5QjTy-MIgo9c1-DYEeTT4lNSwjmBZ8IOqvoawMthD0HYmgNbCfoI7Z5Wdp8Ux8FPAlT2tTh-HexRZVAoiQf3WFN7Yis9ecKNH4Y1NIyBfbP6ITisI89lRF-3TIAcCiyqfPwQy~CCV1-YO1ekD9lKlh9aBw0o8JjEQrh6FFyRv1JZTnHt~lKfgo5qyeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
-                        alt=''
-                      />
-                      <h4>Bạch Mộc Lương Tử</h4>
-                      <span>
-                        Đỉnh Bạch Mộc Lương Tử thuộc địa phận xã Sin Suối Hồ,
-                        huyện Phong Thổ. Với độ cao 3.045m so với mực nước biển,
-                        Bạch Mộc Lương Tử là một trong năm ngọn núi cao nhất
-                      </span>
-                      <Link href='/Discover/1'>Tìm hiểu thêm</Link>
-                    </div>
-                  </div>
+                  ))}
                 </Slider>
               </div>
             ) : (
