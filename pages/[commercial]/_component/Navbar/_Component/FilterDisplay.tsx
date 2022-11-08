@@ -33,7 +33,7 @@ const FilterBox = ({ allFilter }: FilterDisplayProps) => {
         </button>
       </div>
       <div className='d-flex --list'>
-        {allFilter.map((item) => {
+        {allFilter?.map((item) => {
           if (idArr.includes(item.id)) {
             return (
               <Tag
@@ -45,7 +45,6 @@ const FilterBox = ({ allFilter }: FilterDisplayProps) => {
                     } else output[key] = "";
                   });
                   dispatch(setFilter(output));
-                  console.log(output);
                 }}
                 key={uuid()}
                 className=' filterItem'
