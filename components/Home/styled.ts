@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-const HomeWrapper=styled.div` .homeBanner {
+const HomeWrapper=styled.div` 
+.homeBanner {
   .--background {
     width: 100%;
     height: 100vh;
@@ -24,7 +25,6 @@ const HomeWrapper=styled.div` .homeBanner {
       object-fit: cover;
     }
   }
-
   .--txt {
     position: absolute;
     top: 50%;
@@ -89,66 +89,6 @@ const HomeWrapper=styled.div` .homeBanner {
       }
     }
   }
-
-  .social {
-    position: fixed;
-    bottom: 40px;
-    right: 36px;
-    display: flex;
-    flex-flow: column;
-    z-index: 99;
-
-    a {
-      background: #FFF;
-      position: relative;
-      text-decoration: none;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      margin-bottom: 8px;
-      color: var(--color-1);
-      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-
-      &:nth-child(3) {
-        animation: phonering-alo-circle-img-anim 1s infinite ease-in-out;
-      }
-    }
-  }
-
-  @-webkit-keyframes phonering-alo-circle-img-anim {
-    0% {
-      -webkit-transform: rotate(0) scale(1) skew(1deg);
-    }
-
-    10% {
-      -webkit-transform: rotate(-25deg) scale(1) skew(1deg);
-    }
-
-    20% {
-      -webkit-transform: rotate(25deg) scale(1) skew(1deg);
-    }
-
-    30% {
-      -webkit-transform: rotate(-25deg) scale(1) skew(1deg);
-    }
-
-    40% {
-      -webkit-transform: rotate(25deg) scale(1) skew(1deg);
-    }
-
-    50% {
-      -webkit-transform: rotate(0) scale(1) skew(1deg);
-    }
-
-    100% {
-      -webkit-transform: rotate(0) scale(1) skew(1deg);
-    }
-  }
-
   .filter {
     display: flex;
     filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.05));
@@ -234,6 +174,51 @@ const HomeWrapper=styled.div` .homeBanner {
       }
     }
   }
+  @media (max-width: 768px){
+    position: relative;
+    margin-top:74px ;
+    padding: 60px 0 0;
+    .--background{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: calc(100% - 148px);
+    }
+    .--txt{
+      position: relative;
+      top: unset;
+      left: unset;
+      transform: none;
+      margin-bottom: 3rem;
+      width: 100%;
+      .--name{
+        font-size: 48px;
+        line-height: 1;
+      }
+      .--des{
+        font-size: 36px;
+        line-height: 1.2;
+        margin: 1rem 0 .5rem;
+      }
+      span{
+        margin-bottom: 1.5rem;
+      }
+    }
+    .filter{
+      flex-flow: column;
+      margin-top: 0;
+      .form-group{
+        width: 100% !important;
+        border-bottom:1px solid #e9e9e9 ;
+        border-right:unset ;
+        padding: 0 16px;
+        &:last-child{
+          border: none;
+        }
+      }
+    }
+  }
 }
 
 .homeIntro {
@@ -241,10 +226,11 @@ const HomeWrapper=styled.div` .homeBanner {
 
   .--left {
     width: 100%;
-
+    height: 350px;
     img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
     }
   }
 
@@ -341,12 +327,53 @@ const HomeWrapper=styled.div` .homeBanner {
       }
     }
   }
+  @media (max-width: 768px){
+    padding: 3rem 0;
+    .--left{
+      height: 220px;
+    }
+    .--right{
+      padding-left: 0;
+      padding-top: 16px;
+      .--des{
+        padding-left: 0;
+        margin-top: 0;
+        &::before{
+          display: none;
+        }
+      }
+      ul{
+        padding-left: 0;
+      }
+      a{
+        margin-left: 0;
+        margin-top: 1.5rem;
+      }
+    }
+    .list_homeIntro {
+      padding-top: 3rem; 
+      flex-flow: column; 
+      .--item{
+        width: 100%;
+        padding: 0;
+        margin-top: 0 !important;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom:1px solid #e9e9e9 !important ;
+        border-right:unset ;
+        &:last-child{
+          border-bottom:none!important;
+          margin-bottom: 0;
+          padding-bottom: 0;
+        }
+      }
+    }
+  }
 }
 
 .homeDiscover {
   background: #f6f8fb;
   padding: 100px 0;
-
   .list_homeDiscover {
     margin-top: 60px;
 
@@ -472,32 +499,67 @@ const HomeWrapper=styled.div` .homeBanner {
       }
     }
   }
-
   .--viewall {
     margin: 60px auto 0;
+  }
+  @media (max-width: 768px){
+    padding: 3rem 0;
+    .list_homeDiscover{
+      margin-top: 2rem;
+      .--item{
+        width: 85vw;
+        margin-right: 12px;
+        .--name{
+          margin-bottom: 20px;
+          font-size: 20px;
+        }
+        .--txt{
+          padding: 1rem;
+        }
+        .--bot{
+          max-height: unset !important;
+          opacity: 1 !important;
+          flex-flow: column;
+        }
+        article{
+          width: 100%;
+          font-size: 12px;
+          line-height: 16px;
+        }
+        .--des{
+          margin-bottom: 12px;
+          width: 100%;
+        }
+      }
+    }
+    .--viewall{
+      margin: 2rem auto 0;
+    }
   }
 }
 
 .homeMap {
   padding: 100px 0;
-
   .Title {
     margin-bottom: 60px;
   }
-
   iframe {
     width: 100%;
     height: 80vh;
+  }
+  @media (max-width: 768px){
+    padding: 3rem 0;
+    .Title{
+      margin-bottom: 2rem;
+    }
   }
 }
 
 .homeNews {
   padding-bottom: 100px;
-
   .Title {
     margin-bottom: 112px;
   }
-
   .--left {
     width: 50%;
     position: relative;
@@ -633,7 +695,6 @@ const HomeWrapper=styled.div` .homeBanner {
       width: max-content;
     }
   }
-
   .--right {
     width: calc(50% + 57px);
     margin-left: -57px;
@@ -708,7 +769,6 @@ const HomeWrapper=styled.div` .homeBanner {
       }
     }
   }
-
   .list_homeNews {
     .--img {
       width: 40%;
@@ -792,12 +852,70 @@ const HomeWrapper=styled.div` .homeBanner {
       }
     }
   }
+  @media (max-width: 768px){
+    padding-bottom:0 ;
+    .Title{
+      margin-bottom: 2rem;
+    }
+    .--content{
+      flex-flow:column ;
+    }
+    .--left{
+      width: 100%;
+      padding: 3rem 16px;
+      .--cate{
+        margin-bottom: 12px;
+        font-size: 10px;
+        padding: 2px 8px;
+      }
+      .--location{
+        margin-bottom: 1.5rem;
+      }
+      h1{
+        p{
+          &:nth-child(1){
+            font-size: 36px;
+            line-height: 40px;
+          }
+          &:nth-child(2){
+            font-size: 32px;
+            line-height: 36px;
+          }
+        }
+      }
+    }
+    .--right{
+      margin-left: 0;
+      width: 100%;
+      margin-top: 0;
+      padding:1rem;
+      border-width:12px ;
+    }
+    .list_homeNews {
+      .--cate{
+        font-size: 10px;
+      }
+      .--img{
+        margin-right: 12px;
+        height: 100px;
+      }
+      .--view,.--time{
+        font-size: 12px !important;
+      }
+      .--txt{
+        width: calc(60% - 12px);
+      }
+      h6{
+        font-size: 14px !important;
+        line-height: 20px !important;
+      }
+    }
+  }
 }
 
 .homeDiscover1 {
   position: relative;
   padding: 100px 0;
-
   .partent {
     position: absolute;
     width: 100%;
@@ -811,16 +929,13 @@ const HomeWrapper=styled.div` .homeBanner {
       object-fit: cover;
     }
   }
-
   .container-fluid {
     position: relative;
     z-index: 1;
   }
-
-  h1 {
+  .Title {
     margin-bottom: 60px;
   }
-
   .list_homeDiscover1 {
     .col-md-3 {
       padding-right: calc(var(--bs-gutter-x) * 0.5);
@@ -918,7 +1033,6 @@ const HomeWrapper=styled.div` .homeBanner {
       }
     }
   }
-
   .slider_homeDiscover1 {
     position: relative;
 
@@ -959,36 +1073,32 @@ const HomeWrapper=styled.div` .homeBanner {
     .slick-list {
       display: flex;
       justify-content: center;
+    
     }
-
+    .slick-slide{
+      >div{
+        height: 100%;
+      }
+      .col-md-3{
+        height: 100%;
+      }
+    }
     .slick-dots {
       margin-top: 40px;
-      display: flex;
-      justify-content: center;
-      list-style: none;
-      padding-left: 0;
-      margin-bottom: 0;
-      text-align: center;
-      padding-right: 0;
-
-      button {
-        border: none;
-        background-color: transparent;
-        color: transparent;
-      }
-
-      li {
-        display: inline-block;
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        cursor: pointer;
-        margin: 0 6px;
-        background: #d9d9d9;
-
-        &.slick-active {
-          background: var(--color-1);
-        }
+    }
+  }
+  @media (max-width: 768px){
+    padding: 3rem 0;
+    .Title{
+      margin-bottom:2rem;
+    }
+    .arrow{
+      top: 83px !important; 
+      transform: none;
+    }
+    .slider_homeDiscover1{
+      .slick-dots{
+        margin-top: 1.5rem;
       }
     }
   }

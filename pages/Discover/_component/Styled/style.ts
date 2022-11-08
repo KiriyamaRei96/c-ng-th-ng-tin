@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-const DiscoverWarpper=styled.div` .discoverBanner {
+const DiscoverWarpper=styled.div` 
+.discoverBanner {
     position: relative;
-
     .--background {
         width: 100%;
         height: 100vh;
@@ -24,7 +24,6 @@ const DiscoverWarpper=styled.div` .discoverBanner {
             object-fit: cover;
         }
     }
-
     .container-fluid {
         position: absolute;
         top: 0;
@@ -32,12 +31,10 @@ const DiscoverWarpper=styled.div` .discoverBanner {
         width: 100%;
         height: 100%;
     }
-
     .--content {
         position: relative;
         height: 100%;
         width: 100%;
-
         .--top {
             position: absolute;
             top: 130px;
@@ -50,7 +47,7 @@ const DiscoverWarpper=styled.div` .discoverBanner {
                 font-size: 18px;
             }
 
-            h1 {
+            .Title {
                 color: #FFF;
                 font-size: 80px;
                 line-height: 90px;
@@ -116,19 +113,59 @@ const DiscoverWarpper=styled.div` .discoverBanner {
 
         }
     }
+    @media (max-width: 768px){
+        margin-top: 74px;
+        .--background{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+        }
+        .container-fluid {
+            position: relative;
+            top: unset;
+            left: unset;
+        }
+        .--item{
+            padding: 3rem 0 5rem;
+        }
+        .--content{
+            .--top{
+                width: 100%;
+                position: relative;
+                top: unset;
+                left: unset;
+                .Title{
+                    font-size: 42px;
+                    line-height: 48px;
+                    &::after{
+                        display: none;
+                    }
+                }
+            }
+            .--bot{
+                position: relative;
+                bottom: unset;
+                left: unset;
+                align-items: flex-start !important;
+                flex-flow: column-reverse;
+                .--txt{
+                    width: 100%;
+                }
+                article{
+                    margin-bottom: 2rem;
+                }
+            }
+        }
+    }
 }
-
-.sliderWarpper {
-    position: relative;
-}
-
 .Slider-action {
     position: absolute;
     color: #FFF;
     bottom: 54px;
     right: 108px;
     width: 390px;
-
     .--number {
         font-size: 18px;
         font-weight: 600;
@@ -140,11 +177,9 @@ const DiscoverWarpper=styled.div` .discoverBanner {
             margin: 0 10px;
         }
     }
-
     .--arrow {
         display: flex;
         color: #FFF;
-
         i {
             width: 38px;
             height: 38px;
@@ -154,41 +189,40 @@ const DiscoverWarpper=styled.div` .discoverBanner {
             border: 1px solid #FFF;
             cursor: pointer;
             border-radius: 50%;
-
             &.nextarrow {
                 margin-left: 24px;
             }
+            &:hover {
+                color: var(--color-1);
+                border: 1px solid var(--color-1);
+            }
         }
-
-        i:hover {
-            color: var(--color-1);
-            border: 1px solid var(--color-1);
-
-
-
-        }
+      
+    }
+    @media (max-width: 768px){
+        left: 0;
+        bottom: 25px;
+        width: 100%;
+        padding: 0 16px;
     }
 }
-
-
 .discoverBlock {
     padding: 100px 0;
-
     .--title {
         width: 50%;
         text-align: center;
         margin: 0 auto 60px;
     }
-
     .list_discoverBlock {
         .--img {
             height: 330px;
         }
+        .slick-slide{
+            padding: 0 12px;
+        }
     }
-
     .slider_discoverBlock {
         position: relative;
-
         .arrow_discoverBlock {
             position: absolute;
             top: 0;
@@ -196,7 +230,6 @@ const DiscoverWarpper=styled.div` .discoverBanner {
             width: 100%;
             height: 100%;
             pointer-events: none;
-
             .arrow {
                 position: absolute;
                 pointer-events: auto;
@@ -222,18 +255,33 @@ const DiscoverWarpper=styled.div` .discoverBanner {
             }
         }
     }
+    @media (max-width: 768px){
+        padding: 3rem 0;
+        .--title{
+            width: 100%;
+            margin-bottom:2rem ;
+        }
+        .list_discoverBlock {
+            .slick-slide{
+                padding: 0;
+            }
+            .nextarrow{
+                left: calc(100% - 32px);
+            }
+            .prevarrow{
+                right: calc(100% - 32px);
+            }
+        }
+    }
 }
-
 .list_discover {
     .--wrapper {
         padding-right: calc(var(--bs-gutter-x) * .5);
         padding-left: calc(var(--bs-gutter-x) * .5);
         margin-top: var(--bs-gutter-y);
     }
-
     .--item {
         position: relative;
-
         &:hover {
             .--location {
                 max-height: 200px;
@@ -242,11 +290,9 @@ const DiscoverWarpper=styled.div` .discoverBanner {
             }
         }
     }
-
     .--img {
         width: 100%;
         position: relative;
-
         &::after {
             background: linear-gradient(0deg, rgba(28, 28, 28, 0.2), rgba(28, 28, 28, 0.2));
             content: '';
@@ -256,14 +302,12 @@ const DiscoverWarpper=styled.div` .discoverBanner {
             width: 100%;
             height: 100%;
         }
-
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
     }
-
     .--txt {
         position: absolute;
         bottom: 0;
@@ -271,13 +315,11 @@ const DiscoverWarpper=styled.div` .discoverBanner {
         width: 100%;
         padding: 0 28px 16px;
         color: #FFF;
-
         .--type {
             font-size: 12px;
             text-transform: uppercase;
             margin-bottom: 6px;
         }
-
         h4 {
             font-family: var(--font-Canela);
             position: relative;
@@ -292,29 +334,38 @@ const DiscoverWarpper=styled.div` .discoverBanner {
                 width: 60px;
             }
         }
-
         .--location {
             opacity: 0;
             display: flex;
             max-height: 0;
             transition: all .3s ease;
-
             img {
-                margin-right: 8px;
+                transform: scale(1);
             }
         }
 
         span {
             font-size: 14px;
+            &:nth-child(2){
+                margin-left: 8px;
+            }
+        }
+    }
+    @media (max-width: 768px){
+        .--location{
+            max-height: unset !important;
+            opacity: 1 !important;
+            margin-top: 24px !important;
+        }
+        .--txt{
+            padding: 0 1rem 1rem;
         }
     }
 }
-
 .discoverBlock1 {
     .row {
         --bs-gutter-x: 0;
     }
-
     .--left {
         width: 100%;
         padding-right: 3.5rem;
@@ -367,51 +418,51 @@ const DiscoverWarpper=styled.div` .discoverBanner {
                 margin-top: 24px;
             }
 
-            .slick-dots {
-                list-style: none;
-                padding: 0;
-                text-align: center;
+            .slick-dots {   
                 margin-top: 40px;
-                margin-bottom: 0;
-
-                li.slick-active {
-                    background: #FB8500;
-                }
-
-                li {
-                    width: 18.8px;
-                    height: 18.8px;
-                    background: #D9D9D9;
-                    border-radius: 50%;
-                    display: inline-block;
-                    margin: 0 9.5px;
-
-                    button {
-                        border: none;
-                        background: none;
-                        color: transparent;
-                    }
-                }
             }
 
         }
     }
+    @media (max-width: 768px){
+        .--left{
+            display: none;
+        }
+        .--right{
+            .--title{
+                margin-bottom: 2rem;
+                padding: 0 16px;
+                &::after{
+                    display: none;
+                }
+                .Title{
+                    width: 100%;
+                }
+            }
+            .list_discoverBlock1{
+                width: 100%;
+                margin-left: 0;
+                .--img{
+                    height: 300px;
+                }
+                .--wrapper{
+                    padding: 0 16px;
+                }
+            }
+            
+        }
+    }
 }
-
 .discoverSearch {
     padding: 100px 0;
-
     .Title {
         margin-bottom: 40px;
     }
-
     .filter {
         margin-bottom: 30px;
-
         .search {
             width: 50%;
             position: relative;
-
             input {
                 width: 100%;
                 height: 52px;
@@ -419,7 +470,6 @@ const DiscoverWarpper=styled.div` .discoverBanner {
                 border-radius: 30px;
                 padding-left: 46px;
             }
-
             i {
                 position: absolute;
                 top: 50%;
@@ -428,7 +478,6 @@ const DiscoverWarpper=styled.div` .discoverBanner {
                 transform: translate(0, -50%);
             }
         }
-
         .--tabtop {
             button {
                 border: 1px dashed #DCDCDC;
@@ -458,11 +507,9 @@ const DiscoverWarpper=styled.div` .discoverBanner {
                 }
             }
         }
-
         .--filter {
             margin-top: 20px;
             margin-bottom: 20px;
-
             span {
                 margin-right: 20px;
                 font-size: 12px;
@@ -477,7 +524,6 @@ const DiscoverWarpper=styled.div` .discoverBanner {
                 }
             }
         }
-
         .--select {
             select {
                 height: 30px;
@@ -488,7 +534,6 @@ const DiscoverWarpper=styled.div` .discoverBanner {
                 font-size: 12px;
             }
         }
-
         .--tabbot {
             button {
                 background: none;
@@ -511,7 +556,6 @@ const DiscoverWarpper=styled.div` .discoverBanner {
             }
         }
     }
-
     .list_discoverSearch {
         .--img {
             height: 330px;
@@ -525,19 +569,15 @@ const DiscoverWarpper=styled.div` .discoverBanner {
             }
         }
     }
-
     .--tab1 {
         .--pagination {
             margin-top: 60px;
-            margin-bottom: 16px;
         }
     }
-
     .--tab2 {
         .--map {
             width: 100%;
             height: 100%;
-
             iframe {
                 width: 100%;
                 height: 100%;
@@ -550,7 +590,6 @@ const DiscoverWarpper=styled.div` .discoverBanner {
             text-transform: uppercase;
         }
     }
-
     .--tab3 {
         .--map {
             iframe {
@@ -559,12 +598,10 @@ const DiscoverWarpper=styled.div` .discoverBanner {
             }
         }
     }
-
     .list_discoverSearch2 {
         height: 700px;
         padding-right: 40px;
         overflow-y: auto;
-
         .--item {
             box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
             background: #FFF;
@@ -590,13 +627,10 @@ const DiscoverWarpper=styled.div` .discoverBanner {
         }
 
         h4 {
-            font-size: 27px;
             font-family: var(--font-Canela);
             margin-bottom: 10px;
             font-weight: 600;
         }
-
-
         article {
             font-size: 14px;
             overflow: hidden;
@@ -606,11 +640,93 @@ const DiscoverWarpper=styled.div` .discoverBanner {
             -webkit-box-orient: vertical;
         }
     }
+    @media (max-width: 768px){
+        padding:3rem 0;
+        .filter{
+            .--top{
+                flex-flow: column;
+                .search{
+                    width: 80%;
+                    margin-bottom: 8px;
+                }
+                button{
+                    padding: 0 16px;
+                    height: 32px;
+                    &:first-child{
+                        margin-left: 0;
+                    }
+                }
+            }
+            .--bot{
+                .--filter{
+                    flex-flow: column;
+                    align-items: flex-start !important;
+                    margin: 1rem 0;
+                    span{
+                        margin-bottom: 8px;
+                    }
+                }
+                .--select{
+                    width: 100%;
+                    overflow-x: auto;
+                    padding-bottom: 16px;
+                }
+                .--tabbot{
+                    width: 100%;
+                    overflow-x: auto;
+                    display: flex;
+                    padding-bottom: 1rem;
+                    button{
+                        flex: 0 0 auto;
+                    }
+                }
+            }
+        }
+        .list_discoverSearch {
+            .--img{
+                height: 240px;
+            }
+            .row{
+                margin-top:unset;
+                margin:0;
+            }
+            .col-md-4{
+                padding: 0;
+                margin-top: 0 !important;
+                margin-bottom: 1rem;
+                &:last-child{
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .--tab1{
+            .--pagination{
+                margin-top: 2rem;
+            }
+        }
+        .list_discoverSearch2{
+            height: max-content;
+            overflow-y: unset;
+            padding-right: 0;
+            .--img{
+                width: 40%;
+                height: 100px;
+                margin-right: 12px;
+            }
+            .--item{
+                margin-bottom: 1rem;
+            }
+            .--txt{
+                width: calc(60% - 12px);
+                h4{
+                    font-size: 20px;
+                }
+            }
+        }
+    }
 }
-
 .discoverVideo {
     position: relative;
-
     .--img {
         width: 100%;
         height: 550px;
@@ -632,7 +748,6 @@ const DiscoverWarpper=styled.div` .discoverBanner {
             object-fit: cover;
         }
     }
-
     .--txt {
         position: absolute;
         top: 50%;
@@ -643,10 +758,28 @@ const DiscoverWarpper=styled.div` .discoverBanner {
         h1 {
             color: #FFF;
             margin-bottom: 2rem;
+            text-align: center;
         }
 
         .play {
             position: relative;
+        }
+    }
+    @media (max-width: 768px){
+        padding: 4rem 0;
+        .--img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .--txt{
+            position: relative;
+            transform: none;
+            top: unset;
+            left: unset;
+            width: 100%;
         }
     }
 }

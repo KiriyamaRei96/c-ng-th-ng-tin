@@ -94,7 +94,7 @@ export default function Home({
               <div className="--des">{homeBanner.title}</div>
               <span>{homeBanner.description}</span>
               <Link href={homeBanner.link}>
-                <a>
+                <a class="button_hover1">
                   Tìm hiểu thêm
                   <i className="fa-sharp fa-solid fa-arrow-right"></i>
                 </a>
@@ -244,7 +244,6 @@ export default function Home({
                   dots: false,
                   infinite: true,
                   speed: 300,
-
                   slidesToShow: 2,
                   slidesToScroll: 1,
                   variableWidth: true,
@@ -314,7 +313,7 @@ export default function Home({
             <div className="subTitle text-center">{homeMap.subTitle}</div>
             <h1 className="Title text-center">{homeMap.title}</h1>
             {pointArr.length > 0 ? (
-              <Map height="450px" arr={pointArr} />
+              <Map  height="600px" arr={pointArr} />
             ) : (
               false
             )}
@@ -520,11 +519,13 @@ export default function Home({
                                 <img src={item.featureImage?.path} alt="" />
                               </a>
                             </div>
-                            <div className="--txt">
-                              <a href="">
-                                <h4>{item.title}</h4>
-                              </a>
-                              <article>{item.description}</article>
+                            <div className="--txt d-flex flex-column justify-content-between">
+                              <div className="--top">
+                                <a href="">
+                                  <h4>{item.title}</h4>
+                                </a>
+                                <article>{item.description}</article>
+                              </div>
                               <div className="--bot">
                                 <div className="--time">
                                   <div className="--icon">

@@ -64,7 +64,7 @@ const Discover = ({
   return (
     <DiscoverWarpper>
       <div id="discover">
-        <div className="sliderWarpper">
+        <div className="discoverBanner">
           <Slider
             ref={slider}
             {...{
@@ -73,7 +73,9 @@ const Discover = ({
               speed: 800,
               slidesToShow: 1,
               slidesToScroll: 1,
+              adaptiveHeight:true,
               arrows: false,
+              fade:true,
               afterChange(currentSlide) {
                 setCurrent(currentSlide);
               },
@@ -81,30 +83,32 @@ const Discover = ({
           >
             {discoverBanner?.articles?.map((item) => (
               <div key={uuid()}>
-                <div className="discoverBanner">
-                  <div className="--background">
-                    <img src={item.image?.path} alt="" />
-                  </div>
-                  <div className="container-fluid">
-                    <div className="--content">
-                      <div className="--top">
-                        <div className="--title">
-                          <span>{item?.subTitle}</span>
-                          <h1 className="Title mt-3">{item?.title}</h1>
+              
+                  <div className="--item">
+                    <div className="--background">
+                      <img src={item.image?.path} alt="" />
+                    </div>
+                    <div className="container-fluid">
+                      <div className="--content">
+                        <div className="--top">
+                          <div className="--title">
+                            <span>{item?.subTitle}</span>
+                            <h1 className="Title mt-3">{item?.title}</h1>
+                          </div>
                         </div>
-                      </div>
-                      <div className="--bot d-flex justify-content-between align-items-end">
-                        <a href="">
-                          <i className="fa-sharp fa-solid fa-arrow-down-long"></i>
-                          Xem tất cả
-                        </a>
-                        <div className="--txt">
-                          <article>{item?.description}</article>
+                        <div className="--bot d-flex justify-content-between align-items-end">
+                          <a href="">
+                            <i className="fa-sharp fa-solid fa-arrow-down-long"></i>
+                            Xem tất cả
+                          </a>
+                          <div className="--txt">
+                            <article>{item?.description}</article>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+              
               </div>
             ))}
           </Slider>
@@ -168,12 +172,12 @@ const Discover = ({
                       },
                     ],
                   }}
-                  className="row"
+                  className=""
                 >
                   {discoverBlock.relations.length > 1
                     ? discoverBlock.relations?.map((item) => (
                         <Link key={uuid()} href={`/Discover/${item.id}`}>
-                          <div className="--wrapper">
+                    
                             <div className="--item img_hover">
                               <a href="">
                                 <div className="--img">
@@ -196,7 +200,7 @@ const Discover = ({
                                 </div>
                               </a>
                             </div>
-                          </div>
+                      
                         </Link>
                       ))
                     : pointArr.map((item) => (

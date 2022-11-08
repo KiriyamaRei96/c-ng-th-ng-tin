@@ -65,139 +65,133 @@ const NewsEvent = ({ newsBanner, hotNews, Events }) => {
           </div>
         </div>
         <div className="News">
-          <div className="--hotNews">
-            <h3>{hotNews.title}</h3>
-            <Slider
-              {...{
-                dots: false,
-                infinite: true,
-                speed: 500,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                arrows: true,
-                nextArrow: (
-                  <div>
-                    <i className="fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long"></i>
-                  </div>
-                ),
-
-                prevArrow: (
-                  <div>
-                    <i className="fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long"></i>
-                  </div>
-                ),
-              }}
-              className="--hotSlider"
-            >
-              {hotNews.relations?.map((item) => (
-                <div key={uuid()}>
-                  <div className="--item d-flex">
-                    <img src={item.featureImage?.path} alt="" />
+          <div className="container-fluid">
+            <div className="--hotNews">
+              <h3>{hotNews.title}</h3>
+              <Slider
+                {...{
+                  dots: false,
+                  infinite: true,
+                  speed: 500,
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                  arrows: true,
+                  adaptiveHeight:true,
+                  nextArrow: (
                     <div>
-                      <div className="Info d-flex">
-                        <span className="type">{item.category[0]?.title}</span>
-                        <i className="fa-solid fa-circle divider"></i>
-                        <span className="date">
-                          <i className="fa-solid fa-calendar-days"></i>
-                          {item.date}
-                        </span>
-                        <i className="fa-solid fa-circle divider"></i>
-                        <span className="view">
-                          <i className="fa-solid fa-eye"></i>
-                          268
-                        </span>
-                      </div>
-                      <h4>{item.title}</h4>
-                      <div className="divider"></div>
-                      <span>{item.description}</span>
+                      <i className="fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long"></i>
+                    </div>
+                  ),
 
-                      <Link href={`/News&Event/news/detail~${item.id}`}>
-                        <a className="button_2 button_hover2">
-                          Xem chi tiết
-                          <i className="fa-sharp ms-2 fa-solid fa-arrow-right-long"></i>
-                        </a>
-                      </Link>
+                  prevArrow: (
+                    <div>
+                      <i className="fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long"></i>
+                    </div>
+                  ),
+                }}
+                className="--hotSlider"
+              >
+                {hotNews.relations?.map((item) => (
+                  <div key={uuid()}>
+                    <div className="--item d-flex">
+                      <div className="--img img_hover">
+                        <img src={item.featureImage?.path} alt="" />
+                      </div>
+                      <div className="--txt">
+                        <div className="Info d-flex">
+                          <span className="type">{item.category[0]?.title}</span>
+                          <i className="fa-solid fa-circle divider"></i>
+                          <span className="date">
+                            <i className="fa-solid fa-calendar-days"></i>
+                            {item.date}
+                          </span>
+                          <i className="fa-solid fa-circle divider"></i>
+                          <span className="view">
+                            <i className="fa-solid fa-eye"></i>
+                            268
+                          </span>
+                        </div>
+                        <h4>{item.title}</h4>
+                        <div className="divider"></div>
+                        <span>{item.description}</span>
+
+                        <Link href={`/News&Event/news/detail~${item.id}`}>
+                          <a className="button_2 button_hover2">
+                            Xem chi tiết
+                            <i className="fa-sharp ms-2 fa-solid fa-arrow-right-long"></i>
+                          </a>
+                        </Link>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </Slider>
+                ))}
+              </Slider>
+            </div>
+            <Catalog />
           </div>
-          <Catalog />
         </div>
         <div className="Events">
-          <div className="--title ">
-            <span>Tin Tức du lịch Lai Châu</span>
-            <h3>Sự Kiện</h3>
+          <div className="container-fluid">
+            <div className="--title ">
+              <span>Tin Tức du lịch Lai Châu</span>
+              <h3>Sự Kiện</h3>
+            </div>
+            <div className="eventsSlider d-flex ">
+              <div className="row">
+              {Events.relations?.length > 0
+                ? Events.relations.map((item) => (
+                    <Link
+                      key={uuid()}
+                      href={`/News&Event/event/detail~${item.id}`}
+                    >
+                      <div className="col-md-4">
+                        <div className="--item img_hover1">
+                          <div className="--img">
+                            <img src={item.featureImage?.path} alt="" />
+                          </div>
+                          <div className="--txt">
+                            <span className="--tag d-flex">
+                              {item.tag[0] ? item.tag[0] : "Chưa phân loại"}
+                            </span>
+                            <h5>{item.title}</h5>
+                            <div className="Info">
+                              <span className="date">
+                                <i className="fa-solid fa-calendar-days"></i>
+                                Diễn ra ngày {item.date}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  ))
+                : eventsArr.map((item) => (
+                    <Link
+                      key={uuid()}
+                      href={`/News&Event/event/detail~${item.id}`}
+                    >
+                      <div className="col-md-4">
+                        <div className="--item ">
+                          <img src={item.featureImage?.path} alt="" />
+                          <div>
+                            <span className="--tag d-flex">
+                              {item.tag[0] ? item.tag[0] : "Chưa phân loại"}
+                            </span>
+                            <h5>{item.title}</h5>
+                            <div className="Info">
+                              <span className="date">
+                                <i className="fa-solid fa-calendar-days"></i>
+                                Diễn ra ngày {item.date}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+            </div>
           </div>
-          <Slider
-            {...{
-              className: "eventsSlider",
-              dots: true,
-              infinite: true,
-              speed: 500,
-              slidesToShow: 3,
-              slidesToScroll: 3,
-              arrows: true,
-              nextArrow: (
-                <div>
-                  <i className="fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long"></i>
-                </div>
-              ),
-
-              prevArrow: (
-                <div>
-                  <i className="fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long"></i>
-                </div>
-              ),
-            }}
-          >
-            {Events.relations?.length > 2
-              ? Events.relations.map((item) => (
-                  <Link
-                    key={uuid()}
-                    href={`/News&Event/event/detail~${item.id}`}
-                  >
-                    <div className="--item">
-                      <img src={item.featureImage?.path} alt="" />
-                      <div>
-                        <span className="--tag d-flex">
-                          {item.tag[0] ? item.tag[0] : "Chưa phân loại"}
-                        </span>
-                        <h5>{item.title}</h5>
-                        <div className="Info">
-                          <span className="date">
-                            <i className="fa-solid fa-calendar-days"></i>
-                            Diễn ra ngày {item.date}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                ))
-              : eventsArr.map((item) => (
-                  <Link
-                    key={uuid()}
-                    href={`/News&Event/event/detail~${item.id}`}
-                  >
-                    <div className="--item">
-                      <img src={item.featureImage?.path} alt="" />
-                      <div>
-                        <span className="--tag d-flex">
-                          {item.tag[0] ? item.tag[0] : "Chưa phân loại"}
-                        </span>
-                        <h5>{item.title}</h5>
-                        <div className="Info">
-                          <span className="date">
-                            <i className="fa-solid fa-calendar-days"></i>
-                            Diễn ra ngày {item.date}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-          </Slider>
         </div>
       </div>
     </NewsWrapper>
