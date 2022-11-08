@@ -8,6 +8,7 @@ import commercialSelector, {
 import globalSelector from "../../../../ReduxStore/globalSlice/slice";
 import { useAppDispatch, useAppSelector } from "../../../../ReduxStore/hooks";
 import pointSelector from "../../../../ReduxStore/pointSlice/slice";
+import FilterBox from "./component/filterDisplay";
 import FilterDisplay from "./component/filterDisplay";
 
 import OptionGroup from "./component/OptionGroup";
@@ -76,7 +77,8 @@ const Navbar = (props: NavbarProps) => {
       )}
 
       <div className='--OptionList'>
-        <FilterDisplay allFilter={allFilter} />
+        <FilterBox allFilter={allFilter} />
+        {/* <FilterDisplay /> */}
         <OptionGroup
           type='district'
           value={filter.district}
