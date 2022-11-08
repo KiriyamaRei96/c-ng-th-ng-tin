@@ -9,6 +9,7 @@ import globalSelector from "../../../../ReduxStore/globalSlice/slice";
 import { useAppDispatch, useAppSelector } from "../../../../ReduxStore/hooks";
 import pointSelector from "../../../../ReduxStore/pointSlice/slice";
 import FilterDisplay from "./component/filterDisplay";
+
 import OptionGroup from "./component/OptionGroup";
 
 export interface NavbarProps {}
