@@ -1356,6 +1356,10 @@ footer {
     width: 48%;
     position: relative;
 
+    div {
+      width: 50%;
+    }
+
     img {
       height: 178px;
       width: 100%;
@@ -1379,8 +1383,8 @@ footer {
       border-radius: 4px;
 
       img {
-        width: 16px;
-        height: 16px;
+        width: 16px !important;
+        height: 16px !important;
         object-fit: cover;
       }
 
@@ -1505,8 +1509,8 @@ footer {
       border-radius: 4px;
 
       img {
-        width: 16px;
-        height: 16px;
+        width: 16px !important;
+        height: 16px !important;
         object-fit: cover;
       }
 

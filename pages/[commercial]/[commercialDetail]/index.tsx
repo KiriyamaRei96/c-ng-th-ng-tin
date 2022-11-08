@@ -315,7 +315,7 @@ const CommercialDetail = ({ type }: CommercialDetailProps) => {
               </div>
               <div className='slider'>
                 <div className='list_servicediscover'>
-                  <Slider
+                  {/* <Slider
                     {...{
                       dots: true,
                       infinite: true,
@@ -361,7 +361,7 @@ const CommercialDetail = ({ type }: CommercialDetailProps) => {
                     <div className='col-md-3'>
                       <RestaurantCard />
                     </div>
-                  </Slider>
+                  </Slider> */}
                   {/* <div className="row"></div> */}
                 </div>
                 <div className='arrow_servicediscover'></div>
@@ -380,7 +380,7 @@ const CommercialDetail = ({ type }: CommercialDetailProps) => {
               </div>
               <div className='slider1'>
                 <div className='list_servicediscover1 dicover_all'>
-                  <Slider
+                  {/* <Slider
                     {...{
                       dots: true,
                       infinite: true,
@@ -426,7 +426,7 @@ const CommercialDetail = ({ type }: CommercialDetailProps) => {
                     <div className='--wrapper'>
                       <TourCard />
                     </div>
-                  </Slider>
+                  </Slider> */}
                 </div>
                 <div className='arrow_servicediscover1'></div>
               </div>

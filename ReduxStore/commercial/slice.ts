@@ -4,12 +4,28 @@ import { HYDRATE } from "next-redux-wrapper";
 export const commercialSlice = createSlice({
   name: "commercial",
   initialState: {
+    listType: "",
     pagination: {},
-
+    filter: {},
     searchArr: [],
-    categoryArr: [],
+
+    restaurantCategory: [],
+    restaurantType: [],
+    hotelType: [],
+    tourType: [],
+    destinationsType: [],
   },
-  reducers: {},
+  reducers: {
+    setType: (state, action) => {
+      state.listType = action.payload;
+    },
+    setFilter: (state, action) => {
+      state.filter = { ...state.filter, ...action.payload };
+    },
+    clearFilter: (state) => {
+      state.filter = {};
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(HYDRATE, (state, action: any) => {
@@ -22,15 +38,16 @@ export const commercialSlice = createSlice({
       .addCase("SET_SEARCH_COMMERCIAL", (state, action: any) => {
         state.searchArr = action.payload.data;
         state.pagination = action.payload.paginationVariables;
-    ;
         return state;
       })
-      .addCase("SET_CATEGORY", (state, action: any) => {
-        state.categoryArr = action.payload.data;
-
+      .addCase("SET_TYPES", (state, action: any) => {
+        Object.keys(action.payload).forEach(
+          (item) => (state[item] = action.payload[item].data)
+        );
         return state;
       });
   },
 });
 const commercialSelector = (state) => state.commercial;
+export const { setType, setFilter, clearFilter } = commercialSlice.actions;
 export default commercialSelector;

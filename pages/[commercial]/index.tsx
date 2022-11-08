@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { memo, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import CommercialWrapper from "./_component/_Style/style";
@@ -12,7 +12,10 @@ import RestaurantCard from "./_component/RestaurantCard";
 import Slider from "react-slick";
 import callApi from "../../Api/Axios";
 import { useAppDispatch, useAppSelector } from "../../ReduxStore/hooks";
-import commercialSelector from "../../ReduxStore/commercial/slice";
+import commercialSelector, {
+  clearFilter,
+  setType,
+} from "../../ReduxStore/commercial/slice";
 import List from "./_component/List/List";
 
 export async function getServerSideProps(context) {
@@ -42,6 +45,10 @@ export async function getServerSideProps(context) {
     (await page?.data?.snippets?.find(
       (item) => item["snippet_name"] === "hotMenu"
     )) || null;
+  const navBar =
+    (await page?.data?.snippets?.find(
+      (item) => item["snippet_name"] === "navBar"
+    )) || null;
 
   return {
     props: {
@@ -59,20 +66,24 @@ const Commercial = ({ banner, hotMenu }: CommercialProps) => {
   const searchArr = useAppSelector(commercialSelector).searchArr;
   const dispatch = useAppDispatch();
   useEffect(() => {
+    dispatch({ type: "GET_TYPES" });
+  }, []);
+  useEffect(() => {
     const listType =
       router.query.commercial === "Restaurant"
         ? "restaurant_list"
         : router.query.commercial === "Tour"
         ? "tour_list"
         : "hotel_list";
-
+    dispatch(setType(listType));
     dispatch({
       type: "GET_SEARCH_COMMERCIAL",
       payload: {
-        listType,
-        params: { page: 1, limit: 9 },
+        page: 1,
+        limit: 9,
       },
     });
+    dispatch(clearFilter());
   }, [router.query.commercial]);
 
   return (
@@ -206,4 +217,4 @@ const Commercial = ({ banner, hotMenu }: CommercialProps) => {
     </CommercialWrapper>
   );
 };
-export default Commercial;
+export default memo(Commercial);

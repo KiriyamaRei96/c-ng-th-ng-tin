@@ -160,6 +160,14 @@ const CommercialWrapper=styled.div` .pageBody {
                             height: 20px
                         }
                     }
+
+                    .--more {
+                        color: #FB8500;
+                        font-size: 14px;
+                        line-height: 20px;
+                        cursor: pointer;
+                    }
+
                 }
 
                 .stars {
