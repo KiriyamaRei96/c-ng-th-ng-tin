@@ -1,5 +1,5 @@
 import { Checkbox, Radio, Rate, Select } from "antd";
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { v4 as uuid } from "uuid";
 import commercialSelector, {
   setFilter,
@@ -27,13 +27,15 @@ const OptionGroup = ({
 
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (optionArray?.length > 4) {
-      setArr(optionArray.splice(0, 4));
+    if (optionArray?.length > 4 && arr.length <= 4) {
+      setArr(optionArray.slice(0, 4));
     } else setArr(optionArray);
   }, [optionArray]);
-
+  const moreHandler = () => {
+    setArr(optionArray);
+  };
   return (
-    <div className="OptionGroup">
+    <div className='OptionGroup'>
       <h5>{title}</h5>
       {optionType === "select" ? (
         <Select
@@ -41,13 +43,9 @@ const OptionGroup = ({
             dispatch(setFilter({ [`${type}`]: value }));
           }}
           value={value}
-          className="--place"
-          placeholder="Chọn khu"
+          className='--place'
         >
-          <Select.Option key={uuid()} value={""}>
-            Tất cả
-          </Select.Option>
-          {arr.map((op) => (
+          {optionArray.map((op) => (
             <Select.Option key={op.title} value={op.value}>
               {op.title}
             </Select.Option>
@@ -62,13 +60,20 @@ const OptionGroup = ({
             dispatch(setFilter({ [`${type}`]: value }));
           }}
           value={value}
-          className="--group d-flex"
+          className='--group d-flex'
         >
           {arr.map((op) => (
-            <Checkbox className="--item" key={uuid()} value={op.value}>
+            <Checkbox className='--item' key={uuid()} value={op.value}>
               {op.title}
             </Checkbox>
           ))}
+          {optionArray.length > arr.length ? (
+            <span onClick={() => moreHandler()} className='--more'>
+              Xem tất cả
+            </span>
+          ) : (
+            false
+          )}
         </Checkbox.Group>
       ) : (
         false
@@ -79,13 +84,20 @@ const OptionGroup = ({
             dispatch(setFilter({ [`${type}`]: e.target.value }));
           }}
           value={value}
-          className="--group d-flex"
+          className='--group d-flex'
         >
           {arr.map((op) => (
-            <Radio className="--item" key={uuid()} value={op.value}>
+            <Radio className='--item' key={uuid()} value={op.value}>
               {op.title}
             </Radio>
           ))}
+          {optionArray.length > arr.length ? (
+            <span onClick={() => moreHandler()} className='--more'>
+              Xem tất cả
+            </span>
+          ) : (
+            false
+          )}
         </Radio.Group>
       ) : (
         false
@@ -96,39 +108,39 @@ const OptionGroup = ({
             dispatch(setFilter({ [`${type}`]: e.target.value }));
           }}
           value={value}
-          className="stars d-flex"
+          className='stars d-flex'
         >
           <Radio value={1}>
-            <div className="--warpper">
-              <Rate disabled defaultValue={1} /> <span>(1)</span>
+            <div className='--warpper'>
+              <Rate disabled defaultValue={1} />
             </div>
           </Radio>
           <Radio value={2}>
-            <div className="--warpper">
-              <Rate disabled defaultValue={2} /> <span>(1)</span>
+            <div className='--warpper'>
+              <Rate disabled defaultValue={2} />
             </div>
           </Radio>
           <Radio value={3}>
-            <div className="--warpper">
-              <Rate disabled defaultValue={3} /> <span>(1)</span>
+            <div className='--warpper'>
+              <Rate disabled defaultValue={3} />
             </div>
           </Radio>
           <Radio value={4}>
-            <div className="--warpper">
-              <Rate disabled defaultValue={4} /> <span>(1)</span>
+            <div className='--warpper'>
+              <Rate disabled defaultValue={4} />
             </div>
           </Radio>
           <Radio value={5}>
-            <div className="--warpper">
-              <Rate disabled defaultValue={5} /> <span>(1)</span>
+            <div className='--warpper'>
+              <Rate disabled defaultValue={5} />
             </div>
           </Radio>
         </Radio.Group>
       ) : (
         false
       )}
-      <div className="--divider"></div>
+      <div className='--divider'></div>
     </div>
   );
 };
-export default OptionGroup;
+export default memo(OptionGroup);
