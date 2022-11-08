@@ -13,7 +13,7 @@ export interface FilterDisplayProps {
   allFilter: Array<any>;
 }
 
-const FilterBox = ({ allFilter }: FilterDisplayProps) => {
+export const FilterBox = ({ allFilter }: FilterDisplayProps) => {
   const dispatch = useAppDispatch();
   const filter = useAppSelector(commercialSelector).filter;
   const idArr = [];
@@ -62,4 +62,3 @@ const FilterBox = ({ allFilter }: FilterDisplayProps) => {
     </div>
   );
 };
-export default FilterBox;
