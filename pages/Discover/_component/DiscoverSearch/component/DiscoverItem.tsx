@@ -12,7 +12,7 @@ const DiscoverItem = ({ searchArr }: DiscoverItemProps) => {
       {searchArr?.map((item) => (
         <Link key={uuid()} href={`/Discover/${item.id}`}>
           <div className="--item d-flex align-items-center">
-            <div className="--img">
+            <div className="--img img_hover">
               <img src={item.featureImage?.path} alt="" />
             </div>
             <div className="--txt">

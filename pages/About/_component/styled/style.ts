@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
-const AboutWrapper=styled.div ` .aboutIntro {
+const AboutWrapper=styled.div ` 
+.aboutIntro {
     padding: 100px 0;
-
     .--video {
         position: relative;
-
         .--img {
             width: 100%;
             height: 800px;
@@ -39,7 +38,6 @@ const AboutWrapper=styled.div ` .aboutIntro {
 
     .--left {
         position: relative;
-
         .--card {
             position: absolute;
             bottom: 0;
@@ -50,9 +48,15 @@ const AboutWrapper=styled.div ` .aboutIntro {
             font-family: var(--font-Canela);
             font-weight: 600;
         }
-
+        h4{
+            color: #FFF;
+            margin-bottom: 0;
+            p{
+                margin-bottom: 0;
+            }
+        }
         .--icon {
-            margin-bottom: 22px;
+            margin-bottom: 20px;
         }
     }
 
@@ -109,10 +113,13 @@ const AboutWrapper=styled.div ` .aboutIntro {
             margin-right: 20px;
             width: 100px;
             height: 100px;
-
+            flex: 0 0 auto;
             img {
                 max-width: 100px;
                 max-height: 100px;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
             }
         }
 
@@ -125,27 +132,78 @@ const AboutWrapper=styled.div ` .aboutIntro {
             font-size: 14px;
         }
     }
+    @media (max-width: 768px){
+        padding: 3rem 0;
+        .--video{
+            .--img{
+                height: 240px;
+            }
+        }
+        .--left{
+            .--card{
+                right: 0;
+                padding: 24px;
+                position: relative;
+                right: unset;
+                bottom: unset;
+                width: 100%;
+            }
+        }
+        .--content{
+            padding: 1rem 0 0 0;
+            .Title{
+                margin-bottom: 1.5rem;
+            }
+            .--des{
+                padding-left: 0;
+                margin-bottom: 12px;
+                &::before{
+                    display: none;
+                }
+            }
+            article{
+                padding-left: 0;
+            }
+            a{
+                margin-left: 0;
+                margin-top: 1.5rem;
+            }
+        }
+        .list_aboutIntro {
+            flex-flow: column;
+            margin-top: 3rem;
+            .--item{
+                padding: 0;
+                width: 100%;
+                border-left:none ;
+                margin-bottom: 1rem;
+                padding-bottom: 1rem;
+                border-bottom:1px solid #dcdcdc ;
+                &:last-child{
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+                    border: none;
+                }
+            }
+           
+        }
+    }
 }
-
 .aboutDiscover {
     padding-bottom: 100px;
-
-    h1 {
+    .Title {
         margin-bottom: 60px;
     }
-
     .list_aboutDiscover {
         .--img {
             width: 100%;
             height: 340px;
-
             img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
             }
         }
-
         .--txt {
             padding: 30px;
             display: flex;
@@ -167,52 +225,43 @@ const AboutWrapper=styled.div ` .aboutIntro {
                 text-transform: uppercase;
             }
         }
-
         .--warpper {
             padding-right: calc(var(--bs-gutter-x) * .5);
             padding-left: calc(var(--bs-gutter-x) * .5);
             margin-top: var(--bs-gutter-y);
         }
-
         .slick-dots {
-            list-style: none;
-            padding: 0;
-            text-align: center;
             margin-top: 2rem;
-
-            margin-bottom: 0;
-
-            li.slick-active {
-                background: #FB8500;
-            }
-
-            li {
-                width: 18.8px;
-                height: 18.8px;
-                background: #D9D9D9;
-                border-radius: 50%;
-                display: inline-block;
-                margin: 0 9.5px;
-
-                button {
-                    border: none;
-                    background: none;
-                    color: transparent;
-                }
-            }
         }
 
     }
+    @media (max-width: 768px){
+        padding-bottom: 3rem;
+        .Title{
+            margin-bottom: 2rem;
+        }
+        .list_aboutDiscover{
+            .--warpper{
+                padding: 0;
+            }
+            .--img{
+                height: 220px;
+            }
+            .--txt{
+                padding: 1rem;
+            }
+            .slick-dots{
+                margin-top: 1rem;
+            }
+        }
+    }
 }
-
 .aboutWhy {
     padding: 100px 0;
     background: #F6F8FB;
-
     h1 {
         margin-bottom: 60px;
     }
-
     .list_Why {
         display: flex;
         flex-wrap: wrap;
@@ -257,11 +306,24 @@ const AboutWrapper=styled.div ` .aboutIntro {
             }
         }
     }
+    @media (max-width: 768px){
+        padding: 3rem 0;
+        .list_Why{
+            flex-flow: column;
+            .--item{
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 1.5rem;
+                margin-top: 0 !important;
+                &:last-child{
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
 }
-
 .aboutBlock {
     position: relative;
-
     .--img {
         width: 100%;
         height: 500px;
@@ -283,11 +345,9 @@ const AboutWrapper=styled.div ` .aboutIntro {
             object-fit: cover;
         }
     }
-
     .Title {
         margin-bottom: 40px;
     }
-
     .--txt {
         position: absolute;
         top: 50%;
@@ -318,7 +378,26 @@ const AboutWrapper=styled.div ` .aboutIntro {
             font-size: 14px;
         }
     }
+    @media (max-width: 768px){
+        padding: 3rem 0;
+        .--txt{
+            position: relative;
+            top: unset;
+            left: unset;
+            transform: none;
+            width: 100%;
+            .Title{
+                margin-bottom: 1.5rem;
+            }
+        }
+        .--img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
 }
-
 `;
 export default AboutWrapper;

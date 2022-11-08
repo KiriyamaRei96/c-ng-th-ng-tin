@@ -210,8 +210,10 @@ const Footer = (props: FooterProps) => {
           <div className='--content d-flex justify-content-between'>
             <div className='--left d-flex align-items-center'>
               <span>@Du Lịch Lai Châu 2022 by Starfruit</span>
-              <a href=''>Privacy Cookies Policy</a>
-              <a href=''>Terms and Conditions</a>
+              <div className="--link d-flex align-items-center">
+                <a href=''>Privacy Cookies Policy</a>
+                <a href=''>Terms and Conditions</a>
+              </div>
             </div>
             <div className='--right d-flex align-items-center'>
               <div className='--item d-flex align-items-center'>
