@@ -486,7 +486,9 @@ header {
   padding-right: 0;
   margin-bottom: 0;
 
-  button {}
+  button {
+    opacity: 0;
+  }
 
   li {
     width: 18px;

@@ -11,6 +11,9 @@ export interface AppHeaderProps {}
 
 const AppHeader = (props: AppHeaderProps) => {
   const [change, setChange] = useState(false);
+  const [searchActive, setSearchActive] = useState(false);
+  const [menuActive, setMenuActive] = useState(false);
+
   const router = useRouter();
   const language = useAppSelector(globalSelector).language;
   const languageArr = useAppSelector(globalSelector).languageArr;
@@ -26,6 +29,11 @@ const AppHeader = (props: AppHeaderProps) => {
         setChange(false);
       }
     });
+    window.addEventListener("click", (e) => {
+      setSearchActive(false);
+      setMenuActive(false);
+    });
+
     if (languageArr.length === 0) {
       dispatch({ type: "GET_LANG" });
     }
@@ -43,18 +51,26 @@ const AppHeader = (props: AppHeaderProps) => {
       {Object.keys(router.query).length === 2 ||
       router.asPath.includes("Utilities") ||
       router.pathname.includes("discoverDetail") ? (
-        <header className='white'>
-          <div className='container-fluid'>
-            <div className='header d-flex justify-content-between align-items-center'>
-              <div className='tab-menu d-none'>
+        <header className="white">
+          <div className="container-fluid">
+            <div className="header d-flex justify-content-between align-items-center">
+              <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setMenuActive(!menuActive);
+                }}
+                className={
+                  menuActive ? "tab-menu d-none active" : "tab-menu d-none"
+                }
+              >
                 <p></p>
                 <p></p>
                 <p></p>
               </div>
-              <div className='logo'>
-                <Image src={require("../../Asset/logo-2.png")} alt='' />
+              <div className="logo">
+                <Image src={require("../../Asset/logo-2.png")} alt="" />
               </div>
-              <div className='menu d-flex'>
+              <div className="menu d-flex">
                 <div
                   className={
                     router.asPath.length === 1
@@ -62,7 +78,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/'>
+                  <Link href="/">
                     <a>Trang chủ</a>
                   </Link>
                 </div>
@@ -73,7 +89,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/About'>
+                  <Link href="/About">
                     <a>Giới thiệu</a>
                   </Link>
                 </div>
@@ -84,7 +100,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Discover'>
+                  <Link href="/Discover">
                     <a>Điểm du lịch</a>
                   </Link>
                 </div>
@@ -95,7 +111,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Hotel'>
+                  <Link href="/Hotel">
                     <a>Lưu trú</a>
                   </Link>
                 </div>
@@ -106,7 +122,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Tour'>
+                  <Link href="/Tour">
                     <a>Lữ hành</a>
                   </Link>
                 </div>
@@ -117,7 +133,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Restaurant'>
+                  <Link href="/Restaurant">
                     <a>Ẩm thực</a>
                   </Link>
                 </div>
@@ -128,7 +144,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/News&Event'>
+                  <Link href="/News&Event">
                     <a>Tin tức</a>
                   </Link>
                 </div>
@@ -139,27 +155,27 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Contact'>
+                  <Link href="/Contact">
                     <a>Liên hệ</a>
                   </Link>
                 </div>
               </div>
-              <div className='header_right d-flex align-items-center'>
-                <div className='search'>
-                  <input type='text' placeholder='Tìm kiếm' />
-                  <i className='fa-solid fa-magnifying-glass'></i>
+              <div className="header_right d-flex align-items-center">
+                <div className="search">
+                  <input type="text" placeholder="Tìm kiếm" />
+                  <i className="fa-solid fa-magnifying-glass"></i>
                 </div>
-                <div className='language d-flex'>
-                  <img src={languageArr[language]?.icon} alt='' />
-                  <div className='select'>
+                <div className="language d-flex">
+                  <img src={languageArr[language]?.icon} alt="" />
+                  <div className="select">
                     <select
                       value={language}
                       onChange={(e) => {
                         dispatch(changeLang(e.target.value));
                       }}
-                      className='form-control'
-                      name=''
-                      id=''
+                      className="form-control"
+                      name=""
+                      id=""
                     >
                       {Object.keys(languageArr)?.map((key) => (
                         <option key={uuid()} value={key}>
@@ -167,26 +183,40 @@ const AppHeader = (props: AppHeaderProps) => {
                         </option>
                       ))}
                     </select>
-                    <i className='fa-sfa-caret-down'></i>
+                    <i className="fa-sfa-caret-down"></i>
                   </div>
                 </div>
               </div>
-              <div className='search mobi d-none'>
-                  <input type='text' />
-                  <i className='fa-solid fa-magnifying-glass'></i>
-                </div>
-              <div className="menu_mobi  d-none">
-                <div className='language d-flex'>
-                  <img src={languageArr[language]?.icon} alt='' />
-                  <div className='select'>
+              <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSearchActive(true);
+                }}
+                className={
+                  searchActive
+                    ? "search mobi d-none active"
+                    : "search mobi d-none"
+                }
+              >
+                <input type="text" />
+                <i className="fa-solid fa-magnifying-glass"></i>
+              </div>
+              <div
+                className={
+                  menuActive ? "menu_mobi  d-none active" : "menu_mobi  d-none"
+                }
+              >
+                <div className="language d-flex">
+                  <img src={languageArr[language]?.icon} alt="" />
+                  <div className="select">
                     <select
                       value={language}
                       onChange={(e) => {
                         dispatch(changeLang(e.target.value));
                       }}
-                      className='form-control'
-                      name=''
-                      id=''
+                      className="form-control"
+                      name=""
+                      id=""
                     >
                       {Object.keys(languageArr)?.map((key) => (
                         <option key={uuid()} value={key}>
@@ -194,10 +224,10 @@ const AppHeader = (props: AppHeaderProps) => {
                         </option>
                       ))}
                     </select>
-                    <i className='fa-solid fa-caret-down'></i>
+                    <i className="fa-solid fa-caret-down"></i>
                   </div>
                 </div>
-                <div className='menu d-flex'>
+                <div className="menu d-flex">
                   <div
                     className={
                       router.asPath.length === 1
@@ -205,7 +235,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/'>
+                    <Link href="/">
                       <a>Trang chủ</a>
                     </Link>
                   </div>
@@ -216,7 +246,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/About'>
+                    <Link href="/About">
                       <a>Giới thiệu</a>
                     </Link>
                   </div>
@@ -227,7 +257,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/Discover'>
+                    <Link href="/Discover">
                       <a>Điểm du lịch</a>
                     </Link>
                   </div>
@@ -238,7 +268,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/Hotel'>
+                    <Link href="/Hotel">
                       <a>Lưu trú</a>
                     </Link>
                   </div>
@@ -249,7 +279,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/Tour'>
+                    <Link href="/Tour">
                       <a>Lữ hành</a>
                     </Link>
                   </div>
@@ -260,7 +290,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/Restaurant'>
+                    <Link href="/Restaurant">
                       <a>Ẩm thực</a>
                     </Link>
                   </div>
@@ -271,7 +301,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/News&Event'>
+                    <Link href="/News&Event">
                       <a>Tin tức</a>
                     </Link>
                   </div>
@@ -282,7 +312,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/Contact'>
+                    <Link href="/Contact">
                       <a>Liên hệ</a>
                     </Link>
                   </div>
@@ -298,17 +328,25 @@ const AppHeader = (props: AppHeaderProps) => {
       !router.asPath.includes("Utilities") &&
       !router.pathname.includes("discoverDetail") ? (
         <header className={change ? "change" : ""}>
-          <div className='container-fluid'>
-            <div className='header d-flex justify-content-between align-items-center'>
-              <div className='tab-menu d-none'>
+          <div className="container-fluid">
+            <div className="header d-flex justify-content-between align-items-center">
+              <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setMenuActive(!menuActive);
+                }}
+                className={
+                  menuActive ? "tab-menu d-none active" : "tab-menu d-none"
+                }
+              >
                 <p></p>
                 <p></p>
                 <p></p>
               </div>
-              <div className='logo'>
-                <img src={logo.src} alt='' />
+              <div className="logo">
+                <img src={logo.src} alt="" />
               </div>
-              <div className='menu d-flex'>
+              <div className="menu d-flex">
                 <div
                   className={
                     router.asPath.length === 1
@@ -316,7 +354,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/'>
+                  <Link href="/">
                     <a>Trang chủ</a>
                   </Link>
                 </div>
@@ -327,7 +365,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/About'>
+                  <Link href="/About">
                     <a>Giới thiệu</a>
                   </Link>
                 </div>
@@ -338,7 +376,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Discover'>
+                  <Link href="/Discover">
                     <a>Điểm du lịch</a>
                   </Link>
                 </div>
@@ -349,7 +387,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Hotel'>
+                  <Link href="/Hotel">
                     <a>Lưu trú</a>
                   </Link>
                 </div>
@@ -360,7 +398,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Tour'>
+                  <Link href="/Tour">
                     <a>Lữ hành</a>
                   </Link>
                 </div>
@@ -371,7 +409,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Restaurant'>
+                  <Link href="/Restaurant">
                     <a>Ẩm thực</a>
                   </Link>
                 </div>
@@ -382,7 +420,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/News&Event'>
+                  <Link href="/News&Event">
                     <a>Tin tức</a>
                   </Link>
                 </div>
@@ -393,27 +431,27 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Contact'>
+                  <Link href="/Contact">
                     <a>Liên hệ</a>
                   </Link>
                 </div>
               </div>
-              <div className='header_right d-flex align-items-center'>
-                <div className='search'>
-                  <input type='text' placeholder='Tìm kiếm' />
-                  <i className='fa-solid fa-magnifying-glass'></i>
+              <div className="header_right d-flex align-items-center">
+                <div className="search">
+                  <input type="text" placeholder="Tìm kiếm" />
+                  <i className="fa-solid fa-magnifying-glass"></i>
                 </div>
-                <div className='language d-flex'>
-                  <img src={languageArr[language]?.icon} alt='' />
-                  <div className='select'>
+                <div className="language d-flex">
+                  <img src={languageArr[language]?.icon} alt="" />
+                  <div className="select">
                     <select
                       value={language}
                       onChange={(e) => {
                         dispatch(changeLang(e.target.value));
                       }}
-                      className='form-control'
-                      name=''
-                      id=''
+                      className="form-control"
+                      name=""
+                      id=""
                     >
                       {Object.keys(languageArr)?.map((key) => (
                         <option key={uuid()} value={key}>
@@ -421,26 +459,40 @@ const AppHeader = (props: AppHeaderProps) => {
                         </option>
                       ))}
                     </select>
-                    <i className='fa-solid fa-caret-down'></i>
+                    <i className="fa-solid fa-caret-down"></i>
                   </div>
                 </div>
               </div>
-              <div className='search mobi d-none'>
-                  <input type='text' />
-                  <i className='fa-solid fa-magnifying-glass'></i>
-                </div>
-              <div className="menu_mobi  d-none">
-                <div className='language d-flex'>
-                  <img src={languageArr[language]?.icon} alt='' />
-                  <div className='select'>
+              <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSearchActive(true);
+                }}
+                className={
+                  searchActive
+                    ? "search mobi d-none active"
+                    : "search mobi d-none"
+                }
+              >
+                <input type="text" />
+                <i className="fa-solid fa-magnifying-glass"></i>
+              </div>
+              <div
+                className={
+                  menuActive ? "menu_mobi  d-none active" : "menu_mobi  d-none"
+                }
+              >
+                <div className="language d-flex">
+                  <img src={languageArr[language]?.icon} alt="" />
+                  <div className="select">
                     <select
                       value={language}
                       onChange={(e) => {
                         dispatch(changeLang(e.target.value));
                       }}
-                      className='form-control'
-                      name=''
-                      id=''
+                      className="form-control"
+                      name=""
+                      id=""
                     >
                       {Object.keys(languageArr)?.map((key) => (
                         <option key={uuid()} value={key}>
@@ -448,10 +500,10 @@ const AppHeader = (props: AppHeaderProps) => {
                         </option>
                       ))}
                     </select>
-                    <i className='fa-solid fa-caret-down'></i>
+                    <i className="fa-solid fa-caret-down"></i>
                   </div>
                 </div>
-                <div className='menu d-flex'>
+                <div className="menu d-flex">
                   <div
                     className={
                       router.asPath.length === 1
@@ -459,7 +511,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/'>
+                    <Link href="/">
                       <a>Trang chủ</a>
                     </Link>
                   </div>
@@ -470,7 +522,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/About'>
+                    <Link href="/About">
                       <a>Giới thiệu</a>
                     </Link>
                   </div>
@@ -481,7 +533,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/Discover'>
+                    <Link href="/Discover">
                       <a>Điểm du lịch</a>
                     </Link>
                   </div>
@@ -492,7 +544,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/Hotel'>
+                    <Link href="/Hotel">
                       <a>Lưu trú</a>
                     </Link>
                   </div>
@@ -503,7 +555,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/Tour'>
+                    <Link href="/Tour">
                       <a>Lữ hành</a>
                     </Link>
                   </div>
@@ -514,7 +566,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/Restaurant'>
+                    <Link href="/Restaurant">
                       <a>Ẩm thực</a>
                     </Link>
                   </div>
@@ -525,7 +577,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/News&Event'>
+                    <Link href="/News&Event">
                       <a>Tin tức</a>
                     </Link>
                   </div>
@@ -536,7 +588,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/Contact'>
+                    <Link href="/Contact">
                       <a>Liên hệ</a>
                     </Link>
                   </div>

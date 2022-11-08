@@ -10,6 +10,7 @@ import { v4 as uuid } from "uuid";
 import { useAppDispatch, useAppSelector } from "../../ReduxStore/hooks";
 import newsEventsSelector from "../../ReduxStore/newSlice/slice";
 import Catalog from "./_component/Catalog";
+import EventsList from "./_component/EventList";
 
 export async function getServerSideProps() {
   const res = await callApi
@@ -76,7 +77,7 @@ const NewsEvent = ({ newsBanner, hotNews, Events }) => {
                   slidesToShow: 1,
                   slidesToScroll: 1,
                   arrows: true,
-                  adaptiveHeight:true,
+                  adaptiveHeight: true,
                   nextArrow: (
                     <div>
                       <i className="fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long"></i>
@@ -99,7 +100,9 @@ const NewsEvent = ({ newsBanner, hotNews, Events }) => {
                       </div>
                       <div className="--txt">
                         <div className="Info d-flex">
-                          <span className="type">{item.category[0]?.title}</span>
+                          <span className="type">
+                            {item.category[0]?.title}
+                          </span>
                           <i className="fa-solid fa-circle divider"></i>
                           <span className="date">
                             <i className="fa-solid fa-calendar-days"></i>
@@ -137,59 +140,33 @@ const NewsEvent = ({ newsBanner, hotNews, Events }) => {
               <h3>Sự Kiện</h3>
             </div>
             <div className="eventsSlider d-flex ">
-              <div className="row">
-              {Events.relations?.length > 0
-                ? Events.relations.map((item) => (
-                    <Link
-                      key={uuid()}
-                      href={`/News&Event/event/detail~${item.id}`}
-                    >
-                      <div className="col-md-4">
-                        <div className="--item img_hover1">
-                          <div className="--img">
-                            <img src={item.featureImage?.path} alt="" />
-                          </div>
-                          <div className="--txt">
-                            <span className="--tag d-flex">
-                              {item.tag[0] ? item.tag[0] : "Chưa phân loại"}
+              <EventsList />
+              {/* <div className="row">
+                {eventsArr.map((item) => (
+                  <Link
+                    key={uuid()}
+                    href={`/News&Event/event/detail~${item.id}`}
+                  >
+                    <div className="col-md-4">
+                      <div className="--item ">
+                        <img src={item.featureImage?.path} alt="" />
+                        <div>
+                          <span className="--tag d-flex">
+                            {item.tag[0] ? item.tag[0] : "Chưa phân loại"}
+                          </span>
+                          <h5>{item.title}</h5>
+                          <div className="Info">
+                            <span className="date">
+                              <i className="fa-solid fa-calendar-days"></i>
+                              Diễn ra ngày {item.date}
                             </span>
-                            <h5>{item.title}</h5>
-                            <div className="Info">
-                              <span className="date">
-                                <i className="fa-solid fa-calendar-days"></i>
-                                Diễn ra ngày {item.date}
-                              </span>
-                            </div>
                           </div>
                         </div>
                       </div>
-                    </Link>
-                  ))
-                : eventsArr.map((item) => (
-                    <Link
-                      key={uuid()}
-                      href={`/News&Event/event/detail~${item.id}`}
-                    >
-                      <div className="col-md-4">
-                        <div className="--item ">
-                          <img src={item.featureImage?.path} alt="" />
-                          <div>
-                            <span className="--tag d-flex">
-                              {item.tag[0] ? item.tag[0] : "Chưa phân loại"}
-                            </span>
-                            <h5>{item.title}</h5>
-                            <div className="Info">
-                              <span className="date">
-                                <i className="fa-solid fa-calendar-days"></i>
-                                Diễn ra ngày {item.date}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
+                    </div>
+                  </Link>
+                ))}
+              </div> */}
             </div>
           </div>
         </div>
