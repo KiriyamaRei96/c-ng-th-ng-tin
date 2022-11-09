@@ -33,20 +33,20 @@ const RestaurantCard = ({
             </div>
           </div>
         </div>
-        <div className="--cotent">
+        <div className='--cotent'>
           <h5>{title}</h5>
-          <div className="--andress d-flex">
-            <i className="fa-solid fa-location-dot"></i>
+          <div className='--andress d-flex'>
+            <i className='fa-solid fa-location-dot'></i>
             <span>{address}</span>
           </div>
-          <div className="ranks d-flex">
+          <div className='ranks d-flex'>
             <div>
               <Rate disabled defaultValue={rate}></Rate>
               <span>{rate}</span>
             </div>
 
-            <div className="views">
-              <i className="fa-solid fa-eye"></i>
+            <div className='views'>
+              <i className='fa-solid fa-eye'></i>
               120
             </div>
           </div>

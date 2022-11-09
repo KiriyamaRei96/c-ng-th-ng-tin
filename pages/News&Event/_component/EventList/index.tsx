@@ -1,8 +1,8 @@
 import { Pagination } from "antd";
 import Link from "next/link";
-import * as React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { v4 as uuid } from "uuid";
-import { useAppSelector } from "../../../../ReduxStore/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../ReduxStore/hooks";
 import newsEventsSelector from "../../../../ReduxStore/newSlice/slice";
 export interface EventsListProps {
   eventsArr?: Array<any>;
@@ -10,16 +10,26 @@ export interface EventsListProps {
 const EventsList = ({}: EventsListProps) => {
   const eventsArr = useAppSelector(newsEventsSelector).eventsArr;
   const eventPagination = useAppSelector(newsEventsSelector).eventPagination;
-  const list: any = React.useRef();
+  const [page, setPage] = useState(1);
+  const dispatch = useAppDispatch();
+
+  const list: any = useRef();
+
+  useEffect(() => {
+    dispatch({ type: "GET_EVENTS", payload: page });
+  }, [page]);
   return (
     <>
       <div ref={list} className='row'>
         {eventsArr?.map((item) => (
           <Link key={uuid()} href={`/News&Event/event/detail~${item.id}`}>
             <div className='col-md-4'>
-              <div className='--item '>
-                <img src={item.featureImage?.path} alt='' />
-                <div>
+              <div className='--item img_hover1 '>
+                <div className='--img '>
+                  <img src={item.featureImage?.path} alt='' />
+                </div>
+
+                <div className='--txt'>
                   <span className='--tag d-flex'>
                     {item.tag[0] ? item.tag[0] : "Chưa phân loại"}
                   </span>
@@ -49,11 +59,11 @@ const EventsList = ({}: EventsListProps) => {
         }}
         onChange={(e) => {
           const top = list?.current?.offsetTop;
+          setPage(e);
           window.scrollTo({
             top,
             behavior: "smooth",
           });
-          // setPage(e);
         }}
         current={eventPagination.current}
         total={eventPagination.totalCount}
