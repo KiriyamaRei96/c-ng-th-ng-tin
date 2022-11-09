@@ -2,25 +2,36 @@ import { useRouter } from "next/router";
 import React from "react";
 import callApi from "../../Api/Axios";
 import BreadCrumb from "../../components/BreadCrumb";
+import { store } from "../../ReduxStore/store";
+import Left from "./_component/Left";
 import ContactWrapper from "./_component/styled/Style";
 
 export async function getServerSideProps(context) {
+  const language = store.getState().global.language;
+
   const page = await callApi
-    .get(`/v2/page/Contact?locale=vi`)
+    .get(`/v2/page/Contact?locale=${language}`)
     .then((res) => res.data)
     .catch((err) => console.error(err));
   const banner =
     (await page?.data?.snippets?.find(
       (item) => item["snippet_name"] === "banner"
     )) || null;
+  const left =
+    (await page?.data?.snippets?.find(
+      (item) => item["snippet_name"] === "left"
+    )) || null;
+
   return {
     props: {
       banner,
+      left,
     },
   };
 }
-const Contact = ({ banner }) => {
+const Contact = ({ banner, left }) => {
   const router = useRouter();
+
   return (
     <ContactWrapper>
       <div id='contact'>
@@ -35,34 +46,7 @@ const Contact = ({ banner }) => {
           <div className='container-fluid'>
             <div className='row'>
               <div className='col-md-6'>
-                <div className='--left'>
-                  <ul>
-                    <li>
-                      <h4 className='--title'>
-                        Sở Văn hóa Thể thao và Du lịch Lai Châu
-                      </h4>
-                      <span>
-                        <i className='fa-solid fa-location-dot'></i> Phòng Quản
-                        lý Du lịch - Tầng 6, Nhà D, Khu Trung tâm hành chính
-                        chính trị tỉnh Lai Châu, phường Tân Phong, thành phố Lai
-                        Châu, tỉnh Lai Châu
-                      </span>
-                    </li>
-                    <li>
-                      <span>Email</span>
-                      <a href=''>
-                        <i className='fa-solid fa-envelope'></i>
-                        pqldl.sovhttdl@laichau.gov.vn
-                      </a>
-                    </li>
-                    <li>
-                      <span>Hotline</span>
-                      <a href=''>
-                        <i className='fa-solid fa-phone'></i>0213.3877.727
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+                <Left article={left?.articles} />
               </div>
               <div className='col-md-6'>
                 <div className='--right'>

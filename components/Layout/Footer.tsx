@@ -1,6 +1,5 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 
-export interface FooterProps {}
 import logo1 from "../../pages/_asset/logo-partner1.png";
 
 import logo2 from "../../pages/_asset/logo-partner2.png";
@@ -8,36 +7,68 @@ import logo2 from "../../pages/_asset/logo-partner2.png";
 import logo3 from "../../pages/_asset/logo-partner3.png";
 import globe from "../../pages/_asset/globe.svg";
 import chart from "../../pages/_asset/chart-simple.svg";
+import { v4 as uuid } from "uuid";
 import Link from "next/link";
+import callApi from "../../Api/Axios";
+import Slider from "react-slick";
+export async function getServerSideProps(context) {
+  const res = await callApi
+    .get("/v2/page/Footer?locale=vi")
+    .then((res) => res.data)
+    .catch((err) => console.error(err));
 
-const Footer = (props: FooterProps) => {
+  const iconSlider =
+    (await res.data?.snippets?.find(
+      (item) => item["snippet_name"] === "iconSlider"
+    )) || null;
+
+  return {
+    props: {
+      iconSlider,
+    },
+  };
+}
+
+const Footer = ({ iconSlider }) => {
+  const [data, setData] = useState<any>();
+  useEffect(() => {
+    (async () => {
+      const data = await callApi
+        .get("/v2/page/Footer?locale=vi")
+        .then((res) => res.data)
+        .catch((err) => console.error(err));
+      setData(data.data);
+    })();
+  }, []);
+  const slider = data?.snippets?.find(
+    (item) => item["snippet_name"] === "iconSlider"
+  );
+
   return (
     <footer>
       <div className='footer_Logo'>
         <div className='container-fluid'>
-          <div className='list_logo d-flex'>
-            <div className='--img'>
-              <img src={logo1.src} alt='' />
-            </div>
-            <div className='--img'>
-              <img src={logo1.src} alt='' />
-            </div>
-            <div className='--img'>
-              <img src={logo3.src} alt='' />
-            </div>
-            <div className='--img'>
-              <img src={logo1.src} alt='' />
-            </div>
-            <div className='--img'>
-              <img src={logo2.src} alt='' />
-            </div>
-            <div className='--img'>
-              <img src={logo1.src} alt='' />
-            </div>
-            <div className='--img'>
-              <img src={logo3.src} alt='' />
-            </div>
-          </div>
+          <Slider
+            className='list_logo'
+            {...{
+              arrows: false,
+              dots: false,
+              infinite: true,
+              autoplay: true,
+              speed: 500,
+
+              slidesToShow: 4,
+            }}
+          >
+            {slider?.articles.map((item) => (
+              <div key={uuid()}>
+                <div className='--img'>
+                  <img src={item.image?.path} alt='' />
+                </div>
+              </div>
+            ))}
+          </Slider>
+          <div className='list_logo d-flex'></div>
         </div>
       </div>
       <div className='container-fluid'>
@@ -210,7 +241,7 @@ const Footer = (props: FooterProps) => {
           <div className='--content d-flex justify-content-between'>
             <div className='--left d-flex align-items-center'>
               <span>@Du Lịch Lai Châu 2022 by Starfruit</span>
-              <div className="--link d-flex align-items-center">
+              <div className='--link d-flex align-items-center'>
                 <a href=''>Privacy Cookies Policy</a>
                 <a href=''>Terms and Conditions</a>
               </div>
