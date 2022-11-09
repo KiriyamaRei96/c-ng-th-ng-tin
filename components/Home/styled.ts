@@ -1093,10 +1093,16 @@ const HomeWrapper=styled.div`
       margin-bottom:2rem;
     }
     .arrow{
-      top: 83px !important; 
-      transform: none;
+      display: none;
     }
     .slider_homeDiscover1{
+      .slick-slide{
+        width: 90vw;
+      }
+      .slick-list{
+        justify-content: flex-start;
+        padding-left: 0;
+      }
       .slick-dots{
         margin-top: 1.5rem;
       }

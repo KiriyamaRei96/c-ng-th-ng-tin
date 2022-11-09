@@ -23,12 +23,14 @@ const RestaurantCard = ({
       <div className="restaurant d-flex">
         <div className="img-wrapper">
           <img src={`${img}`} alt="" />
-          <div className="--ribbon ">
-            <Image src={require("../../../../Asset/baggest.png")} alt="" />
-            <span>Best recommend</span>
-          </div>
-          <div className="--item">
-            <i className="fa-solid fa-heart"></i>
+          <div className="--top">
+            <div className="--ribbon ">
+              <Image src={require("../../../../Asset/baggest.png")} alt="" />
+              <span>Best recommend</span>
+            </div>
+            <div className="--heart">
+              <i className="fa-solid fa-heart"></i>
+            </div>
           </div>
         </div>
         <div className="--cotent">

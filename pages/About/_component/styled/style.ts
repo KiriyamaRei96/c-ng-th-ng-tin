@@ -389,6 +389,10 @@ const AboutWrapper=styled.div `
             .Title{
                 margin-bottom: 1.5rem;
             }
+            a{
+                height: 40px;
+                font-size: 12px;
+            }
         }
         .--img{
             position: absolute;

@@ -217,8 +217,12 @@ const DiscoverWarpper=styled.div`
         .--img {
             height: 330px;
         }
+        .slick-track{
+            display: flex !important;
+        }
         .slick-slide{
-            padding: 0 12px;
+            width: 80vw;
+            margin-right: 12px;
         }
     }
     .slider_discoverBlock {
@@ -265,12 +269,10 @@ const DiscoverWarpper=styled.div`
             .slick-slide{
                 padding: 0;
             }
-            .nextarrow{
-                left: calc(100% - 32px);
+            .arrow{
+                display: none;
             }
-            .prevarrow{
-                right: calc(100% - 32px);
-            }
+            
         }
     }
 }
@@ -442,11 +444,16 @@ const DiscoverWarpper=styled.div`
             .list_discoverBlock1{
                 width: 100%;
                 margin-left: 0;
+                padding-left: 16px;
                 .--img{
                     height: 300px;
                 }
                 .--wrapper{
-                    padding: 0 16px;
+                    padding: 0;
+                }
+                .slick-slide{
+                    width: 80vw;
+                    margin-right: 12px;
                 }
             }
             
@@ -465,7 +472,7 @@ const DiscoverWarpper=styled.div`
             position: relative;
             input {
                 width: 100%;
-                height: 52px;
+                height: 45px;
                 border: 1px solid #DCDCDC;
                 border-radius: 30px;
                 padding-left: 46px;
@@ -483,7 +490,7 @@ const DiscoverWarpper=styled.div`
                 border: 1px dashed #DCDCDC;
                 border-radius: 30px;
                 background: none;
-                height: 52px;
+                height: 45px;
                 display: flex;
                 align-items: center;
                 padding: 0 30px;
@@ -551,6 +558,7 @@ const DiscoverWarpper=styled.div`
 
                     span {
                         color: var(--color-1);
+                        margin-left: 4px;
                     }
                 }
             }
@@ -788,29 +796,27 @@ const DiscoverWarpper=styled.div`
 #detailservice {
     margin-top: 108px;
     background: #F6F8FB;
+    @media (max-width: 768px){
+        margin-top: 74px;
+    }
 }
 
 .detailAll {
     padding: 100px 0;
-
     .col-md-9 {
         width: 72%;
     }
-
     .col-md-3 {
         width: 28%;
     }
-
     .--left {
         padding-right: 1rem;
     }
-
     .--titlepost {
         font-size: 30px;
         font-family: var(--font-Canela);
         margin-bottom: 20px;
     }
-
     .--interactive {
         margin-bottom: 40px;
 
@@ -873,7 +879,6 @@ const DiscoverWarpper=styled.div`
             }
         }
     }
-
     .list_img {
         display: flex;
         flex-wrap: wrap;
@@ -916,7 +921,6 @@ const DiscoverWarpper=styled.div`
             }
         }
     }
-
     .list_content {
         .--tab {
             display: flex;
@@ -994,6 +998,10 @@ const DiscoverWarpper=styled.div`
 
             .--icon {
                 margin-right: 40px;
+                img{
+                    max-width: 100px;
+                    max-height: 100px;
+                }
             }
 
             .--title {
@@ -1014,10 +1022,72 @@ const DiscoverWarpper=styled.div`
 
                 .--check {
                     margin-right: 14px;
-
+                    flex: 0 0 auto;
                     img {
                         width: 20px;
                     }
+                }
+            }
+        }
+    }
+    @media (max-width: 768px){
+        padding: 3rem 0;
+        .row{
+            flex-flow: column;
+        }
+        .--left{
+            padding-right: 0;
+        }
+        .col-md-3,.col-md-9{
+            width: 100%;
+        }
+        .--interactive{
+            flex-flow: column;
+            align-items: flex-start !important;
+            .--sharecmt{
+                flex-flow: column;
+                margin-top: 12px;
+                align-items: flex-start !important;
+                .--link{
+                    margin-bottom: 12px;
+                }
+            }
+        }
+        .list_content{
+            .--tab{
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 1rem;
+                margin-bottom: 1rem;
+                .--item{
+                    flex: 0 0 auto;
+                    height: 40px;
+                }
+            }
+            .--card{
+                padding: 1rem;
+                flex-flow: column;
+                .--icon{
+                    margin-right: 0;
+                    display: flex;
+                    justify-content: center;
+                    margin-bottom: 1.5rem;
+                }
+                .--title{
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+        .list_img{
+            .--img{
+                &:first-child{
+                    height: 220px !important;
+                }
+                &:nth-child(n+2){
+                    width: calc(50% - 6px);
+                }
+                &:nth-child(2n+1){
+                    margin-right: 0;
                 }
             }
         }
@@ -1081,35 +1151,37 @@ const DiscoverWarpper=styled.div`
         }
 
         .slick-dots {
-            list-style: none;
-            padding: 0;
-            text-align: center;
-            margin-top: 47px;
-
-            margin-bottom: 0;
-
-            li.slick-active {
-                background: #FB8500;
-            }
-
-            li {
-                width: 18.8px;
-                height: 18.8px;
-                background: #D9D9D9;
-                border-radius: 50%;
-                display: inline-block;
-                margin: 0 9.5px;
-
-                button {
-                    border: none;
-                    background: none;
-                    color: transparent;
-                }
-            }
+            margin-top: 45px;
         }
-
         .slick-dots {
             margin: 60px 0 0 0;
+        }
+    }
+    @media (max-width: 768px){
+        padding-bottom: 3rem;
+        .Title{
+            margin-bottom: 2rem;
+        }
+        .slider_listLocation{
+            .slick-list{
+                padding: 0;
+            }
+            .slick-slide{
+                width: 80vw;
+                margin-right: 12px;
+            }
+            .--warrper{
+                padding: 0;
+            }
+            .arrow{
+                display: none;
+            }
+            .slick-dots{
+                margin-top: 1.5rem;
+            }
+            .list_discover{
+                padding-left: 1rem;
+            }
         }
     }
 }

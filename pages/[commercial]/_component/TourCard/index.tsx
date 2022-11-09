@@ -13,8 +13,10 @@ const TourCard = ({ id, img, tilte, plan, pointCategory }: TourCardProps) => {
   return (
     <Link href={`/Tour/detail~${id}`}>
       <div className='tour'>
+        <div className="--img img_hover">
         <img src={`${img}`} alt='' />
-        <div>
+        </div>
+        <div className="--txt">
           <h4>{tilte}</h4>
           <span>{plan}</span>
           <div className='divider'></div>

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-const CommercialDetailWrapper=styled.div` .discoverBanner {
+const CommercialDetailWrapper=styled.div` 
+.discoverBanner {
     position: relative;
 
     .--background {
@@ -157,6 +158,7 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
     }
 
     .list_discoverBlock {
+       
         .--img {
             height: 330px;
         }
@@ -361,7 +363,7 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
 
             input {
                 width: 100%;
-                height: 52px;
+                height: 45px;
                 border: 1px solid #DCDCDC;
                 border-radius: 30px;
                 padding-left: 46px;
@@ -381,7 +383,7 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
                 border: 1px dashed #DCDCDC;
                 border-radius: 30px;
                 background: none;
-                height: 52px;
+                height: 45px;
                 display: flex;
                 align-items: center;
                 padding: 0 30px;
@@ -442,7 +444,6 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
                 &.active {
                     color: var(--color-1);
                     border-bottom: 1px solid var(--color-1);
-
                     span {
                         color: var(--color-1);
                     }
@@ -618,6 +619,9 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
 #detailservice {
     margin-top: 108px;
     background: #F6F8FB;
+    @media (max-width: 768px){
+        margin-top: 74px;
+    }
 }
 
 .detailAll {
@@ -848,6 +852,68 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
                     img {
                         width: 20px;
                     }
+                }
+            }
+        }
+    }
+    @media (max-width: 768px){
+        padding: 3rem 0;
+        .row{
+            flex-flow: column;
+        }
+        .--left{
+            padding-right: 0;
+        }
+        .col-md-3,.col-md-9{
+            width: 100%;
+        }
+        .--interactive{
+            flex-flow: column;
+            align-items: flex-start !important;
+            .--sharecmt{
+                flex-flow: column;
+                margin-top: 12px;
+                align-items: flex-start !important;
+                .--link{
+                    margin-bottom: 12px;
+                }
+            }
+        }
+        .list_content{
+            .--tab{
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 1rem;
+                margin-bottom: 1rem;
+                .--item{
+                    flex: 0 0 auto;
+                    height: 40px;
+                }
+            }
+            .--card{
+                padding: 1rem;
+                flex-flow: column;
+                .--icon{
+                    margin-right: 0;
+                    display: flex;
+                    justify-content: center;
+                    margin-bottom: 1.5rem;
+                }
+                .--title{
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+        .list_img{
+            .--img{
+                &:first-child{
+                    height: 220px !important;
+                }
+                &:nth-child(n+2){
+                    width: calc(50% - 6px);
+                }
+                &:nth-child(2n+1){
+                    margin-right: 0;
                 }
             }
         }

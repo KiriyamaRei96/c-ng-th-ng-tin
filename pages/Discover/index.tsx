@@ -167,6 +167,7 @@ const Discover = ({
                         breakpoint: 768,
                         settings: {
                           slidesToShow: 1,
+                          variableWidth:true,
                           slidesToScroll: 1,
                         },
                       },
@@ -277,6 +278,7 @@ const Discover = ({
                           breakpoint: 768,
                           settings: {
                             slidesToShow: 1,
+                            variableWidth:true,
                             slidesToScroll: 1,
                           },
                         },

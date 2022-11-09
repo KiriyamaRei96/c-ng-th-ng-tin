@@ -53,12 +53,14 @@ const CommercialDetail = ({ type }: CommercialDetailProps) => {
                       <span>84 đánh giá</span>
                     </div>
                     <div className='--sharecmt d-flex align-items-center'>
-                      <a href=''>
-                        <i className='fa-solid fa-share-nodes'></i>Chia sẻ
-                      </a>
-                      <a href=''>
-                        <i className='fa-solid fa-heart'></i>Yêu thích
-                      </a>
+                      <div className="--link">
+                        <a href=''>
+                          <i className='fa-solid fa-share-nodes'></i>Chia sẻ
+                        </a>
+                        <a href=''>
+                          <i className='fa-solid fa-heart'></i>Yêu thích
+                        </a>
+                      </div>
                       <button className='button_hover2 button_2'>
                         Viết đánh giá
                       </button>
@@ -66,31 +68,31 @@ const CommercialDetail = ({ type }: CommercialDetailProps) => {
                   </div>
                   <div className='list_img'>
                     <div className='--img'>
-                      <Image
+                      <img
                         src={require("../../../Asset/banner.png")}
                         alt=''
                       />
                     </div>
                     <div className='--img'>
-                      <Image
+                      <img
                         src={require("../../../Asset/banner.png")}
                         alt=''
                       />
                     </div>
                     <div className='--img'>
-                      <Image
+                      <img
                         src={require("../../../Asset/banner.png")}
                         alt=''
                       />
                     </div>
                     <div className='--img'>
-                      <Image
+                      <img
                         src={require("../../../Asset/banner.png")}
                         alt=''
                       />
                     </div>
                     <div className='--img'>
-                      <Image
+                      <img
                         src={require("../../../Asset/banner.png")}
                         alt=''
                       />
@@ -130,7 +132,7 @@ const CommercialDetail = ({ type }: CommercialDetailProps) => {
                     </div>
                     <div className='--card'>
                       <div className='--icon'>
-                        <Image
+                        <img
                           src={require("../../../Asset/icon-13.svg")}
                           alt=''
                         />

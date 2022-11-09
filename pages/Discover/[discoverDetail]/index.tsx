@@ -31,12 +31,14 @@ const DiscoverDetail = (props: DiscoverDetailProps) => {
                       <span>84 đánh giá</span>
                     </div>
                     <div className="--sharecmt d-flex align-items-center">
+                      <div className="--link">
                       <a href="">
                         <i className="fa-solid fa-share-nodes"></i>Chia sẻ
                       </a>
                       <a href="">
                         <i className="fa-solid fa-heart"></i>Yêu thích
                       </a>
+                      </div>
                       <button className="button_hover2 button_2">
                         Viết đánh giá
                       </button>
@@ -44,19 +46,19 @@ const DiscoverDetail = (props: DiscoverDetailProps) => {
                   </div>
                   <div className="list_img">
                     <div className="--img">
-                      <Image src={require("./_asset/banner.png")} alt="" />
+                      <img src={require("./_asset/banner.png")} alt="" />
                     </div>
                     <div className="--img">
-                      <Image src={require("./_asset/banner.png")} alt="" />
+                      <img src={require("./_asset/banner.png")} alt="" />
                     </div>
                     <div className="--img">
-                      <Image src={require("./_asset/banner.png")} alt="" />
+                      <img src={require("./_asset/banner.png")} alt="" />
                     </div>
                     <div className="--img">
-                      <Image src={require("./_asset/banner.png")} alt="" />
+                      <img src={require("./_asset/banner.png")} alt="" />
                     </div>
                     <div className="--img">
-                      <Image src={require("./_asset/banner.png")} alt="" />
+                      <img src={require("./_asset/banner.png")} alt="" />
                       <a href="">26+</a>
                     </div>
                   </div>
@@ -293,6 +295,7 @@ const DiscoverDetail = (props: DiscoverDetailProps) => {
                         breakpoint: 768,
                         settings: {
                           slidesToShow: 1,
+                          variableWidth:true,
                           slidesToScroll: 1,
                         },
                       },
@@ -305,7 +308,7 @@ const DiscoverDetail = (props: DiscoverDetailProps) => {
                       <div className="--item img_hover">
                         <a href="">
                           <div className="--img">
-                            <Image
+                            <img
                               src={require("./_asset/banner.png")}
                               alt=""
                             />
@@ -330,7 +333,7 @@ const DiscoverDetail = (props: DiscoverDetailProps) => {
                       <div className="--item img_hover">
                         <a href="">
                           <div className="--img">
-                            <Image
+                            <img
                               src={require("./_asset/banner.png")}
                               alt=""
                             />
@@ -355,7 +358,7 @@ const DiscoverDetail = (props: DiscoverDetailProps) => {
                       <div className="--item img_hover">
                         <a href="">
                           <div className="--img">
-                            <Image
+                            <img
                               src={require("./_asset/banner.png")}
                               alt=""
                             />
@@ -380,7 +383,7 @@ const DiscoverDetail = (props: DiscoverDetailProps) => {
                       <div className="--item img_hover">
                         <a href="">
                           <div className="--img">
-                            <Image
+                            <img
                               src={require("./_asset/banner.png")}
                               alt=""
                             />
@@ -405,7 +408,7 @@ const DiscoverDetail = (props: DiscoverDetailProps) => {
                       <div className="--item img_hover">
                         <a href="">
                           <div className="--img">
-                            <Image
+                            <img
                               src={require("./_asset/banner.png")}
                               alt=""
                             />

@@ -487,7 +487,6 @@ export default function Home({
                       slidesToShow: homeDiscover1.relations.length,
                       slidesToScroll: homeDiscover1.relations.length,
                       arrows: true,
-
                       nextArrow: (
                         <div>
                           <i className='fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long'></i>
@@ -503,6 +502,7 @@ export default function Home({
                           breakpoint: 768,
                           settings: {
                             slidesToShow: 1,
+                            variableWidth:true,
                             slidesToScroll: 1,
                           },
                         },

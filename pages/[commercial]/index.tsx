@@ -113,99 +113,126 @@ const Commercial = ({
             <BreadCrumb />
           </div>
         </div>
-        <div className='pageBody'>
-          <Navbar />
-          <div className='--content'>
-            {hotMenu ? (
-              <div className='hot-menu'>
-                <h2>{hotMenu.title}</h2>
-                <div className='d-flex'>
-                  {hotMenu?.articles?.map((item) => (
-                    <div key={uuid()}>
-                      <img src={item?.image?.path} alt='' />
-                      <span>{item?.title}</span>
-                    </div>
-                  ))}
+        <div className="container-fluid">
+          <div className='pageBody'>
+            <Navbar />
+            <div className='--content'>
+              {hotMenu ? (
+                <div className='hot-menu'>
+                  <h2>{hotMenu.title}</h2>
+                  <div className='d-flex'>
+                    {hotMenu?.articles?.map((item) => (
+                      <div key={uuid()}>
+                        <img src={item?.image?.path} alt='' />
+                        <span>{item?.title}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ) : (
-              false
-            )}
-            <List />
+              ) : (
+                false
+              )}
+              <List />
 
-            {hotPoint ? (
-              <div className='Hotel-sliderWarpper'>
-                <h3>{hotPoint.title}</h3>
-                <Slider
-                  {...{
-                    className: "HotelSlider",
-                    dots: true,
-                    infinite: true,
-                    speed: 500,
-                    slidesToShow: 4,
-                    slidesToScroll: 4,
-                    arrows: false,
-                  }}
-                >
-                  {hotPoint?.relations?.map((item) => (
-                    <div key={uuid()} className='--warpper'>
-                      <div className='placeCard d-flex'>
-                        <img src={item.featureImage?.path} alt='' />
-                        <h4>{item.tilte}</h4>
-                        <span>{item.highlights}</span>
-                        <Link href='/Discover/1'>Tìm hiểu thêm</Link>
-                      </div>
-                    </div>
-                  ))}
-                </Slider>
-              </div>
-            ) : (
-              false
-            )}
-            {hotTour ? (
-              <div className='tour-sliderWarpper'>
-                <h3>{hotTour.title}</h3>
-                <Slider
-                  {...{
-                    className: "TourSlider",
-                    dots: true,
-                    infinite: true,
-                    speed: 500,
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    arrows: true,
-                    nextArrow: (
-                      <div>
-                        <i className='fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long'></i>
-                      </div>
-                    ),
-
-                    prevArrow: (
-                      <div>
-                        <i className='fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long'></i>
-                      </div>
-                    ),
-                  }}
-                >
-                  {hotTour.relations?.map((item) => (
-                    <div key={uuid()} className='--warpper'>
-                      <TourCard
-                        id={item.id}
-                        img={item.featureImage?.path}
-                        key={uuid()}
-                        tilte={item.title}
-                        plan={
-                          item.plan ? item.plan : "Chưa có kế hoạch du lịch"
+              {hotPoint ? (
+                <div className='Hotel-sliderWarpper'>
+                  <h3>{hotPoint.title}</h3>
+                  <Slider
+                    {...{
+                      className: "HotelSlider",
+                      dots: true,
+                      infinite: true,
+                      speed: 500,
+                      slidesToShow: 4,
+                      slidesToScroll: 4,
+                      arrows: false,
+                      responsive: [
+                        {
+                          breakpoint: 768,
+                          settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            variableWidth:true,
+                            adaptiveHeight:true,
+                          }
                         }
-                        pointCategory={item.destinationsType.title}
-                      />
-                    </div>
-                  ))}
-                </Slider>
-              </div>
-            ) : (
-              false
-            )}
+                      ]
+                    }}
+                  >
+                    {hotPoint?.relations?.map((item) => (
+                      <div key={uuid()} className='--warpper'>
+                        <div className='placeCard d-flex'>
+                          <div className="--img img_hover">
+                            <img src={item.featureImage?.path} alt='' />
+                          </div>
+                          <div className="--txt pt-3 d-flex flex-column">
+                            <h4>{item.title}</h4>
+                            <span>{item.highlights}</span>
+                            <Link href='/Discover/1'>Tìm hiểu thêm</Link>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </Slider>
+                </div>
+              ) : (
+                false
+              )}
+              {hotTour ? (
+                <div className='tour-sliderWarpper'>
+                  <h3>{hotTour.title}</h3>
+                  <Slider
+                    {...{
+                      className: "TourSlider",
+                      dots: true,
+                      infinite: true,
+                      speed: 500,
+                      slidesToShow: 3,
+                      slidesToScroll: 3,
+                      arrows: true,
+                      nextArrow: (
+                        <div>
+                          <i className='fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long'></i>
+                        </div>
+                      ),
+
+                      prevArrow: (
+                        <div>
+                          <i className='fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long'></i>
+                        </div>
+                      ),
+                      responsive: [
+                        {
+                          breakpoint: 768,
+                          settings: {
+                            slidesToShow: 1,
+                            variableWidth:true,
+                            slidesToScroll: 1,
+                          },
+                        },
+                      ],
+                    }}
+                  >
+                    {hotTour.relations?.map((item) => (
+                      <div key={uuid()} className='--warpper'>
+                        <TourCard
+                          id={item.id}
+                          img={item.featureImage?.path}
+                          key={uuid()}
+                          tilte={item.title}
+                          plan={
+                            item.plan ? item.plan : "Chưa có kế hoạch du lịch"
+                          }
+                          pointCategory={item.destinationsType.title}
+                        />
+                      </div>
+                    ))}
+                  </Slider>
+                </div>
+              ) : (
+                false
+              )}
+            </div>
           </div>
         </div>
       </div>
