@@ -130,7 +130,6 @@ const Commercial = ({
                       autoplay: true,
                       swipe: true,
                       speed: 500,
-                      autoplaySpeed: 500,
                     }}
                   >
                     {hotMenu?.articles?.map((item) => (
