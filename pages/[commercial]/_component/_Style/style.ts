@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-const CommercialWrapper=styled.div` .pageBody {
+const CommercialWrapper=styled.div` 
+.pageBody {
     display: grid;
     padding: 100px 86px;
     grid-template-columns: 23.5% 73%;
@@ -293,11 +294,13 @@ const CommercialWrapper=styled.div` .pageBody {
                 .--item {
                     .ant-select-selector {
                         height: 36px;
-
+                        min-width: 170px;
                         border: 1px solid #DCDCDC;
                         border-radius: 4px;
                     }
-
+                    .ant-select-selection-placeholder,.ant-select-selection-item{
+                        padding-top: 2px;
+                    }
                 }
             }
         }
@@ -763,31 +766,7 @@ const CommercialWrapper=styled.div` .pageBody {
 
 
                 .slick-dots {
-                    list-style: none;
-                    padding: 0;
-                    text-align: center;
                     margin-top: 45px;
-
-                    margin-bottom: 0;
-
-                    li.slick-active {
-                        background: #FB8500;
-                    }
-
-                    li {
-                        width: 18.8px;
-                        height: 18.8px;
-                        background: #D9D9D9;
-                        border-radius: 50%;
-                        display: inline-block;
-                        margin: 0 9.5px;
-
-                        button {
-                            border: none;
-                            background: none;
-                            color: transparent;
-                        }
-                    }
                 }
 
                 .--warpper {
@@ -801,6 +780,11 @@ const CommercialWrapper=styled.div` .pageBody {
                             font-weight: 600;
                             font-size: 18px;
                             line-height: 24px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            -webkit-line-clamp: 2;
+                            display: -webkit-box;
+                            -webkit-box-orient: vertical;
                         }
 
                         img {
@@ -815,6 +799,11 @@ const CommercialWrapper=styled.div` .pageBody {
                             font-size: 14px;
                             line-height: 20px;
                             color: #6F7378;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            -webkit-line-clamp: 4;
+                            display: -webkit-box;
+                            -webkit-box-orient: vertical;
                         }
 
                         a {
@@ -831,6 +820,18 @@ const CommercialWrapper=styled.div` .pageBody {
         }
 
     }
-
+    @media (max-width: 768px){
+        .--content{
+            .search {
+                .--select {
+                    .--item {
+                        .ant-select-selector{
+                            min-width: 170px
+                        }
+                    }
+                }
+            }
+        }
+    }
     `;
     export default CommercialWrapper

@@ -31,12 +31,14 @@ const DiscoverDetail = (props: DiscoverDetailProps) => {
                       <span>84 đánh giá</span>
                     </div>
                     <div className="--sharecmt d-flex align-items-center">
-                      <a href="">
-                        <i className="fa-solid fa-share-nodes"></i>Chia sẻ
-                      </a>
-                      <a href="">
-                        <i className="fa-solid fa-heart"></i>Yêu thích
-                      </a>
+                      <div className="--link">
+                        <a href="">
+                          <i className="fa-solid fa-share-nodes"></i>Chia sẻ
+                        </a>
+                        <a href="">
+                          <i className="fa-solid fa-heart"></i>Yêu thích
+                        </a>
+                      </div>
                       <button className="button_hover2 button_2">
                         Viết đánh giá
                       </button>
@@ -302,7 +304,7 @@ const DiscoverDetail = (props: DiscoverDetailProps) => {
                 >
                   <div>
                     <div className="--warrper">
-                      <div className="--item img_hover">
+                      <div className="--item img_hover1">
                         <a href="">
                           <div className="--img">
                             <Image

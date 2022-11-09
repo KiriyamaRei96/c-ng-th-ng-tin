@@ -8,14 +8,10 @@ import styled from "styled-components";
 
 .contactForm {
     padding-top: 100px;
-
     .--title {
-        font-size: 27px;
         font-family: var(--font-Canela);
         margin-bottom: 12px;
-        font-weight: 600;
     }
-
     ul {
         list-style: none;
         padding-left: 0;
@@ -66,7 +62,7 @@ import styled from "styled-components";
 
                 a {
                     font-family: var(--font-Canela);
-                    font-size: 27px;
+                    font-size: 24px;
                     display: flex;
                     align-items: center;
                     color: var(--color-1);
@@ -74,7 +70,6 @@ import styled from "styled-components";
             }
         }
     }
-
     .--right {
         .form {
             margin: 28px 0;
@@ -108,6 +103,20 @@ import styled from "styled-components";
 
             &::after {
                 border-radius: 4px;
+            }
+        }
+    }
+    @media (max-width: 768px){
+        padding-top:3rem ;
+        ul{
+            margin-bottom: 2rem;
+            li{
+                margin-bottom: 12px;
+                &:nth-child(1){
+                    span{
+                        width: 100%;
+                    }
+                }
             }
         }
     }

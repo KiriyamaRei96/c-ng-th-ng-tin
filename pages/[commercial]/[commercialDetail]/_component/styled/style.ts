@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-const CommercialDetailWrapper=styled.div` .discoverBanner {
+const CommercialDetailWrapper=styled.div`
+ .discoverBanner {
     position: relative;
 
     .--background {
@@ -222,7 +223,6 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
     .--img {
         width: 100%;
         position: relative;
-
         &::after {
             background: linear-gradient(0deg, rgba(28, 28, 28, 0.2), rgba(28, 28, 28, 0.2));
             content: '';
@@ -232,10 +232,12 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
             width: 100%;
             height: 100%;
         }
-
+        span{
+            height: 100% !important;
+        }
         img {
-            width: 100%;
-            height: 100%;
+            width: 100% !important;
+            height: 100% !important;
             object-fit: cover;
         }
     }
@@ -618,29 +620,25 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
 #detailservice {
     margin-top: 108px;
     background: #F6F8FB;
+  
 }
 
 .detailAll {
     padding: 100px 0;
-
     .col-md-9 {
         width: 72%;
     }
-
     .col-md-3 {
         width: 28%;
     }
-
     .--left {
         padding-right: 1rem;
     }
-
     .--titlepost {
         font-size: 30px;
         font-family: var(--font-Canela);
         margin-bottom: 20px;
     }
-
     .--interactive {
         margin-bottom: 40px;
 
@@ -703,7 +701,6 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
             }
         }
     }
-
     .list_img {
         display: flex;
         flex-wrap: wrap;
@@ -746,7 +743,6 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
             }
         }
     }
-
     .list_content {
         .--tab {
             display: flex;
@@ -852,6 +848,7 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
             }
         }
     }
+   
 }
 
 .detaildiscoverLocation {

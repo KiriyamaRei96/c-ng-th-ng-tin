@@ -303,9 +303,12 @@ const DiscoverWarpper=styled.div`
             height: 100%;
         }
         img {
-            width: 100%;
+            width: 100% !important;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover !important;
+        }
+        span{
+            height: 100% !important;
         }
     }
     .--txt {
@@ -429,6 +432,7 @@ const DiscoverWarpper=styled.div`
             display: none;
         }
         .--right{
+            padding-top: 0;
             .--title{
                 margin-bottom: 2rem;
                 padding: 0 16px;
@@ -788,29 +792,27 @@ const DiscoverWarpper=styled.div`
 #detailservice {
     margin-top: 108px;
     background: #F6F8FB;
+    @media (max-width: 768px){
+        margin-top: 74px;
+    }
 }
 
 .detailAll {
     padding: 100px 0;
-
     .col-md-9 {
         width: 72%;
     }
-
     .col-md-3 {
         width: 28%;
     }
-
     .--left {
         padding-right: 1rem;
     }
-
     .--titlepost {
         font-size: 30px;
         font-family: var(--font-Canela);
         margin-bottom: 20px;
     }
-
     .--interactive {
         margin-bottom: 40px;
 
@@ -873,7 +875,6 @@ const DiscoverWarpper=styled.div`
             }
         }
     }
-
     .list_img {
         display: flex;
         flex-wrap: wrap;
@@ -994,6 +995,9 @@ const DiscoverWarpper=styled.div`
 
             .--icon {
                 margin-right: 40px;
+                img{
+                    max-width: 100px !important;
+                }
             }
 
             .--title {
@@ -1010,6 +1014,9 @@ const DiscoverWarpper=styled.div`
                 li {
                     display: flex;
                     margin-bottom: 10px;
+                    &:last-child{
+                        margin-bottom: 0;
+                    }
                 }
 
                 .--check {
@@ -1018,6 +1025,67 @@ const DiscoverWarpper=styled.div`
                     img {
                         width: 20px;
                     }
+                }
+            }
+        }
+    }
+    @media (max-width: 768px){
+        padding: 3rem 0;
+        .row{
+            flex-flow: column;
+        }
+        .list_img{
+            .--img{
+                height: max-content !important;
+                &:nth-child(n+2){
+                    width: calc(50% - 8px) !important;
+                }
+                &:nth-child(2n+1){
+                    margin-right: 0 !important;
+                }
+            }
+        }
+        .--interactive{
+            flex-flow: column;
+            align-items: flex-start !important;
+            .--sharecmt{
+                display: flex;
+                flex-flow: column;
+                align-items: flex-start !important;
+                margin-top: 12px;
+                .--link{
+                    margin-bottom: 12px;
+                }
+            }
+        }
+        .col-md-3,.col-md-9{
+            width: 100%;
+        }
+        .--left{
+            padding-right: 0;
+        }
+        .--right{
+            margin-top: 1.5rem;
+        }
+        .list_content{
+            .--tab{
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 1rem;
+                margin-bottom: 1.5rem;
+                .--item{
+                    flex: 0 0 auto;
+                    height: 40px;
+                }
+            }
+            .--card{
+                padding: 1rem;
+                flex-flow: column;
+                .--icon{
+                    margin-right: 0;
+                    margin-bottom: 1.5rem;
+                    display: flex;
+                    justify-content: center;
                 }
             }
         }
@@ -1081,35 +1149,27 @@ const DiscoverWarpper=styled.div`
         }
 
         .slick-dots {
-            list-style: none;
-            padding: 0;
-            text-align: center;
-            margin-top: 47px;
-
-            margin-bottom: 0;
-
-            li.slick-active {
-                background: #FB8500;
+            margin-top: 44px;
+        }
+    }
+    @media (max-width: 768px){
+        padding-bottom: 3rem;
+        .slider_listLocation{
+            .slick-list{
+                padding: 0 !important;
             }
-
-            li {
-                width: 18.8px;
-                height: 18.8px;
-                background: #D9D9D9;
-                border-radius: 50%;
-                display: inline-block;
-                margin: 0 9.5px;
-
-                button {
-                    border: none;
-                    background: none;
-                    color: transparent;
+            .slick-slide{
+                >div{
+                    height: 330px;
                 }
             }
-        }
-
-        .slick-dots {
-            margin: 60px 0 0 0;
+            .slick-dots{
+                margin-top: 1.5rem;
+            }
+            .arrow{
+                top: 150px;
+                transform: none;
+            }
         }
     }
 }

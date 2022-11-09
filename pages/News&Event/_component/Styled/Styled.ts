@@ -381,6 +381,9 @@ import styled from "styled-components";
             .--img{
                 height: 400px !important;
             }
+            .--txt{
+                padding:0 1rem  !important;
+            }
             .col-md-4{
                 margin-bottom: 20px;
                 &:last-child{
