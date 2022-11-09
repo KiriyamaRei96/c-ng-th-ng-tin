@@ -12,7 +12,7 @@ const EventsList = ({}: EventsListProps) => {
   return (
     <>
       <div className='row'>
-        {eventsArr.map((item) => (
+        {eventsArr?.map((item) => (
           <Link key={uuid()} href={`/News&Event/event/detail~${item.id}`}>
             <div className='col-md-4'>
               <div className='--item '>

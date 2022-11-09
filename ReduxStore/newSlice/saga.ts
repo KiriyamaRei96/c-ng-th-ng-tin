@@ -38,9 +38,7 @@ function* searchNews(action) {
 function* getEvents(action) {
   try {
     const res = yield callApi
-      .get(
-        "/v2/event_list?page=1&limit=100000&order_key=sort&locale=vi&search="
-      )
+      .get("/v2/event_list?page=1&limit=6&order_key=sort&locale=vi&search=")
       .then((res) => res.data)
       .catch((err) => console.error(err));
     yield put({ type: "SET_EVENTS", payload: res });

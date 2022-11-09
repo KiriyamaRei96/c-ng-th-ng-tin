@@ -37,7 +37,9 @@ export const newsEventsSlice = createSlice({
       })
 
       .addCase("SET_EVENTS", (state, action: any) => {
-        state.eventsArr = action.payload;
+        state.eventsArr = action.payload.data;
+        state.eventPagination = action.payload.paginationVariables;
+
         return state;
       });
   },
