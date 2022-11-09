@@ -24,9 +24,12 @@ const EventsList = ({}: EventsListProps) => {
         {eventsArr?.map((item) => (
           <Link key={uuid()} href={`/News&Event/event/detail~${item.id}`}>
             <div className='col-md-4'>
-              <div className='--item '>
-                <img src={item.featureImage?.path} alt='' />
-                <div>
+              <div className='--item img_hover1 '>
+                <div className='--img '>
+                  <img src={item.featureImage?.path} alt='' />
+                </div>
+
+                <div className='--txt'>
                   <span className='--tag d-flex'>
                     {item.tag[0] ? item.tag[0] : "Chưa phân loại"}
                   </span>

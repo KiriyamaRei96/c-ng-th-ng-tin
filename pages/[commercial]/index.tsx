@@ -151,7 +151,7 @@ const Commercial = ({
                     <div key={uuid()} className='--warpper'>
                       <div className='placeCard d-flex'>
                         <img src={item.featureImage?.path} alt='' />
-                        <h4>{item.tilte}</h4>
+                        <h4>{item.title}</h4>
                         <span>{item.highlights}</span>
                         <Link href='/Discover/1'>Tìm hiểu thêm</Link>
                       </div>

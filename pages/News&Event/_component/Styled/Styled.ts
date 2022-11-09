@@ -307,6 +307,12 @@ const NewsWrapper=styled.div` div.News {
             margin-bottom: 60px;
         }
 
+        .col-md-4 {
+            &:nth-child(n+4) {
+                margin-top: 24px;
+            }
+        }
+
         .--item {
             width: 100%;
             position: relative;
