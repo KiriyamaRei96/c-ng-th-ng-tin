@@ -213,7 +213,8 @@ const CommercialWrapper=styled.div` .pageBody {
             &>div {
 
                 .slick-slide {
-                    margin: 0 8px;
+                    padding: 0 8px;
+                    margin-bottom: 30px;
                 }
 
                 /* the parent */
@@ -246,7 +247,7 @@ const CommercialWrapper=styled.div` .pageBody {
                 }
             }
 
-            margin-bottom: 30px;
+
         }
 
         .search {
