@@ -5,9 +5,9 @@ export interface LeftProps {
 }
 
 const Left = ({ article }: LeftProps) => {
-  const Hotline = article.find((item) => item.description === "Hotline");
-  const Email = article.find((item) => item.description === "Email");
-  const Address = article.find((item) => item.description === "Address");
+  const Hotline = article?.find((item) => item.description === "Hotline");
+  const Email = article?.find((item) => item.description === "Email");
+  const Address = article?.find((item) => item.description === "Address");
 
   return (
     <div className='--left'>
