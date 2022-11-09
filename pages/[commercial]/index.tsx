@@ -127,9 +127,10 @@ const Commercial = ({
                       dots: false,
                       slidesToShow: 5,
                       slidesToScroll: 5,
-                      autoplay: 500,
+                      autoplay: true,
                       swipe: true,
                       speed: 500,
+                      autoplaySpeed: 500,
                     }}
                   >
                     {hotMenu?.articles?.map((item) => (
