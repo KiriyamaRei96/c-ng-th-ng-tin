@@ -1,8 +1,8 @@
 import { Pagination } from "antd";
 import Link from "next/link";
-import * as React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { v4 as uuid } from "uuid";
-import { useAppSelector } from "../../../../ReduxStore/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../ReduxStore/hooks";
 import newsEventsSelector from "../../../../ReduxStore/newSlice/slice";
 export interface EventsListProps {
   eventsArr?: Array<any>;
@@ -10,7 +10,14 @@ export interface EventsListProps {
 const EventsList = ({}: EventsListProps) => {
   const eventsArr = useAppSelector(newsEventsSelector).eventsArr;
   const eventPagination = useAppSelector(newsEventsSelector).eventPagination;
-  const list: any = React.useRef();
+  const [page, setPage] = useState(1);
+  const dispatch = useAppDispatch();
+
+  const list: any = useRef();
+
+  useEffect(() => {
+    dispatch({ type: "GET_EVENTS", payload: page });
+  }, [page]);
   return (
     <>
       <div ref={list} className='row'>
@@ -49,11 +56,11 @@ const EventsList = ({}: EventsListProps) => {
         }}
         onChange={(e) => {
           const top = list?.current?.offsetTop;
+          setPage(e);
           window.scrollTo({
             top,
             behavior: "smooth",
           });
-          // setPage(e);
         }}
         current={eventPagination.current}
         total={eventPagination.totalCount}

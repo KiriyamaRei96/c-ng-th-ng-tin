@@ -12,16 +12,23 @@ import TourCard from "../_component/TourCard";
 export interface CommercialDetailProps {
   type: String;
 }
-export async function getStaticPaths() {
-  return {
-    paths: [],
-    fallback: true, // See the "fallback" section below
-  };
-}
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
+  let type;
+  switch (context.query.commercial) {
+    case "Restaurant":
+      type = "Restaurant";
+      break;
+    case "Tour":
+      type = "Tour";
+
+      break;
+    case "Hotel":
+      type = "Hotel";
+      break;
+  }
   return {
     props: {
-      type: context.params.commercial,
+      type,
     },
   };
 }

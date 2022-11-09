@@ -49,7 +49,7 @@ const NewsEvent = ({ newsBanner, hotNews, Events }) => {
       dispatch({ type: "GET_NEWS" });
     }
     if (eventsArr.length === 0) {
-      dispatch({ type: "GET_EVENTS" });
+      dispatch({ type: "GET_EVENTS", payload: 1 });
     }
     if (categoryArr.length === 0) {
       dispatch({ type: "GET_CATEGORY" });

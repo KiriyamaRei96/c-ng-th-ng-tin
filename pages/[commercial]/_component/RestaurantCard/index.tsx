@@ -19,32 +19,32 @@ const RestaurantCard = ({
   rate,
 }: RestaurantCardProps) => {
   return (
-    <Link href={`/Restaurant/detail~${id}}`}>
-      <div className="restaurant d-flex">
-        <div className="img-wrapper">
-          <img src={`${img}`} alt="" />
-          <div className="--ribbon ">
-            <Image src={require("../../../../Asset/baggest.png")} alt="" />
+    <Link href={`/Restaurant/detail~${id}`}>
+      <div className='restaurant d-flex'>
+        <div className='img-wrapper'>
+          <img src={`${img}`} alt='' />
+          <div className='--ribbon '>
+            <Image src={require("../../../../Asset/baggest.png")} alt='' />
             <span>Best recommend</span>
           </div>
-          <div className="--item">
-            <i className="fa-solid fa-heart"></i>
+          <div className='--item'>
+            <i className='fa-solid fa-heart'></i>
           </div>
         </div>
-        <div className="--cotent">
+        <div className='--cotent'>
           <h5>{title}</h5>
-          <div className="--andress d-flex">
-            <i className="fa-solid fa-location-dot"></i>
+          <div className='--andress d-flex'>
+            <i className='fa-solid fa-location-dot'></i>
             <span>{address}</span>
           </div>
-          <div className="ranks d-flex">
+          <div className='ranks d-flex'>
             <div>
               <Rate disabled defaultValue={rate}></Rate>
               <span>{rate}</span>
             </div>
 
-            <div className="views">
-              <i className="fa-solid fa-eye"></i>
+            <div className='views'>
+              <i className='fa-solid fa-eye'></i>
               120
             </div>
           </div>
