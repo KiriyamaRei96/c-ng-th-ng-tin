@@ -9,9 +9,11 @@ export interface EventsListProps {
 }
 const EventsList = ({}: EventsListProps) => {
   const eventsArr = useAppSelector(newsEventsSelector).eventsArr;
+  const eventPagination = useAppSelector(newsEventsSelector).eventPagination;
+  const list: any = React.useRef();
   return (
     <>
-      <div className='row'>
+      <div ref={list} className='row'>
         {eventsArr?.map((item) => (
           <Link key={uuid()} href={`/News&Event/event/detail~${item.id}`}>
             <div className='col-md-4'>
@@ -45,16 +47,16 @@ const EventsList = ({}: EventsListProps) => {
           }
           return originalElement;
         }}
-        // onChange={(e) => {
-        //   const top = list?.current?.offsetTop;
-        //   window.scrollTo({
-        //     top,
-        //     behavior: "smooth",
-        //   });
-        //   setPage(e);
-        // }}
-        // current={pagination.current}
-        // total={pagination.totalCount}
+        onChange={(e) => {
+          const top = list?.current?.offsetTop;
+          window.scrollTo({
+            top,
+            behavior: "smooth",
+          });
+          // setPage(e);
+        }}
+        current={eventPagination.current}
+        total={eventPagination.totalCount}
         pageSize={6}
       ></Pagination>
     </>
