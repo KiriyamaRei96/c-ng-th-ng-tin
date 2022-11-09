@@ -1,7 +1,6 @@
 import React from "react";
 
 const FooterForm = ({ footerForm }) => {
-    const google = 
   return (
     <div className='footer_form'>
       <h4 className='--title'>{footerForm?.title}</h4>
