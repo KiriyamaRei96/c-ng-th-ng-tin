@@ -593,7 +593,7 @@ const CommercialWrapper=styled.div` .pageBody {
         // }
 
         .--list {
-            display: grid;
+
 
 
 
@@ -659,16 +659,23 @@ const CommercialWrapper=styled.div` .pageBody {
         .--list.--tour {
             grid-template-columns: repeat(3, 1fr);
             gap: 24px 1.25%;
+            display: grid;
         }
 
         .--list.--Hotel {
             grid-template-columns: repeat(2, 1fr);
             gap: 24px 24px;
+            display: flex;
+
+            .hotel {
+                width: 50%;
+            }
         }
 
         .--list.--Restaurant {
             grid-template-columns: repeat(3, 1fr);
             gap: 24px 1.25%;
+            display: grid;
         }
 
         .--pagination {

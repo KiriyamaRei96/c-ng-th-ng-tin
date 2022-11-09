@@ -23,46 +23,65 @@ const HotelCard = ({
 }: HotelCardProps) => {
   return (
     <Link href={`/Hotel/detail~${id}`}>
-      <div className="hotel d-flex">
-        <div className="--warpper">
-          <img src={`${img}`} alt="" />
-          <div className="--ribbon ">
-            <Image src={require("../../../../Asset/baggest.png")} alt="" />
+      <div className='hotel d-flex'>
+        <div className='--warpper'>
+          {galaley?.length > 2 ? (
+            <Slider
+              {...{
+                arrows: false,
+                slidesToScroll: 1,
+                slidesToShow: 1,
+                infinite: true,
+              }}
+            >
+              {galaley.map((item) => (
+                <div style={{ width: "100%" }} key={uuid()}>
+                  <div>
+                    <img src={item.path} alt='' />
+                  </div>
+                </div>
+              ))}
+            </Slider>
+          ) : (
+            <img src={`${img}`} alt='' />
+          )}
+          <div className='--ribbon '>
+            <Image src={require("../../../../Asset/baggest.png")} alt='' />
             <span>Best recommend</span>
           </div>
-          <div className="--item">
-            <i className="fa-solid fa-heart"></i>
+          <div className='--item'>
+            <i className='fa-solid fa-heart'></i>
           </div>
-          <ul className="--dots d-flex">
+          <ul className='--dots d-flex'>
             <li>
-              <i className="fa-solid fa-circle"></i>
+              <i className='fa-solid fa-circle'></i>
             </li>
             <li>
-              <i className="fa-regular fa-circle"></i>
+              <i className='fa-regular fa-circle'></i>
             </li>
             <li>
-              <i className="fa-regular fa-circle"></i>
+              <i className='fa-regular fa-circle'></i>
             </li>
             <li>
-              <i className="fa-regular fa-circle"></i>
+              <i className='fa-regular fa-circle'></i>
             </li>
           </ul>
         </div>
-        <div className="--item d-flex">
+        <div className='--item d-flex'>
           <h5>{title}</h5>
-          <div className="--andress d-flex">
-            <i className="fa-solid fa-location-dot"></i>
+          <div className='--andress d-flex'>
+            <i className='fa-solid fa-location-dot'></i>
             <span>{address}</span>
           </div>
 
-          <div className="ranks d-flex">
+          <div className='ranks d-flex'>
             <div>
               <Rate disabled defaultValue={rate}></Rate>
               <span>{rate}</span>
             </div>
 
-            <div className="views">
-              <i className="fa-solid fa-eye"></i>
+            <div className='views'>
+              <i className='fa-solid fa-eye'></i>
               120
             </div>
           </div>
@@ -72,32 +91,3 @@ const HotelCard = ({
   );
 };
 export default HotelCard;
-// {galaley.length > 2 ? (
-//   <Slider
-//     {...{
-//       arrows: false,
-//       slidesToScroll: 1,
-//       slidesToShow: 1,
-//       infinite: true,
-//     }}
-//   >
-//     <div style={{ width: "100%" }} key={uuid()}>
-//       <div>
-//         {" "}
-//         <img src={galaley[0].path} alt="" />
-//       </div>
-//     </div>
-//     <div style={{ width: "100%" }} key={uuid()}>
-//       <div>
-//         {" "}
-//         <img src={galaley[0].path} alt="" />
-//       </div>
-//     </div>
-
-//     {/* {galaley.map((item) => (
-
-//     ))} */}
-//   </Slider>
-// ) : (
-//   <img src={`${img}`} alt="" />
-// )}

@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
- const NewsWrapper=styled.div` 
- div.News {
+const NewsWrapper=styled.div` div.News {
     padding: 100px 0;
+
     h3 {
         font-family: 'Canela';
         font-style: normal;
@@ -12,24 +12,30 @@ import styled from "styled-components";
         color: #1C1C1C;
         margin-bottom: 20px
     }
+
     .--hotSlider {
         padding: 50px 0;
         border-top: 1px solid #DCDCDC;
+
         .--item {
             justify-content: space-between;
             cursor: pointer;
-            .--img{
+
+            .--img {
                 height: 348px;
                 width: 41.5%;
+
                 img {
                     width: 100%;
                     height: 100%;
-                     object-fit: cover;
-                 }
+                    object-fit: cover;
+                }
             }
+
             .--txt {
                 width: 55%;
                 padding: 16px 0;
+
                 h4 {
                     font-family: 'Canela';
                     font-style: normal;
@@ -46,12 +52,14 @@ import styled from "styled-components";
 
 
                 }
+
                 &>.divider {
                     border-bottom: 1px solid #000000;
                     margin-top: 18px;
                     margin-bottom: 33px;
                     width: 40px;
                 }
+
                 &>span {
                     font-weight: 400;
                     font-size: 14px;
@@ -65,12 +73,14 @@ import styled from "styled-components";
                     display: -webkit-box;
 
                 }
+
                 a {
                     margin-top: 30px
                 }
             }
         }
     }
+
     .--catalog {
         .select {
             h4 {
@@ -85,9 +95,11 @@ import styled from "styled-components";
                 margin-bottom: 0;
                 cursor: pointer
             }
+
             .active {
                 color: #FB8500;
                 position: relative;
+
                 :after {
                     content: '';
                     position: absolute;
@@ -100,30 +112,36 @@ import styled from "styled-components";
 
             margin-bottom: 50px;
         }
+
         .--list {
             display: grid;
             grid-template-columns: repeat(3, 32%);
             gap: 50px 2%;
+
             &>div {
                 cursor: pointer;
                 height: 648px;
-                .--img{
+
+                .--img {
                     height: 370px;
                     margin-bottom: 24px;
+
                     img {
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
-                     
+
                     }
                 }
-              
+
                 .Info {
                     margin-bottom: 20px;
+
                     .divider {
                         margin: 0 12px;
                     }
                 }
+
                 h5 {
                     font-family: 'Canela';
                     font-weight: 500;
@@ -179,64 +197,80 @@ import styled from "styled-components";
             margin-top: 45px;
         }
     }
-    @media (max-width: 768px){
+
+    @media (max-width: 768px) {
         padding: 3rem 0;
-        .--hotSlider{
+
+        .--hotSlider {
             padding: 24px 0 0;
-            .--item{
+
+            .--item {
                 flex-flow: column;
-                .--img{
+
+                .--img {
                     width: 100%;
                     height: 240px;
                 }
-                .--txt{
+
+                .--txt {
                     width: 100%;
                 }
-              
+
             }
-            .arrow{
+
+            .arrow {
                 top: 122px;
                 transform: none;
-                &.prevarrow{
-                    right:calc(100% - 32px) ;
+
+                &.prevarrow {
+                    right: calc(100% - 32px);
                 }
             }
         }
-        .--hotNews{
+
+        .--hotNews {
             margin-bottom: 1rem;
         }
-        .--catalog{
-            .select{
+
+        .--catalog {
+            .select {
                 overflow-x: auto;
                 padding-bottom: 1rem;
                 margin-bottom: 1rem;
-                h4{
+
+                h4 {
                     width: max-content;
                     flex: 0 0 auto;
-                    &:last-child{
+
+                    &:last-child {
                         margin-right: 0;
                     }
                 }
             }
-            .--list{
-                grid-template-columns:unset;
+
+            .--list {
+                grid-template-columns: unset;
                 display: flex;
                 flex-flow: column;
                 gap: unset;
             }
-            .--img{
+
+            .--img {
                 height: 240px !important;
-                img{
+
+                img {
                     margin-bottom: 16px !important;
                 }
             }
-            .--item{
-               height: max-content !important;
-               margin-bottom: 24px;
+
+            .--item {
+                height: max-content !important;
+                margin-bottom: 24px;
             }
         }
     }
 }
+
 .Events {
     .--title {
         margin: 0 12.5px;
@@ -264,17 +298,26 @@ import styled from "styled-components";
         }
 
     }
+
     .eventsSlider {
         margin-top: 55px;
+        flex-direction: column;
+
+        .row {
+            margin-bottom: 60px;
+        }
+
         .--item {
             width: 100%;
             position: relative;
             cursor: pointer;
-            .--img{
+
+            .--img {
                 height: 510px;
                 width: 100%;
                 position: relative;
-                &::after{
+
+                &::after {
                     background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
                     content: '';
                     position: absolute;
@@ -284,17 +327,20 @@ import styled from "styled-components";
                     height: 100%;
                 }
             }
+
             img {
                 object-fit: cover;
                 width: 100%;
                 height: 100%;
                 filter: brightness(0.7);
             }
+
             .--txt {
                 position: absolute;
                 padding: 0 40px;
                 bottom: 2rem;
                 width: 100%;
+
                 .--tag {
                     justify-content: center;
                     align-items: center;
@@ -304,6 +350,7 @@ import styled from "styled-components";
                     background: #FB8500;
                     border-radius: 100px;
                 }
+
                 h5 {
                     font-family: 'Canela';
                     font-style: normal;
@@ -318,6 +365,7 @@ import styled from "styled-components";
                     -webkit-box-orient: vertical;
                     display: -webkit-box;
                 }
+
                 span.date {
                     text-transform: uppercase;
                     font-weight: 700;
@@ -326,7 +374,8 @@ import styled from "styled-components";
                     color: #FFFFFF;
                     padding-bottom: 1rem;
                     position: relative;
-                    &::after{
+
+                    &::after {
                         content: '';
                         position: absolute;
                         bottom: 0;
@@ -338,6 +387,7 @@ import styled from "styled-components";
             }
 
         }
+
         .slick-dots {
             list-style: none;
             padding: 0;
@@ -365,6 +415,7 @@ import styled from "styled-components";
                 }
             }
         }
+
         .nextarrow {
             left: calc(100% + 3.5px);
             display: flex;
@@ -375,15 +426,19 @@ import styled from "styled-components";
             display: flex;
         }
     }
-    @media (max-width: 768px){
-        .eventsSlider{
+
+    @media (max-width: 768px) {
+        .eventsSlider {
             flex-flow: column;
-            .--img{
+
+            .--img {
                 height: 400px !important;
             }
-            .col-md-4{
+
+            .col-md-4 {
                 margin-bottom: 20px;
-                &:last-child{
+
+                &:last-child {
                     margin-bottom: 0;
                 }
             }

@@ -10,36 +10,38 @@ export interface EventsListProps {
 const EventsList = ({}: EventsListProps) => {
   const eventsArr = useAppSelector(newsEventsSelector).eventsArr;
   return (
-    <div className="row">
-      {eventsArr.map((item) => (
-        <Link key={uuid()} href={`/News&Event/event/detail~${item.id}`}>
-          <div className="col-md-4">
-            <div className="--item ">
-              <img src={item.featureImage?.path} alt="" />
-              <div>
-                <span className="--tag d-flex">
-                  {item.tag[0] ? item.tag[0] : "Chưa phân loại"}
-                </span>
-                <h5>{item.title}</h5>
-                <div className="Info">
-                  <span className="date">
-                    <i className="fa-solid fa-calendar-days"></i>
-                    Diễn ra ngày {item.date}
+    <>
+      <div className='row'>
+        {eventsArr.map((item) => (
+          <Link key={uuid()} href={`/News&Event/event/detail~${item.id}`}>
+            <div className='col-md-4'>
+              <div className='--item '>
+                <img src={item.featureImage?.path} alt='' />
+                <div>
+                  <span className='--tag d-flex'>
+                    {item.tag[0] ? item.tag[0] : "Chưa phân loại"}
                   </span>
+                  <h5>{item.title}</h5>
+                  <div className='Info'>
+                    <span className='date'>
+                      <i className='fa-solid fa-calendar-days'></i>
+                      Diễn ra ngày {item.date}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </Link>
-      ))}
+          </Link>
+        ))}
+      </div>
       <Pagination
-        className="--pagination"
+        className='--pagination'
         itemRender={(_, type, originalElement) => {
           if (type === "prev") {
-            return <i className="fa-solid fa-angles-left"></i>;
+            return <i className='fa-solid fa-angles-left'></i>;
           }
           if (type === "next") {
-            return <i className="fa-solid fa-angles-right"></i>;
+            return <i className='fa-solid fa-angles-right'></i>;
           }
           return originalElement;
         }}
@@ -55,7 +57,7 @@ const EventsList = ({}: EventsListProps) => {
         // total={pagination.totalCount}
         pageSize={6}
       ></Pagination>
-    </div>
+    </>
   );
 };
 export default EventsList;
