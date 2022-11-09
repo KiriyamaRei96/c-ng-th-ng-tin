@@ -13,24 +13,24 @@ const Left = ({ article }: LeftProps) => {
     <div className='--left'>
       <ul>
         <li>
-          <h4 className='--title'>{Address.title}</h4>
+          <h4 className='--title'>{Address?.title}</h4>
           <span>
             <i className='fa-solid fa-location-dot'></i>
-            {Address.subTitle}
+            {Address?.subTitle}
           </span>
         </li>
         <li>
-          <span>{Email.title}</span>
+          <span>{Email?.title}</span>
           <a href=''>
             <i className='fa-solid fa-envelope'></i>
-            {Email.subTitle}
+            {Email?.subTitle}
           </a>
         </li>
         <li>
-          <span>{Hotline.title}</span>
+          <span>{Hotline?.title}</span>
           <a href=''>
             <i className='fa-solid fa-phone'></i>
-            {Hotline.subTitle}
+            {Hotline?.subTitle}
           </a>
         </li>
       </ul>
