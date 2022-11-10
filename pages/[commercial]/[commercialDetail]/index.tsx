@@ -452,11 +452,11 @@ const CommercialDetail = ({ type, data, otherData }) => {
           false
         )}
         {router?.query?.commercial === "Hotel" ? (
-          <div className='detailservicediscover'>
+          <div className='detailservicediscover detailhotel'>
             <div className='container-fluid'>
               <div className='--title'>
                 <div className='subTitle text-center'>{slider?.subTitle}</div>
-                <h1 className='Title text-center'>{slider?.tilte}</h1>
+                <h1 className='Title text-center'>{slider?.title}</h1>
               </div>
               <div className='slider'>
                 <div className='list_servicediscover'>
@@ -484,6 +484,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
                           breakpoint: 768,
                           settings: {
                             slidesToShow: 1,
+                            variableWidth:true,
                             slidesToScroll: 1,
                           },
                         },

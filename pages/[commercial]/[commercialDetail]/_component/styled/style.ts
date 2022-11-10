@@ -1116,36 +1116,9 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
         }
 
         .slick-dots {
-            list-style: none;
-            padding: 0;
-            text-align: center;
             margin-top: 16px;
-
-            margin-bottom: 0;
-
-            li.slick-active {
-                background: #FB8500;
-            }
-
-            li {
-                width: 18.8px;
-                height: 18.8px;
-                background: #D9D9D9;
-                border-radius: 50%;
-                display: inline-block;
-                margin: 0 9.5px;
-
-                button {
-                    border: none;
-                    background: none;
-                    color: transparent;
-                }
-            }
+         
         }
-
-        // .slick-dots {
-        //     margin-top: 60px;
-        // }
 
         .--item {
             box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
@@ -1386,7 +1359,52 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
         width: 100%;
     }
 }
-
+.detailhotel{
+    .col-md-3{
+        display: flex !important ;
+        flex-flow: column;
+    }
+    .hotel{
+        flex-flow: column;
+        box-shadow: none;
+        .--warpper{
+            width: 100%;
+            img{
+                height: 230px;
+            }
+            .slick-slide{
+                height: 230px;
+            }
+        }
+        .--andress{
+            margin-bottom: 12px;
+        }
+        .--item{
+            width: 100%;
+            box-shadow: none;
+        }
+      
+    }
+    .slick-dots{
+        margin-top: 60px !important;
+    }
+    @media (max-width: 768px){
+        padding-bottom: 3rem;
+        .arrow{
+            display: none;
+        }
+        .slick-slide{
+            width: 80vw !important;
+            margin-right: 12px;
+        }
+        .slick-list{
+            padding: 0;
+        }
+        .col-md-3{
+            padding: 0 !important;
+        }
+    }
+}
 `;
 
 
