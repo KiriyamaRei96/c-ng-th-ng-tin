@@ -138,7 +138,7 @@ const About = ({
               {listAboutIntro.articles.map((item) => (
                 <div key={uuid()} className="--item d-flex">
                   <div className="--icon">
-                    <img src={item.image.path} alt="" />
+                    <img src={item?.image?.path} alt="" />
                   </div>
                   <div className="--txt d-flex flex-column justify-content-center">
                     <h4>{item.title}</h4>
@@ -182,10 +182,12 @@ const About = ({
                       </div>
                       <div className="--txt">
                         <h4>{item.title}</h4>
-                        <a href="">
-                          Xem chi tiết
-                          <i className="fa-solid ms-2 fa-arrow-right-long"></i>
-                        </a>
+                        <Link href={item?.link}>
+                          <a>
+                            Xem chi tiết
+                            <i className="fa-solid ms-2 fa-arrow-right-long"></i>
+                          </a>
+                        </Link>
                       </div>
                     </div>
                   </div>

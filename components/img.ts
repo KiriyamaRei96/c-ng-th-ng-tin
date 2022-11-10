@@ -8,3 +8,5 @@ export const iconMap2 = require("../Asset/icon-map2.svg");
 export const iconTime = require("../Asset/icon-time.svg");
 export const iconBooking = require("../Asset/icon-booking.svg");
 export const icon13 = require("../Asset/icon-13.svg");
+export const banner = require("../Asset/banner.png");
+

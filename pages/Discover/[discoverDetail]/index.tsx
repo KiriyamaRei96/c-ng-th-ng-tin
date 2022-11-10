@@ -16,6 +16,7 @@ import {
 import { useAppDispatch, useAppSelector } from "../../../ReduxStore/hooks";
 import pointSelector from "../../../ReduxStore/pointSlice/slice";
 import Link from "next/link";
+import Comment from "../../../components/Comment";
 
 export async function getServerSideProps(context) {
   let other;
@@ -35,7 +36,7 @@ export async function getServerSideProps(context) {
         .then((res) => res.data)
         .catch((err) => console.error(err))
     ).data || null;
-  console.log(otherData);
+
   return {
     props: {
       data,
@@ -68,25 +69,25 @@ const DiscoverDetail = ({ data, otherData }) => {
 
   return (
     <DiscoverWarpper>
-      <div id='detaildiscover'>
-        <div className='detaildiscoverContent detailAll'>
-          <div className='container-fluid'>
-            <div className='row'>
-              <div className='col-md-9'>
-                <div className='--left'>
-                  <div className='subTitle'>Du lịch</div>
-                  <h3 className='--titlepost'>{data?.title}</h3>
-                  <div className='--interactive d-flex align-items-center justify-content-between'>
-                    <div className='--evaluate d-flex align-items-center'>
+      <div id="detaildiscover">
+        <div className="detaildiscoverContent detailAll">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-9">
+                <div className="--left">
+                  <div className="subTitle">Du lịch</div>
+                  <h3 className="--titlepost">{data?.title}</h3>
+                  <div className="--interactive d-flex align-items-center justify-content-between">
+                    <div className="--evaluate d-flex align-items-center">
                       {data?.star ? (
-                        <div className='--star d-flex align-items-center'>
+                        <div className="--star d-flex align-items-center">
                           <span>{data?.star}</span>
                           {Array.apply(null, Array(Number(data?.star))).map(
                             function (x, i) {
                               return (
                                 <i
                                   key={uuid()}
-                                  className='fa-solid fa-star'
+                                  className="fa-solid fa-star"
                                 ></i>
                               );
                             }
@@ -97,7 +98,7 @@ const DiscoverDetail = ({ data, otherData }) => {
                                 <i
                                   key={uuid()}
                                   style={{ color: "wheat" }}
-                                  className='fa-solid fa-star'
+                                  className="fa-solid fa-star"
                                 ></i>
                               );
                             }
@@ -109,23 +110,23 @@ const DiscoverDetail = ({ data, otherData }) => {
 
                       <span>84 đánh giá</span>
                     </div>
-                    <div className='--sharecmt d-flex align-items-center'>
-                      <div className='--link'>
-                        <a href=''>
-                          <i className='fa-solid fa-share-nodes'></i>Chia sẻ
+                    <div className="--sharecmt d-flex align-items-center">
+                      <div className="--link">
+                        <a href="">
+                          <i className="fa-solid fa-share-nodes"></i>Chia sẻ
                         </a>
-                        <a href=''>
-                          <i className='fa-solid fa-heart'></i>Yêu thích
+                        <a href="">
+                          <i className="fa-solid fa-heart"></i>Yêu thích
                         </a>
                       </div>
-                      <button className='button_hover2 button_2'>
+                      <button className="button_hover2 button_2">
                         Viết đánh giá
                       </button>
                     </div>
                   </div>
-                  <div className='list_img'>
-                    <div className='--img'>
-                      <img src={image ? image : ""} alt='' />
+                  <div className="list_img">
+                    <div className="--img">
+                      <img src={image ? image : ""} alt="" />
                     </div>
                     {allIMG?.slice(0, 4).map((img, id) =>
                       id < 3 ? (
@@ -138,16 +139,16 @@ const DiscoverDetail = ({ data, otherData }) => {
                             image === img.path ? "--img active" : "--img"
                           }
                         >
-                          <img src={img.path} alt='' />
+                          <img src={img.path} alt="" />
                         </div>
                       ) : (
-                        <div key={uuid()} className='--img'>
-                          <img src={img.path} alt='' />
+                        <div key={uuid()} className="--img">
+                          <img src={img.path} alt="" />
                           <Fancybox key={uuid()} options={{ infinite: true }}>
                             {allIMG?.map((item) => (
                               <a
                                 key={uuid()}
-                                data-fancybox='gallery'
+                                data-fancybox="gallery"
                                 data-src={item.path}
                               >
                                 {data?.galleries.length - 3}+
@@ -158,8 +159,8 @@ const DiscoverDetail = ({ data, otherData }) => {
                       )
                     )}
                   </div>
-                  <div className='list_content'>
-                    <div className='--tab'>
+                  <div className="list_content">
+                    <div className="--tab">
                       <div
                         onClick={() => {
                           setActive("content");
@@ -248,99 +249,103 @@ const DiscoverDetail = ({ data, otherData }) => {
                       false
                     )}
                     {active === "potision" ? (
-                      <Map arr={[data]} height='400px' />
+                      <Map arr={[data]} height="400px" />
                     ) : (
                       false
                     )}
-
-                    <div className='--card'>
-                      <div className='--icon'>
-                        <img src={icon13.default.src} alt='' />
+                    {active === "comments" ? <Comment /> : false}
+                    <div className="--card">
+                      <div className="--icon">
+                        <img src={icon13.default.src} alt="" />
                       </div>
-                      <div className='--txt'>
-                        <div className='--title'>Điểm nổi bật</div>
+                      <div className="--txt">
+                        <div className="--title">Điểm nổi bật</div>
                         {data?.highlights}
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className='col-md-3'>
-                <div className='--right cardbook'>
-                  <div className='--schedule '>
+              <div className="col-md-3">
+                <div className="--right cardbook">
+                  <div className="--schedule ">
                     <h3>Đặt chuyến đi của bạn</h3>
-                    <div className='--tab d-flex '>
-                      <div className='--item active'>Khách sạn</div>
-                      <div className='--item'>Thuê xe</div>
-                      <div className='--item'>Xe Buýt</div>
+                    <div className="--tab d-flex ">
+                      <div className="--item active">Khách sạn</div>
+                      <div className="--item">Thuê xe</div>
+                      <div className="--item">Xe Buýt</div>
                     </div>
-                    <div className='form'>
-                      <div className='form-group'>
-                        <label htmlFor=''>Điểm đến: </label>
-                        <div className='--select'>
-                          <div className='--icon'>
-                            <img src={iconMap2.default.src} alt='' />
+                    <div className="form">
+                      <div className="form-group">
+                        <label htmlFor="">Điểm đến: </label>
+                        <div className="--select">
+                          <div className="--icon">
+                            <img src={iconMap2.default.src} alt="" />
                           </div>
-                          <select className='form-control' name='' id=''>
-                            <option value=''>Hà Giang</option>
+                          <select className="form-control" name="" id="">
+                            <option value="">Hà Giang</option>
                           </select>
-                          <i className='fa-sharp fa-solid fa-chevron-down'></i>
+                          <i className="fa-sharp fa-solid fa-chevron-down"></i>
                         </div>
                       </div>
-                      <div className='form-group'>
-                        <label htmlFor=''>Check - in: </label>
-                        <div className='--select'>
-                          <div className='--icon'>
-                            <img src={iconTime.default.src} alt='' />
+                      <div className="form-group">
+                        <label htmlFor="">Check - in: </label>
+                        <div className="--select">
+                          <div className="--icon">
+                            <img src={iconTime.default.src} alt="" />
                           </div>
-                          <select className='form-control' name='' id=''>
-                            <option value=''>10/11/2022</option>
+                          <select className="form-control" name="" id="">
+                            <option value="">10/11/2022</option>
                           </select>
-                          <i className='fa-sharp fa-solid fa-chevron-down'></i>
+                          <i className="fa-sharp fa-solid fa-chevron-down"></i>
                         </div>
                       </div>
-                      <div className='form-group'>
-                        <label htmlFor=''>With:</label>
-                        <div className='--select'>
-                          <div className='--icon'>
-                            <img src={iconTime.default.src} alt='' />
+                      <div className="form-group">
+                        <label htmlFor="">With:</label>
+                        <div className="--select">
+                          <div className="--icon">
+                            <img src={iconTime.default.src} alt="" />
                           </div>
-                          <select className='form-control' name='' id=''>
-                            <option value=''>1 đêm</option>
+                          <select className="form-control" name="" id="">
+                            <option value="">1 đêm</option>
                           </select>
-                          <i className='fa-sharp fa-solid fa-chevron-down'></i>
+                          <i className="fa-sharp fa-solid fa-chevron-down"></i>
                         </div>
                       </div>
-                      <div className='form-group'>
-                        <label htmlFor=''>Điểm đến: </label>
-                        <div className='--select'>
-                          <div className='--icon'>
-                            <img src={iconBooking.default.src} alt='' />
+                      <div className="form-group">
+                        <label htmlFor="">Điểm đến: </label>
+                        <div className="--select">
+                          <div className="--icon">
+                            <img src={iconBooking.default.src} alt="" />
                           </div>
-                          <select className='form-control' name='' id=''>
-                            <option value=''>Booking.com</option>
+                          <select className="form-control" name="" id="">
+                            <option value="">Booking.com</option>
                           </select>
-                          <i className='fa-sharp fa-solid fa-chevron-down'></i>
+                          <i className="fa-sharp fa-solid fa-chevron-down"></i>
                         </div>
                       </div>
                     </div>
-                    <button className='button_1 button_hover1'>
-                      <i className='fa-sharp fa-solid fa-magnifying-glass'></i>{" "}
+                    <button className="button_1 button_hover1">
+                      <i className="fa-sharp fa-solid fa-magnifying-glass"></i>{" "}
                       Tìm kiếm
                     </button>
                   </div>
-                  <div className='--map'>
-                    <Map height='450px' arr={pointArr} />
+                  <div className="--map">
+                    {pointArr.length > 0 ? (
+                      <Map height="450px" arr={pointArr} />
+                    ) : (
+                      false
+                    )}
                   </div>
-                  <div className='--endow'>
-                    <div className='--img'>
-                      <img src={event?.image?.path} alt='' />
+                  <div className="--endow">
+                    <div className="--img">
+                      <img src={event?.image?.path} alt="" />
                     </div>
                     <Link href={event?.link ? event?.link : "/"}>
-                      <div className='--txt'>
+                      <div className="--txt">
                         <span>{event?.subTitle}</span>
                         <h2>{event?.title}</h2>
-                        <div className='--des'>{event?.description}</div>
+                        <div className="--des">{event?.description}</div>
                       </div>
                     </Link>
                   </div>
@@ -349,254 +354,98 @@ const DiscoverDetail = ({ data, otherData }) => {
             </div>
           </div>
         </div>
-        <div className='detaildiscoverLocation'>
-          <div className='container-fluid'>
-            <div className='subTitle text-center'>KHám phá Lai Châu</div>
-            <h1 className='Title text-center'>Có thể bạn sẽ thích</h1>
-            <div className='slider_listLocation'>
-              <div className=' list_discover'>
-                <Slider
-                  {...{
-                    dots: true,
-                    infinite: true,
-                    speed: 800,
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    arrows: true,
+        <div className="detaildiscoverLocation">
+          <div className="container-fluid">
+            <div className="subTitle text-center">{slider?.subTitle}</div>
+            <h1 className="Title text-center">{slider?.title}</h1>
+            <div className="slider_listLocation">
+              <div className=" list_discover">
+                {slider?.relations.length > 4 ? (
+                  <Slider
+                    {...{
+                      dots: true,
+                      infinite: true,
+                      speed: 800,
+                      slidesToShow: 4,
+                      slidesToScroll: 4,
+                      arrows: true,
 
-                    nextArrow: (
-                      <div>
-                        <i className='fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long'></i>
-                      </div>
-                    ),
-                    prevArrow: (
-                      <div>
-                        <i className='fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long'></i>
-                      </div>
-                    ),
-                    responsive: [
-                      {
-                        breakpoint: 768,
-                        settings: {
-                          slidesToShow: 1,
-                          variableWidth: true,
-                          slidesToScroll: 1,
+                      nextArrow: (
+                        <div>
+                          <i className="fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long"></i>
+                        </div>
+                      ),
+                      prevArrow: (
+                        <div>
+                          <i className="fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long"></i>
+                        </div>
+                      ),
+                      responsive: [
+                        {
+                          breakpoint: 768,
+                          settings: {
+                            slidesToShow: 1,
+                            variableWidth: true,
+                            slidesToScroll: 1,
+                          },
                         },
-                      },
-                    ],
-                  }}
-                  className='row'
-                >
-                  <div>
-                    <div className='--warrper'>
-                      <div className='--item img_hover'>
-                        <a href=''>
-                          <div className='--img'>
-                            <Image
-                              src={require("./_asset/banner.png")}
-                              alt=''
-                            />
+                      ],
+                    }}
+                    className="row"
+                  >
+                    {slider?.relations.map((item) => (
+                      <div key={uuid()} className="--warrper">
+                        <div className="--item img_hover">
+                          <a>
+                            <div className="--img">
+                              <img src={item?.featureImage.path} alt="" />
+                            </div>
+                            <div className="--txt">
+                              <div className="--type">
+                                {item?.pointType[0].title}
+                              </div>
+                              <h4>{item?.title}</h4>
+                              <div className="--location ">
+                                <Image
+                                  src={require("./_asset/icon-map1.svg")}
+                                  alt=""
+                                />
+                                <span>{item?.address}</span>
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    ))}
+                  </Slider>
+                ) : (
+                  slider?.relations.map((item) => (
+                    <div key={uuid()} className="--warrper">
+                      <div className="--item img_hover">
+                        <a>
+                          <div className="--img">
+                            <img src={item?.featureImage.path} alt="" />
                           </div>
-                          <div className='--txt'>
-                            <div className='--type'>Đèo - Núi</div>
-                            <h4>Đèo Ô Quy Hồ</h4>
-                            <div className='--location '>
+                          <div className="--txt">
+                            <div className="--type">
+                              {item?.pointType[0].title}
+                            </div>
+                            <h4>{item?.title}</h4>
+                            <div className="--location ">
                               <Image
                                 src={require("./_asset/icon-map1.svg")}
-                                alt=''
+                                alt=""
                               />
-                              <span>Huyện Tam Đường</span>
+                              <span>{item?.address}</span>
                             </div>
                           </div>
                         </a>
                       </div>
                     </div>
-                  </div>
-                  <div>
-                    <div className='--warrper'>
-                      <div className='--item img_hover'>
-                        <a href=''>
-                          <div className='--img'>
-                            <Image
-                              src={require("./_asset/banner.png")}
-                              alt=''
-                            />
-                          </div>
-                          <div className='--txt'>
-                            <div className='--type'>Đèo - Núi</div>
-                            <h4>Đèo Ô Quy Hồ</h4>
-                            <div className='--location '>
-                              <Image
-                                src={require("./_asset/icon-map1.svg")}
-                                alt=''
-                              />
-                              <span>Huyện Tam Đường</span>
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>{" "}
-                  <div>
-                    <div className='--warrper'>
-                      <div className='--item img_hover'>
-                        <a href=''>
-                          <div className='--img'>
-                            <Image
-                              src={require("./_asset/banner.png")}
-                              alt=''
-                            />
-                          </div>
-                          <div className='--txt'>
-                            <div className='--type'>Đèo - Núi</div>
-                            <h4>Đèo Ô Quy Hồ</h4>
-                            <div className='--location '>
-                              <Image
-                                src={require("./_asset/icon-map1.svg")}
-                                alt=''
-                              />
-                              <span>Huyện Tam Đường</span>
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>{" "}
-                  <div>
-                    <div className='--warrper'>
-                      <div className='--item img_hover'>
-                        <a href=''>
-                          <div className='--img'>
-                            <Image
-                              src={require("./_asset/banner.png")}
-                              alt=''
-                            />
-                          </div>
-                          <div className='--txt'>
-                            <div className='--type'>Đèo - Núi</div>
-                            <h4>Đèo Ô Quy Hồ</h4>
-                            <div className='--location '>
-                              <Image
-                                src={require("./_asset/icon-map1.svg")}
-                                alt=''
-                              />
-                              <span>Huyện Tam Đường</span>
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>{" "}
-                  <div>
-                    <div className='--warrper'>
-                      <div className='--item img_hover'>
-                        <a href=''>
-                          <div className='--img'>
-                            <Image
-                              src={require("./_asset/banner.png")}
-                              alt=''
-                            />
-                          </div>
-                          <div className='--txt'>
-                            <div className='--type'>Đèo - Núi</div>
-                            <h4>Đèo Ô Quy Hồ</h4>
-                            <div className='--location '>
-                              <Image
-                                src={require("./_asset/icon-map1.svg")}
-                                alt=''
-                              />
-                              <span>Huyện Tam Đường</span>
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </Slider>
-                {/* <div className="row">
-                  <div className="--warrper">
-                    <div className="--item img_hover">
-                      <a href="">
-                        <div className="--img">
-                          <Image src={require("./_asset/banner.png")} alt="" />
-                        </div>
-                        <div className="--txt">
-                          <div className="--type">Đèo - Núi</div>
-                          <h4>Đèo Ô Quy Hồ</h4>
-                          <div className="--location ">
-                            <Image
-                              src={require("./_asset/icon-map1.svg")}
-                              alt=""
-                            />
-                            <span>Huyện Tam Đường</span>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                  <div className="col-md-4">
-                    <div className="--item img_hover">
-                      <a href="">
-                        <div className="--img">
-                          <Image src={require("./_asset/banner.png")} alt="" />
-                        </div>
-                        <div className="--txt">
-                          <div className="--type">Đèo - Núi</div>
-                          <h4>Đèo Ô Quy Hồ</h4>
-                          <div className="--location ">
-                            <Image
-                              src={require("./_asset/icon-map1.svg")}
-                              alt=""
-                            />
-                            <span>Huyện Tam Đường</span>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                  <div className="col-md-4">
-                    <div className="--item img_hover">
-                      <a href="">
-                        <div className="--img">
-                          <Image src={require("./_asset/banner.png")} alt="" />
-                        </div>
-                        <div className="--txt">
-                          <div className="--type">Đèo - Núi</div>
-                          <h4>Đèo Ô Quy Hồ</h4>
-                          <div className="--location ">
-                            <Image
-                              src={require("./_asset/icon-map1.svg")}
-                              alt=""
-                            />
-                            <span>Huyện Tam Đường</span>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                  <div className="col-md-4">
-                    <div className="--item img_hover">
-                      <a href="">
-                        <div className="--img">
-                          <Image src={require("./_asset/banner.png")} alt="" />
-                        </div>
-                        <div className="--txt">
-                          <div className="--type">Đèo - Núi</div>
-                          <h4>Đèo Ô Quy Hồ</h4>
-                          <div className="--location ">
-                            <Image
-                              src={require("./_asset/icon-map1.svg")}
-                              alt=""
-                            />
-                            <span>Huyện Tam Đường</span>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </div> */}
+                  ))
+                )}
               </div>
-              <div className='arrow_detaildiscoverLocation'></div>
+              <div className="arrow_detaildiscoverLocation"></div>
             </div>
           </div>
         </div>

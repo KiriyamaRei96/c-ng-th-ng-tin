@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-const DiscoverWarpper=styled.div` 
-.discoverBanner {
+const DiscoverWarpper=styled.div` .discoverBanner {
     position: relative;
+
     .--background {
         width: 100%;
         height: 100vh;
@@ -24,6 +24,11 @@ const DiscoverWarpper=styled.div`
             object-fit: cover;
         }
     }
+
+    .slick-current {
+        z-index: 10;
+    }
+
     .container-fluid {
         position: absolute;
         top: 0;
@@ -31,10 +36,12 @@ const DiscoverWarpper=styled.div`
         width: 100%;
         height: 100%;
     }
+
     .--content {
         position: relative;
         height: 100%;
         width: 100%;
+
         .--top {
             position: absolute;
             top: 130px;
@@ -113,59 +120,71 @@ const DiscoverWarpper=styled.div`
 
         }
     }
-    @media (max-width: 768px){
+
+    @media (max-width: 768px) {
         margin-top: 74px;
-        .--background{
+
+        .--background {
             position: absolute;
             top: 0;
             left: 0;
             height: 100%;
             width: 100%;
         }
+
         .container-fluid {
             position: relative;
             top: unset;
             left: unset;
         }
-        .--item{
+
+        .--item {
             padding: 3rem 0 5rem;
         }
-        .--content{
-            .--top{
+
+        .--content {
+            .--top {
                 width: 100%;
                 position: relative;
                 top: unset;
                 left: unset;
-                .Title{
+
+                .Title {
                     font-size: 42px;
                     line-height: 48px;
-                    &::after{
+
+                    &::after {
                         display: none;
                     }
                 }
             }
-            .--bot{
+
+            .--bot {
                 position: relative;
                 bottom: unset;
                 left: unset;
                 align-items: flex-start !important;
                 flex-flow: column-reverse;
-                .--txt{
+
+                .--txt {
                     width: 100%;
                 }
-                article{
+
+                article {
                     margin-bottom: 2rem;
                 }
             }
         }
     }
 }
+
 .Slider-action {
     position: absolute;
     color: #FFF;
     bottom: 54px;
     right: 108px;
     width: 390px;
+
     .--number {
         font-size: 18px;
         font-weight: 600;
@@ -177,9 +196,11 @@ const DiscoverWarpper=styled.div`
             margin: 0 10px;
         }
     }
+
     .--arrow {
         display: flex;
         color: #FFF;
+
         i {
             width: 38px;
             height: 38px;
@@ -189,44 +210,54 @@ const DiscoverWarpper=styled.div`
             border: 1px solid #FFF;
             cursor: pointer;
             border-radius: 50%;
+
             &.nextarrow {
                 margin-left: 24px;
             }
+
             &:hover {
                 color: var(--color-1);
                 border: 1px solid var(--color-1);
             }
         }
-      
+
     }
-    @media (max-width: 768px){
+
+    @media (max-width: 768px) {
         left: 0;
         bottom: 25px;
         width: 100%;
         padding: 0 16px;
     }
 }
+
 .discoverBlock {
     padding: 100px 0;
+
     .--title {
         width: 50%;
         text-align: center;
         margin: 0 auto 60px;
     }
+
     .list_discoverBlock {
         .--img {
             height: 330px;
         }
-        .slick-track{
+
+        .slick-track {
             display: flex !important;
         }
-        .slick-slide{
+
+        .slick-slide {
             width: 80vw;
             margin-right: 12px;
         }
     }
+
     .slider_discoverBlock {
         position: relative;
+
         .arrow_discoverBlock {
             position: absolute;
             top: 0;
@@ -234,6 +265,7 @@ const DiscoverWarpper=styled.div`
             width: 100%;
             height: 100%;
             pointer-events: none;
+
             .arrow {
                 position: absolute;
                 pointer-events: auto;
@@ -259,31 +291,38 @@ const DiscoverWarpper=styled.div`
             }
         }
     }
-    @media (max-width: 768px){
+
+    @media (max-width: 768px) {
         padding: 3rem 0;
-        .--title{
+
+        .--title {
             width: 100%;
-            margin-bottom:2rem ;
+            margin-bottom: 2rem;
         }
+
         .list_discoverBlock {
-            .slick-slide{
+            .slick-slide {
                 padding: 0;
             }
-            .arrow{
+
+            .arrow {
                 display: none;
             }
-            
+
         }
     }
 }
+
 .list_discover {
     .--wrapper {
         padding-right: calc(var(--bs-gutter-x) * .5);
         padding-left: calc(var(--bs-gutter-x) * .5);
         margin-top: var(--bs-gutter-y);
     }
+
     .--item {
         position: relative;
+
         &:hover {
             .--location {
                 max-height: 200px;
@@ -292,9 +331,11 @@ const DiscoverWarpper=styled.div`
             }
         }
     }
+
     .--img {
         width: 100%;
         position: relative;
+
         &::after {
             background: linear-gradient(0deg, rgba(28, 28, 28, 0.2), rgba(28, 28, 28, 0.2));
             content: '';
@@ -304,12 +345,14 @@ const DiscoverWarpper=styled.div`
             width: 100%;
             height: 100%;
         }
+
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
     }
+
     .--txt {
         position: absolute;
         bottom: 0;
@@ -317,11 +360,13 @@ const DiscoverWarpper=styled.div`
         width: 100%;
         padding: 0 28px 16px;
         color: #FFF;
+
         .--type {
             font-size: 12px;
             text-transform: uppercase;
             margin-bottom: 6px;
         }
+
         h4 {
             font-family: var(--font-Canela);
             position: relative;
@@ -336,11 +381,13 @@ const DiscoverWarpper=styled.div`
                 width: 60px;
             }
         }
+
         .--location {
             opacity: 0;
             display: flex;
             max-height: 0;
             transition: all .3s ease;
+
             img {
                 transform: scale(1);
             }
@@ -348,26 +395,31 @@ const DiscoverWarpper=styled.div`
 
         span {
             font-size: 14px;
-            &:nth-child(2){
+
+            &:nth-child(2) {
                 margin-left: 8px;
             }
         }
     }
-    @media (max-width: 768px){
-        .--location{
+
+    @media (max-width: 768px) {
+        .--location {
             max-height: unset !important;
             opacity: 1 !important;
             margin-top: 24px !important;
         }
-        .--txt{
+
+        .--txt {
             padding: 0 1rem 1rem;
         }
     }
 }
+
 .discoverBlock1 {
     .row {
         --bs-gutter-x: 0;
     }
+
     .--left {
         width: 100%;
         padding-right: 3.5rem;
@@ -420,56 +472,69 @@ const DiscoverWarpper=styled.div`
                 margin-top: 24px;
             }
 
-            .slick-dots {   
+            .slick-dots {
                 margin-top: 40px;
             }
 
         }
     }
-    @media (max-width: 768px){
-        .--left{
+
+    @media (max-width: 768px) {
+        .--left {
             display: none;
         }
-        .--right{
-            .--title{
+
+        .--right {
+            .--title {
                 margin-bottom: 2rem;
                 padding: 0 16px;
-                &::after{
+
+                &::after {
                     display: none;
                 }
-                .Title{
+
+                .Title {
                     width: 100%;
                 }
             }
-            .list_discoverBlock1{
+
+            .list_discoverBlock1 {
                 width: 100%;
                 margin-left: 0;
                 padding-left: 16px;
-                .--img{
+
+                .--img {
                     height: 300px;
                 }
-                .--wrapper{
+
+                .--wrapper {
                     padding: 0;
                 }
-                .slick-slide{
+
+                .slick-slide {
                     width: 80vw;
                     margin-right: 12px;
                 }
             }
-            
+
         }
     }
 }
+
 .discoverSearch {
     padding: 100px 0;
+
     .Title {
         margin-bottom: 40px;
     }
+
     .filter {
         margin-bottom: 30px;
+
         .search {
             width: 50%;
             position: relative;
+
             input {
                 width: 100%;
                 height: 45px;
@@ -477,6 +542,7 @@ const DiscoverWarpper=styled.div`
                 border-radius: 30px;
                 padding-left: 46px;
             }
+
             i {
                 position: absolute;
                 top: 50%;
@@ -485,6 +551,7 @@ const DiscoverWarpper=styled.div`
                 transform: translate(0, -50%);
             }
         }
+
         .--tabtop {
             button {
                 border: 1px dashed #DCDCDC;
@@ -514,9 +581,11 @@ const DiscoverWarpper=styled.div`
                 }
             }
         }
+
         .--filter {
             margin-top: 20px;
             margin-bottom: 20px;
+
             span {
                 margin-right: 20px;
                 font-size: 12px;
@@ -531,6 +600,7 @@ const DiscoverWarpper=styled.div`
                 }
             }
         }
+
         .--select {
             select {
                 height: 30px;
@@ -541,6 +611,7 @@ const DiscoverWarpper=styled.div`
                 font-size: 12px;
             }
         }
+
         .--tabbot {
             button {
                 background: none;
@@ -564,6 +635,7 @@ const DiscoverWarpper=styled.div`
             }
         }
     }
+
     .list_discoverSearch {
         .--img {
             height: 330px;
@@ -577,15 +649,18 @@ const DiscoverWarpper=styled.div`
             }
         }
     }
+
     .--tab1 {
         .--pagination {
             margin-top: 60px;
         }
     }
+
     .--tab2 {
         .--map {
             width: 100%;
             height: 100%;
+
             iframe {
                 width: 100%;
                 height: 100%;
@@ -598,6 +673,7 @@ const DiscoverWarpper=styled.div`
             text-transform: uppercase;
         }
     }
+
     .--tab3 {
         .--map {
             iframe {
@@ -606,10 +682,12 @@ const DiscoverWarpper=styled.div`
             }
         }
     }
+
     .list_discoverSearch2 {
         height: 700px;
         padding-right: 40px;
         overflow-y: auto;
+
         .--item {
             box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
             background: #FFF;
@@ -639,6 +717,7 @@ const DiscoverWarpper=styled.div`
             margin-bottom: 10px;
             font-weight: 600;
         }
+
         article {
             font-size: 14px;
             overflow: hidden;
@@ -648,93 +727,115 @@ const DiscoverWarpper=styled.div`
             -webkit-box-orient: vertical;
         }
     }
-    @media (max-width: 768px){
-        padding:3rem 0;
-        .filter{
-            .--top{
+
+    @media (max-width: 768px) {
+        padding: 3rem 0;
+
+        .filter {
+            .--top {
                 flex-flow: column;
-                .search{
+
+                .search {
                     width: 80%;
                     margin-bottom: 8px;
                 }
-                button{
+
+                button {
                     padding: 0 16px;
                     height: 32px;
-                    &:first-child{
+
+                    &:first-child {
                         margin-left: 0;
                     }
                 }
             }
-            .--bot{
-                .--filter{
+
+            .--bot {
+                .--filter {
                     flex-flow: column;
                     align-items: flex-start !important;
                     margin: 1rem 0;
-                    span{
+
+                    span {
                         margin-bottom: 8px;
                     }
                 }
-                .--select{
+
+                .--select {
                     width: 100%;
                     overflow-x: auto;
                     padding-bottom: 16px;
                 }
-                .--tabbot{
+
+                .--tabbot {
                     width: 100%;
                     overflow-x: auto;
                     display: flex;
                     padding-bottom: 1rem;
-                    button{
+
+                    button {
                         flex: 0 0 auto;
                     }
                 }
             }
         }
+
         .list_discoverSearch {
-            .--img{
+            .--img {
                 height: 240px;
             }
-            .row{
-                margin-top:unset;
-                margin:0;
+
+            .row {
+                margin-top: unset;
+                margin: 0;
             }
-            .col-md-4{
+
+            .col-md-4 {
                 padding: 0;
                 margin-top: 0 !important;
                 margin-bottom: 1rem;
-                &:last-child{
+
+                &:last-child {
                     margin-bottom: 0;
                 }
             }
         }
-        .--tab1{
-            .--pagination{
+
+        .--tab1 {
+            .--pagination {
                 margin-top: 2rem;
             }
         }
-        .list_discoverSearch2{
+
+        .list_discoverSearch2 {
             height: max-content;
             overflow-y: unset;
             padding-right: 0;
-            .--img{
+
+            .--img {
                 width: 40%;
                 height: 100px;
                 margin-right: 12px;
             }
-            .--item{
+
+            .--item {
                 margin-bottom: 1rem;
             }
-            .--txt{
+
+            .--txt {
                 width: calc(60% - 12px);
-                h4{
+
+                h4 {
                     font-size: 20px;
                 }
             }
         }
     }
 }
+
 .discoverVideo {
     position: relative;
+
     .--img {
         width: 100%;
         height: 550px;
@@ -756,6 +857,7 @@ const DiscoverWarpper=styled.div`
             object-fit: cover;
         }
     }
+
     .--txt {
         position: absolute;
         top: 50%;
@@ -773,16 +875,19 @@ const DiscoverWarpper=styled.div`
             position: relative;
         }
     }
-    @media (max-width: 768px){
+
+    @media (max-width: 768px) {
         padding: 4rem 0;
-        .--img{
+
+        .--img {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
         }
-        .--txt{
+
+        .--txt {
             position: relative;
             transform: none;
             top: unset;
@@ -796,27 +901,33 @@ const DiscoverWarpper=styled.div`
 #detailservice {
     margin-top: 108px;
     background: #F6F8FB;
-    @media (max-width: 768px){
+
+    @media (max-width: 768px) {
         margin-top: 74px;
     }
 }
 
 .detailAll {
     padding: 100px 0;
+
     .col-md-9 {
         width: 72%;
     }
+
     .col-md-3 {
         width: 28%;
     }
+
     .--left {
         padding-right: 1rem;
     }
+
     .--titlepost {
         font-size: 30px;
         font-family: var(--font-Canela);
         margin-bottom: 20px;
     }
+
     .--interactive {
         margin-bottom: 40px;
 
@@ -879,6 +990,7 @@ const DiscoverWarpper=styled.div`
             }
         }
     }
+
     .list_img {
         display: flex;
         flex-wrap: wrap;
@@ -921,6 +1033,7 @@ const DiscoverWarpper=styled.div`
             }
         }
     }
+
     .list_content {
         .--tab {
             display: flex;
@@ -998,7 +1111,8 @@ const DiscoverWarpper=styled.div`
 
             .--icon {
                 margin-right: 40px;
-                img{
+
+                img {
                     max-width: 100px;
                     max-height: 100px;
                 }
@@ -1023,6 +1137,7 @@ const DiscoverWarpper=styled.div`
                 .--check {
                     margin-right: 14px;
                     flex: 0 0 auto;
+
                     img {
                         width: 20px;
                     }
@@ -1030,63 +1145,79 @@ const DiscoverWarpper=styled.div`
             }
         }
     }
-    @media (max-width: 768px){
+
+    @media (max-width: 768px) {
         padding: 3rem 0;
-        .row{
+
+        .row {
             flex-flow: column;
         }
-        .--left{
+
+        .--left {
             padding-right: 0;
         }
-        .col-md-3,.col-md-9{
+
+        .col-md-3,
+        .col-md-9 {
             width: 100%;
         }
-        .--interactive{
+
+        .--interactive {
             flex-flow: column;
             align-items: flex-start !important;
-            .--sharecmt{
+
+            .--sharecmt {
                 flex-flow: column;
                 margin-top: 12px;
                 align-items: flex-start !important;
-                .--link{
+
+                .--link {
                     margin-bottom: 12px;
                 }
             }
         }
-        .list_content{
-            .--tab{
+
+        .list_content {
+            .--tab {
                 width: 100%;
                 overflow-x: auto;
                 padding-bottom: 1rem;
                 margin-bottom: 1rem;
-                .--item{
+
+                .--item {
                     flex: 0 0 auto;
                     height: 40px;
                 }
             }
-            .--card{
+
+            .--card {
                 padding: 1rem;
                 flex-flow: column;
-                .--icon{
+
+                .--icon {
                     margin-right: 0;
                     display: flex;
                     justify-content: center;
                     margin-bottom: 1.5rem;
                 }
-                .--title{
+
+                .--title {
                     margin-bottom: 1rem;
                 }
             }
         }
-        .list_img{
-            .--img{
-                &:first-child{
+
+        .list_img {
+            .--img {
+                &:first-child {
                     height: 220px !important;
                 }
-                &:nth-child(n+2){
+
+                &:nth-child(n+2) {
                     width: calc(50% - 6px);
                 }
-                &:nth-child(2n+1){
+
+                &:nth-child(2n+1) {
                     margin-right: 0;
                 }
             }
@@ -1153,33 +1284,42 @@ const DiscoverWarpper=styled.div`
         .slick-dots {
             margin-top: 45px;
         }
+
         .slick-dots {
             margin: 60px 0 0 0;
         }
     }
-    @media (max-width: 768px){
+
+    @media (max-width: 768px) {
         padding-bottom: 3rem;
-        .Title{
+
+        .Title {
             margin-bottom: 2rem;
         }
-        .slider_listLocation{
-            .slick-list{
+
+        .slider_listLocation {
+            .slick-list {
                 padding: 0;
             }
-            .slick-slide{
+
+            .slick-slide {
                 width: 80vw;
                 margin-right: 12px;
             }
-            .--warrper{
+
+            .--warrper {
                 padding: 0;
             }
-            .arrow{
+
+            .arrow {
                 display: none;
             }
-            .slick-dots{
+
+            .slick-dots {
                 margin-top: 1.5rem;
             }
-            .list_discover{
+
+            .list_discover {
                 padding-left: 1rem;
             }
         }
