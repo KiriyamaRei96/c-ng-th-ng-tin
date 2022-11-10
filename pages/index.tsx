@@ -70,9 +70,9 @@ export default function Home({
   homeDiscover1,
 }) {
   const sliderRef: any = useRef();
-  const pointArr = useAppSelector(pointSelector).pointArr;
   const dispatch = useAppDispatch();
   const [arr, setArr] = useState([]);
+  const pointArr = useAppSelector(pointSelector).pointArr;
   useEffect(() => {
     if (pointArr.length === 0) {
       dispatch({ type: "GET_POINT" });
@@ -94,7 +94,7 @@ export default function Home({
               <div className='--des'>{homeBanner.title}</div>
               <span>{homeBanner.description}</span>
               <Link href={homeBanner.link}>
-                <a className="button_hover1">
+                <a className='button_hover1'>
                   Tìm hiểu thêm
                   <i className='fa-sharp fa-solid fa-arrow-right'></i>
                 </a>
@@ -313,7 +313,7 @@ export default function Home({
             <div className='subTitle text-center'>{homeMap.subTitle}</div>
             <h1 className='Title text-center'>{homeMap.title}</h1>
             {pointArr.length > 0 ? (
-              <Map  height="600px" arr={pointArr} />
+              <Map height='600px' arr={pointArr} />
             ) : (
               false
             )}
@@ -382,7 +382,7 @@ export default function Home({
                         breakpoint: 768,
                         settings: {
                           slidesToShow: 1,
-                          adaptiveHeight:true,
+                          adaptiveHeight: true,
                           slidesToScroll: 1,
                         },
                       },
@@ -503,7 +503,7 @@ export default function Home({
                           breakpoint: 768,
                           settings: {
                             slidesToShow: 1,
-                            variableWidth:true,
+                            variableWidth: true,
                             slidesToScroll: 1,
                           },
                         },
@@ -520,17 +520,17 @@ export default function Home({
                                 <img src={item.featureImage?.path} alt='' />
                               </a>
                             </div>
-                            <div className="--txt d-flex flex-column justify-content-between">
-                              <div className="--top">
-                                <a href="">
+                            <div className='--txt d-flex flex-column justify-content-between'>
+                              <div className='--top'>
+                                <a href=''>
                                   <h4>{item.title}</h4>
                                 </a>
                                 <article>{item.description}</article>
                               </div>
-                              <div className="--bot">
-                                <div className="--time">
-                                  <div className="--icon">
-                                    <img src={iconTime.src} alt="" />
+                              <div className='--bot'>
+                                <div className='--time'>
+                                  <div className='--icon'>
+                                    <img src={iconTime.src} alt='' />
                                   </div>
                                   <span>2N1Đ</span>
                                 </div>

@@ -68,7 +68,7 @@ const Map = ({ arr, height }: MapProps) => {
           lat: 21.027105947174572,
           lng: 105.8380794988938,
         }}
-        defaultZoom={12}
+        defaultZoom={7}
         onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
         yesIWantToUseGoogleMapApiInternals
       ></GoogleMapReact>
