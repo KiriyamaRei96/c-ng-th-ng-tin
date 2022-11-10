@@ -64,29 +64,29 @@ const EventDetails = ({ data, eventsBanner }: EventDetailsProps) => {
                   <div dangerouslySetInnerHTML={{ __html: data.content }}></div>
                   <div className='--backshare d-flex justify-content-between'>
                     <a onClick={() => router.back()} className='--back'>
-                      <Image src={require("./_asset/icon-back.svg")} alt='' />{" "}
+                      <img src={require("./_asset/icon-back.svg")} alt='' />{" "}
                       Quay lại sự kiện
                     </a>
                     <ul>
                       <li>Chia sẻ:</li>
                       <li>
                         <a href=''>
-                          <Image src={require("./_asset/icon-tw.svg")} alt='' />
+                          <img src={require("./_asset/icon-tw.svg")} alt='' />
                         </a>
                       </li>
                       <li>
                         <a href=''>
-                          <Image src={require("./_asset/icon-fb.svg")} alt='' />
+                          <img src={require("./_asset/icon-fb.svg")} alt='' />
                         </a>
                       </li>
                       <li>
                         <a href=''>
-                          <Image src={require("./_asset/icon-in.svg")} alt='' />
+                          <img src={require("./_asset/icon-in.svg")} alt='' />
                         </a>
                       </li>
                       <li>
                         <a href=''>
-                          <Image src={require("./_asset/icon-gg.svg")} alt='' />
+                          <img src={require("./_asset/icon-gg.svg")} alt='' />
                         </a>
                       </li>
                     </ul>

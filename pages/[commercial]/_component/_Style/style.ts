@@ -3,7 +3,7 @@ import styled from "styled-components";
 const CommercialWrapper=styled.div` .pageBody {
     display: flex;
     justify-content: space-between;
-    padding: 100px 0;
+    padding: 100px 0 0;
 
     .--navBar {
         padding-right: 15px;
@@ -208,48 +208,39 @@ const CommercialWrapper=styled.div` .pageBody {
 
     .--content {
         width: calc(75% - 40px);
-
         .hot-menu {
             &>div {
-
                 .slick-slide {
                     padding: 0 8px;
                     margin-bottom: 30px;
                 }
-
-                /* the parent */
                 .slick-list {
                     margin: 0 -8px;
                 }
-
                 .--item {
-                    height: 146px;
-                    width: 18.5%;
                     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
-                    display: inherit;
-                    flex-direction: column;
-
-                    img {
-                        height: 104px;
+                    .--img{
+                        height: 100px;
                         width: 100%;
-                        object-fit: cover;
+                        overflow: hidden;
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
                     }
-
+                  
                     span {
                         font-weight: 600;
                         font-size: 16px;
+                        padding: 10px;
                         line-height: 22px;
-
                         color: #343434;
-                        margin: auto 10px;
                     }
 
                 }
             }
-
-
         }
-
         .search {
             justify-content: space-between;
             align-items: center;
@@ -299,7 +290,6 @@ const CommercialWrapper=styled.div` .pageBody {
                 }
             }
         }
-
         h2 {
             font-family: 'Canela';
 
@@ -307,7 +297,6 @@ const CommercialWrapper=styled.div` .pageBody {
             font-size: 40px;
             line-height: 58px;
         }
-
         .--list {
             .ranks {
                 margin-top: auto;
@@ -352,13 +341,11 @@ const CommercialWrapper=styled.div` .pageBody {
                 }
             }
         }
-
         .--list.--tour {
             grid-template-columns: repeat(3, 1fr);
             gap: 24px 1.25%;
             display: grid;
         }
-
         .--list.--Hotel {
             display: flex;
             flex-wrap: wrap;
@@ -383,17 +370,14 @@ const CommercialWrapper=styled.div` .pageBody {
 
             }
         }
-
         .--list.--Restaurant {
             grid-template-columns: repeat(3, 1fr);
             gap: 24px 1.25%;
             display: grid;
         }
-
         .--pagination {
             margin-top: 40px
         }
-
         .tour-sliderWarpper {
             margin-top: 38px;
 
@@ -428,7 +412,6 @@ const CommercialWrapper=styled.div` .pageBody {
                 }
             }
         }
-
         .Hotel-sliderWarpper {
             margin-top: 32px;
 
@@ -505,7 +488,11 @@ const CommercialWrapper=styled.div` .pageBody {
                 margin: 1rem 0 !important;
             }
         }
-
+        .hot-menu{
+            .slick-slide{
+                width: 50vw;
+            }
+        }
         .--content {
             width: 100%;
 
@@ -535,10 +522,16 @@ const CommercialWrapper=styled.div` .pageBody {
                         margin-top: 1rem;
                     }
                 }
-
                 &.--tour {
                     display: flex;
                     flex-flow: column;
+                }
+                &.--Restaurant{
+                    display: flex;
+                    flex-flow: column;
+                    .--cotent{
+                        padding: 1rem;
+                    }
                 }
             }
 

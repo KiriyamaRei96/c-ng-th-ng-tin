@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-const NewsDetailWarpper=styled.div` .detailnewsBanner {
+const NewsDetailWarpper=styled.div` 
+.detailnewsBanner {
     .Title {
         margin-bottom: 20px;
     }
@@ -186,7 +187,7 @@ const NewsDetailWarpper=styled.div` .detailnewsBanner {
             }
         }
     }
-
+    
 }
 
 .detaileventContent {
@@ -327,6 +328,15 @@ const NewsDetailWarpper=styled.div` .detailnewsBanner {
             &.--feedback {
                 padding-left: 60px;
             }
+        }
+    }
+    @media (max-width: 768px){
+        padding: 3rem 0;
+        .row{
+            flex-flow: column;
+        }
+        .col-md-3,.col-md-9{
+            width: 100%;
         }
     }
 }

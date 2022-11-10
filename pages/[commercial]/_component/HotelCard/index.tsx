@@ -54,7 +54,7 @@ const HotelCard = ({
           <Image src={require("../../../../Asset/baggest.png")} alt='' />
           <span>Best recommend</span>
         </div>
-        <div className='--item'>
+        <div className='--heart'>
           <i className='fa-solid fa-heart'></i>
         </div>
         <ul className='--dots d-flex'>

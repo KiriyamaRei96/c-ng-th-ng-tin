@@ -126,19 +126,28 @@ const Commercial = ({
                       arrows: false,
                       dots: false,
                       slidesToShow: 5,
-
                       autoplay: true,
                       swipeToSlide: true,
                       speed: 500,
                       infinite: true,
+                      responsive: [
+                        {
+                          breakpoint: 768,
+                          settings: {
+                            slidesToShow: 1,
+                            variableWidth:true,
+                            slidesToScroll: 1,
+                          },
+                        },
+                      ],
                     }}
                   >
                     {hotMenu?.articles?.map((item) => (
-                      <div className="--item" key={uuid()}>
-                        <div>
-                          <img src={item?.image?.path} alt="" />
+                      <div className="--item img_hover d-flex flex-column" key={uuid()}>
+                          <div className="--img">
+                            <img src={item?.image?.path} alt="" />
+                          </div>
                           <span>{item?.title}</span>
-                        </div>
                       </div>
                     ))}
                   </Slider>

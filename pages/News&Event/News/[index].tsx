@@ -80,7 +80,7 @@ const NewsDetail = ({ data, newsBanner }: NewsDetailProps) => {
                     </div>
                   </div>
                   <div className='--des'>{data.description}</div>
-                  <div dangerouslySetInnerHTML={{ __html: data.content }}></div>
+                  <article dangerouslySetInnerHTML={{ __html: data.content }}></ả>
 
                   <div className='--backshare d-flex justify-content-between'>
                     <a onClick={() => router.back()} className='--back'>

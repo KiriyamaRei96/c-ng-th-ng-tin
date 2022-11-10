@@ -191,7 +191,11 @@ header {
       }
 
       &:focus {
+        outline: none;
         box-shadow: 0 0 0 1px #FFF;
+      }
+      &:focus-visible{
+        outline: none;
       }
     }
 
@@ -546,6 +550,10 @@ header {
   border-radius: 100px;
   border: none;
   color: #FFF;
+  @media (max-width: 768px){
+    height: 32px;
+    padding: 0 24px;
+  }
 }
 
 .button_2 {
@@ -561,6 +569,10 @@ header {
   align-items: center;
   text-decoration: none;
   padding: 0 35px;
+  @media (max-width: 768px){
+    height: 32px;
+    padding: 0 16px;
+  }
 }
 
 .button_hover1 {
@@ -717,18 +729,17 @@ header {
 
 footer {
   .footer_Logo {
-    padding: 110px 0;
+    padding: 90px 0;
     border-bottom: 1px solid #DCDCDC;
 
     .list_logo {
       .--img {
-        // width: calc(100%/7);
         display: flex;
         justify-content: center;
       }
 
       img {
-        max-width: 60%;
+        max-width: 120px;
         max-height: 80px;
       }
     }
@@ -1019,7 +1030,9 @@ footer {
         width: 100%;
       }
     }
-
+    .footer_Logo{
+      padding: 3rem 0;
+    }
     .footer_bot {
       padding: 24px 0;
 
@@ -1065,6 +1078,7 @@ footer {
   span {
     width: 100%;
     margin-top: 8px;
+    color: var(--color-1);
   }
 
   img {
@@ -1285,7 +1299,7 @@ footer {
     h3 {
       font-family: var(--font-Canela);
       font-weight: 600;
-      font-size: 27px;
+      font-size: 24px;
       margin-bottom: 20px;
     }
 
@@ -1588,13 +1602,16 @@ footer {
 
   .img-wrapper {
     position: relative;
-
-    img {
+    .--img{
       width: 100%;
-      object-fit: cover;
-      height: 167px;
+      height: 160px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
-
     .--ribbon {
       display: flex;
       flex-direction: row;
@@ -1658,7 +1675,7 @@ footer {
   }
 
   .--cotent {
-    padding: 24px;
+    padding: 20px;
 
     h5 {
       font-weight: 600;

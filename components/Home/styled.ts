@@ -631,7 +631,7 @@ const HomeWrapper=styled.div`
         content: "";
         position: absolute;
         left: 0;
-        bottom: -8px;
+        bottom: -12px;
         width: 65px;
         border-bottom: 1px solid #fff;
       }
@@ -874,12 +874,12 @@ const HomeWrapper=styled.div`
       h1{
         p{
           &:nth-child(1){
-            font-size: 36px;
-            line-height: 40px;
+            font-size: 28px;
+            line-height: 32px;
           }
           &:nth-child(2){
-            font-size: 32px;
-            line-height: 36px;
+            font-size: 24px;
+            line-height: 28px;
           }
         }
       }

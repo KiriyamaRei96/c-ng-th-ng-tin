@@ -87,7 +87,6 @@ const NewsWrapper=styled.div` div.News {
                 font-family: 'Canela';
                 font-style: normal;
                 font-weight: 500;
-                font-size: 27px;
                 line-height: 30px;
                 color: #6F7378;
                 padding: 15px 0;
@@ -114,14 +113,18 @@ const NewsWrapper=styled.div` div.News {
         }
 
         .--list {
-            display: grid;
-            grid-template-columns: repeat(3, 32%);
-            gap: 50px 2%;
-
-            &>div {
+            display: flex;
+            flex-wrap: wrap;
+            .--item {
                 cursor: pointer;
-                height: 648px;
-
+                width: calc(100%/3 - 16px);
+                margin-right: 24px;
+                &:nth-child(3n+3){
+                    margin-right: 0;
+                }
+                &:nth-child(n+4){
+                    margin-top: 40px;
+                }
                 .--img {
                     height: 370px;
                     margin-bottom: 24px;
@@ -153,7 +156,10 @@ const NewsWrapper=styled.div` div.News {
                     -webkit-line-clamp: 2;
                     -webkit-box-orient: vertical;
                     display: -webkit-box;
-
+                    transition: all .15s ease;
+                    &:hover{
+                        color: var(--color-1);
+                    }
                 }
 
                 &>.divider {
@@ -179,15 +185,16 @@ const NewsWrapper=styled.div` div.News {
                     font-weight: 500;
                     font-size: 14px;
                     line-height: 20px;
-
                     text-transform: uppercase;
-
                     color: #000000;
-
+                    transition: all .15s ease;
                     i {
                         font-size: 12px;
                         margin-left: 16px;
-                        color: #FB8500;
+                        color: var(--color-1);
+                    }
+                    &:hover{
+                        color: var(--color-1);
                     }
                 }
             }
@@ -200,10 +207,15 @@ const NewsWrapper=styled.div` div.News {
 
     @media (max-width: 768px) {
         padding: 3rem 0;
-
+        h3{
+            font-size: 32px;
+            line-height: 1;
+        }
         .--hotSlider {
             padding: 24px 0 0;
-
+            i.divider{
+                margin: 0 12px !important;
+            }
             .--item {
                 flex-flow: column;
 
@@ -217,7 +229,9 @@ const NewsWrapper=styled.div` div.News {
                 }
 
             }
-
+            .divider{
+                margin: 12px 0 !important;
+            }
             .arrow {
                 top: 122px;
                 transform: none;
@@ -241,7 +255,7 @@ const NewsWrapper=styled.div` div.News {
                 h4 {
                     width: max-content;
                     flex: 0 0 auto;
-
+                    padding: 8px 0;
                     &:last-child {
                         margin-right: 0;
                     }
@@ -253,6 +267,9 @@ const NewsWrapper=styled.div` div.News {
                 display: flex;
                 flex-flow: column;
                 gap: unset;
+                .--item{
+                    width: 100%;
+                }
             }
 
             .--img {
@@ -273,10 +290,8 @@ const NewsWrapper=styled.div` div.News {
 
 .Events {
     .--title {
-        margin: 0 12.5px;
         border-bottom: 1px solid #DCDCDC;
         text-align: center;
-
         span {
             font-weight: 400;
             font-size: 16px;
@@ -361,7 +376,7 @@ const NewsWrapper=styled.div` div.News {
                     font-family: 'Canela';
                     font-style: normal;
                     font-weight: 500;
-                    font-size: 27px;
+                    font-size: 24px;
                     line-height: 30px;
                     color: #FFFFFF;
                     margin: 18px 0;
@@ -434,16 +449,24 @@ const NewsWrapper=styled.div` div.News {
     }
 
     @media (max-width: 768px) {
+        .--title{
+            h3{
+                font-size: 32px;
+                line-height: 1;
+            }
+        }
         .eventsSlider {
             flex-flow: column;
-
+            margin-top: 24px;
             .--img {
                 height: 400px !important;
             }
-
+            .--txt{
+                padding: 0 1rem !important;
+            }
             .col-md-4 {
                 margin-bottom: 20px;
-
+                margin-top: 0 !important;
                 &:last-child {
                     margin-bottom: 0;
                 }

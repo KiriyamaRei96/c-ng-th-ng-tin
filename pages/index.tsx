@@ -262,7 +262,7 @@ export default function Home({
               >
                 {homeDiscover?.relations?.map((item) => (
                   <div key={uuid()}>
-                    <div className='--item'>
+                    <div className='--item img_hover1'>
                       <div className='--img'>
                         <img src={item?.featureImage?.path} alt='' />
                       </div>
@@ -382,6 +382,7 @@ export default function Home({
                         breakpoint: 768,
                         settings: {
                           slidesToShow: 1,
+                          adaptiveHeight:true,
                           slidesToScroll: 1,
                         },
                       },

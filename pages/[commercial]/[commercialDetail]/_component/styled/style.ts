@@ -554,7 +554,6 @@ const CommercialDetailWrapper=styled.div`
         }
 
         h4 {
-            font-size: 27px;
             font-family: var(--font-Canela);
             margin-bottom: 10px;
             font-weight: 600;
@@ -744,7 +743,7 @@ const CommercialDetailWrapper=styled.div`
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                font-size: 27px;
+                font-size: 24px;
                 font-family: var(--font-Canela);
                 color: #FFF;
             }

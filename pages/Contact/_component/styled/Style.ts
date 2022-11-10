@@ -10,7 +10,7 @@ import styled from "styled-components";
     padding-top: 100px;
 
     .--title {
-        font-size: 27px;
+        font-size: 24px;
         font-family: var(--font-Canela);
         margin-bottom: 12px;
         font-weight: 600;
@@ -66,7 +66,7 @@ import styled from "styled-components";
 
                 a {
                     font-family: var(--font-Canela);
-                    font-size: 27px;
+                    font-size: 24px;
                     display: flex;
                     align-items: center;
                     color: var(--color-1);
@@ -108,6 +108,20 @@ import styled from "styled-components";
 
             &::after {
                 border-radius: 4px;
+            }
+        }
+    }
+    @media (max-width: 768px){
+        padding: 3rem 0;
+        ul{
+            margin-bottom: 1.5rem;
+            li{
+                margin-bottom: 12px;
+                &:nth-child(1){
+                    span{
+                        width:100%;
+                    }
+                }
             }
         }
     }

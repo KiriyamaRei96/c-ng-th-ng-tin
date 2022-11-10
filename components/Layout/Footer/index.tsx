@@ -49,8 +49,18 @@ const Footer = ({ iconSlider }) => {
               infinite: true,
               autoplay: true,
               speed: 500,
-
-              slidesToShow: 4,
+              pauseOnHover:false,
+              slidesToShow: 7,
+              slidesToScroll: 1,
+              responsive: [
+                {
+                  breakpoint: 768,
+                  settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                  },
+                },
+              ],
             }}
           >
             {slider?.articles.map((item) => (

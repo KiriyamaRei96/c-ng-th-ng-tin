@@ -20,15 +20,18 @@ const RestaurantCard = ({
 }: RestaurantCardProps) => {
   return (
     <Link href={`/Restaurant/detail~${id}}`}>
-      <div className="restaurant d-flex">
+      <div className="restaurant d-flex img_hover">
         <div className="img-wrapper">
-          <img src={`${img}`} alt="" />
+          <div className="--img">
+            <img src={`${img}`} alt="" />
+          </div>
+       
           <div className="--top">
             <div className="--ribbon ">
               <Image src={require("../../../../Asset/baggest.png")} alt="" />
               <span>Best recommend</span>
             </div>
-            <div className="--heart">
+            <div className="--item">
               <i className="fa-solid fa-heart"></i>
             </div>
           </div>

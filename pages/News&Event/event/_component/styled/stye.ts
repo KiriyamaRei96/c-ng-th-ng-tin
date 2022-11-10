@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-const EventsWrapper=styled.div` .detailnewsBanner {
+const EventsWrapper=styled.div` 
+.detailnewsBanner {
     .Title {
         margin-bottom: 20px;
     }
@@ -136,7 +137,23 @@ const EventsWrapper=styled.div` .detailnewsBanner {
             }
         }
     }
-
+    @media (max-width: 768px){
+        padding: 3rem 0;
+        .row{
+            flex-flow: column;
+        }
+        .col-md-3,.col-md-9{
+            width: 100% !important;
+        }
+        .--left{
+            padding-right:0;
+            width: 100%;
+            border-right:unset ;
+            .--note{
+                flex-wrap: wrap;
+            }
+        }
+    }
 }
 
 .detaileventContent {
@@ -194,16 +211,12 @@ const EventsWrapper=styled.div` .detailnewsBanner {
             }
         }
     }
-
-
     .col-md-9 {
         width: 72%;
     }
-
     .col-md-3 {
         width: 28%;
     }
-
     .--coment {
         margin-top: 60px;
 
@@ -212,7 +225,6 @@ const EventsWrapper=styled.div` .detailnewsBanner {
             font-family: var(--font-Canela);
         }
     }
-
     .list_coment {
         .--avatar {
             width: 50px;
@@ -276,6 +288,38 @@ const EventsWrapper=styled.div` .detailnewsBanner {
 
             &.--feedback {
                 padding-left: 60px;
+            }
+        }
+    }
+    @media (max-width: 768px){
+        .--backshare{
+            flex-flow: column;
+            .--back{
+                width: max-content;
+                margin-bottom: 12px;
+            }
+        }
+        .list_coment{
+            .--avatar{
+                width: 30px;
+                height: 30px
+            }
+            .--txt{
+                padding: 12px;
+            }
+            article{
+                font-size: 12px
+            }
+            .--time{
+                display: none !important;
+            }
+            .--name_customer{
+                max-width: 70%;
+            }
+            .--item{
+                &.--feedback{
+                    padding-left: 40px;
+                }
             }
         }
     }
