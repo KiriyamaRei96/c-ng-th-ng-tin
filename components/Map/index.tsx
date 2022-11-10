@@ -38,7 +38,7 @@ const Map = ({ arr, height }: MapProps) => {
         "click",
         (function (marker, i) {
           const contentElemnt = ` 
-      <a href='/Discover/detail~${arr[i].id}'>      
+      <a href='/Discover/detail~${arr[i].id}>      
        <div
        class='marker-content d-flex'>
        <img src='${arr[i].featureImage.path}'></img>

@@ -104,21 +104,21 @@ const Commercial = ({
 
   return (
     <CommercialWrapper>
-      <div id="hotel">
-        <div className="Banner d-flex">
-          <img src={banner?.image?.path} alt=""></img>
-          <div className="--Item">
+      <div id='hotel'>
+        <div className='Banner d-flex'>
+          <img src={banner?.image?.path} alt=''></img>
+          <div className='--Item'>
             <h1>{banner?.title}</h1>
 
             <BreadCrumb />
           </div>
         </div>
-        <div className="container-fluid">
-          <div className="pageBody">
+        <div className='container-fluid'>
+          <div className='pageBody'>
             <Navbar />
-            <div className="--content">
+            <div className='--content'>
               {hotMenu ? (
-                <div className="hot-menu">
+                <div className='hot-menu'>
                   <h2>{hotMenu.title}</h2>
 
                   <Slider
@@ -135,7 +135,7 @@ const Commercial = ({
                           breakpoint: 768,
                           settings: {
                             slidesToShow: 1,
-                            variableWidth:true,
+                            variableWidth: true,
                             slidesToScroll: 1,
                           },
                         },
@@ -143,11 +143,14 @@ const Commercial = ({
                     }}
                   >
                     {hotMenu?.articles?.map((item) => (
-                      <div className="--item img_hover d-flex flex-column" key={uuid()}>
-                          <div className="--img">
-                            <img src={item?.image?.path} alt="" />
-                          </div>
-                          <span>{item?.title}</span>
+                      <div
+                        className='--item img_hover d-flex flex-column'
+                        key={uuid()}
+                      >
+                        <div className='--img'>
+                          <img src={item?.image?.path} alt='' />
+                        </div>
+                        <span>{item?.title}</span>
                       </div>
                     ))}
                   </Slider>
@@ -158,7 +161,7 @@ const Commercial = ({
               <List />
 
               {hotPoint ? (
-                <div className="Hotel-sliderWarpper">
+                <div className='Hotel-sliderWarpper'>
                   <h3>{hotPoint.title}</h3>
                   <Slider
                     {...{
@@ -183,15 +186,17 @@ const Commercial = ({
                     }}
                   >
                     {hotPoint?.relations?.map((item) => (
-                      <div key={uuid()} className="--warpper">
-                        <div className="placeCard d-flex">
-                          <div className="--img img_hover">
-                            <img src={item.featureImage?.path} alt="" />
+                      <div key={uuid()} className='--warpper'>
+                        <div className='placeCard d-flex'>
+                          <div className='--img img_hover'>
+                            <img src={item.featureImage?.path} alt='' />
                           </div>
-                          <div className="--txt pt-3 d-flex flex-column">
+                          <div className='--txt pt-3 d-flex flex-column'>
                             <h4>{item.title}</h4>
                             <span>{item.highlights}</span>
-                            <Link href="/Discover/1">Tìm hiểu thêm</Link>
+                            <Link href={`/Discover/detail~${item.id}`}>
+                              Tìm hiểu thêm
+                            </Link>
                           </div>
                         </div>
                       </div>
@@ -202,7 +207,7 @@ const Commercial = ({
                 false
               )}
               {hotTour ? (
-                <div className="tour-sliderWarpper">
+                <div className='tour-sliderWarpper'>
                   <h3>{hotTour.title}</h3>
                   <Slider
                     {...{
@@ -215,13 +220,13 @@ const Commercial = ({
                       arrows: true,
                       nextArrow: (
                         <div>
-                          <i className="fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long"></i>
+                          <i className='fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long'></i>
                         </div>
                       ),
 
                       prevArrow: (
                         <div>
-                          <i className="fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long"></i>
+                          <i className='fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long'></i>
                         </div>
                       ),
                       responsive: [
@@ -237,7 +242,7 @@ const Commercial = ({
                     }}
                   >
                     {hotTour.relations?.map((item) => (
-                      <div key={uuid()} className="--warpper">
+                      <div key={uuid()} className='--warpper'>
                         <TourCard
                           id={item.id}
                           img={item.featureImage?.path}

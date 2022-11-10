@@ -456,7 +456,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
             <div className='container-fluid'>
               <div className='--title'>
                 <div className='subTitle text-center'>{slider?.subTitle}</div>
-                <h1 className='Title text-center'>{slider?.tilte}</h1>
+                <h1 className='Title text-center'>{slider?.title}</h1>
               </div>
               <div className='slider'>
                 <div className='list_servicediscover'>
