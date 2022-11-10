@@ -26,30 +26,8 @@ const HotelCard = ({
   return (
     <div className='hotel d-flex'>
       <div className='--warpper'>
-        {galaley?.length > 2 ? (
-          <Slider
-            ref={slider}
-            {...{
-              arrows: false,
-              slidesToScroll: 1,
-              slidesToShow: 1,
-              infinite: true,
-              afterChange(currentSlide) {
-                setCurrent(currentSlide);
-              },
-            }}
-          >
-            {galaley.map((item) => (
-              <div style={{ width: "100%" }} key={uuid()}>
-                <div>
-                  <img src={item.path} alt='' />
-                </div>
-              </div>
-            ))}
-          </Slider>
-        ) : (
-          <img src={`${img}`} alt='' />
-        )}
+        <img src={`${img}`} alt='' />
+
         <div className='--ribbon '>
           <Image src={require("../../../../Asset/baggest.png")} alt='' />
           <span>Best recommend</span>
@@ -57,29 +35,6 @@ const HotelCard = ({
         <div className='--heart'>
           <i className='fa-solid fa-heart'></i>
         </div>
-        <ul className='--dots d-flex'>
-          {galaley?.map((item, id) => {
-            return current === id ? (
-              <li
-                onClick={() => {
-                  slider.current?.slickGoTo(id);
-                }}
-                key={uuid()}
-              >
-                <i className='fa-solid fa-circle'></i>
-              </li>
-            ) : (
-              <li
-                onClick={() => {
-                  slider.current?.slickGoTo(id);
-                }}
-                key={uuid()}
-              >
-                <i className='fa-regular fa-circle'></i>
-              </li>
-            );
-          })}
-        </ul>
       </div>
       <div className='--item d-flex'>
         <Link href={`/Hotel/detail~${id}`}>

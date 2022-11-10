@@ -285,7 +285,7 @@ export default function Home({
                             <article>{item.description}</article>
                           </div>
                           <Link
-                            href={item.link ? item.link : "/Discover/1"}
+                            href={`/Discover/detail~${item.id}`}
                             key={uuid()}
                           >
                             <a className='--viewdetail button_hover1' href=''>

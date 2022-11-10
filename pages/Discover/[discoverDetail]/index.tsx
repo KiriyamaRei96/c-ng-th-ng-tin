@@ -1,11 +1,86 @@
 import Image from "next/image";
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
+import callApi from "../../../Api/Axios";
 import DiscoverWarpper from "../_component/Styled/style";
+import { v4 as uuid } from "uuid";
+import Fancybox from "../../../components/fancybox";
+import ContentBox from "../../[commercial]/[commercialDetail]/_component/ContentBox";
+import Map from "../../../components/Map";
+import {
+  icon13,
+  iconBooking,
+  iconMap2,
+  iconTime,
+} from "../../../components/img";
+import { useAppDispatch, useAppSelector } from "../../../ReduxStore/hooks";
+import pointSelector from "../../../ReduxStore/pointSlice/slice";
+import Link from "next/link";
 
-export interface DiscoverDetailProps {}
+export async function getServerSideProps(context) {
+  // let type;
+  let other;
+  // switch (context.query.commercial) {
+  //   case "Restaurant":
+  //     type = "restaurant_detail";
+  //     other = "detailRestaurant";
+  //     break;
+  //   case "Tour":
+  //     type = "tour_detail";
+  //     other = "detailTour";
 
-const DiscoverDetail = (props: DiscoverDetailProps) => {
+  //     break;
+  //   case "Hotel":
+  //     type = "hotel_detail";
+  //     other = "detailHotel";
+  //     break;
+  // }
+  const id = context?.query?.discoverDetail.replace("detail~", "").toString();
+  const data =
+    (
+      await callApi
+        .get(`/v2/point_detail/${id}?locale=vi`)
+        .then((res) => res.data)
+        .catch((err) => console.error(err))
+    ).data || null;
+  const otherData =
+    (
+      await callApi
+        .get(`/v2/page/${other}?locale=vi`)
+        .then((res) => res.data)
+        .catch((err) => console.error(err))
+    ).data || null;
+  console.log(otherData);
+  return {
+    props: {
+      data,
+      otherData,
+    },
+  };
+}
+const DiscoverDetail = ({ data, otherData }) => {
+  const [image, setImage] = useState<string | undefined>(
+    data?.featureImage.path
+  );
+  let allIMG = [];
+  const [active, setActive] = useState("content");
+  const pointArr = useAppSelector(pointSelector).pointArr;
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    if (pointArr.length === 0) {
+      dispatch({ type: "GET_POINT" });
+    }
+  }, [pointArr]);
+  if (data?.galleries) {
+    allIMG = [data?.featureImage, ...data?.galleries];
+  }
+  const event = otherData?.snippets.find(
+    (snip) => snip["snippet_name"] === "event"
+  );
+  const slider = otherData?.snippets.find(
+    (snip) => snip["snippet_name"] === "slider"
+  );
+
   return (
     <DiscoverWarpper>
       <div id='detaildiscover'>
@@ -15,145 +90,191 @@ const DiscoverDetail = (props: DiscoverDetailProps) => {
               <div className='col-md-9'>
                 <div className='--left'>
                   <div className='subTitle'>Du lịch</div>
-                  <h3 className='--titlepost'>
-                    Cầu Kính Rồng Mây “Kỳ Quan Tiên Cảnh Của Đất Trời Lai Châu”
-                  </h3>
+                  <h3 className='--titlepost'>{data?.title}</h3>
                   <div className='--interactive d-flex align-items-center justify-content-between'>
                     <div className='--evaluate d-flex align-items-center'>
-                      <div className='--star d-flex align-items-center'>
-                        <span>4.75</span>
-                        <i className='fa-solid fa-star'></i>
-                        <i className='fa-solid fa-star'></i>
-                        <i className='fa-solid fa-star'></i>
-                        <i className='fa-solid fa-star'></i>
-                        <i className='fa-solid fa-star'></i>
-                      </div>
+                      {data?.star ? (
+                        <div className='--star d-flex align-items-center'>
+                          <span>{data?.star}</span>
+                          {Array.apply(null, Array(Number(data?.star))).map(
+                            function (x, i) {
+                              return (
+                                <i
+                                  key={uuid()}
+                                  className='fa-solid fa-star'
+                                ></i>
+                              );
+                            }
+                          )}
+                          {Array.apply(null, Array(5 - Number(data?.star))).map(
+                            function (x, i) {
+                              return (
+                                <i
+                                  key={uuid()}
+                                  style={{ color: "wheat" }}
+                                  className='fa-solid fa-star'
+                                ></i>
+                              );
+                            }
+                          )}
+                        </div>
+                      ) : (
+                        false
+                      )}
+
                       <span>84 đánh giá</span>
                     </div>
                     <div className='--sharecmt d-flex align-items-center'>
-                      <a href=''>
-                        <i className='fa-solid fa-share-nodes'></i>Chia sẻ
-                      </a>
-                      <a href=''>
-                        <i className='fa-solid fa-heart'></i>Yêu thích
-                      </a>
-                      <button className="button_hover2 button_2">
+                      <div className='--link'>
+                        <a href=''>
+                          <i className='fa-solid fa-share-nodes'></i>Chia sẻ
+                        </a>
+                        <a href=''>
+                          <i className='fa-solid fa-heart'></i>Yêu thích
+                        </a>
+                      </div>
+                      <button className='button_hover2 button_2'>
                         Viết đánh giá
                       </button>
                     </div>
                   </div>
-                  <div className="list_img">
-                    <div className="--img">
-                      <Image src={require("./_asset/banner.png")} alt="" />
+                  <div className='list_img'>
+                    <div className='--img'>
+                      <img src={image ? image : ""} alt='' />
                     </div>
-                    <div className="--img">
-                      <Image src={require("./_asset/banner.png")} alt="" />
-                    </div>
-                    <div className="--img">
-                      <Image src={require("./_asset/banner.png")} alt="" />
-                    </div>
-                    <div className="--img">
-                      <Image src={require("./_asset/banner.png")} alt="" />
-                    </div>
-                    <div className="--img">
-                      <Image src={require("./_asset/banner.png")} alt="" />
-                      <a href="">26+</a>
-                    </div>
+                    {allIMG?.slice(0, 4).map((img, id) =>
+                      id < 3 ? (
+                        <div
+                          onClick={() => {
+                            setImage(img.path);
+                          }}
+                          key={uuid()}
+                          className={
+                            image === img.path ? "--img active" : "--img"
+                          }
+                        >
+                          <img src={img.path} alt='' />
+                        </div>
+                      ) : (
+                        <div key={uuid()} className='--img'>
+                          <img src={img.path} alt='' />
+                          <Fancybox key={uuid()} options={{ infinite: true }}>
+                            {allIMG?.map((item) => (
+                              <a
+                                key={uuid()}
+                                data-fancybox='gallery'
+                                data-src={item.path}
+                              >
+                                {data?.galleries.length - 3}+
+                              </a>
+                            ))}
+                          </Fancybox>
+                        </div>
+                      )
+                    )}
                   </div>
                   <div className='list_content'>
                     <div className='--tab'>
-                      <div className='--item active'>Tổng quan</div>
-                      <div className='--item'>Kế hoạch du lịch</div>
-                      <div className='--item'>Địa điểm</div>
-                      <div className='--item'>Nhận xét</div>
+                      <div
+                        onClick={() => {
+                          setActive("content");
+                        }}
+                        className={
+                          active === "content" ? "--item active" : "--item"
+                        }
+                      >
+                        Tổng quan
+                      </div>
+                      {data?.plan ? (
+                        <div
+                          onClick={() => {
+                            setActive("plan");
+                          }}
+                          className={
+                            active === "plan" ? "--item active" : "--item"
+                          }
+                        >
+                          Kế hoạch du lịch
+                        </div>
+                      ) : (
+                        false
+                      )}
+                      {data?.menu ? (
+                        <div
+                          onClick={() => {
+                            setActive("Menu");
+                          }}
+                          className={
+                            active === "Menu" ? "--item active" : "--item"
+                          }
+                        >
+                          Menu
+                        </div>
+                      ) : (
+                        false
+                      )}
+                      {data?.rooms ? (
+                        <div
+                          onClick={() => {
+                            setActive("rooms");
+                          }}
+                          className={
+                            active === "rooms" ? "--item active" : "--item"
+                          }
+                        >
+                          Thông tin phòng
+                        </div>
+                      ) : (
+                        false
+                      )}
+                      <div
+                        onClick={() => {
+                          setActive("potision");
+                        }}
+                        className={
+                          active === "potision" ? "--item active" : "--item"
+                        }
+                      >
+                        Địa điểm
+                      </div>
+                      <div
+                        onClick={() => {
+                          setActive("comments");
+                        }}
+                        className={
+                          active === "comments" ? "--item active" : "--item"
+                        }
+                      >
+                        Nhận xét
+                      </div>
                     </div>
-                    <div className='--content'>
-                      <h3 className='--title mb-4'>Cầu Kính Rồng Mây</h3>
-                      <article className='active'>
-                        Cầu kính Rồng Mây được xem là công trình cầu kính cao
-                        nhất Việt Nam tính đến thời điểm hiện tại. Công trình
-                        này tọa lạc trên đỉnh đèo Ô Quy Hồ thuộc địa phận huyện
-                        Tam Đường của tỉnh Lai Châu. Nơi đây còn được mệnh danh
-                        là Cổng trời trên đỉnh Ô Quy Hồ.
-                        <br />
-                        Cầu kính Rồng Mây được xem là công trình cầu kính cao
-                        nhất Việt Nam tính đến thời điểm hiện tại. Công trình
-                        này tọa lạc trên đỉnh đèo Ô Quy Hồ thuộc địa phận huyện
-                        Tam Đường của tỉnh Lai Châu. Nơi đây còn được mệnh danh
-                        là Cổng trời trên đỉnh Ô Quy Hồ.
-                        <br /> Cầu kính Rồng Mây được xem là công trình cầu kính
-                        cao nhất Việt Nam tính đến thời điểm hiện tại. Công
-                        trình này tọa lạc trên đỉnh đèo Ô Quy Hồ thuộc địa phận
-                        huyện Tam Đường của tỉnh Lai Châu. Nơi đây còn được mệnh
-                        danh là Cổng trời trên đỉnh Ô Quy Hồ.
-                      </article>
-                      <a className='button_2 button_hover2' href=''>
-                        xem thêm
-                      </a>
-                    </div>
+                    {active === "content" ? (
+                      <ContentBox title={data?.title} content={data?.content} />
+                    ) : (
+                      false
+                    )}
+
+                    {active === "plan" ? (
+                      <ContentBox
+                        title={"Kế hoạch du lịch"}
+                        content={data?.plan}
+                      />
+                    ) : (
+                      false
+                    )}
+                    {active === "potision" ? (
+                      <Map arr={[data]} height='400px' />
+                    ) : (
+                      false
+                    )}
+
                     <div className='--card'>
                       <div className='--icon'>
-                        <Image src={require("./_asset/icon-13.svg")} alt='' />
+                        <img src={icon13.default.src} alt='' />
                       </div>
                       <div className='--txt'>
                         <div className='--title'>Điểm nổi bật</div>
-                        <ul>
-                          <li>
-                            <div className='--check'>
-                              <Image
-                                src={require("./_asset/icon-check.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>Cáp treo di chuyển</span>
-                          </li>
-                          <li>
-                            <div className='--check'>
-                              <Image
-                                src={require("./_asset/icon-check.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>Cáp treo di chuyển</span>
-                          </li>
-                          <li>
-                            <div className='--check'>
-                              <Image
-                                src={require("./_asset/icon-check.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>Cáp treo di chuyển</span>
-                          </li>
-                          <li>
-                            <div className='--check'>
-                              <Image
-                                src={require("./_asset/icon-check.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>Cáp treo di chuyển</span>
-                          </li>
-
-                          <li>
-                            <div className='--check'>
-                              <Image
-                                src={require("./_asset/icon-check.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>Cáp treo di chuyển</span>
-                          </li>
-                          <li>
-                            <div className='--check'>
-                              <Image
-                                src={require("./_asset/icon-check.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>Cáp treo di chuyển</span>
-                          </li>
-                        </ul>
+                        {data?.highlights}
                       </div>
                     </div>
                   </div>
@@ -173,10 +294,7 @@ const DiscoverDetail = (props: DiscoverDetailProps) => {
                         <label htmlFor=''>Điểm đến: </label>
                         <div className='--select'>
                           <div className='--icon'>
-                            <Image
-                              src={require("./_asset/icon-map2.svg")}
-                              alt=''
-                            />
+                            <img src={iconMap2.default.src} alt='' />
                           </div>
                           <select className='form-control' name='' id=''>
                             <option value=''>Hà Giang</option>
@@ -188,10 +306,7 @@ const DiscoverDetail = (props: DiscoverDetailProps) => {
                         <label htmlFor=''>Check - in: </label>
                         <div className='--select'>
                           <div className='--icon'>
-                            <Image
-                              src={require("./_asset/icon-time.svg")}
-                              alt=''
-                            />
+                            <img src={iconTime.default.src} alt='' />
                           </div>
                           <select className='form-control' name='' id=''>
                             <option value=''>10/11/2022</option>
@@ -203,10 +318,7 @@ const DiscoverDetail = (props: DiscoverDetailProps) => {
                         <label htmlFor=''>With:</label>
                         <div className='--select'>
                           <div className='--icon'>
-                            <Image
-                              src={require("./_asset/icon-time.svg")}
-                              alt=''
-                            />
+                            <img src={iconTime.default.src} alt='' />
                           </div>
                           <select className='form-control' name='' id=''>
                             <option value=''>1 đêm</option>
@@ -218,10 +330,7 @@ const DiscoverDetail = (props: DiscoverDetailProps) => {
                         <label htmlFor=''>Điểm đến: </label>
                         <div className='--select'>
                           <div className='--icon'>
-                            <Image
-                              src={require("./_asset/icon-booking.svg")}
-                              alt=''
-                            />
+                            <img src={iconBooking.default.src} alt='' />
                           </div>
                           <select className='form-control' name='' id=''>
                             <option value=''>Booking.com</option>
@@ -236,27 +345,19 @@ const DiscoverDetail = (props: DiscoverDetailProps) => {
                     </button>
                   </div>
                   <div className='--map'>
-                    <iframe
-                      src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3986.8466441825976!2d102.23802461470257!3d2.211509298388063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d1f1ccd4f2e3ed%3A0x4a2e89fc42f51eaf!2sBan%20Sin%20Ho%20Trading!5e0!3m2!1svi!2s!4v1666683463879!5m2!1svi!2s'
-                      width='600'
-                      height='450'
-                      style={{ border: "0" }}
-                      // allowfullscreen=""
-                      loading='lazy'
-                      // referrerpolicy="no-referrer-when-downgrade"
-                    ></iframe>
+                    <Map height='450px' arr={pointArr} />
                   </div>
                   <div className='--endow'>
                     <div className='--img'>
-                      <Image src={require("./_asset/image-1.png")} alt='' />
+                      <img src={event?.image?.path} alt='' />
                     </div>
-                    <div className='--txt'>
-                      <span>Kỳ nghỉ vui vẻ</span>
-                      <h2>Đặt phòng ngay</h2>
-                      <div className='--des'>
-                        Giảm giá 15% cho tất cả các đặt phòng
+                    <Link href={event?.link ? event?.link : "/"}>
+                      <div className='--txt'>
+                        <span>{event?.subTitle}</span>
+                        <h2>{event?.title}</h2>
+                        <div className='--des'>{event?.description}</div>
                       </div>
-                    </div>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -293,7 +394,7 @@ const DiscoverDetail = (props: DiscoverDetailProps) => {
                         breakpoint: 768,
                         settings: {
                           slidesToShow: 1,
-                          variableWidth:true,
+                          variableWidth: true,
                           slidesToScroll: 1,
                         },
                       },
@@ -302,10 +403,10 @@ const DiscoverDetail = (props: DiscoverDetailProps) => {
                   className='row'
                 >
                   <div>
-                    <div className="--warrper">
-                      <div className="--item img_hover">
-                        <a href="">
-                          <div className="--img">
+                    <div className='--warrper'>
+                      <div className='--item img_hover'>
+                        <a href=''>
+                          <div className='--img'>
                             <Image
                               src={require("./_asset/banner.png")}
                               alt=''
@@ -327,10 +428,10 @@ const DiscoverDetail = (props: DiscoverDetailProps) => {
                     </div>
                   </div>
                   <div>
-                    <div className="--warrper">
-                      <div className="--item img_hover">
-                        <a href="">
-                          <div className="--img">
+                    <div className='--warrper'>
+                      <div className='--item img_hover'>
+                        <a href=''>
+                          <div className='--img'>
                             <Image
                               src={require("./_asset/banner.png")}
                               alt=''
@@ -352,10 +453,10 @@ const DiscoverDetail = (props: DiscoverDetailProps) => {
                     </div>
                   </div>{" "}
                   <div>
-                    <div className="--warrper">
-                      <div className="--item img_hover">
-                        <a href="">
-                          <div className="--img">
+                    <div className='--warrper'>
+                      <div className='--item img_hover'>
+                        <a href=''>
+                          <div className='--img'>
                             <Image
                               src={require("./_asset/banner.png")}
                               alt=''
@@ -377,10 +478,10 @@ const DiscoverDetail = (props: DiscoverDetailProps) => {
                     </div>
                   </div>{" "}
                   <div>
-                    <div className="--warrper">
-                      <div className="--item img_hover">
-                        <a href="">
-                          <div className="--img">
+                    <div className='--warrper'>
+                      <div className='--item img_hover'>
+                        <a href=''>
+                          <div className='--img'>
                             <Image
                               src={require("./_asset/banner.png")}
                               alt=''
@@ -402,10 +503,10 @@ const DiscoverDetail = (props: DiscoverDetailProps) => {
                     </div>
                   </div>{" "}
                   <div>
-                    <div className="--warrper">
-                      <div className="--item img_hover">
-                        <a href="">
-                          <div className="--img">
+                    <div className='--warrper'>
+                      <div className='--item img_hover'>
+                        <a href=''>
+                          <div className='--img'>
                             <Image
                               src={require("./_asset/banner.png")}
                               alt=''
