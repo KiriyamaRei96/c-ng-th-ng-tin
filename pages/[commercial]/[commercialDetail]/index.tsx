@@ -12,6 +12,7 @@ import TourCard from "../_component/TourCard";
 export interface CommercialDetailProps {
   type: String;
 }
+const typeMap = {};
 export async function getServerSideProps(context) {
   let type;
   switch (context.query.commercial) {
@@ -60,7 +61,7 @@ const CommercialDetail = ({ type }: CommercialDetailProps) => {
                       <span>84 đánh giá</span>
                     </div>
                     <div className='--sharecmt d-flex align-items-center'>
-                      <div className="--link">
+                      <div className='--link'>
                         <a href=''>
                           <i className='fa-solid fa-share-nodes'></i>Chia sẻ
                         </a>
@@ -75,34 +76,19 @@ const CommercialDetail = ({ type }: CommercialDetailProps) => {
                   </div>
                   <div className='list_img'>
                     <div className='--img'>
-                      <img
-                        src={require("../../../Asset/banner.png")}
-                        alt=''
-                      />
+                      <img src={require("../../../Asset/banner.png")} alt='' />
                     </div>
                     <div className='--img'>
-                      <img
-                        src={require("../../../Asset/banner.png")}
-                        alt=''
-                      />
+                      <img src={require("../../../Asset/banner.png")} alt='' />
                     </div>
                     <div className='--img'>
-                      <img
-                        src={require("../../../Asset/banner.png")}
-                        alt=''
-                      />
+                      <img src={require("../../../Asset/banner.png")} alt='' />
                     </div>
                     <div className='--img'>
-                      <img
-                        src={require("../../../Asset/banner.png")}
-                        alt=''
-                      />
+                      <img src={require("../../../Asset/banner.png")} alt='' />
                     </div>
                     <div className='--img'>
-                      <img
-                        src={require("../../../Asset/banner.png")}
-                        alt=''
-                      />
+                      <img src={require("../../../Asset/banner.png")} alt='' />
                       <a href=''>26+</a>
                     </div>
                   </div>
