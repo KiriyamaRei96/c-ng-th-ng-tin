@@ -18,23 +18,8 @@ import pointSelector from "../../../ReduxStore/pointSlice/slice";
 import Link from "next/link";
 
 export async function getServerSideProps(context) {
-  // let type;
   let other;
-  // switch (context.query.commercial) {
-  //   case "Restaurant":
-  //     type = "restaurant_detail";
-  //     other = "detailRestaurant";
-  //     break;
-  //   case "Tour":
-  //     type = "tour_detail";
-  //     other = "detailTour";
 
-  //     break;
-  //   case "Hotel":
-  //     type = "hotel_detail";
-  //     other = "detailHotel";
-  //     break;
-  // }
   const id = context?.query?.discoverDetail.replace("detail~", "").toString();
   const data =
     (
@@ -46,7 +31,7 @@ export async function getServerSideProps(context) {
   const otherData =
     (
       await callApi
-        .get(`/v2/page/${other}?locale=vi`)
+        .get(`/v2/page/deatilDiscover?locale=vi`)
         .then((res) => res.data)
         .catch((err) => console.error(err))
     ).data || null;
