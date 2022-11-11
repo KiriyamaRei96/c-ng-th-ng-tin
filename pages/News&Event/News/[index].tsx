@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
@@ -8,6 +7,13 @@ import { useAppDispatch, useAppSelector } from "../../../ReduxStore/hooks";
 import newsEventsSelector from "../../../ReduxStore/newSlice/slice";
 import NewsDetailWarpper from "./_component/style/styled";
 import { v4 as uuid } from "uuid";
+import {
+  iconBack,
+  iconFB,
+  iconGG,
+  iconIN,
+  iconTW,
+} from "../../../components/img";
 
 export async function getServerSideProps(context) {
   const id = context.query?.index?.replace("detail~", "");
@@ -43,6 +49,7 @@ const NewsDetail = ({ data, newsBanner }: NewsDetailProps) => {
     }
   }, [newsArr]);
   const otherNews = newsArr.filter((item) => item.id !== data.id);
+  console.log(iconBack);
 
   return (
     <NewsDetailWarpper>
@@ -86,45 +93,29 @@ const NewsDetail = ({ data, newsBanner }: NewsDetailProps) => {
 
                   <div className='--backshare d-flex justify-content-between'>
                     <a onClick={() => router.back()} className='--back'>
-                      <Image
-                        src={require("../../../Asset/icon-back.svg")}
-                        alt=''
-                      />{" "}
-                      Quay lại sự kiện
+                      <img src={iconBack.default.src} alt='' /> Quay lại sự kiện
                     </a>
 
                     <ul>
                       <li>Chia sẻ:</li>
                       <li>
                         <a href=''>
-                          <Image
-                            src={require("../../../Asset/icon-tw.svg")}
-                            alt=''
-                          />
+                          <img src={iconTW.default.src} alt='' />
                         </a>
                       </li>
                       <li>
                         <a href=''>
-                          <Image
-                            src={require("../../../Asset/icon-fb.svg")}
-                            alt=''
-                          />
+                          <img src={iconFB.default.src} alt='' />
                         </a>
                       </li>
                       <li>
                         <a href=''>
-                          <Image
-                            src={require("../../../Asset/icon-in.svg")}
-                            alt=''
-                          />
+                          <img src={iconIN.default.src} alt='' />
                         </a>
                       </li>
                       <li>
                         <a href=''>
-                          <Image
-                            src={require("../../../Asset/icon-gg.svg")}
-                            alt=''
-                          />
+                          <img src={iconGG.default.src} alt='' />
                         </a>
                       </li>
                     </ul>

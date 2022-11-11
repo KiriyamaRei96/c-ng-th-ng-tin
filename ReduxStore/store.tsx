@@ -8,12 +8,14 @@ import { newsEventsSlice } from "./newSlice/slice";
 import { pointSlice } from "./pointSlice/slice";
 const sagaMiddleware = createSagaMiddleware();
 import rootSaga from "./rootSaga";
+import { utilitiesSlice } from "./utilitieSlice/slice";
 export const store = configureStore({
   reducer: {
     point: pointSlice.reducer,
     global: globalSlice.reducer,
     newsEvents: newsEventsSlice.reducer,
     commercial: commercialSlice.reducer,
+    utilities: utilitiesSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => [sagaMiddleware],
 });

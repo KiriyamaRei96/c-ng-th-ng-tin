@@ -1,19 +1,80 @@
 import Image from "next/image";
-import * as React from "react";
+import React, { useEffect, useState } from "react";
+import callApi from "../../Api/Axios";
+import globalSelector from "../../ReduxStore/globalSlice/slice";
+import { useAppDispatch, useAppSelector } from "../../ReduxStore/hooks";
 import UtilitiesWrapper from "./_component/styled/style";
+import { v4 as uuid } from "uuid";
+import utilitiesSelector from "../../ReduxStore/utilitieSlice/slice";
+import useDebounce from "../../funcion/debounce";
+import Map from "../../components/Map";
+import Link from "next/link";
+export async function getServerSideProps() {
+  // page
+  const page = await callApi
+    .get("/v2/page/Utilities?locale=vi")
+    .then((res) => res.data)
+    .catch((err) => console.error(err));
+  return {
+    props: {
+      page: page?.data,
+    },
+  };
+}
 
-export interface UtilitiesProps {}
+const Utilities = ({ page }) => {
+  const districtArr = useAppSelector(globalSelector).districtArr;
+  const utilitiesType = useAppSelector(utilitiesSelector).utilitiesType;
+  const searchArr = useAppSelector(utilitiesSelector).searchArr;
+  const [search, setSearch] = useState("");
+  const [district, setDistrict] = useState("");
+  const [type, setType] = useState("");
+  const [sort, setSort] = useState("sort");
+  const debouncedSearchTerm = useDebounce(search, 500);
+  const dispatch = useAppDispatch();
 
-const Utilities = (props: UtilitiesProps) => {
+  useEffect(() => {
+    if (utilitiesType.length === 0) {
+      dispatch({ type: "GET_UTILITIES_TYPE" });
+    }
+  }, [utilitiesType]);
+  useEffect(() => {
+    const payload = {
+      page: 1,
+      limit: 100000,
+      district,
+      search: debouncedSearchTerm,
+      sort,
+      "utilitiesType[]": type,
+    };
+    Object.keys(payload).forEach((key) => {
+      if (key !== "search" && payload[key] === "") {
+        delete payload[key];
+      }
+    });
+    dispatch({
+      type: "SEARCH_UTILITIES",
+      payload,
+    });
+  }, [debouncedSearchTerm, district, type, sort]);
+
+  // console.log(searchArr);
   return (
     <UtilitiesWrapper>
       <div id='uti'>
         <div className='utiMap'>
           <div className='container-fluid'>
-            <h1 className='Title'>Tiện ích</h1>
+            <h1 className='Title'>{page?.title}</h1>
             <div className='filter d-flex justify-content-between'>
               <div className='search'>
-                <input type='text' placeholder='Nhập từ khóa tìm kiếm' />
+                <input
+                  onChange={(e) => {
+                    setSearch(e.target.value);
+                  }}
+                  value={search}
+                  type='text'
+                  placeholder='Nhập từ khóa tìm kiếm'
+                />
                 <i className='fa-solid fa-magnifying-glass'></i>
               </div>
               <div className='--filter d-flex'>
@@ -22,11 +83,35 @@ const Utilities = (props: UtilitiesProps) => {
                     <Image src={require("../../Asset/icon-11.svg")} alt='' />
                     Bộ lọc
                   </span>
-                  <select name='' id=''>
+                  <select
+                    value={district}
+                    onChange={(e) => {
+                      setDistrict(e.target.value);
+                    }}
+                    name=''
+                    id=''
+                  >
                     <option value=''>Chọn huyện</option>
+                    {districtArr?.map((item) => (
+                      <option key={uuid()} value={item?.id}>
+                        {item?.title}
+                      </option>
+                    ))}
                   </select>
-                  <select name='' id=''>
-                    <option value=''>Loại địa điểm</option>
+                  <select
+                    value={type}
+                    onChange={(e) => {
+                      setType(e.target.value);
+                    }}
+                    name=''
+                    id=''
+                  >
+                    <option value=''>Loại tiện ích</option>
+                    {utilitiesType?.map((item) => (
+                      <option key={uuid()} value={item?.id}>
+                        {item?.title}
+                      </option>
+                    ))}
                   </select>
                 </div>
                 <div className='--item d-flex align-items-center'>
@@ -34,11 +119,17 @@ const Utilities = (props: UtilitiesProps) => {
                     <Image src={require("../../Asset/icon-11.svg")} alt='' />
                     Sắp xếp
                   </span>
-                  <select name='' id=''>
-                    <option value=''>Chọn huyện</option>
-                  </select>
-                  <select name='' id=''>
-                    <option value=''>Loại địa điểm</option>
+
+                  <select
+                    value={sort}
+                    onChange={(e) => {
+                      setSort(e.target.value);
+                    }}
+                    name=''
+                    id=''
+                  >
+                    <option value='o_creationDate'>gần nhất</option>
+                    <option value='sort'>theo thứ tự</option>
                   </select>
                 </div>
               </div>
@@ -47,250 +138,49 @@ const Utilities = (props: UtilitiesProps) => {
               <div className='row'>
                 <div className='col-md-6'>
                   <div className='list_utiMap'>
-                    <div className='--item d-flex align-items-center justify-content-between'>
-                      <div className='--txt'>
-                        <h6>ATM Agribank - Thành phố Lai Châu</h6>
-                        <ul>
-                          <li>
-                            <div className='--icon'>
-                              <Image
-                                src={require("../../Asset/icon-map2.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>
-                              35C4+9HW, Đường Không Tên, Sông Đà, Điện Biên
-                            </span>
-                          </li>
-                          <li>
-                            <div className='--icon'>
-                              <Image
-                                src={require("../../Asset/icon-12.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>Cách bạn 3km</span>
-                          </li>
-                        </ul>
+                    {searchArr?.map((item) => (
+                      <div
+                        key={uuid()}
+                        className='--item d-flex align-items-center justify-content-between'
+                      >
+                        <div className='--txt'>
+                          <h6>{item?.title}</h6>
+                          <ul>
+                            <li>
+                              <div className='--icon'>
+                                <Image
+                                  src={require("../../Asset/icon-map2.svg")}
+                                  alt=''
+                                />
+                              </div>
+                              <span>{item.address}</span>
+                            </li>
+                            <li>
+                              <div className='--icon'>
+                                <Image
+                                  src={require("../../Asset/icon-12.svg")}
+                                  alt=''
+                                />
+                              </div>
+                              <span>Cách bạn 3km</span>
+                            </li>
+                          </ul>
+                        </div>
+                        <Link href={`/Utilities/detail~${item.id}`}>
+                          <a className='arrow_hover'>
+                            <Image
+                              src={require("../../Asset/navigation.svg")}
+                              alt=''
+                            />
+                          </a>
+                        </Link>
                       </div>
-                      <a className='arrow_hover' href=''>
-                        <Image
-                          src={require("../../Asset/navigation.svg")}
-                          alt=''
-                        />
-                      </a>
-                    </div>
-                    <div className='--item d-flex align-items-center justify-content-between'>
-                      <div className='--txt'>
-                        <h6>ATM Agribank - Thành phố Lai Châu</h6>
-                        <ul>
-                          <li>
-                            <div className='--icon'>
-                              <Image
-                                src={require("../../Asset/icon-map2.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>
-                              35C4+9HW, Đường Không Tên, Sông Đà, Điện Biên
-                            </span>
-                          </li>
-                          <li>
-                            <div className='--icon'>
-                              <Image
-                                src={require("../../Asset/icon-12.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>Cách bạn 3km</span>
-                          </li>
-                        </ul>
-                      </div>
-                      <a className='arrow_hover' href=''>
-                        <Image
-                          src={require("../../Asset/navigation.svg")}
-                          alt=''
-                        />
-                      </a>
-                    </div>
-                    <div className='--item d-flex align-items-center justify-content-between'>
-                      <div className='--txt'>
-                        <h6>ATM Agribank - Thành phố Lai Châu</h6>
-                        <ul>
-                          <li>
-                            <div className='--icon'>
-                              <Image
-                                src={require("../../Asset/icon-map2.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>
-                              35C4+9HW, Đường Không Tên, Sông Đà, Điện Biên
-                            </span>
-                          </li>
-                          <li>
-                            <div className='--icon'>
-                              <Image
-                                src={require("../../Asset/icon-12.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>Cách bạn 3km</span>
-                          </li>
-                        </ul>
-                      </div>
-                      <a className='arrow_hover' href=''>
-                        <Image
-                          src={require("../../Asset/navigation.svg")}
-                          alt=''
-                        />
-                      </a>
-                    </div>
-                    <div className='--item d-flex align-items-center justify-content-between'>
-                      <div className='--txt'>
-                        <h6>ATM Agribank - Thành phố Lai Châu</h6>
-                        <ul>
-                          <li>
-                            <div className='--icon'>
-                              <Image
-                                src={require("../../Asset/icon-map2.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>
-                              35C4+9HW, Đường Không Tên, Sông Đà, Điện Biên
-                            </span>
-                          </li>
-                          <li>
-                            <div className='--icon'>
-                              <Image
-                                src={require("../../Asset/icon-12.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>Cách bạn 3km</span>
-                          </li>
-                        </ul>
-                      </div>
-                      <a className='arrow_hover' href=''>
-                        <Image
-                          src={require("../../Asset/navigation.svg")}
-                          alt=''
-                        />
-                      </a>
-                    </div>
-                    <div className='--item d-flex align-items-center justify-content-between'>
-                      <div className='--txt'>
-                        <h6>ATM Agribank - Thành phố Lai Châu</h6>
-                        <ul>
-                          <li>
-                            <div className='--icon'>
-                              <Image
-                                src={require("../../Asset/icon-map2.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>
-                              35C4+9HW, Đường Không Tên, Sông Đà, Điện Biên
-                            </span>
-                          </li>
-                          <li>
-                            <div className='--icon'>
-                              <Image
-                                src={require("../../Asset/icon-12.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>Cách bạn 3km</span>
-                          </li>
-                        </ul>
-                      </div>
-                      <a className='arrow_hover' href=''>
-                        <Image
-                          src={require("../../Asset/navigation.svg")}
-                          alt=''
-                        />
-                      </a>
-                    </div>
-                    <div className='--item d-flex align-items-center justify-content-between'>
-                      <div className='--txt'>
-                        <h6>ATM Agribank - Thành phố Lai Châu</h6>
-                        <ul>
-                          <li>
-                            <div className='--icon'>
-                              <Image
-                                src={require("../../Asset/icon-map2.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>
-                              35C4+9HW, Đường Không Tên, Sông Đà, Điện Biên
-                            </span>
-                          </li>
-                          <li>
-                            <div className='--icon'>
-                              <Image
-                                src={require("../../Asset/icon-12.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>Cách bạn 3km</span>
-                          </li>
-                        </ul>
-                      </div>
-                      <a className='arrow_hover' href=''>
-                        <Image
-                          src={require("../../Asset/navigation.svg")}
-                          alt=''
-                        />
-                      </a>
-                    </div>
-                    <div className='--item d-flex align-items-center justify-content-between'>
-                      <div className='--txt'>
-                        <h6>ATM Agribank - Thành phố Lai Châu</h6>
-                        <ul>
-                          <li>
-                            <div className='--icon'>
-                              <Image
-                                src={require("../../Asset/icon-map2.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>
-                              35C4+9HW, Đường Không Tên, Sông Đà, Điện Biên
-                            </span>
-                          </li>
-                          <li>
-                            <div className='--icon'>
-                              <Image
-                                src={require("../../Asset/icon-12.svg")}
-                                alt=''
-                              />
-                            </div>
-                            <span>Cách bạn 3km</span>
-                          </li>
-                        </ul>
-                      </div>
-                      <a className='arrow_hover' href=''>
-                        <Image
-                          src={require("../../Asset/navigation.svg")}
-                          alt=''
-                        />
-                      </a>
-                    </div>
+                    ))}
                   </div>
                 </div>
                 <div className='col-md-6'>
                   <div className='--map'>
-                    <iframe
-                      src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3986.8466441825976!2d102.23802461470257!3d2.211509298388063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d1f1ccd4f2e3ed%3A0x4a2e89fc42f51eaf!2sBan%20Sin%20Ho%20Trading!5e0!3m2!1svi!2s!4v1666683463879!5m2!1svi!2s'
-                      width='600'
-                      height='450'
-                      style={{ border: "0" }}
-                      // allowfullscreen=''
-                      loading='lazy'
-                      // referrerpolicy='no-referrer-when-downgrade'
-                    ></iframe>
+                    {<Map height='450px' arr={searchArr} />}
                   </div>
                 </div>
               </div>

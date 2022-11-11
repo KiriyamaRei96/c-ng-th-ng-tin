@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect, useRef } from "react";
 import { Marker } from "../Marker";
 import GoogleMapReact from "google-map-react";
 
@@ -8,43 +8,47 @@ export interface MapProps {
 }
 
 const Map = ({ arr, height }: MapProps) => {
-  const handleApiLoaded = (map, maps) => {
+  const ref: any = useRef();
+
+  const handleApiLoaded = (map, maps, pntArr) => {
     const bounds = new maps.LatLngBounds();
     var infowindow = new maps.InfoWindow();
-    for (let i = 0; i < arr.length; i++) {
+
+    for (let i = 0; i < pntArr.length; i++) {
       var marker = new maps.Marker({
-        position: new maps.LatLng(arr[i]["lat"], arr[i]["lng"]),
+        position: new maps.LatLng(pntArr[i]["lat"], pntArr[i]["lng"]),
         map: map,
       });
 
       //extend the bounds to include each marker's position
       bounds.extend(marker.position);
       const contentElemnt = `
-      <a href='/Discover/detail~${arr[i].id}'>      
+      <a href='/Discover/detail~${pntArr[i].id}'>      
        <div
        class='marker-content d-flex'>
-       <img src='${arr[i].featureImage.path}'></img>
-       <span>${arr[i].title}</span> 
+       <img src='${pntArr[i].featureImage.path}'></img>
+       <span>${pntArr[i].title}</span> 
        </div> 
       </a>`;
       var infowindow = new maps.InfoWindow({
         content: contentElemnt,
         maxWidth: 160,
       });
+
       infowindow.open(map, marker);
 
       maps.event.addListener(
         marker,
         "click",
         (function (marker, i) {
-          const contentElemnt = ` 
-      <a href='/Discover/detail~${arr[i].id}>      
-       <div
-       class='marker-content d-flex'>
-       <img src='${arr[i].featureImage.path}'></img>
-       <span>${arr[i].title}</span> 
-       </div> 
-      </a>`;
+          const contentElemnt = `
+          <a href='/Discover/detail~${pntArr[i].id}'>      
+           <div
+           class='marker-content d-flex'>
+           <img src='${pntArr[i].featureImage.path}'></img>
+           <span>${pntArr[i].title}</span> 
+           </div> 
+          </a>`;
           var infowindow = new maps.InfoWindow({
             content: contentElemnt,
             maxWidth: 160,
@@ -56,11 +60,19 @@ const Map = ({ arr, height }: MapProps) => {
         })(marker, i)
       );
     }
+
     map.fitBounds(bounds);
   };
+  useEffect(() => {
+    if (ref.current.map_ && ref.current.maps_) {
+      handleApiLoaded(ref.current.map_, ref.current.maps_, arr);
+    }
+  }, [arr]);
+
   return (
     <div style={{ width: "100%", height: height }}>
       <GoogleMapReact
+        ref={ref}
         bootstrapURLKeys={{
           key: process.env.NEXT_PUBLIC_GOOGLE_KEY,
         }}
@@ -69,7 +81,7 @@ const Map = ({ arr, height }: MapProps) => {
           lng: 105.8380794988938,
         }}
         defaultZoom={7}
-        onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
+        // onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
         yesIWantToUseGoogleMapApiInternals
       ></GoogleMapReact>
     </div>
