@@ -22,14 +22,24 @@ const Map = ({ arr, height }: MapProps) => {
 
       //extend the bounds to include each marker's position
       bounds.extend(marker.position);
-      const contentElemnt = `
-      <a href='/Discover/detail~${pntArr[i].id}'>      
-       <div
-       class='marker-content d-flex'>
-       <img src='${pntArr[i].featureImage.path}'></img>
-       <span>${pntArr[i].title}</span> 
-       </div> 
-      </a>`;
+      const contentElemnt =
+        pntArr[i].vr !== ""
+          ? `
+    <a href='${pntArr[i].vr}' target="_blank">      
+     <div
+     class='marker-content d-flex'>
+     <img src='${pntArr[i].featureImage.path}'></img>
+     <span>${pntArr[i].title}</span> 
+     </div> 
+    </a>`
+          : `
+    <a href='/Discover/detail~${pntArr[i].id}'>      
+     <div
+     class='marker-content d-flex'>
+     <img src='${pntArr[i].featureImage.path}'></img>
+     <span>${pntArr[i].title}</span> 
+     </div> 
+    </a>`;
       var infowindow = new maps.InfoWindow({
         content: contentElemnt,
         maxWidth: 160,
@@ -41,7 +51,17 @@ const Map = ({ arr, height }: MapProps) => {
         marker,
         "click",
         (function (marker, i) {
-          const contentElemnt = `
+          const contentElemnt =
+            pntArr[i].vr !== ""
+              ? `
+          <a href='${pntArr[i].vr}' target="_blank">      
+           <div
+           class='marker-content d-flex'>
+           <img src='${pntArr[i].featureImage.path}'></img>
+           <span>${pntArr[i].title}</span> 
+           </div> 
+          </a>`
+              : `
           <a href='/Discover/detail~${pntArr[i].id}'>      
            <div
            class='marker-content d-flex'>
