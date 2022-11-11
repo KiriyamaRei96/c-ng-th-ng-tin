@@ -6,6 +6,10 @@ const nextConfig = {
     // Enables the styled-components SWC transform
     styledComponents: true,
   },
+  i18n: {
+    locales: ["vi", "en", "ja"],
+    defaultLocale: "vi",
+  },
 };
 
 module.exports = nextConfig;
