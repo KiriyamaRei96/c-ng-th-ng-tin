@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { Marker } from "../Marker";
 import GoogleMapReact from "google-map-react";
 
@@ -83,11 +83,15 @@ const Map = ({ arr, height }: MapProps) => {
 
     map.fitBounds(bounds);
   };
-  useEffect(() => {
+
+  useLayoutEffect(() => {
     if (ref.current.map_ && ref.current.maps_) {
+      console.log(ref.current.map_);
+      console.log(ref.current.maps_);
+
       handleApiLoaded(ref.current.map_, ref.current.maps_, arr);
     }
-  }, [arr]);
+  }, [arr, ref?.current?.map_, ref?.current?.maps_]);
 
   return (
     <div style={{ width: "100%", height: height }}>

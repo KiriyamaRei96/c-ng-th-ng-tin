@@ -8,6 +8,7 @@ import { newsEventsSlice } from "./newSlice/slice";
 import { pointSlice } from "./pointSlice/slice";
 const sagaMiddleware = createSagaMiddleware();
 import rootSaga from "./rootSaga";
+import { searchSlice } from "./search/slice";
 import { utilitiesSlice } from "./utilitieSlice/slice";
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     newsEvents: newsEventsSlice.reducer,
     commercial: commercialSlice.reducer,
     utilities: utilitiesSlice.reducer,
+    search: searchSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => [sagaMiddleware],
 });

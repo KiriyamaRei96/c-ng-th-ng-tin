@@ -9,10 +9,11 @@ import utilitiesSelector from "../../ReduxStore/utilitieSlice/slice";
 import useDebounce from "../../funcion/debounce";
 import Map from "../../components/Map";
 import Link from "next/link";
-export async function getServerSideProps() {
+import { useRouter } from "next/router";
+export async function getServerSideProps(context) {
   // page
   const page = await callApi
-    .get("/v2/page/Utilities?locale=vi")
+    .get(`/v2/page/Utilities?locale=${context.locale}`)
     .then((res) => res.data)
     .catch((err) => console.error(err));
   return {
@@ -32,12 +33,12 @@ const Utilities = ({ page }) => {
   const [sort, setSort] = useState("sort");
   const debouncedSearchTerm = useDebounce(search, 500);
   const dispatch = useAppDispatch();
-
+  const router = useRouter();
   useEffect(() => {
     if (utilitiesType.length === 0) {
       dispatch({ type: "GET_UTILITIES_TYPE" });
     }
-  }, [utilitiesType]);
+  }, [utilitiesType, router.locale]);
   useEffect(() => {
     const payload = {
       page: 1,
@@ -56,31 +57,30 @@ const Utilities = ({ page }) => {
       type: "SEARCH_UTILITIES",
       payload,
     });
-  }, [debouncedSearchTerm, district, type, sort]);
+  }, [debouncedSearchTerm, district, type, sort, router.locale]);
 
-  // console.log(searchArr);
   return (
     <UtilitiesWrapper>
-      <div id='uti'>
-        <div className='utiMap'>
-          <div className='container-fluid'>
-            <h1 className='Title'>{page?.title}</h1>
-            <div className='filter d-flex justify-content-between'>
-              <div className='search'>
+      <div id="uti">
+        <div className="utiMap">
+          <div className="container-fluid">
+            <h1 className="Title">{page?.title}</h1>
+            <div className="filter d-flex justify-content-between">
+              <div className="search">
                 <input
                   onChange={(e) => {
                     setSearch(e.target.value);
                   }}
                   value={search}
-                  type='text'
-                  placeholder='Nhập từ khóa tìm kiếm'
+                  type="text"
+                  placeholder="Nhập từ khóa tìm kiếm"
                 />
-                <i className='fa-solid fa-magnifying-glass'></i>
+                <i className="fa-solid fa-magnifying-glass"></i>
               </div>
-              <div className='--filter d-flex'>
-                <div className='--item d-flex align-items-center'>
+              <div className="--filter d-flex">
+                <div className="--item d-flex align-items-center">
                   <span>
-                    <Image src={require("../../Asset/icon-11.svg")} alt='' />
+                    <Image src={require("../../Asset/icon-11.svg")} alt="" />
                     Bộ lọc
                   </span>
                   <select
@@ -88,10 +88,10 @@ const Utilities = ({ page }) => {
                     onChange={(e) => {
                       setDistrict(e.target.value);
                     }}
-                    name=''
-                    id=''
+                    name=""
+                    id=""
                   >
-                    <option value=''>Chọn huyện</option>
+                    <option value="">Chọn huyện</option>
                     {districtArr?.map((item) => (
                       <option key={uuid()} value={item?.id}>
                         {item?.title}
@@ -103,10 +103,10 @@ const Utilities = ({ page }) => {
                     onChange={(e) => {
                       setType(e.target.value);
                     }}
-                    name=''
-                    id=''
+                    name=""
+                    id=""
                   >
-                    <option value=''>Loại tiện ích</option>
+                    <option value="">Loại tiện ích</option>
                     {utilitiesType?.map((item) => (
                       <option key={uuid()} value={item?.id}>
                         {item?.title}
@@ -114,9 +114,9 @@ const Utilities = ({ page }) => {
                     ))}
                   </select>
                 </div>
-                <div className='--item d-flex align-items-center'>
+                <div className="--item d-flex align-items-center">
                   <span>
-                    <Image src={require("../../Asset/icon-11.svg")} alt='' />
+                    <Image src={require("../../Asset/icon-11.svg")} alt="" />
                     Sắp xếp
                   </span>
 
@@ -125,41 +125,41 @@ const Utilities = ({ page }) => {
                     onChange={(e) => {
                       setSort(e.target.value);
                     }}
-                    name=''
-                    id=''
+                    name=""
+                    id=""
                   >
-                    <option value='o_creationDate'>gần nhất</option>
-                    <option value='sort'>theo thứ tự</option>
+                    <option value="o_creationDate">gần nhất</option>
+                    <option value="sort">theo thứ tự</option>
                   </select>
                 </div>
               </div>
             </div>
-            <div className='--content'>
-              <div className='row'>
-                <div className='col-md-6'>
-                  <div className='list_utiMap'>
+            <div className="--content">
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="list_utiMap">
                     {searchArr?.map((item) => (
                       <div
                         key={uuid()}
-                        className='--item d-flex align-items-center justify-content-between'
+                        className="--item d-flex align-items-center justify-content-between"
                       >
-                        <div className='--txt'>
+                        <div className="--txt">
                           <h6>{item?.title}</h6>
                           <ul>
                             <li>
-                              <div className='--icon'>
+                              <div className="--icon">
                                 <Image
                                   src={require("../../Asset/icon-map2.svg")}
-                                  alt=''
+                                  alt=""
                                 />
                               </div>
                               <span>{item.address}</span>
                             </li>
                             <li>
-                              <div className='--icon'>
+                              <div className="--icon">
                                 <Image
                                   src={require("../../Asset/icon-12.svg")}
-                                  alt=''
+                                  alt=""
                                 />
                               </div>
                               <span>Cách bạn 3km</span>
@@ -167,10 +167,10 @@ const Utilities = ({ page }) => {
                           </ul>
                         </div>
                         <Link href={`/Utilities/detail~${item.id}`}>
-                          <a className='arrow_hover'>
+                          <a className="arrow_hover">
                             <Image
                               src={require("../../Asset/navigation.svg")}
-                              alt=''
+                              alt=""
                             />
                           </a>
                         </Link>
@@ -178,9 +178,9 @@ const Utilities = ({ page }) => {
                     ))}
                   </div>
                 </div>
-                <div className='col-md-6'>
-                  <div className='--map'>
-                    {<Map height='450px' arr={searchArr} />}
+                <div className="col-md-6">
+                  <div className="--map">
+                    {<Map height="450px" arr={searchArr} />}
                   </div>
                 </div>
               </div>

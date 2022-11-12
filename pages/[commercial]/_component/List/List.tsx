@@ -28,7 +28,7 @@ const List = (props: ListProps) => {
     setPage(1);
     setSearch("");
     setSort("");
-  }, [router.query.commercial]);
+  }, [router.query.commercial, router.locale]);
   useEffect(() => {
     dispatch({
       type: "GET_SEARCH_COMMERCIAL",
@@ -39,7 +39,7 @@ const List = (props: ListProps) => {
         order_key: sort,
       },
     });
-  }, [debouncedSearchTerm, page, sort]);
+  }, [debouncedSearchTerm, page, sort, router.locale]);
 
   return (
     <>

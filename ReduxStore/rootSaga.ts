@@ -3,6 +3,7 @@ import commercailSaga from "./commercial/saga";
 import globalSaga from "./globalSlice/saga";
 import newsEventsSaga from "./newSlice/saga";
 import pointSaga from "./pointSlice/saga";
+import searchSaga from "./search/saga";
 import utilitiesSaga from "./utilitieSlice/saga";
 
 export default function* rootSaga() {
@@ -12,5 +13,6 @@ export default function* rootSaga() {
     newsEventsSaga(),
     commercailSaga(),
     utilitiesSaga(),
+    searchSaga()
   ]);
 }

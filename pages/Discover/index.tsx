@@ -12,10 +12,11 @@ import { useAppDispatch, useAppSelector } from "../../ReduxStore/hooks";
 import pointSelector from "../../ReduxStore/pointSlice/slice";
 import Fancybox from "../../components/fancybox";
 import { banner } from "../../components/img";
-export async function getServerSideProps() {
+import { useRouter } from "next/router";
+export async function getServerSideProps(context) {
   // page
   const page = await callApi
-    .get("/v2/page/discover?locale=vi")
+    .get(`/v2/page/discover?locale=${context.locale}`)
     .then((res) => res.data)
     .catch((err) => console.error(err));
   const discoverBanner = await page.data?.snippets?.find(
@@ -50,11 +51,12 @@ const Discover = ({
   const pointArr = useAppSelector(pointSelector).pointArr;
   const [current, setCurrent] = useState<number>(0);
   const [currentImage, setCurrentImage] = useState<string>(banner.default.src);
+  const router = useRouter();
   useEffect(() => {
     if (pointArr.length === 0) {
       dispatch({ type: "GET_POINT" });
     }
-  }, []);
+  }, [router.locale]);
   const slider: any = useRef();
   const playPoint = pointArr.filter(
     (item) => item.pointType[0]?.title === "Điểm vui chơi"

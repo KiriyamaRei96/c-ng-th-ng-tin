@@ -27,6 +27,7 @@ import { useAppDispatch, useAppSelector } from "../../../ReduxStore/hooks";
 import pointSelector from "../../../ReduxStore/pointSlice/slice";
 import HotelCard from "../_component/HotelCard";
 import Comment from "../../../components/Comment";
+import { cp } from "fs";
 export async function getServerSideProps(context) {
   let type;
   let other;
@@ -49,41 +50,52 @@ export async function getServerSideProps(context) {
   const data =
     (
       await callApi
-        .get(`/v2/${type}/${id}?locale=vi`)
+        .get(`/v2/${type}/${id}?locale=${context.locale}`)
         .then((res) => res.data)
         .catch((err) => console.error(err))
-    ).data || null;
+    )?.data || null;
   const otherData =
     (
       await callApi
-        .get(`/v2/page/${other}?locale=vi`)
+        .get(`/v2/page/${other}?locale=${context.locale}`)
         .then((res) => res.data)
         .catch((err) => console.error(err))
-    ).data || null;
-  console.log(otherData);
-  return {
-    props: {
-      type,
-      data,
-      otherData,
-    },
-  };
+    )?.data || null;
+
+  if (
+    context.query.commercial === "Restaurant" ||
+    context.query.commercial === "Tour" ||
+    context.query.commercial === "Hotel"
+  ) {
+    return {
+      props: {
+        type,
+        data,
+        otherData,
+      },
+    };
+  } else {
+    return {
+      notFound: true,
+    };
+  }
 }
 const CommercialDetail = ({ type, data, otherData }) => {
+  const router = useRouter();
   const pointArr = useAppSelector(pointSelector).pointArr;
   const dispatch = useAppDispatch();
   useEffect(() => {
     if (pointArr.length === 0) {
       dispatch({ type: "GET_POINT" });
     }
-  }, [pointArr]);
+  }, [pointArr, router.locale]);
 
   const [image, setImage] = useState<string | undefined>(
     data?.featureImage.path
   );
 
   const [active, setActive] = useState("content");
-  const router = useRouter();
+
   const typeMap = {
     restaurant_detail: "ẩm thực",
     tour_detail: "Lữ Hành",
@@ -373,11 +385,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
                     </button>
                   </div>
                   <div className="--map">
-                    {pointArr.length > 0 ? (
-                      <Map height="450px" arr={pointArr} />
-                    ) : (
-                      false
-                    )}
+                    <Map height="450px" arr={pointArr} />
                   </div>
                   <div className="--endow">
                     <div className="--img">

@@ -21,7 +21,7 @@ export async function getServerSideProps(context) {
     .catch((err) => console.error(err));
   const data = res.data;
   const page = await callApi
-    .get("/v2/page/Events?locale=vi")
+    .get(`/v2/page/Events?locale=${context.locale}`)
     .then((res) => res.data)
     .catch((err) => console.error(err));
   const eventsBanner = await page.data?.snippets?.find(
