@@ -310,7 +310,7 @@ export default function Home({
         ) : (
           false
         )}
-        {pointArr ? (
+        {homeMap ? (
           <div className="homeMap">
             <div className="subTitle text-center">{homeMap.subTitle}</div>
             <h1 className="Title text-center">{homeMap.title}</h1>
