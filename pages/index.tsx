@@ -310,15 +310,19 @@ export default function Home({
         ) : (
           false
         )}
-        <div className="homeMap">
-          <div className="subTitle text-center">{homeMap.subTitle}</div>
-          <h1 className="Title text-center">{homeMap.title}</h1>
+        {pointArr ? (
+          <div className="homeMap">
+            <div className="subTitle text-center">{homeMap.subTitle}</div>
+            <h1 className="Title text-center">{homeMap.title}</h1>
 
-          <Map
-            height="600px"
-            arr={pointArr?.filter((item) => item.vr !== "")}
-          />
-        </div>
+            <Map
+              height="600px"
+              arr={pointArr?.filter((item) => item.vr !== "")}
+            />
+          </div>
+        ) : (
+          false
+        )}
         {homeNews ? (
           <div className="homeNews">
             <div className="subTitle text-center">{homeNews.subTitle}</div>
