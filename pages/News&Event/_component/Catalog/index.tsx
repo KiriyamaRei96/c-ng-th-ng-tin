@@ -77,7 +77,7 @@ const Catalog = ({}: CatalogProps) => {
       <div className="--list">
         {searchArr?.map((item) => (
           <Link key={uuid()} href={`/News&Event/news/detail~${item.id}`}>
-            <div className="--item">
+            <div className="newsCard">
               <div className="--img img_hover">
                 <img src={item.featureImage?.path} alt="" />
               </div>

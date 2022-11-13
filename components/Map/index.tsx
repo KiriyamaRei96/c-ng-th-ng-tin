@@ -28,7 +28,7 @@ const Map = ({ arr, height }: MapProps) => {
     <a href='${pntArr[i].vr}' target="_blank">      
      <div
      class='marker-content d-flex'>
-     <img src='${pntArr[i].featureImage.path}'></img>
+     <img src='${pntArr[i].featureImage?.path}'></img>
      <span>${pntArr[i].title}</span> 
      </div> 
     </a>`
@@ -36,7 +36,7 @@ const Map = ({ arr, height }: MapProps) => {
     <a href='/Discover/detail~${pntArr[i].id}'>      
      <div
      class='marker-content d-flex'>
-     <img src='${pntArr[i].featureImage.path}'></img>
+     <img src='${pntArr[i].featureImage?.path}'></img>
      <span>${pntArr[i].title}</span> 
      </div> 
     </a>`;
@@ -57,7 +57,7 @@ const Map = ({ arr, height }: MapProps) => {
           <a href='${pntArr[i].vr}' target="_blank">      
            <div
            class='marker-content d-flex'>
-           <img src='${pntArr[i].featureImage.path}'></img>
+           <img src='${pntArr[i].featureImage?.path}'></img>
            <span>${pntArr[i].title}</span> 
            </div> 
           </a>`
@@ -65,7 +65,7 @@ const Map = ({ arr, height }: MapProps) => {
           <a href='/Discover/detail~${pntArr[i].id}'>      
            <div
            class='marker-content d-flex'>
-           <img src='${pntArr[i].featureImage.path}'></img>
+           <img src='${pntArr[i].featureImage?.path}'></img>
            <span>${pntArr[i].title}</span> 
            </div> 
           </a>`;
@@ -104,7 +104,7 @@ const Map = ({ arr, height }: MapProps) => {
           lat: 21.027105947174572,
           lng: 105.8380794988938,
         }}
-        defaultZoom={7}
+        defaultZoom={12}
         // onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
         yesIWantToUseGoogleMapApiInternals
       ></GoogleMapReact>

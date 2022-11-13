@@ -24,7 +24,7 @@ const EventsList = ({}: EventsListProps) => {
       <div ref={list} className="row">
         {eventsArr?.map((item) => (
           <Link key={uuid()} href={`/News&Event/event/detail~${item.id}`}>
-            <div className="col-md-4">
+            <div className="col-md-4 eventCard">
               <div className="--item img_hover1 ">
                 <div className="--img ">
                   <img src={item.featureImage?.path} alt="" />

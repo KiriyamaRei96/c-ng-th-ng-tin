@@ -7,13 +7,17 @@ import Image from "next/image";
 import { useAppDispatch, useAppSelector } from "../../ReduxStore/hooks";
 import globalSelector, { changeLang } from "../../ReduxStore/globalSlice/slice";
 import { v4 as uuid } from "uuid";
+import searchSelector, {
+  searchSlice,
+  searchText,
+} from "../../ReduxStore/search/slice";
 export interface AppHeaderProps {}
 
 const AppHeader = (props: AppHeaderProps) => {
   const [change, setChange] = useState(false);
   const [searchActive, setSearchActive] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
-  const [search, setSearch] = useState("");
+  const search = useAppSelector(searchSelector).search;
 
   const router = useRouter();
   const language = useAppSelector(globalSelector).language;
@@ -169,7 +173,7 @@ const AppHeader = (props: AppHeaderProps) => {
                 <div className="search">
                   <input
                     onKeyDown={(e) => {
-                      if (e.code === "Enter") {
+                      if (e.key === "Enter") {
                         dispatch({
                           type: "SEARCH",
                           payload: {
@@ -181,7 +185,7 @@ const AppHeader = (props: AppHeaderProps) => {
                     }}
                     value={search}
                     onChange={(e) => {
-                      setSearch(e.target.value);
+                      dispatch(searchText(e.target.value));
                     }}
                     type="text"
                     placeholder="Tìm kiếm"
@@ -227,7 +231,7 @@ const AppHeader = (props: AppHeaderProps) => {
                 <input
                   value={search}
                   onChange={(e) => {
-                    setSearch(e.target.value);
+                    dispatch(searchText(e.target.value));
                   }}
                   type="text"
                 />
@@ -494,7 +498,7 @@ const AppHeader = (props: AppHeaderProps) => {
                 <div className="search">
                   <input
                     onKeyDown={(e) => {
-                      if (e.code === "Enter") {
+                      if (e.key === "Enter") {
                         dispatch({
                           type: "SEARCH",
                           payload: {
@@ -506,7 +510,7 @@ const AppHeader = (props: AppHeaderProps) => {
                     }}
                     value={search}
                     onChange={(e) => {
-                      setSearch(e.target.value);
+                      dispatch(searchText(e.target.value));
                     }}
                     type="text"
                     placeholder="Tìm kiếm"
@@ -552,7 +556,7 @@ const AppHeader = (props: AppHeaderProps) => {
                 <input
                   value={search}
                   onChange={(e) => {
-                    setSearch(e.target.value);
+                    dispatch(searchText(e.target.value));
                   }}
                   type="text"
                 />

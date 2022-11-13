@@ -179,7 +179,7 @@ const Discover = ({
                 >
                   {discoverBlock.relations.length > 1
                     ? discoverBlock.relations?.map((item) => (
-                        <Link key={uuid()} href={`/Discover/${item.id}`}>
+                        <Link key={uuid()} href={`/Discover/detail~${item.id}`}>
                           <div className="--item img_hover">
                             <a href="">
                               <div className="--img">
@@ -205,10 +205,7 @@ const Discover = ({
                         </Link>
                       ))
                     : pointArr.map((item) => (
-                        <Link
-                          key={uuid()}
-                          href={`https://congthongtin.vercel.app/Discover/${item.id}`}
-                        >
+                        <Link key={uuid()} href={`/Discover/detail~${item.id}`}>
                           <div className="--wrapper">
                             <div className="--item img_hover">
                               <a href="">
@@ -288,7 +285,10 @@ const Discover = ({
                   >
                     {discoverBlock1.relations.length > 1
                       ? discoverBlock1.relations?.map((item) => (
-                          <Link key={uuid()} href={`/Discover/${item.id}`}>
+                          <Link
+                            key={uuid()}
+                            href={`/Discover/detail~${item.id}`}
+                          >
                             <div className="--wrapper">
                               <div className="--item img_hover1">
                                 <a href="">

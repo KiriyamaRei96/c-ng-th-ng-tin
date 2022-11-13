@@ -4,7 +4,7 @@ import callApi from "../../Api/Axios";
 function* search(action) {
   const state = yield select();
   const locale = state.global.language
-  const data = new URLSearchParams({...action.payload,locale}).toString();
+  const data = new URLSearchParams({...action.payload,locale,limit:9}).toString();
   try {
     const res = yield callApi
       .get(
