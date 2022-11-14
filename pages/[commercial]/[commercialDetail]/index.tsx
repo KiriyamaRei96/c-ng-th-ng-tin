@@ -448,6 +448,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
                             breakpoint: 768,
                             settings: {
                               slidesToShow: 1,
+                            
                               slidesToScroll: 1,
                             },
                           },
@@ -527,6 +528,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
                             settings: {
                               slidesToShow: 1,
                               slidesToScroll: 1,
+                              variableWidth:true,
                             },
                           },
                         ],
