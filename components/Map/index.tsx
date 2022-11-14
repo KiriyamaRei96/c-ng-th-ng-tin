@@ -1,94 +1,112 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Marker } from "../Marker";
 import GoogleMapReact from "google-map-react";
-
+import { locationIcon } from "../img";
+import { v4 as uuid } from "uuid";
 export interface MapProps {
   arr: any;
   height: string;
 }
-
+const AnyReactComponent = ({ lat, lng, item }) => (
+  <div className='Marker'>
+    <div className='--item d-flex'>
+      {item.vr !== "" ? (
+        <a href={item.vr} target='blank'>
+          <div className='marker-content d-flex'>
+            <div className='--img'>
+              <img src={item.featureImage?.path}></img>
+            </div>
+            <span>{item.title}</span>
+          </div>
+        </a>
+      ) : (
+        <a href={`/Discover/detail~${item.id}`}>
+          <div className='marker-content d-flex'>
+            <img src={item.featureImage?.path}></img>
+            <span>{item.title}</span>
+          </div>
+        </a>
+      )}
+    </div>
+    <img src={locationIcon.default.src} alt='' />
+  </div>
+);
 const Map = ({ arr, height }: MapProps) => {
   const [locationArr, setLocationArr] = useState<any>([]);
   const [loader, setLoader] = useState<any>();
 
   const ref: any = useRef();
-  const clear = (map, maps, pntArr) => {
-    for (let i = 0; i < pntArr.length; i++) {
-      pntArr[i].setMap(null);
-    }
-    setLocationArr([]);
-  };
+
   const handleApiLoaded = (map, maps, pntArr) => {
     if (map && maps) {
       const bounds = new maps.LatLngBounds();
       var infowindow = new maps.InfoWindow();
 
-      for (let i = 0; i < pntArr.length; i++) {
+      for (let i = 0; i < pntArr?.length; i++) {
         var marker = new maps.Marker({
           position: new maps.LatLng(pntArr[i]["lat"], pntArr[i]["lng"]),
-          map: map,
+          map: null,
         });
 
-        setLocationArr((prv) => [...prv, marker]);
         //extend the bounds to include each marker's position
         bounds.extend(marker.position);
-        const contentElemnt =
-          pntArr[i].vr !== ""
-            ? `
-    <a href='${pntArr[i].vr}' target="_blank">      
-     <div
-     class='marker-content d-flex'>
-     <img src='${pntArr[i].featureImage?.path}'></img>
-     <span>${pntArr[i].title}</span> 
-     </div> 
-    </a>`
-            : `
-    <a href='/Discover/detail~${pntArr[i].id}'>      
-     <div
-     class='marker-content d-flex'>
-     <img src='${pntArr[i].featureImage?.path}'></img>
-     <span>${pntArr[i].title}</span> 
-     </div> 
-    </a>`;
-        var infowindow = new maps.InfoWindow({
-          content: contentElemnt,
-          maxWidth: 160,
-        });
+        //     const contentElemnt =
+        //       pntArr[i].vr !== ""
+        //         ? `
+        // <a href='${pntArr[i].vr}' target="_blank">
+        //  <div
+        //  class='marker-content d-flex'>
+        //  <img src='${pntArr[i].featureImage?.path}'></img>
+        //  <span>${pntArr[i].title}</span>
+        //  </div>
+        // </a>`
+        //         : `
+        // <a href='/Discover/detail~${pntArr[i].id}'>
+        //  <div
+        //  class='marker-content d-flex'>
+        //  <img src='${pntArr[i].featureImage?.path}'></img>
+        //  <span>${pntArr[i].title}</span>
+        //  </div>
+        // </a>`;
+        //     var infowindow = new maps.InfoWindow({
+        //       content: contentElemnt,
+        //       maxWidth: 160,
+        //     });
 
-        infowindow.open(map, marker);
+        //     infowindow.open(map, marker);
 
-        maps.event.addListener(
-          marker,
-          "click",
-          (function (marker, i) {
-            const contentElemnt =
-              pntArr[i].vr !== ""
-                ? `
-          <a href='${pntArr[i].vr}' target="_blank">      
-           <div
-           class='marker-content d-flex'>
-           <img src='${pntArr[i].featureImage?.path}'></img>
-           <span>${pntArr[i].title}</span> 
-           </div> 
-          </a>`
-                : `
-          <a href='/Discover/detail~${pntArr[i].id}'>      
-           <div
-           class='marker-content d-flex'>
-           <img src='${pntArr[i].featureImage?.path}'></img>
-           <span>${pntArr[i].title}</span> 
-           </div> 
-          </a>`;
-            var infowindow = new maps.InfoWindow({
-              content: contentElemnt,
-              maxWidth: 160,
-            });
+        //     maps.event.addListener(
+        //       marker,
+        //       "click",
+        //       (function (marker, i) {
+        //         const contentElemnt =
+        //           pntArr[i].vr !== ""
+        //             ? `
+        //       <a href='${pntArr[i].vr}' target="_blank">
+        //        <div
+        //        class='marker-content d-flex'>
+        //        <img src='${pntArr[i].featureImage?.path}'></img>
+        //        <span>${pntArr[i].title}</span>
+        //        </div>
+        //       </a>`
+        //             : `
+        //       <a href='/Discover/detail~${pntArr[i].id}'>
+        //        <div
+        //        class='marker-content d-flex'>
+        //        <img src='${pntArr[i].featureImage?.path}'></img>
+        //        <span>${pntArr[i].title}</span>
+        //        </div>
+        //       </a>`;
+        //         var infowindow = new maps.InfoWindow({
+        //           content: contentElemnt,
+        //           maxWidth: 160,
+        //         });
 
-            return function () {
-              infowindow.open(map, marker);
-            };
-          })(marker, i)
-        );
+        //         return function () {
+        //           infowindow.open(map, marker);
+        //         };
+        //       })(marker, i)
+        //     );
       }
 
       map.fitBounds(bounds);
@@ -103,7 +121,7 @@ const Map = ({ arr, height }: MapProps) => {
     }
   }, [ref.current]);
   useLayoutEffect(() => {
-    handleApiLoaded(loader?.map, loader?.maps, arr);
+    handleApiLoaded(ref.current.map_, ref.current.maps_, arr);
   }, [arr, loader]);
 
   return (
@@ -118,9 +136,18 @@ const Map = ({ arr, height }: MapProps) => {
           lng: 105.8380794988938,
         }}
         defaultZoom={12}
-        // onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
+        onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps, arr)}
         yesIWantToUseGoogleMapApiInternals
-      ></GoogleMapReact>
+      >
+        {arr?.map((lct) => (
+          <AnyReactComponent
+            key={uuid()}
+            lat={Number(lct.lat)}
+            lng={Number(lct.lng)}
+            item={lct}
+          />
+        ))}
+      </GoogleMapReact>
     </div>
   );
 };

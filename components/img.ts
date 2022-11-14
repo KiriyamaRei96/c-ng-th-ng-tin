@@ -6,6 +6,7 @@ export const iconGG = require("../Asset/icon-gg.svg");
 export const iconCheck = require("../Asset/icon-check.svg");
 export const iconMap2 = require("../Asset/icon-map2.svg");
 export const iconMap1 = require("../Asset/icon-map1.svg");
+export const locationIcon = require("../Asset/Frame 427319011.png");
 
 export const iconTime = require("../Asset/icon-time.svg");
 export const iconBooking = require("../Asset/icon-booking.svg");
