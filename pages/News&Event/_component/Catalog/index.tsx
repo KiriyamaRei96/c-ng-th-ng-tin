@@ -74,36 +74,38 @@ const Catalog = ({}: CatalogProps) => {
           Tin quốc tế
         </h4>
       </div>
-      <div className="--list">
+      <div className="--list d-flex flex-wrap">
         {searchArr?.map((item) => (
           <Link key={uuid()} href={`/News&Event/news/detail~${item.id}`}>
-            <div className="newsCard">
+            <div className="--item d-flex flex-column">
               <div className="--img img_hover">
                 <img src={item.featureImage?.path} alt="" />
               </div>
-              <div className="Info d-flex">
-                <span className="type">
-                  {item.category[0]
-                    ? item.category[0]?.title
-                    : "Chưa phân loại"}
-                </span>
-                <i className="fa-solid fa-circle divider"></i>
-                <span className="date">
-                  <i className="fa-solid fa-calendar-days"></i>
-                  {item.date}
-                </span>
-                <i className="fa-solid fa-circle divider"></i>
-                <span className="view">
-                  <i className="fa-solid fa-eye"></i>
-                  268
-                </span>
-              </div>
-              <h5>{item.title}</h5>
-              <div className="divider"></div>
-              <span>{item.description}</span>
-              <div className="--more d-flex">
-                <span>Xem thêm</span>
-                <i className="fa-solid fa-arrow-right"></i>
+              <div className="--txt">
+                <div className="Info d-flex">
+                  <span className="type">
+                    {item.category[0]
+                      ? item.category[0]?.title
+                      : "Chưa phân loại"}
+                  </span>
+                  <i className="fa-solid fa-circle divider"></i>
+                  <span className="date">
+                    <i className="fa-solid fa-calendar-days"></i>
+                    {item.date}
+                  </span>
+                  <i className="fa-solid fa-circle divider"></i>
+                  <span className="view">
+                    <i className="fa-solid fa-eye"></i>
+                    268
+                  </span>
+                </div>
+                <h5>{item.title}</h5>
+                <div className="divider"></div>
+                <span>{item.description}</span>
+                <div className="--more d-flex">
+                  <span>Xem thêm</span>
+                  <i className="fa-solid fa-arrow-right"></i>
+                </div>
               </div>
             </div>
           </Link>

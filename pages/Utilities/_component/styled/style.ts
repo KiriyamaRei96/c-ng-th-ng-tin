@@ -2,6 +2,9 @@ import styled from "styled-components";
 const UtilitiesWrapper = styled.div`
   #uti {
     margin-top: 108px;
+    @media (max-width: 768px){
+      margin-top: 74px;
+    }
   }
   .utiMap {
     background: #f6f8fb;
@@ -122,6 +125,36 @@ const UtilitiesWrapper = styled.div`
         width: 100%;
         height: 100%;
         min-height: 750px;
+      }
+    }
+    @media (max-width: 768px){
+      padding: 3rem 0;
+      .Title{
+        margin-bottom: 24px;
+      }
+      .search{
+        width: 80%;
+        margin-bottom: 12px;
+        input{
+          height: 40px;
+        }
+      }
+      .filter{
+        flex-flow: column;
+      }
+      .--filter{
+        flex-flow: column;
+        .--item{
+          margin-left: 0;
+          margin-bottom: 8px ;
+          &:last-child{
+            margin-bottom: 0;
+          }
+        }
+      }
+      .list_utiMap{
+        padding-right: 0;
+        margin-bottom: 24px;
       }
     }
   }
