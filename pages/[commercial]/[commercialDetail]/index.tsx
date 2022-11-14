@@ -12,6 +12,7 @@ import {
   banner,
   icon13,
   iconBooking,
+  iconCheck,
   iconMap2,
   iconTime,
 } from "../../../components/img";
@@ -114,25 +115,25 @@ const CommercialDetail = ({ type, data, otherData }) => {
 
   return (
     <CommercialDetailWrapper>
-      <div id="detailservice">
-        <div className="detailserviceContent detailAll">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-md-9">
-                <div className="--left">
-                  <div className="subTitle">{typeMap[type]}</div>
-                  <h3 className="--titlepost">{data?.title}</h3>
-                  <div className="--interactive d-flex align-items-center justify-content-between">
-                    <div className="--evaluate d-flex align-items-center">
+      <div id='detailservice'>
+        <div className='detailserviceContent detailAll'>
+          <div className='container-fluid'>
+            <div className='row'>
+              <div className='col-md-9'>
+                <div className='--left'>
+                  <div className='subTitle'>{typeMap[type]}</div>
+                  <h3 className='--titlepost'>{data?.title}</h3>
+                  <div className='--interactive d-flex align-items-center justify-content-between'>
+                    <div className='--evaluate d-flex align-items-center'>
                       {data?.star ? (
-                        <div className="--star d-flex align-items-center">
+                        <div className='--star d-flex align-items-center'>
                           <span>{data?.star}</span>
                           {Array.apply(null, Array(Number(data?.star))).map(
                             function (x, i) {
                               return (
                                 <i
                                   key={uuid()}
-                                  className="fa-solid fa-star"
+                                  className='fa-solid fa-star'
                                 ></i>
                               );
                             }
@@ -143,7 +144,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
                                 <i
                                   key={uuid()}
                                   style={{ color: "wheat" }}
-                                  className="fa-solid fa-star"
+                                  className='fa-solid fa-star'
                                 ></i>
                               );
                             }
@@ -155,23 +156,23 @@ const CommercialDetail = ({ type, data, otherData }) => {
 
                       <span>84 đánh giá</span>
                     </div>
-                    <div className="--sharecmt d-flex align-items-center">
-                      <div className="--link">
-                        <a href="">
-                          <i className="fa-solid fa-share-nodes"></i>Chia sẻ
+                    <div className='--sharecmt d-flex align-items-center'>
+                      <div className='--link'>
+                        <a href=''>
+                          <i className='fa-solid fa-share-nodes'></i>Chia sẻ
                         </a>
-                        <a href="">
-                          <i className="fa-solid fa-heart"></i>Yêu thích
+                        <a href=''>
+                          <i className='fa-solid fa-heart'></i>Yêu thích
                         </a>
                       </div>
-                      <button className="button_hover2 button_2">
+                      <button className='button_hover2 button_2'>
                         Viết đánh giá
                       </button>
                     </div>
                   </div>
-                  <div className="list_img">
-                    <div className="--img">
-                      <img src={image ? image : ""} alt="" />
+                  <div className='list_img'>
+                    <div className='--img'>
+                      <img src={image ? image : ""} alt='' />
                     </div>
                     {allIMG?.slice(0, 4).map((img, id) =>
                       id < 3 ? (
@@ -184,16 +185,16 @@ const CommercialDetail = ({ type, data, otherData }) => {
                             image === img.path ? "--img active" : "--img"
                           }
                         >
-                          <img src={img.path} alt="" />
+                          <img src={img.path} alt='' />
                         </div>
                       ) : (
-                        <div key={uuid()} className="--img">
-                          <img src={img.path} alt="" />
+                        <div key={uuid()} className='--img'>
+                          <img src={img.path} alt='' />
                           <Fancybox key={uuid()} options={{ infinite: true }}>
                             {allIMG?.map((item) => (
                               <a
                                 key={uuid()}
-                                data-fancybox="gallery"
+                                data-fancybox='gallery'
                                 data-src={item.path}
                               >
                                 {data?.galleries.length - 3}+
@@ -204,8 +205,8 @@ const CommercialDetail = ({ type, data, otherData }) => {
                       )
                     )}
                   </div>
-                  <div className="list_content">
-                    <div className="--tab">
+                  <div className='list_content'>
+                    <div className='--tab'>
                       <div
                         onClick={() => {
                           setActive("content");
@@ -298,7 +299,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
                       false
                     )}
                     {active === "potision" ? (
-                      <Map arr={[data]} height="400px" />
+                      <Map arr={[data]} height='400px' />
                     ) : (
                       false
                     )}
@@ -308,94 +309,103 @@ const CommercialDetail = ({ type, data, otherData }) => {
                       false
                     )}
                     {active === "comments" ? <Comment /> : false}
-                    <div className="--card">
-                      <div className="--icon">
-                        <img src={icon13.default.src} alt="" />
+                    <div className='--card'>
+                      <div className='--icon'>
+                        <img src={icon13.default.src} alt='' />
                       </div>
-                      <div className="--txt">
-                        <div className="--title">Điểm nổi bật</div>
-                        {data?.highlights}
+                      <div className='--txt'>
+                        <div className='--title'>Điểm nổi bật</div>
+                        <ul>
+                          {data?.highlights?.split("/").map((text) => (
+                            <li key={uuid()}>
+                              <div className='--check'>
+                                <img src={iconCheck.default.src} alt='' />
+                              </div>
+                              <span>{text}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="col-md-3">
-                <div className="--right cardbook">
-                  <div className="--schedule ">
+              <div className='col-md-3'>
+                <div className='--right cardbook'>
+                  <div className='--schedule '>
                     <h3>Đặt chuyến đi của bạn</h3>
-                    <div className="--tab d-flex ">
-                      <div className="--item active">Khách sạn</div>
-                      <div className="--item">Thuê xe</div>
-                      <div className="--item">Xe Buýt</div>
+                    <div className='--tab d-flex '>
+                      <div className='--item active'>Khách sạn</div>
+                      <div className='--item'>Thuê xe</div>
+                      <div className='--item'>Xe Buýt</div>
                     </div>
-                    <div className="form">
-                      <div className="form-group">
-                        <label htmlFor="">Điểm đến: </label>
-                        <div className="--select">
-                          <div className="--icon">
-                            <img src={iconMap2.default.src} alt="" />
+                    <div className='form'>
+                      <div className='form-group'>
+                        <label htmlFor=''>Điểm đến: </label>
+                        <div className='--select'>
+                          <div className='--icon'>
+                            <img src={iconMap2.default.src} alt='' />
                           </div>
-                          <select className="form-control" name="" id="">
-                            <option value="">Hà Giang</option>
+                          <select className='form-control' name='' id=''>
+                            <option value=''>Hà Giang</option>
                           </select>
-                          <i className="fa-sharp fa-solid fa-chevron-down"></i>
+                          <i className='fa-sharp fa-solid fa-chevron-down'></i>
                         </div>
                       </div>
-                      <div className="form-group">
-                        <label htmlFor="">Check - in: </label>
-                        <div className="--select">
-                          <div className="--icon">
-                            <img src={iconTime.default.src} alt="" />
+                      <div className='form-group'>
+                        <label htmlFor=''>Check - in: </label>
+                        <div className='--select'>
+                          <div className='--icon'>
+                            <img src={iconTime.default.src} alt='' />
                           </div>
-                          <select className="form-control" name="" id="">
-                            <option value="">10/11/2022</option>
+                          <select className='form-control' name='' id=''>
+                            <option value=''>10/11/2022</option>
                           </select>
-                          <i className="fa-sharp fa-solid fa-chevron-down"></i>
+                          <i className='fa-sharp fa-solid fa-chevron-down'></i>
                         </div>
                       </div>
-                      <div className="form-group">
-                        <label htmlFor="">With:</label>
-                        <div className="--select">
-                          <div className="--icon">
-                            <img src={iconTime.default.src} alt="" />
+                      <div className='form-group'>
+                        <label htmlFor=''>With:</label>
+                        <div className='--select'>
+                          <div className='--icon'>
+                            <img src={iconTime.default.src} alt='' />
                           </div>
-                          <select className="form-control" name="" id="">
-                            <option value="">1 đêm</option>
+                          <select className='form-control' name='' id=''>
+                            <option value=''>1 đêm</option>
                           </select>
-                          <i className="fa-sharp fa-solid fa-chevron-down"></i>
+                          <i className='fa-sharp fa-solid fa-chevron-down'></i>
                         </div>
                       </div>
-                      <div className="form-group">
-                        <label htmlFor="">Điểm đến: </label>
-                        <div className="--select">
-                          <div className="--icon">
-                            <img src={iconBooking.default.src} alt="" />
+                      <div className='form-group'>
+                        <label htmlFor=''>Điểm đến: </label>
+                        <div className='--select'>
+                          <div className='--icon'>
+                            <img src={iconBooking.default.src} alt='' />
                           </div>
-                          <select className="form-control" name="" id="">
-                            <option value="">Booking.com</option>
+                          <select className='form-control' name='' id=''>
+                            <option value=''>Booking.com</option>
                           </select>
-                          <i className="fa-sharp fa-solid fa-chevron-down"></i>
+                          <i className='fa-sharp fa-solid fa-chevron-down'></i>
                         </div>
                       </div>
                     </div>
-                    <button className="button_1 button_hover1">
-                      <i className="fa-sharp fa-solid fa-magnifying-glass"></i>{" "}
+                    <button className='button_1 button_hover1'>
+                      <i className='fa-sharp fa-solid fa-magnifying-glass'></i>{" "}
                       Tìm kiếm
                     </button>
                   </div>
-                  <div className="--map">
-                    <Map height="450px" arr={pointArr} />
+                  <div className='--map'>
+                    <Map height='450px' arr={pointArr} />
                   </div>
-                  <div className="--endow">
-                    <div className="--img">
-                      <img src={event?.image?.path} alt="" />
+                  <div className='--endow'>
+                    <div className='--img'>
+                      <img src={event?.image?.path} alt='' />
                     </div>
                     <Link href={event?.link ? event?.link : "/"}>
-                      <div className="--txt">
+                      <div className='--txt'>
                         <span>{event?.subTitle}</span>
                         <h2>{event?.title}</h2>
-                        <div className="--des">{event?.description}</div>
+                        <div className='--des'>{event?.description}</div>
                       </div>
                     </Link>
                   </div>
@@ -405,14 +415,14 @@ const CommercialDetail = ({ type, data, otherData }) => {
           </div>
         </div>
         {router?.query?.commercial === "Restaurant" ? (
-          <div className="detailservicediscover">
-            <div className="container-fluid">
-              <div className="--title">
-                <div className="subTitle text-center">{slider?.subTitle}</div>
-                <h1 className="Title text-center">{slider?.tilte}</h1>
+          <div className='detailservicediscover'>
+            <div className='container-fluid'>
+              <div className='--title'>
+                <div className='subTitle text-center'>{slider?.subTitle}</div>
+                <h1 className='Title text-center'>{slider?.tilte}</h1>
               </div>
-              <div className="slider">
-                <div className="list_servicediscover">
+              <div className='slider'>
+                <div className='list_servicediscover'>
                   {slider?.relations?.length > 4 ? (
                     <Slider
                       {...{
@@ -425,12 +435,12 @@ const CommercialDetail = ({ type, data, otherData }) => {
 
                         nextArrow: (
                           <div>
-                            <i className="fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long"></i>
+                            <i className='fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long'></i>
                           </div>
                         ),
                         prevArrow: (
                           <div>
-                            <i className="fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long"></i>
+                            <i className='fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long'></i>
                           </div>
                         ),
                         responsive: [
@@ -443,10 +453,10 @@ const CommercialDetail = ({ type, data, otherData }) => {
                           },
                         ],
                       }}
-                      className="row"
+                      className='row'
                     >
                       {slider?.relations?.map((i) => (
-                        <div key={uuid()} className="col-md-3">
+                        <div key={uuid()} className='col-md-3'>
                           <RestaurantCard
                             title={i.title}
                             address={i.address}
@@ -459,9 +469,9 @@ const CommercialDetail = ({ type, data, otherData }) => {
                       ))}
                     </Slider>
                   ) : (
-                    <div className="row">
+                    <div className='row'>
                       {slider?.relations?.map((i) => (
-                        <div key={uuid()} className="col-md-3">
+                        <div key={uuid()} className='col-md-3'>
                           <RestaurantCard
                             title={i.title}
                             address={i.address}
@@ -475,7 +485,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
                     </div>
                   )}
                 </div>
-                <div className="arrow_servicediscover"></div>
+                <div className='arrow_servicediscover'></div>
               </div>
             </div>
           </div>
@@ -483,14 +493,14 @@ const CommercialDetail = ({ type, data, otherData }) => {
           false
         )}
         {router?.query?.commercial === "Hotel" ? (
-          <div className="detailservicediscover detailhotel">
-            <div className="container-fluid">
-              <div className="--title">
-                <div className="subTitle text-center">{slider?.subTitle}</div>
-                <h1 className="Title text-center">{slider?.title}</h1>
+          <div className='detailservicediscover detailhotel'>
+            <div className='container-fluid'>
+              <div className='--title'>
+                <div className='subTitle text-center'>{slider?.subTitle}</div>
+                <h1 className='Title text-center'>{slider?.title}</h1>
               </div>
-              <div className="slider">
-                <div className="list_servicediscover">
+              <div className='slider'>
+                <div className='list_servicediscover'>
                   {slider?.relations?.length > 4 ? (
                     <Slider
                       {...{
@@ -503,12 +513,12 @@ const CommercialDetail = ({ type, data, otherData }) => {
 
                         nextArrow: (
                           <div>
-                            <i className="fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long"></i>
+                            <i className='fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long'></i>
                           </div>
                         ),
                         prevArrow: (
                           <div>
-                            <i className="fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long"></i>
+                            <i className='fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long'></i>
                           </div>
                         ),
                         responsive: [
@@ -517,15 +527,14 @@ const CommercialDetail = ({ type, data, otherData }) => {
                             settings: {
                               slidesToShow: 1,
                               slidesToScroll: 1,
-                              
                             },
                           },
                         ],
                       }}
-                      className="row"
+                      className='row'
                     >
                       {slider?.relations?.map((i) => (
-                        <div key={uuid()} className="col-md-3">
+                        <div key={uuid()} className='col-md-3'>
                           <HotelCard
                             galaley={i.galleries}
                             title={i.title}
@@ -539,9 +548,9 @@ const CommercialDetail = ({ type, data, otherData }) => {
                       ))}
                     </Slider>
                   ) : (
-                    <div className="row">
+                    <div className='row'>
                       {slider?.relations?.map((i) => (
-                        <div key={uuid()} className="col-md-3">
+                        <div key={uuid()} className='col-md-3'>
                           <HotelCard
                             galaley={i.galleries}
                             title={i.title}
@@ -556,9 +565,9 @@ const CommercialDetail = ({ type, data, otherData }) => {
                     </div>
                   )}
 
-                  <div className="row"></div>
+                  <div className='row'></div>
                 </div>
-                <div className="arrow_servicediscover"></div>
+                <div className='arrow_servicediscover'></div>
               </div>
             </div>
           </div>
@@ -566,14 +575,14 @@ const CommercialDetail = ({ type, data, otherData }) => {
           false
         )}
         {router?.query?.commercial === "Tour" ? (
-          <div className="detailservicediscover1 detailservicediscover">
-            <div className="container-fluid">
-              <div className="--title">
-                <div className="subTitle text-center">{slider?.subTitle}</div>
-                <h1 className="Title text-center">{slider?.title}</h1>
+          <div className='detailservicediscover1 detailservicediscover'>
+            <div className='container-fluid'>
+              <div className='--title'>
+                <div className='subTitle text-center'>{slider?.subTitle}</div>
+                <h1 className='Title text-center'>{slider?.title}</h1>
               </div>
-              <div className="slider1">
-                <div className="list_servicediscover1 dicover_all">
+              <div className='slider1'>
+                <div className='list_servicediscover1 dicover_all'>
                   {slider?.relations?.length > 4 ? (
                     <Slider
                       {...{
@@ -585,12 +594,12 @@ const CommercialDetail = ({ type, data, otherData }) => {
                         arrows: true,
                         nextArrow: (
                           <div>
-                            <i className="fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long"></i>
+                            <i className='fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long'></i>
                           </div>
                         ),
                         prevArrow: (
                           <div>
-                            <i className="fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long"></i>
+                            <i className='fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long'></i>
                           </div>
                         ),
                         responsive: [
@@ -598,17 +607,17 @@ const CommercialDetail = ({ type, data, otherData }) => {
                             breakpoint: 768,
                             settings: {
                               slidesToShow: 1,
-                              variableWidth:true,
-                              adaptiveHeight:true,
+                              variableWidth: true,
+                              adaptiveHeight: true,
                               slidesToScroll: 1,
                             },
                           },
                         ],
                       }}
-                      className="list_slider"
+                      className='list_slider'
                     >
                       {slider?.relations?.map((i) => (
-                        <div key={uuid()} className="--wrapper">
+                        <div key={uuid()} className='--wrapper'>
                           <TourCard
                             id={i.id}
                             img={i.featureImage?.path}
@@ -621,9 +630,9 @@ const CommercialDetail = ({ type, data, otherData }) => {
                       ))}
                     </Slider>
                   ) : (
-                    <div className="row">
+                    <div className='row'>
                       {slider?.relations?.map((i) => (
-                        <div key={uuid()} className="--wrapper">
+                        <div key={uuid()} className='--wrapper'>
                           <TourCard
                             id={i.id}
                             img={i.featureImage?.path}
@@ -637,7 +646,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
                     </div>
                   )}
                 </div>
-                <div className="arrow_servicediscover1"></div>
+                <div className='arrow_servicediscover1'></div>
               </div>
             </div>
           </div>

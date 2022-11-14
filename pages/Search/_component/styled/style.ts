@@ -96,6 +96,17 @@ const SearchWrapper=styled.div` .list_discover {
             height: 280px !important;
         }
     }
+
+    @media (max-width: 768px) {
+        .col-md-4 {
+            margin-top: 0 !important;
+            margin-bottom: 1rem !important;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
 }
 
 .searchContent {
