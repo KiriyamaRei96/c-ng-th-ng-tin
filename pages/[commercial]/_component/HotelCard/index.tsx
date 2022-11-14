@@ -25,17 +25,19 @@ const HotelCard = ({
   const slider: any = useRef();
   return (
     <div className='hotel d-flex'>
-      <div className='--warpper'>
-        <img src={`${img}`} alt='' />
+      <Link href={`/Hotel/detail~${id}`}>
+        <div className='--warpper'>
+          <img src={`${img}`} alt='' />
 
-        <div className='--ribbon '>
-          <Image src={require("../../../../Asset/baggest.png")} alt='' />
-          <span>Best recommend</span>
+          <div className='--ribbon '>
+            <Image src={require("../../../../Asset/baggest.png")} alt='' />
+            <span>Best recommend</span>
+          </div>
+          <div className='--heart'>
+            <i className='fa-solid fa-heart'></i>
+          </div>
         </div>
-        <div className='--heart'>
-          <i className='fa-solid fa-heart'></i>
-        </div>
-      </div>
+      </Link>
       <div className='--item d-flex'>
         <Link href={`/Hotel/detail~${id}`}>
           <h5>{title}</h5>
