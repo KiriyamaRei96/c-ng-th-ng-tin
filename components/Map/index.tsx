@@ -14,7 +14,7 @@ const Map = ({ arr, height }: MapProps) => {
     const bounds = new maps.LatLngBounds();
     var infowindow = new maps.InfoWindow();
 
-    for (let i = 0; i < pntArr.length; i++) {
+    for (let i = 0; i < pntArr?.length; i++) {
       var marker = new maps.Marker({
         position: new maps.LatLng(pntArr[i]["lat"], pntArr[i]["lng"]),
         map: map,

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const NewsWrapper=styled.div` 
-div.News {
+.News {
     padding: 100px 0;
 
     h3 {
@@ -50,7 +50,10 @@ div.News {
                     -webkit-line-clamp: 2;
                     -webkit-box-orient: vertical;
                     display: -webkit-box;
-
+                    transition: all .15s ease;
+                    &:hover{
+                        color: var(--color-1);
+                    }
 
                 }
 
@@ -81,7 +84,61 @@ div.News {
             }
         }
     }
-
+    .--list{
+        .--item{
+            width: calc(100%/3 - 16px);
+            margin-right: 24px;
+            &:nth-child(3n+3){
+                margin-right: 0;
+            }
+            &:nth-child(n+4){
+                margin-top: 24px;
+            }
+        }
+        .--txt{
+            padding-top: 2rem;
+        }
+        .Info{
+            margin-bottom: 20px;
+        }
+        h5{
+            font-family: var(--font-Canela);
+            margin-bottom: 2rem;
+            position: relative;
+            &::after{
+                content: '';
+                position: absolute;
+                left: 0;
+                border-bottom:1px solid #DCDCDC ;
+                width: 40px;
+                bottom: -16px;
+            }
+        }
+       
+        .--more{
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+            margin-top: 8px;
+            font-weight: 600;
+            transition: all .15s ease;
+            cursor: pointer;
+            &:hover{
+                color: var(--color-1);
+            }
+            i{
+                margin-left: 8px;
+                color: var(--color-1);
+            }
+        }
+        .--img{
+            height: 380px;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
     .--catalog {
         .select {
             h4 {
@@ -116,10 +173,7 @@ div.News {
         .--list {
             display: flex;
             flex-wrap: wrap;
-
-
         }
-
         .--pagination {
             margin-top: 45px;
         }
@@ -137,7 +191,6 @@ div.News {
     }
     @media (max-width: 768px) {
         padding: 3rem 0;
-
         h3 {
             font-size: 32px;
             line-height: 1;
@@ -230,6 +283,11 @@ div.News {
                 margin-bottom: 24px;
             }
         }
+        .--list{
+            .--txt{
+                padding-top: 1rem;
+            }
+        }
     }
 }
 
@@ -263,18 +321,14 @@ div.News {
     .eventsSlider {
         margin-top: 55px;
         flex-direction: column;
-
         .row {
             margin-bottom: 60px;
         }
-
         .col-md-4 {
             &:nth-child(n+4) {
                 margin-top: 24px;
             }
         }
-
-
         .slick-dots {
             list-style: none;
             padding: 0;
@@ -302,7 +356,65 @@ div.News {
                 }
             }
         }
-
+        .--item{
+            position: relative;
+        }
+        .--img{
+            height: 500px;
+            position: relative;
+            &::after{
+                background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .--txt{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 0 40px 32px;
+            h5{
+                font-size: 24px;
+                font-family: var(--font-Canela);
+                color: #FFF;
+                font-size: 24px;
+                line-height: 30px;
+            }
+            .--tag{
+                background: var(--color-1);
+                border-radius: 100px;
+                padding: 6px 16px;
+                line-height: 1;
+                font-size: 12px;
+                text-transform: uppercase;
+                color: #FFF;
+                width: max-content;
+                margin-bottom: 20px;
+            }
+            .date{
+                color: #FFF;
+                padding-bottom: 16px;
+                position: relative;
+                &::after{
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    border-bottom: 1px solid #DCDCDC;
+                    width: 40px;
+                }
+            }
+        }
         .nextarrow {
             left: calc(100% + 3.5px);
             display: flex;
@@ -312,6 +424,7 @@ div.News {
             right: calc(100% + 3.5px);
             display: flex;
         }
+      
     }
     @media (min-width: 769px) and  (max-width: 1279px){
         .eventsSlider{
@@ -320,7 +433,7 @@ div.News {
                     height: 400px;
                 }
                 .--txt{
-                    padding: 0 24px;
+                    padding: 0 24px 2rem;
                 }
             }
         }
@@ -332,7 +445,6 @@ div.News {
                 line-height: 1;
             }
         }
-
         .eventsSlider {
             flex-flow: column;
             margin-top: 24px;
@@ -342,7 +454,11 @@ div.News {
             }
 
             .--txt {
-                padding: 0 1rem !important;
+                padding: 0 1rem 2rem !important;
+                .--tag{
+                    font-size: 10px;
+                    margin-bottom: 12px;
+                }
             }
 
             .col-md-4 {

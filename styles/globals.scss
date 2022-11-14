@@ -1987,24 +1987,24 @@ footer {
   }
   @media (max-width: 768px){
     .--avatar{
-      width: 30px;
-      height: 30px
+      width: 30px !important;
+      height: 30px !important;
   }
   .--txt{
-    padding: 12px;
+    padding: 12px !important;
   }
   article{
-    font-size: 12px
+    font-size: 12px !important;
   }
   .--time{
     display: none !important;
   }
   .--name_customer{
-    max-width: 70%;
+    max-width: 70% !important;
   }
   .--item{
     &.--feedback{
-        padding-left: 40px;
+        padding-left: 40px !important;
     }
   }
 }
