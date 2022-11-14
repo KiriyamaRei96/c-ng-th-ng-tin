@@ -9,18 +9,21 @@ import Slider from "react-slick";
 import FooterInfo from "./component/FooterInfo";
 import FooterLink from "./component/FooterLink";
 import FooterForm from "./component/FooterForm";
+import { useRouter } from "next/router";
 
 const Footer = ({ iconSlider }) => {
+  const router = useRouter();
   const [data, setData] = useState<any>();
   useEffect(() => {
     (async () => {
       const data = await callApi
-        .get("/v2/page/Footer?locale=vi")
+        .get(`/v2/page/Footer?locale=${router.locale}`)
         .then((res) => res.data)
         .catch((err) => console.error(err));
       setData(data.data);
     })();
-  }, []);
+  }, [router.locale]);
+
   const slider = data?.snippets?.find(
     (item) => item["snippet_name"] === "iconSlider"
   );
@@ -36,6 +39,9 @@ const Footer = ({ iconSlider }) => {
   const footerForm = data?.snippets?.find(
     (item) => item["snippet_name"] === "footerForm"
   );
+  const footerCompany = data?.snippets?.find((item) =>
+    item["snippet_name"]?.includes("footerCompany")
+  );
 
   return (
     <footer>
@@ -49,7 +55,7 @@ const Footer = ({ iconSlider }) => {
               infinite: true,
               autoplay: true,
               speed: 500,
-              pauseOnHover:false,
+              pauseOnHover: false,
               slidesToShow: 7,
               slidesToScroll: 1,
               responsive: [
@@ -86,10 +92,13 @@ const Footer = ({ iconSlider }) => {
         <div className="container-fluid">
           <div className="--content d-flex justify-content-between">
             <div className="--left d-flex align-items-center">
-              <span>@Du Lịch Lai Châu 2022 by Starfruit</span>
+              <span>{footerCompany?.title}</span>
               <div className="--link d-flex align-items-center">
-                <a href="">Privacy Cookies Policy</a>
-                <a href="">Terms and Conditions</a>
+                {footerCompany?.articles.map((item) => (
+                  <Link href={item.link} key={uuid()}>
+                    <a>{item.title}</a>
+                  </Link>
+                ))}
               </div>
             </div>
             <div className="--right d-flex align-items-center">

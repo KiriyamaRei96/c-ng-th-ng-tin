@@ -25,9 +25,13 @@ const DiscoverSearch = (props: IdiscoverSearchProps) => {
   const [limit, setLimit] = useState<number>(6);
   const [district, setDistrict] = useState<number | string>("");
   const [pointType, setPointType] = useState<number | string>("");
-
+  const [view, setView] = useState<any>({
+    order: "",
+    order_key: "",
+  });
   const [search, setSearch] = useState<string>("");
   const debouncedSearchTerm = useDebounce(search, 500);
+  const router = useRouter();
   function getResultByPoint(searchArr) {
     const outPut = {};
     searchArr.forEach((item) => {
@@ -50,10 +54,11 @@ const DiscoverSearch = (props: IdiscoverSearchProps) => {
     const payload = {
       page: 1,
       limit,
-
       search,
       district,
       "pointType[]": pointType,
+      order_key: view.order_key,
+      order: view.order,
     };
     Object.keys(payload).forEach((key) => {
       if (key !== "search" && payload[key] === "") {
@@ -69,9 +74,10 @@ const DiscoverSearch = (props: IdiscoverSearchProps) => {
         type: "GET_POINT_TYPE",
       });
     }
-  }, [debouncedSearchTerm, limit, district, pointType]);
-  const router = useRouter();
+  }, [debouncedSearchTerm, limit, district, pointType, view, router.locale]);
+
   const list: any = useRef();
+  console.log(router);
   return (
     <div ref={list} className="discoverSearch">
       <div className="container-fluid">
@@ -164,8 +170,35 @@ const DiscoverSearch = (props: IdiscoverSearchProps) => {
                   </select>
                 </div>
                 <div className="--item">
-                  <select name="" id="">
-                    <option value="">Lượt view</option>
+                  <select
+                    onChange={(e) => {
+                      switch (e.target.value) {
+                        case "":
+                          setView({
+                            order: "",
+                            order_key: "",
+                          });
+                          break;
+                        case "desc":
+                          setView({
+                            order: "desc",
+                            order_key: "viewTotal",
+                          });
+                          break;
+                        case "asc":
+                          setView({
+                            order: "asc",
+                            order_key: "viewTotal",
+                          });
+                          break;
+                      }
+                    }}
+                    name=""
+                    id=""
+                  >
+                    <option value="">Sắp xếp</option>
+                    <option value="desc">Lượt xem nhiều nhất</option>
+                    <option value="asc">Lượt xem ít nhất</option>
                   </select>
                 </div>
               </div>

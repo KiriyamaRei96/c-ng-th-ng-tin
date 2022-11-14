@@ -1,6 +1,7 @@
-import { debounce, put, takeLatest } from "redux-saga/effects";
+import { debounce, put, select, takeLatest } from "redux-saga/effects";
 import callApi from "../../Api/Axios";
 function* getlanguage(action) {
+
   try {
     const res = yield callApi
       .get("v2/language")
@@ -13,9 +14,12 @@ function* getlanguage(action) {
 }
 
 function* getDistrict(action) {
-  try {
+  const state = yield select();
+  const locale = state.global.language
+
+    try {
     const res = yield callApi
-      .get(`/v2/district/list?locale=vi`)
+      .get(`/v2/district/list?locale=${locale}`)
       .then((res) => res.data)
       .catch((err) => console.error(err));
 

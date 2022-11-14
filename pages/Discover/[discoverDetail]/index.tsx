@@ -17,6 +17,7 @@ import { useAppDispatch, useAppSelector } from "../../../ReduxStore/hooks";
 import pointSelector from "../../../ReduxStore/pointSlice/slice";
 import Link from "next/link";
 import Comment from "../../../components/Comment";
+import { useRouter } from "next/router";
 
 export async function getServerSideProps(context) {
   let other;
@@ -25,14 +26,14 @@ export async function getServerSideProps(context) {
   const data =
     (
       await callApi
-        .get(`/v2/point_detail/${id}?locale=vi`)
+        .get(`/v2/point_detail/${id}?locale=${context.locale}`)
         .then((res) => res.data)
         .catch((err) => console.error(err))
     ).data || null;
   const otherData =
     (
       await callApi
-        .get(`/v2/page/deatilDiscover?locale=vi`)
+        .get(`/v2/page/deatilDiscover?locale=${context.locale}`)
         .then((res) => res.data)
         .catch((err) => console.error(err))
     ).data || null;
@@ -48,6 +49,7 @@ const DiscoverDetail = ({ data, otherData }) => {
   const [image, setImage] = useState<string | undefined>(
     data?.featureImage.path
   );
+  const router = useRouter();
   let allIMG = [];
   const [active, setActive] = useState("content");
   const pointArr = useAppSelector(pointSelector).pointArr;
@@ -56,7 +58,7 @@ const DiscoverDetail = ({ data, otherData }) => {
     if (pointArr.length === 0) {
       dispatch({ type: "GET_POINT" });
     }
-  }, [pointArr]);
+  }, [pointArr, router.locale]);
   if (data?.galleries) {
     allIMG = [data?.featureImage, ...data?.galleries];
   }
@@ -331,11 +333,7 @@ const DiscoverDetail = ({ data, otherData }) => {
                     </button>
                   </div>
                   <div className="--map">
-                    {pointArr.length > 0 ? (
-                      <Map height="450px" arr={pointArr} />
-                    ) : (
-                      false
-                    )}
+                    <Map height="450px" arr={pointArr} />
                   </div>
                   <div className="--endow">
                     <div className="--img">

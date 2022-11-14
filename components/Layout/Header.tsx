@@ -7,12 +7,17 @@ import Image from "next/image";
 import { useAppDispatch, useAppSelector } from "../../ReduxStore/hooks";
 import globalSelector, { changeLang } from "../../ReduxStore/globalSlice/slice";
 import { v4 as uuid } from "uuid";
+import searchSelector, {
+  searchSlice,
+  searchText,
+} from "../../ReduxStore/search/slice";
 export interface AppHeaderProps {}
 
 const AppHeader = (props: AppHeaderProps) => {
   const [change, setChange] = useState(false);
   const [searchActive, setSearchActive] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
+  const search = useAppSelector(searchSelector).search;
 
   const router = useRouter();
   const language = useAppSelector(globalSelector).language;
@@ -40,7 +45,9 @@ const AppHeader = (props: AppHeaderProps) => {
     if (districtArr.length === 0) {
       dispatch({ type: "GET_DISTRICT" });
     }
-  }, []);
+    dispatch(changeLang(router.locale));
+  }, [router.locale]);
+
   const languageMap = {
     vi: "Tiếng Việt",
     en: "Tiếng Anh",
@@ -68,7 +75,9 @@ const AppHeader = (props: AppHeaderProps) => {
                 <p></p>
               </div>
               <div className="logo">
-                <Image src={require("../../Asset/logo-2.png")} alt="" />
+                <Link href={"/"}>
+                  <Image src={require("../../Asset/logo-2.png")} alt="" />
+                </Link>
               </div>
               <div className="menu d-flex">
                 <div
@@ -162,7 +171,25 @@ const AppHeader = (props: AppHeaderProps) => {
               </div>
               <div className="header_right d-flex align-items-center">
                 <div className="search">
-                  <input type="text" placeholder="Tìm kiếm" />
+                  <input
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        dispatch({
+                          type: "SEARCH",
+                          payload: {
+                            search,
+                          },
+                        });
+                        router.push("/Search");
+                      }
+                    }}
+                    value={search}
+                    onChange={(e) => {
+                      dispatch(searchText(e.target.value));
+                    }}
+                    type="text"
+                    placeholder="Tìm kiếm"
+                  />
                   <i className="fa-solid fa-magnifying-glass"></i>
                 </div>
                 <div className="language d-flex">
@@ -171,6 +198,9 @@ const AppHeader = (props: AppHeaderProps) => {
                     <select
                       value={language}
                       onChange={(e) => {
+                        router.replace(router.asPath, undefined, {
+                          locale: e.target.value,
+                        });
                         dispatch(changeLang(e.target.value));
                       }}
                       className="form-control"
@@ -198,10 +228,33 @@ const AppHeader = (props: AppHeaderProps) => {
                     : "search mobi d-none"
                 }
               >
-                <input type="text" />
-                <i className="fa-solid fa-magnifying-glass"></i>
+                <input
+                  value={search}
+                  onChange={(e) => {
+                    dispatch(searchText(e.target.value));
+                  }}
+                  type="text"
+                />
+                <i
+                  onClick={(e) => {
+                    if (searchActive) {
+                      e.stopPropagation();
+                      dispatch({
+                        type: "SEARCH",
+                        payload: {
+                          search,
+                        },
+                      });
+                      router.push("/Search");
+                    }
+                  }}
+                  className="fa-solid fa-magnifying-glass"
+                ></i>
               </div>
               <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
                 className={
                   menuActive ? "menu_mobi  d-none active" : "menu_mobi  d-none"
                 }
@@ -212,6 +265,9 @@ const AppHeader = (props: AppHeaderProps) => {
                     <select
                       value={language}
                       onChange={(e) => {
+                        router.replace(router.asPath, undefined, {
+                          locale: e.target.value,
+                        });
                         dispatch(changeLang(e.target.value));
                       }}
                       className="form-control"
@@ -344,7 +400,9 @@ const AppHeader = (props: AppHeaderProps) => {
                 <p></p>
               </div>
               <div className="logo">
-                <img src={logo.src} alt="" />
+                <Link href={"/"}>
+                  <img src={logo.src} alt="" />
+                </Link>
               </div>
               <div className="menu d-flex">
                 <div
@@ -438,7 +496,25 @@ const AppHeader = (props: AppHeaderProps) => {
               </div>
               <div className="header_right d-flex align-items-center">
                 <div className="search">
-                  <input type="text" placeholder="Tìm kiếm" />
+                  <input
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        dispatch({
+                          type: "SEARCH",
+                          payload: {
+                            search,
+                          },
+                        });
+                        router.push("/Search");
+                      }
+                    }}
+                    value={search}
+                    onChange={(e) => {
+                      dispatch(searchText(e.target.value));
+                    }}
+                    type="text"
+                    placeholder="Tìm kiếm"
+                  />
                   <i className="fa-solid fa-magnifying-glass"></i>
                 </div>
                 <div className="language d-flex">
@@ -447,6 +523,9 @@ const AppHeader = (props: AppHeaderProps) => {
                     <select
                       value={language}
                       onChange={(e) => {
+                        router.replace(router.asPath, undefined, {
+                          locale: e.target.value,
+                        });
                         dispatch(changeLang(e.target.value));
                       }}
                       className="form-control"
@@ -474,10 +553,33 @@ const AppHeader = (props: AppHeaderProps) => {
                     : "search mobi d-none"
                 }
               >
-                <input type="text" />
-                <i className="fa-solid fa-magnifying-glass"></i>
+                <input
+                  value={search}
+                  onChange={(e) => {
+                    dispatch(searchText(e.target.value));
+                  }}
+                  type="text"
+                />
+                <i
+                  onClick={(e) => {
+                    if (searchActive) {
+                      e.stopPropagation();
+                      dispatch({
+                        type: "SEARCH",
+                        payload: {
+                          search,
+                        },
+                      });
+                      router.push("/Search");
+                    }
+                  }}
+                  className="fa-solid fa-magnifying-glass"
+                ></i>
               </div>
               <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
                 className={
                   menuActive ? "menu_mobi  d-none active" : "menu_mobi  d-none"
                 }
@@ -488,6 +590,9 @@ const AppHeader = (props: AppHeaderProps) => {
                     <select
                       value={language}
                       onChange={(e) => {
+                        router.replace(router.asPath, undefined, {
+                          locale: e.target.value,
+                        });
                         dispatch(changeLang(e.target.value));
                       }}
                       className="form-control"

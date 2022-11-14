@@ -19,10 +19,11 @@ import chunk from "../funcion/chunk";
 import { useAppDispatch, useAppSelector } from "../ReduxStore/hooks";
 import pointSelector from "../ReduxStore/pointSlice/slice";
 import Map from "../components/Map";
+import { useRouter } from "next/router";
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
   const res = await callApi
-    .get("/v2/page/Home?locale=vi")
+    .get(`/v2/page/Home?locale=${context.locale}`)
     .then((res) => res.data)
     .catch((err) => console.error(err));
   const homeBanner = await res.data?.snippets?.find(
@@ -70,6 +71,7 @@ export default function Home({
   homeDiscover1,
 }) {
   const sliderRef: any = useRef();
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const [arr, setArr] = useState([]);
   const pointArr = useAppSelector(pointSelector).pointArr;
@@ -78,7 +80,7 @@ export default function Home({
       dispatch({ type: "GET_POINT" });
     }
     setArr(pointArr);
-  }, [pointArr]);
+  }, [pointArr, router.locale]);
 
   const chunkArr = chunk(3, homeNews.relations);
   return (
@@ -312,11 +314,11 @@ export default function Home({
           <div className="homeMap">
             <div className="subTitle text-center">{homeMap.subTitle}</div>
             <h1 className="Title text-center">{homeMap.title}</h1>
-            {pointArr.length > 0 ? (
-              <Map height="600px" arr={pointArr} />
-            ) : (
-              false
-            )}
+
+            <Map
+              height="600px"
+              arr={pointArr?.filter((item) => item.vr !== "")}
+            />
           </div>
         ) : (
           false

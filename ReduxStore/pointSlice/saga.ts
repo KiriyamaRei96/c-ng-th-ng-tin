@@ -1,10 +1,12 @@
-import { debounce, put, takeLatest } from "redux-saga/effects";
+import { debounce, put, select, takeLatest } from "redux-saga/effects";
 import callApi from "../../Api/Axios";
 function* getpoints(action) {
+  const state = yield select();
+  const locale = state.global.language
   try {
     const res = yield callApi
       .get(
-        "/v2/point_list?page=1&limit=100000&order_key=sort&locale=vi&search="
+        `/v2/point_list?page=1&limit=100000&order_key=sort&locale=${locale}&search=`
       )
       .then((res) => res.data)
       .catch((err) => console.error(err));
@@ -14,10 +16,12 @@ function* getpoints(action) {
   }
 }
 function* getPointType(action) {
+  const state = yield select();
+  const locale = state.global.language
   try {
     const res = yield callApi
       .get(
-        "/v2/pointType/list?locale=vi"
+        `/v2/pointType/list?locale=${locale}`
       )
       .then((res) => res.data)
       .catch((err) => console.error(err));
@@ -28,7 +32,9 @@ function* getPointType(action) {
 }
 
 function* searchPoints(action) {
-  const data = new URLSearchParams(action.payload).toString();
+  const state = yield select();
+  const locale = state.global.language
+  const data = new URLSearchParams({...action.payload,locale}).toString();
   try {
     const res = yield callApi
       .get(

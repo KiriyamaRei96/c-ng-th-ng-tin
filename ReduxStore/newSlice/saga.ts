@@ -1,9 +1,11 @@
-import { debounce, put, takeLatest } from "redux-saga/effects";
+import { debounce, put, select, takeLatest } from "redux-saga/effects";
 import callApi from "../../Api/Axios";
 function* getNews(action) {
+  const state = yield select();
+  const locale = state.global.language
   try {
     const res = yield callApi
-      .get("/v2/news_list?page=1&limit=6&order_key=sort&locale=vi&search=")
+      .get(`/v2/news_list?page=1&limit=6&order_key=sort&locale=${locale}&search=`)
       .then((res) => res.data)
       .catch((err) => console.error(err));
     yield put({ type: "SET_NEWS", payload: res });
@@ -12,9 +14,11 @@ function* getNews(action) {
   }
 }
 function* getCategory(action) {
+  const state = yield select();
+  const locale = state.global.language
   try {
     const res = yield callApi
-      .get("/v2/category/list?locale=vi")
+      .get(`/v2/category/list?locale=${locale}`)
       .then((res) => res.data)
       .catch((err) => console.error(err));
     yield put({ type: "SET_CATEGORY", payload: res });
@@ -23,8 +27,10 @@ function* getCategory(action) {
   }
 }
 function* searchNews(action) {
+  const state = yield select();
+  const locale = state.global.language
   try {
-    const params = new URLSearchParams(action.payload).toString();
+    const params = new URLSearchParams({...action.payload,locale}).toString();
     const res = yield callApi
       .get(`/v2/news_list?${params}`)
       .then((res) => res.data)
@@ -36,10 +42,12 @@ function* searchNews(action) {
 }
 
 function* getEvents(action) {
+  const state = yield select();
+  const locale = state.global.language
   try {
     const res = yield callApi
       .get(
-        `/v2/event_list?page=${action.payload}&limit=6&order_key=sort&locale=vi&search=`
+        `/v2/event_list?page=${action.payload}&limit=6&order_key=sort&locale=${locale}&search=`
       )
       .then((res) => res.data)
       .catch((err) => console.error(err));

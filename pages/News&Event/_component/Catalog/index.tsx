@@ -5,6 +5,7 @@ import { v4 as uuid } from "uuid";
 import React, { memo, useEffect, useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../ReduxStore/hooks";
 import newsEventsSelector from "../../../../ReduxStore/newSlice/slice";
+import { useRouter } from "next/router";
 
 export interface CatalogProps {}
 
@@ -12,7 +13,7 @@ const Catalog = ({}: CatalogProps) => {
   const pagination = useAppSelector(newsEventsSelector).pagination;
   const searchArr = useAppSelector(newsEventsSelector).searchArr;
   const categoryArr = useAppSelector(newsEventsSelector).categoryArr;
-
+  const router = useRouter();
   const [catalog, setCatalog] = useState("");
   const [page, setPage] = useState(1);
   const dispatch = useAppDispatch();
@@ -28,12 +29,12 @@ const Catalog = ({}: CatalogProps) => {
         payload,
       });
     }
-  }, []);
+  }, [router.locale]);
   useEffect(() => {
     const payload = {
       page,
       limit: 6,
-      "category[]": categoryArr.find((item) => item.title.trim() == catalog)
+      "category[]": categoryArr.find((item) => item?.title?.trim() == catalog)
         ?.id,
     };
     if (catalog === "") {
@@ -44,7 +45,7 @@ const Catalog = ({}: CatalogProps) => {
       type: "SEARCH_NEWS",
       payload,
     });
-  }, [catalog, page]);
+  }, [catalog, page, router.locale]);
   return (
     <div ref={list} className="--catalog">
       <div className="select d-flex">
@@ -76,7 +77,7 @@ const Catalog = ({}: CatalogProps) => {
       <div className="--list">
         {searchArr?.map((item) => (
           <Link key={uuid()} href={`/News&Event/news/detail~${item.id}`}>
-            <div className="--item">
+            <div className="newsCard">
               <div className="--img img_hover">
                 <img src={item.featureImage?.path} alt="" />
               </div>

@@ -49,10 +49,8 @@ const Navbar = (props: NavbarProps) => {
 
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (pointArr.length === 0) {
-      dispatch({ type: "GET_POINT" });
-    }
-  }, []);
+    dispatch({ type: "GET_POINT" });
+  }, [router.locale]);
   useEffect(() => {
     dispatch({
       type: "GET_SEARCH_COMMERCIAL",
@@ -63,24 +61,24 @@ const Navbar = (props: NavbarProps) => {
         order_key: "sort",
       },
     });
-  }, [filter]);
+  }, [filter, router.locale]);
 
   return (
-    <div className='--navBar'>
+    <div className="--navBar">
       {searchArr[0]?.type === "hotel" ? (
-        <div className='--map'>
-          <Map height='132px' arr={searchArr} />
+        <div className="--map">
+          <Map height="132px" arr={searchArr} />
           <button>Chỉ đường</button>
         </div>
       ) : (
         false
       )}
 
-      <div className='--OptionList'>
+      <div className="--OptionList">
         <FilterBox allFilter={allFilter} />
         {/* <FilterDisplay /> */}
         <OptionGroup
-          type='district'
+          type="district"
           value={filter.district}
           title={"Khu vực"}
           optionType={"select"}
@@ -164,7 +162,7 @@ const Navbar = (props: NavbarProps) => {
               }))}
             />
             <OptionGroup
-              type='star'
+              type="star"
               value={filter.star}
               title={"Xếp hạng sao"}
               optionType={"stars"}
