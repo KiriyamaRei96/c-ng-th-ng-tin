@@ -303,11 +303,11 @@ const CommercialDetail = ({ type, data, otherData }) => {
                     ) : (
                       false
                     )}
-                    {active === "rooms" ? (
-                      <RoomsList rooms={data?.rooms} />
-                    ) : (
-                      false
-                    )}
+                    {active === "rooms"
+                      ? data?.rooms.map((room) => (
+                          <RoomsList key={uuid()} rooms={room} />
+                        ))
+                      : false}
                     {active === "comments" ? <Comment /> : false}
                     <div className='--card'>
                       <div className='--icon'>
