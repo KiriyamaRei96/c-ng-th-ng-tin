@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-const CommercialWrapper=styled.div` .pageBody {
+const CommercialWrapper=styled.div` 
+.pageBody {
     display: flex;
     justify-content: space-between;
     padding: 100px 0 0;
@@ -285,6 +286,7 @@ const CommercialWrapper=styled.div` .pageBody {
                         height: 36px;
                         border: 1px solid #DCDCDC;
                         border-radius: 4px;
+                        padding-top: 4px;
                     }
 
                 }
@@ -473,7 +475,23 @@ const CommercialWrapper=styled.div` .pageBody {
             }
         }
     }
+    @media (min-width: 769px) and  (max-width: 1279px){
+        .--content{
+            .--list{
 
+                .ranks{
+                    flex-flow: column;
+                    >div{
+                        width: max-content;
+                    }
+                    .views{
+                        margin-left: 0;
+                        margin-top: 8px;
+                    }
+                }
+            }
+        }
+    }
     @media (max-width: 768px) {
         flex-flow: column;
         padding: 3rem 0;

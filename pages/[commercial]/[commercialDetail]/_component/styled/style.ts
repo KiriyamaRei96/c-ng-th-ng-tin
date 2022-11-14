@@ -737,7 +737,17 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
             &:nth-child(4n+1) {
                 margin-right: 0;
             }
-
+            &:nth-child(5){
+                &::after{
+                    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
             a {
                 text-decoration: none;
                 position: absolute;
@@ -747,6 +757,7 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
                 font-size: 24px;
                 font-family: var(--font-Canela);
                 color: #FFF;
+                z-index: 1;
             }
         }
     }
@@ -1266,56 +1277,26 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
     .slider1 {
         position: relative;
 
-        .slick-track,
-        .slick-list {
+        .slick-track{
             display: flex;
         }
 
         .slick-dots {
             margin-top: 60px;
         }
-
+        .--txt{
+            span{
+                overflow: hidden;
+                text-overflow: ellipsis;
+                line-height: 20px;
+                -webkit-line-clamp: 2;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+            }
+        }
         .--wrapper {
             padding: 12px;
         }
-
-        .slick-dots {
-            list-style: none;
-            padding: 0;
-            text-align: center;
-            margin-top: 16px;
-
-            margin-bottom: 0;
-
-            li.slick-active {
-                background: #FB8500;
-            }
-
-
-
-            li {
-
-
-                width: 18.8px;
-                height: 18.8px;
-                background: #D9D9D9;
-                border-radius: 50%;
-                display: inline-block;
-                margin: 0 9.5px;
-
-
-
-
-                button {
-                    border: none;
-                    background: none;
-                    color: transparent;
-                }
-            }
-
-
-        }
-
         .arrow_servicediscover1 {
             position: absolute;
             top: 0;
@@ -1347,6 +1328,41 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
                     right: calc(100% + 16px);
                 }
             }
+        }
+    }
+    @media (max-width: 768px){
+        padding-bottom: 3rem;
+        .--title{
+            margin-bottom: 2rem;
+        }
+        .slider1{
+            .slick-dots {
+                margin-top: 1.5rem !important;
+            }
+            .slick-slide{
+                width: 80vw;
+                margin-right: 12px;
+                // >div{
+                //     height: 100%;
+                // }
+            }
+            .row{
+                --bs-gutter-x:0;
+            }
+            .--wrapper{
+                padding: 12px 0 !important;
+                height: 100%;
+                .tour{
+                    height: 100%;
+                }
+            }
+            .slick-track,
+            .slick-list {
+                display: block;
+            }
+        }
+        .arrow{
+            display: none;
         }
     }
 }
@@ -1402,6 +1418,12 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
         }
         .col-md-3{
             padding: 0 !important;
+        }
+        .list_servicediscover{
+            padding-left: 1rem
+        }
+        .slick-dots{
+            margin-top: 1.5rem !important;
         }
     }
 }

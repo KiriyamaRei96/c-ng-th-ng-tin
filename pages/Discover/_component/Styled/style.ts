@@ -222,7 +222,9 @@ const DiscoverWarpper=styled.div` .discoverBanner {
         }
 
     }
-
+    @media (min-width: 769px) and  (max-width: 1279px){
+        right: 5%;
+    }
     @media (max-width: 768px) {
         left: 0;
         bottom: 25px;
@@ -1020,7 +1022,17 @@ const DiscoverWarpper=styled.div` .discoverBanner {
             &:nth-child(4n+1) {
                 margin-right: 0;
             }
-
+            &:nth-child(5){
+                &::after{
+                    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
             a {
                 text-decoration: none;
                 position: absolute;
@@ -1030,6 +1042,7 @@ const DiscoverWarpper=styled.div` .discoverBanner {
                 font-size: 24px;
                 font-family: var(--font-Canela);
                 color: #FFF;
+                z-index: 1;
             }
         }
     }

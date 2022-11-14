@@ -149,6 +149,10 @@ const NewsDetailWarpper=styled.div` .detailnewsBanner {
 
         article {
             font-size: 14px;
+            img{
+                width: 100% !important;
+                height: auto !important;
+            }
         }
     }
 
@@ -196,7 +200,19 @@ const NewsDetailWarpper=styled.div` .detailnewsBanner {
             }
         }
     }
-
+    @media (min-width: 769px) and  (max-width: 1279px){
+        .--right{
+            .othernews{
+                .--img{
+                    height: 160px;
+                }
+                h5{
+                    padding: 12px;
+                    font-size: 18px;
+                }
+            }
+        }
+    }
     @media (max-width: 768px) {
         padding: 3rem 0;
 

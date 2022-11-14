@@ -273,6 +273,13 @@ const Discover = ({
                       },
                       responsive: [
                         {
+                          breakpoint: 1279,
+                          settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1,
+                          },
+                        },
+                        {
                           breakpoint: 768,
                           settings: {
                             slidesToShow: 1,

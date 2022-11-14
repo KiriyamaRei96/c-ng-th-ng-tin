@@ -358,7 +358,7 @@ export default function Home({
                   <Link
                     href={`/News&Event/${homeNews.relations[0].type}/detail~${homeNews.relations[0].id}`}
                   >
-                    <a className="--viewdetail">
+                    <a className="--viewdetail button_hover1">
                       Tìm hiểu thêm
                       <i className="fa-solid ms-2 fa-arrow-right-long"></i>
                     </a>

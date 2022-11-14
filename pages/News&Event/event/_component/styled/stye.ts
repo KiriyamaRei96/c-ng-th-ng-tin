@@ -90,6 +90,10 @@ const EventsWrapper=styled.div`
 
         article {
             font-size: 14px;
+            img{
+                width: 100% !important;
+                height: auto !important;
+            }
         }
     }
 
@@ -299,29 +303,7 @@ const EventsWrapper=styled.div`
                 margin-bottom: 12px;
             }
         }
-        .list_coment{
-            .--avatar{
-                width: 30px;
-                height: 30px
-            }
-            .--txt{
-                padding: 12px;
-            }
-            article{
-                font-size: 12px
-            }
-            .--time{
-                display: none !important;
-            }
-            .--name_customer{
-                max-width: 70%;
-            }
-            .--item{
-                &.--feedback{
-                    padding-left: 40px;
-                }
-            }
-        }
+   
     }
 }
 

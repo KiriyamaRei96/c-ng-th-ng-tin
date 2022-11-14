@@ -327,6 +327,16 @@ const HomeWrapper=styled.div`
       }
     }
   }
+  @media (min-width: 769px) and (max-width: 1279px){
+    .--right{
+      padding-left: 1.5rem;
+    }
+    .list_homeIntro{
+      .--item{
+        padding: 0 24px;
+      }
+    }
+  }
   @media (max-width: 768px){
     padding: 3rem 0;
     .--left{
@@ -864,7 +874,7 @@ const HomeWrapper=styled.div`
       width: 100%;
       padding: 3rem 16px;
       .--cate{
-        margin-bottom: 12px;
+        margin-bottom: 24px;
         font-size: 10px;
         padding: 2px 8px;
       }
@@ -1087,6 +1097,14 @@ const HomeWrapper=styled.div`
       margin-top: 40px;
     }
   }
+  @media (min-width: 769px) and  (max-width: 1279px){
+    .list_homeDiscover1{
+      h4{
+        font-size: 20px !important;
+        line-height: 24px;
+      }
+    }
+  }
   @media (max-width: 768px){
     padding: 3rem 0;
     .Title{
@@ -1105,6 +1123,12 @@ const HomeWrapper=styled.div`
       }
       .slick-dots{
         margin-top: 1.5rem;
+      }
+      .col-md-3{
+        margin-bottom: 1.5rem;
+        &:last-child{
+          margin-bottom: 0
+        }
       }
     }
   }

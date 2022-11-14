@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-const NewsWrapper=styled.div` div.News {
+const NewsWrapper=styled.div` 
+div.News {
     padding: 100px 0;
 
     h3 {
@@ -204,7 +205,17 @@ const NewsWrapper=styled.div` div.News {
             margin-top: 45px;
         }
     }
-
+    @media (min-width: 769px) and  (max-width: 1279px){
+        .--catalog{
+            .--list{
+                .--item{
+                    .--img{
+                        height: 280px;
+                    }
+                }
+            }
+        }
+    }
     @media (max-width: 768px) {
         padding: 3rem 0;
         h3{
@@ -269,6 +280,13 @@ const NewsWrapper=styled.div` div.News {
                 gap: unset;
                 .--item{
                     width: 100%;
+                    margin-right: 0;
+                    &:nth-child(n+4){
+                        margin-top: 0;
+                    }
+                }
+                .Info{
+                    margin-bottom: 12px !important;
                 }
             }
 
@@ -447,7 +465,18 @@ const NewsWrapper=styled.div` div.News {
             display: flex;
         }
     }
-
+    @media (min-width: 769px) and  (max-width: 1279px){
+        .eventsSlider{
+            .--item{
+                .--img{
+                    height: 400px;
+                }
+                .--txt{
+                    padding: 0 24px;
+                }
+            }
+        }
+    }
     @media (max-width: 768px) {
         .--title{
             h3{

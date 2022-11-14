@@ -509,6 +509,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
                             settings: {
                               slidesToShow: 1,
                               slidesToScroll: 1,
+                              
                             },
                           },
                         ],
@@ -574,7 +575,6 @@ const CommercialDetail = ({ type, data, otherData }) => {
                         slidesToShow: 4,
                         slidesToScroll: 1,
                         arrows: true,
-
                         nextArrow: (
                           <div>
                             <i className="fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long"></i>
@@ -590,12 +590,14 @@ const CommercialDetail = ({ type, data, otherData }) => {
                             breakpoint: 768,
                             settings: {
                               slidesToShow: 1,
+                              variableWidth:true,
+                              adaptiveHeight:true,
                               slidesToScroll: 1,
                             },
                           },
                         ],
                       }}
-                      className="row"
+                      className="list_slider"
                     >
                       {slider?.relations?.map((i) => (
                         <div key={uuid()} className="--wrapper">
