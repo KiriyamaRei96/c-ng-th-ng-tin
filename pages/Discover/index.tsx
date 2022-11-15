@@ -200,7 +200,7 @@ const Discover = ({
                                 <div className='--type'>
                                   {item.pointType[0]
                                     ? item.pointType[0].title
-                                    : "Chưa phân loại"}
+                                    : false}
                                 </div>
                                 <h4>{item.title}</h4>
                                 <div className='--location '>
@@ -227,7 +227,7 @@ const Discover = ({
                                   <div className='--type'>
                                     {item.pointType[0]
                                       ? item.pointType[0].title
-                                      : "Chưa phân loại"}
+                                      : false}
                                   </div>
                                   <h4>{item.title}</h4>
                                   <div className='--location '>
@@ -317,7 +317,7 @@ const Discover = ({
                                     <div className='--type'>
                                       {item.pointType[0]
                                         ? item.pointType[0]?.title
-                                        : "Chưa phân loại"}
+                                        : false}
                                     </div>
                                     <h4>{item.title}</h4>
                                     <div className='--location '>

@@ -77,6 +77,7 @@ export default function Home({
   const [arr, setArr] = useState([]);
   const pointArr = useAppSelector(pointSelector).pointArr;
   const settingMap = useAppSelector(globalSelector).settingMap;
+
   useEffect(() => {
     if (pointArr.length === 0) {
       dispatch({ type: "GET_POINT" });
@@ -417,7 +418,14 @@ export default function Home({
                           </div>
                           <div className='--txt d-flex flex-column justify-content-between'>
                             <div className='--top'>
-                              <div className='--cate'>{news.type}</div>
+                              {news?.category[0] ? (
+                                <div className='--cate'>
+                                  {news?.category[0]?.title}
+                                </div>
+                              ) : (
+                                false
+                              )}
+
                               <Link
                                 href={`/News&Event/${news.type}/detail~${news.id}`}
                               >

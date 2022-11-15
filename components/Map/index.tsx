@@ -3,34 +3,12 @@ import { Marker } from "../Marker";
 import GoogleMapReact from "google-map-react";
 import { locationIcon } from "../img";
 import { v4 as uuid } from "uuid";
+import AnyReactComponent from "./popOver";
 export interface MapProps {
   arr: any;
   height: string;
 }
-const AnyReactComponent = ({ lat, lng, item }) => (
-  <div className='Marker'>
-    <div className='--item d-flex'>
-      {item.vr !== "" ? (
-        <a href={item.vr} target='blank'>
-          <div className='marker-content d-flex'>
-            <div className='--img'>
-              <img src={item.featureImage?.path}></img>
-            </div>
-            <span>{item.title}</span>
-          </div>
-        </a>
-      ) : (
-        <a href={`/Discover/detail~${item.id}`}>
-          <div className='marker-content d-flex'>
-            <img src={item.featureImage?.path}></img>
-            <span>{item.title}</span>
-          </div>
-        </a>
-      )}
-    </div>
-    <img src={locationIcon.default.src} alt='' />
-  </div>
-);
+
 const Map = ({ arr, height }: MapProps) => {
   const [locationArr, setLocationArr] = useState<any>([]);
   const [loader, setLoader] = useState<any>();
@@ -48,65 +26,7 @@ const Map = ({ arr, height }: MapProps) => {
           map: null,
         });
 
-        //extend the bounds to include each marker's position
         bounds.extend(marker.position);
-        //     const contentElemnt =
-        //       pntArr[i].vr !== ""
-        //         ? `
-        // <a href='${pntArr[i].vr}' target="_blank">
-        //  <div
-        //  class='marker-content d-flex'>
-        //  <img src='${pntArr[i].featureImage?.path}'></img>
-        //  <span>${pntArr[i].title}</span>
-        //  </div>
-        // </a>`
-        //         : `
-        // <a href='/Discover/detail~${pntArr[i].id}'>
-        //  <div
-        //  class='marker-content d-flex'>
-        //  <img src='${pntArr[i].featureImage?.path}'></img>
-        //  <span>${pntArr[i].title}</span>
-        //  </div>
-        // </a>`;
-        //     var infowindow = new maps.InfoWindow({
-        //       content: contentElemnt,
-        //       maxWidth: 160,
-        //     });
-
-        //     infowindow.open(map, marker);
-
-        //     maps.event.addListener(
-        //       marker,
-        //       "click",
-        //       (function (marker, i) {
-        //         const contentElemnt =
-        //           pntArr[i].vr !== ""
-        //             ? `
-        //       <a href='${pntArr[i].vr}' target="_blank">
-        //        <div
-        //        class='marker-content d-flex'>
-        //        <img src='${pntArr[i].featureImage?.path}'></img>
-        //        <span>${pntArr[i].title}</span>
-        //        </div>
-        //       </a>`
-        //             : `
-        //       <a href='/Discover/detail~${pntArr[i].id}'>
-        //        <div
-        //        class='marker-content d-flex'>
-        //        <img src='${pntArr[i].featureImage?.path}'></img>
-        //        <span>${pntArr[i].title}</span>
-        //        </div>
-        //       </a>`;
-        //         var infowindow = new maps.InfoWindow({
-        //           content: contentElemnt,
-        //           maxWidth: 160,
-        //         });
-
-        //         return function () {
-        //           infowindow.open(map, marker);
-        //         };
-        //       })(marker, i)
-        //     );
       }
 
       map.fitBounds(bounds);

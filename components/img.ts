@@ -12,3 +12,4 @@ export const iconTime = require("../Asset/icon-time.svg");
 export const iconBooking = require("../Asset/icon-booking.svg");
 export const icon13 = require("../Asset/icon-13.svg");
 export const banner = require("../Asset/banner.png");
+export const VR = require("../Asset/1ff175c81fd54c7d614698d15bc0bb61.png");

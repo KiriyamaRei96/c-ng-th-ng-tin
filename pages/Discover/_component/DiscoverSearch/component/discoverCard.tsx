@@ -21,9 +21,7 @@ const DiscoverCardList = ({ searchArr }: DiscoverCardListProps) => {
                   </div>
                   <div className='--txt'>
                     <div className='--type'>
-                      {item.pointType[0]
-                        ? item.pointType[0]?.title
-                        : "Chưa phân loại"}
+                      {item.pointType[0] ? item.pointType[0]?.title : false}
                     </div>
                     <h4>{item.title}</h4>
                     <div className='--location '>

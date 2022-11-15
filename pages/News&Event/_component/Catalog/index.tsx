@@ -86,9 +86,7 @@ const Catalog = ({}: CatalogProps) => {
               <div className='--txt'>
                 <div className='Info d-flex'>
                   <span className='type'>
-                    {item.category[0]
-                      ? item.category[0]?.title
-                      : "Chưa phân loại"}
+                    {item.category[0] ? item.category[0]?.title : false}
                   </span>
                   <i className='fa-solid fa-circle divider'></i>
                   <span className='date'>
