@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import globalSelector from "../../../../ReduxStore/globalSlice/slice";
+import { useAppSelector } from "../../../../ReduxStore/hooks";
 
 const ContentBox = ({ title, content }) => {
   const [active, setActive] = useState(false);
+  const settingMap = useAppSelector(globalSelector).settingMap;
   return (
     <div className='--content'>
       <h3 className='--title mb-4'>{title}</h3>
@@ -17,7 +20,7 @@ const ContentBox = ({ title, content }) => {
           active ? "button_2 button_hover2 d-none" : "button_2 button_hover2"
         }
       >
-        xem thêm
+        {settingMap.viewMore}
       </a>
     </div>
   );

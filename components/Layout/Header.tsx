@@ -80,7 +80,7 @@ const AppHeader = (props: AppHeaderProps) => {
               </div>
               <div className='logo'>
                 <Link href={"/"}>
-                  <img src={webSetting?.logo?.path} alt='' />
+                  <img src={webSetting?.logoBW?.path} alt='' />
                 </Link>
               </div>
               <div className='menu d-flex'>

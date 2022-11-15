@@ -9,6 +9,7 @@ import {
   useAppSelector,
 } from "../../../../../ReduxStore/hooks";
 import { v4 as uuid } from "uuid";
+import globalSelector from "../../../../../ReduxStore/globalSlice/slice";
 export interface FilterDisplayProps {
   allFilter: Array<any>;
 }
@@ -22,14 +23,14 @@ const FilterBox = ({ allFilter }: FilterDisplayProps) => {
       idArr.push(...filter[key].flat());
     } else idArr.push(filter[key]);
   });
-
+  const settingMap = useAppSelector(globalSelector).settingMap;
   const clear = () => dispatch(clearFilter());
   return (
     <div className='--filTag'>
       <div className='--tilte d-flex'>
-        <h5>Bộ lọc</h5>
+        <h5>{settingMap.filter}</h5>
         <button onClick={clear}>
-          Bỏ bộ lọc <i className='fa-solid fa-x'></i>
+          {settingMap.clearFilter} <i className='fa-solid fa-x'></i>
         </button>
       </div>
       <div className='d-flex --list'>

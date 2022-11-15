@@ -104,7 +104,7 @@ export default function Home({
                 </a>
               </Link>
             </div>
-            <div className='container-fluid'>
+            <div className='container-fluid d-none'>
               <div className='filter'>
                 <div className='form-group'>
                   <div className='--icon'>

@@ -62,25 +62,25 @@ const Navbar = (props: NavbarProps) => {
       },
     });
   }, [filter, router.locale]);
-
+  const settingMap = useAppSelector(globalSelector).settingMap;
   return (
-    <div className="--navBar">
+    <div className='--navBar'>
       {searchArr[0]?.type === "hotel" ? (
-        <div className="--map">
-          <Map height="132px" arr={searchArr} />
-          <button>Chỉ đường</button>
+        <div className='--map'>
+          <Map height='132px' arr={searchArr} />
+          {/* <button>Chỉ đường</button> */}
         </div>
       ) : (
         false
       )}
 
-      <div className="--OptionList">
+      <div className='--OptionList'>
         <FilterBox allFilter={allFilter} />
         {/* <FilterDisplay /> */}
         <OptionGroup
-          type="district"
+          type='district'
           value={filter.district}
-          title={"Khu vực"}
+          title={settingMap.District}
           optionType={"select"}
           optionArray={districtArr.map((item) => ({
             title: item.title,
@@ -92,7 +92,7 @@ const Navbar = (props: NavbarProps) => {
             <OptionGroup
               type={"tourType[]"}
               value={filter["tourType[]"]}
-              title={"Loại hình"}
+              title={settingMap.tourType}
               optionType={"checkbox"}
               optionArray={tourType.map((item) => ({
                 title: item.title,
@@ -102,7 +102,7 @@ const Navbar = (props: NavbarProps) => {
             <OptionGroup
               type={"point[]"}
               value={filter["point[]"]}
-              title={"Điểm thăm quan"}
+              title={settingMap.point}
               optionType={"checkbox"}
               optionArray={pointArr.map((item) => ({
                 title: item.title,
@@ -112,7 +112,7 @@ const Navbar = (props: NavbarProps) => {
             <OptionGroup
               type={"destinationsType"}
               value={filter["destinationsType"]}
-              title={"Số điểm đến"}
+              title={settingMap.destinationsType}
               optionType={"radio"}
               optionArray={destinationsType.map((item) => ({
                 title: item.title,
@@ -128,7 +128,7 @@ const Navbar = (props: NavbarProps) => {
             <OptionGroup
               type={"restaurantType[]"}
               value={filter["restaurantType[]"]}
-              title={"Loại hình ẩm thực"}
+              title={settingMap.restaurantType}
               optionType={"checkbox"}
               optionArray={restaurantType.map((item) => ({
                 title: item.title,
@@ -138,7 +138,7 @@ const Navbar = (props: NavbarProps) => {
             <OptionGroup
               type={"restaurantCategory[]"}
               value={filter["restaurantCategory[]"]}
-              title={"Kiểu ẩm thực"}
+              title={settingMap.restaurantCategory}
               optionType={"checkbox"}
               optionArray={restaurantCategory.map((item) => ({
                 title: item.title,
@@ -154,7 +154,7 @@ const Navbar = (props: NavbarProps) => {
             <OptionGroup
               type={"hotelType[]"}
               value={filter["hotelType[]"]}
-              title={"Loại hình"}
+              title={settingMap.hotelType}
               optionType={"checkbox"}
               optionArray={hotelType.map((item) => ({
                 title: item.title,
@@ -162,9 +162,9 @@ const Navbar = (props: NavbarProps) => {
               }))}
             />
             <OptionGroup
-              type="star"
+              type='star'
               value={filter.star}
-              title={"Xếp hạng sao"}
+              title={settingMap.star}
               optionType={"stars"}
               optionArray={undefined}
             ></OptionGroup>

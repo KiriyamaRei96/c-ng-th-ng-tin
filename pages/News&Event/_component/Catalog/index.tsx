@@ -6,6 +6,7 @@ import React, { memo, useEffect, useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../ReduxStore/hooks";
 import newsEventsSelector from "../../../../ReduxStore/newSlice/slice";
 import { useRouter } from "next/router";
+import globalSelector from "../../../../ReduxStore/globalSlice/slice";
 
 export interface CatalogProps {}
 
@@ -46,6 +47,7 @@ const Catalog = ({}: CatalogProps) => {
       payload,
     });
   }, [catalog, page, router.locale]);
+  const settingMap = useAppSelector(globalSelector).settingMap;
   return (
     <div ref={list} className='--catalog'>
       <div className='select d-flex'>
@@ -103,7 +105,7 @@ const Catalog = ({}: CatalogProps) => {
                 <div className='divider'></div>
                 <span>{item.description}</span>
                 <div className='--more d-flex'>
-                  <span>Xem thêm</span>
+                  <span>{settingMap.viewMore}</span>
                   <i className='fa-solid fa-arrow-right'></i>
                 </div>
               </div>

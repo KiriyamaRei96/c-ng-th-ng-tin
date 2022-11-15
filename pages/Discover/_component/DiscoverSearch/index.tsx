@@ -131,7 +131,7 @@ const DiscoverSearch = ({ title }) => {
             <div className='--filter d-flex align-items-center'>
               <span>
                 <i className='fa-solid fa-filter'></i>
-                Bộ lọc
+                {settingMap.filter}
               </span>
               <div className='--select d-flex'>
                 <div className='--item'>
@@ -142,7 +142,7 @@ const DiscoverSearch = ({ title }) => {
                     }}
                   >
                     <option value='' selected>
-                      Chọn quận huyện
+                      {settingMap.selectDistrict}
                     </option>
                     {districtArr.map((item) => (
                       <option key={uuid()} value={item.id}>
@@ -159,7 +159,7 @@ const DiscoverSearch = ({ title }) => {
                     }}
                   >
                     <option value='' selected>
-                      Chọn loại địa điểm
+                      {settingMap.selectPointType}
                     </option>
                     {pointTypeArr.map((item) => (
                       <option key={uuid()} value={item.id}>
@@ -195,16 +195,17 @@ const DiscoverSearch = ({ title }) => {
                     name=''
                     id=''
                   >
-                    <option value=''>Lượt view</option>
-                    <option value='desc'>Lượt xem nhiều nhất</option>
-                    <option value='asc'>Lượt xem ít nhất</option>
+                    <option value=''>{settingMap.selectView}</option>
+                    <option value='desc'>{settingMap.selectViewDesc}</option>
+                    <option value='asc'>{settingMap.selectViewAsc}</option>
                   </select>
                 </div>
               </div>
             </div>
             <div className='--tabbot'>
               <button className='active'>
-                Tất Cả<span>({pagination?.totalCount})</span>
+                {settingMap.All}
+                <span>({pagination?.totalCount})</span>
               </button>
               {/* {Object.keys(getResultByPoint(searchArr)).map((item) => (
                 <button key={uuid()}>

@@ -16,7 +16,7 @@ export async function getServerSideProps(context) {
   const id = context.query?.index?.replace("detail~", "");
 
   const res = await callApi
-    .get(`/v2/event_detail/${id}`)
+    .get(`/v2/event_detail/${id}?locale=${context.locale}`)
     .then((res) => res.data)
     .catch((err) => console.error(err));
   const data = res.data;

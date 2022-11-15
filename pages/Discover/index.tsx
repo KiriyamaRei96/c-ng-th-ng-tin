@@ -72,77 +72,81 @@ const Discover = ({
   return (
     <DiscoverWarpper>
       <div id='discover'>
-        <div className='discoverBanner'>
-          <Slider
-            ref={slider}
-            {...{
-              dots: false,
-              infinite: true,
-              speed: 800,
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              adaptiveHeight: true,
-              arrows: false,
-              fade: true,
-              afterChange(currentSlide) {
-                setCurrent(currentSlide);
-              },
-            }}
-          >
-            {discoverBanner?.articles?.map((item) => (
-              <div key={uuid()}>
-                <div className='--item'>
-                  <div className='--background'>
-                    <img src={item.image?.path} alt='' />
-                  </div>
-                  <div className='container-fluid'>
-                    <div className='--content'>
-                      <div className='--top'>
-                        <div className='--title'>
-                          <span>{item?.subTitle}</span>
-                          <h1 className='Title mt-3'>{item?.title}</h1>
+        {discoverBanner?.articles ? (
+          <div className='discoverBanner'>
+            <Slider
+              ref={slider}
+              {...{
+                dots: false,
+                infinite: true,
+                speed: 800,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                adaptiveHeight: true,
+                arrows: false,
+                fade: true,
+                afterChange(currentSlide) {
+                  setCurrent(currentSlide);
+                },
+              }}
+            >
+              {discoverBanner?.articles?.map((item) => (
+                <div key={uuid()}>
+                  <div className='--item'>
+                    <div className='--background'>
+                      <img src={item.image?.path} alt='' />
+                    </div>
+                    <div className='container-fluid'>
+                      <div className='--content'>
+                        <div className='--top'>
+                          <div className='--title'>
+                            <span>{item?.subTitle}</span>
+                            <h1 className='Title mt-3'>{item?.title}</h1>
+                          </div>
                         </div>
-                      </div>
-                      <div className='--bot d-flex justify-content-between align-items-end'>
-                        <Link href={item?.link}>
-                          <a>
-                            <i className='fa-sharp fa-solid fa-arrow-down-long'></i>
-                            {settingMap.viewAll}
-                          </a>
-                        </Link>
+                        <div className='--bot d-flex justify-content-between align-items-end'>
+                          <Link href={item?.link}>
+                            <a>
+                              <i className='fa-sharp fa-solid fa-arrow-down-long'></i>
+                              {settingMap.viewAll}
+                            </a>
+                          </Link>
 
-                        <div className='--txt'>
-                          <article>{item?.description}</article>
+                          <div className='--txt'>
+                            <article>{item?.description}</article>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+              ))}
+            </Slider>
+            <div className='Slider-action d-flex justify-content-between'>
+              <div className='--number d-flex align-items-center'>
+                <span>{pad(current + 1)}</span>
+                <div className='line'></div>
+                <span>{pad(discoverBanner?.articles?.length)}</span>
               </div>
-            ))}
-          </Slider>
-          <div className='Slider-action d-flex justify-content-between'>
-            <div className='--number d-flex align-items-center'>
-              <span>{pad(current + 1)}</span>
-              <div className='line'></div>
-              <span>{pad(discoverBanner?.articles?.length)}</span>
-            </div>
-            <div className='--arrow'>
-              <i
-                onClick={() => {
-                  slider.current.slickPrev();
-                }}
-                className='fa-solid prevarrow fa-arrow-left-long'
-              ></i>
-              <i
-                onClick={() => {
-                  slider.current?.slickNext();
-                }}
-                className='fa-solid nextarrow fa-arrow-right-long'
-              ></i>
+              <div className='--arrow'>
+                <i
+                  onClick={() => {
+                    slider.current.slickPrev();
+                  }}
+                  className='fa-solid prevarrow fa-arrow-left-long'
+                ></i>
+                <i
+                  onClick={() => {
+                    slider.current?.slickNext();
+                  }}
+                  className='fa-solid nextarrow fa-arrow-right-long'
+                ></i>
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          false
+        )}
 
         <div className='discoverBlock'>
           <div className='container-fluid'>
