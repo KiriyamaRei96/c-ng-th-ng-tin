@@ -11,6 +11,7 @@ export interface HotelCardProps {
   address?: string;
   rate?: number;
   galaley?: Array<any>;
+  view?: number;
 }
 
 const HotelCard = ({
@@ -20,6 +21,7 @@ const HotelCard = ({
   address,
   rate,
   title,
+  view,
 }: HotelCardProps) => {
   const [current, setCurrent] = useState<number>(0);
   const slider: any = useRef();
@@ -55,8 +57,7 @@ const HotelCard = ({
           </div>
 
           <div className='views'>
-            <i className='fa-solid fa-eye'></i>
-            120
+            <i className='fa-solid fa-eye'></i> {view}
           </div>
         </div>
       </div>

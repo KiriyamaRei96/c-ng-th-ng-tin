@@ -1,7 +1,6 @@
 import { debounce, put, select, takeLatest } from "redux-saga/effects";
 import callApi from "../../Api/Axios";
 function* getlanguage(action) {
-
   try {
     const res = yield callApi
       .get("v2/language")
@@ -15,9 +14,9 @@ function* getlanguage(action) {
 
 function* getDistrict(action) {
   const state = yield select();
-  const locale = state.global.language
+  const locale = state.global.language;
 
-    try {
+  try {
     const res = yield callApi
       .get(`/v2/district/list?locale=${locale}`)
       .then((res) => res.data)
@@ -28,8 +27,25 @@ function* getDistrict(action) {
     console.error(err);
   }
 }
+function* getSetting(action) {
+  const state = yield select();
+  const locale = state.global.language;
+
+  try {
+    const res = yield callApi
+      .get(`v2/webSetting?locale=${locale}`)
+      .then((res) => res.data)
+      .catch((err) => console.error(err));
+
+    yield put({ type: "SET_SETTING", payload: res.data });
+  } catch (err) {
+    console.error(err);
+  }
+}
 function* globalSaga() {
   yield takeLatest("GET_LANG", getlanguage);
+
   yield takeLatest("GET_DISTRICT", getDistrict);
+  yield takeLatest("GET_SETTING", getSetting);
 }
 export default globalSaga;

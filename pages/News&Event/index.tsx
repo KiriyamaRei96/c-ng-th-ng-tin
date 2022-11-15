@@ -11,6 +11,7 @@ import { useAppDispatch, useAppSelector } from "../../ReduxStore/hooks";
 import newsEventsSelector from "../../ReduxStore/newSlice/slice";
 import Catalog from "./_component/Catalog";
 import EventsList from "./_component/EventList";
+import globalSelector from "../../ReduxStore/globalSlice/slice";
 
 export async function getServerSideProps(context) {
   const res = await callApi
@@ -28,7 +29,7 @@ export async function getServerSideProps(context) {
   const Events = await res.data?.snippets?.find(
     (item) => item["snippet_name"] === "Events"
   );
-  console.log(Events);
+
   return {
     props: {
       newsBanner,
@@ -43,6 +44,7 @@ const NewsEvent = ({ newsBanner, hotNews, Events }) => {
   const newsArr = useAppSelector(newsEventsSelector).newsArr;
   const eventsArr = useAppSelector(newsEventsSelector).eventsArr;
   const categoryArr = useAppSelector(newsEventsSelector).categoryArr;
+  const settingMap = useAppSelector(globalSelector).settingMap;
   const dispatch = useAppDispatch();
   useEffect(() => {
     if (newsArr.length === 0) {
@@ -57,17 +59,17 @@ const NewsEvent = ({ newsBanner, hotNews, Events }) => {
   }, [newsArr, eventsArr, router.locale]);
   return (
     <NewsWrapper>
-      <div id="News-Event">
-        <div className="Banner d-flex">
-          <img src={newsBanner.image.path} alt=""></img>
-          <div className="--Item">
+      <div id='News-Event'>
+        <div className='Banner d-flex'>
+          <img src={newsBanner.image.path} alt=''></img>
+          <div className='--Item'>
             <h1>{newsBanner.title}</h1>
             <BreadCrumb />
           </div>
         </div>
-        <div className="News">
-          <div className="container-fluid">
-            <div className="--hotNews">
+        <div className='News'>
+          <div className='container-fluid'>
+            <div className='--hotNews'>
               <h3>{hotNews.title}</h3>
               <Slider
                 {...{
@@ -80,48 +82,48 @@ const NewsEvent = ({ newsBanner, hotNews, Events }) => {
                   adaptiveHeight: true,
                   nextArrow: (
                     <div>
-                      <i className="fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long"></i>
+                      <i className='fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long'></i>
                     </div>
                   ),
 
                   prevArrow: (
                     <div>
-                      <i className="fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long"></i>
+                      <i className='fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long'></i>
                     </div>
                   ),
                 }}
-                className="--hotSlider"
+                className='--hotSlider'
               >
                 {hotNews.relations?.map((item) => (
                   <div key={uuid()}>
-                    <div className="--item d-flex">
-                      <div className="--img img_hover">
-                        <img src={item.featureImage?.path} alt="" />
+                    <div className='--item d-flex'>
+                      <div className='--img img_hover'>
+                        <img src={item.featureImage?.path} alt='' />
                       </div>
-                      <div className="--txt">
-                        <div className="Info d-flex">
-                          <span className="type">
+                      <div className='--txt'>
+                        <div className='Info d-flex'>
+                          <span className='type'>
                             {item.category[0]?.title}
                           </span>
-                          <i className="fa-solid fa-circle divider"></i>
-                          <span className="date">
-                            <i className="fa-solid fa-calendar-days"></i>
+                          <i className='fa-solid fa-circle divider'></i>
+                          <span className='date'>
+                            <i className='fa-solid fa-calendar-days'></i>
                             {item.date}
                           </span>
-                          <i className="fa-solid fa-circle divider"></i>
-                          <span className="view">
-                            <i className="fa-solid fa-eye"></i>
-                            268
+                          <i className='fa-solid fa-circle divider'></i>
+                          <span className='view'>
+                            <i className='fa-solid fa-eye'></i>
+                            {item.viewTotal}
                           </span>
                         </div>
                         <h4>{item.title}</h4>
-                        <div className="divider"></div>
+                        <div className='divider'></div>
                         <span>{item.description}</span>
 
                         <Link href={`/News&Event/news/detail~${item.id}`}>
-                          <a className="button_2 button_hover2">
-                            Xem chi tiết
-                            <i className="fa-sharp ms-2 fa-solid fa-arrow-right-long"></i>
+                          <a className='button_2 button_hover2'>
+                            {settingMap?.viewDetail}
+                            <i className='fa-sharp ms-2 fa-solid fa-arrow-right-long'></i>
                           </a>
                         </Link>
                       </div>
@@ -133,13 +135,13 @@ const NewsEvent = ({ newsBanner, hotNews, Events }) => {
             <Catalog />
           </div>
         </div>
-        <div className="Events">
-          <div className="container-fluid">
-            <div className="--title ">
+        <div className='Events'>
+          <div className='container-fluid'>
+            <div className='--title '>
               <span>{Events.subTitle}</span>
               <h3>{Events.title}</h3>
             </div>
-            <div className="eventsSlider d-flex ">
+            <div className='eventsSlider d-flex '>
               <EventsList />
             </div>
           </div>

@@ -47,8 +47,8 @@ const Catalog = ({}: CatalogProps) => {
     });
   }, [catalog, page, router.locale]);
   return (
-    <div ref={list} className="--catalog">
-      <div className="select d-flex">
+    <div ref={list} className='--catalog'>
+      <div className='select d-flex'>
         <h4
           onClick={() => {
             setCatalog("");
@@ -74,37 +74,37 @@ const Catalog = ({}: CatalogProps) => {
           Tin quốc tế
         </h4>
       </div>
-      <div className="--list d-flex flex-wrap">
+      <div className='--list d-flex flex-wrap'>
         {searchArr?.map((item) => (
           <Link key={uuid()} href={`/News&Event/news/detail~${item.id}`}>
-            <div className="--item d-flex flex-column">
-              <div className="--img img_hover">
-                <img src={item.featureImage?.path} alt="" />
+            <div className='--item d-flex flex-column'>
+              <div className='--img img_hover'>
+                <img src={item.featureImage?.path} alt='' />
               </div>
-              <div className="--txt">
-                <div className="Info d-flex">
-                  <span className="type">
+              <div className='--txt'>
+                <div className='Info d-flex'>
+                  <span className='type'>
                     {item.category[0]
                       ? item.category[0]?.title
                       : "Chưa phân loại"}
                   </span>
-                  <i className="fa-solid fa-circle divider"></i>
-                  <span className="date">
-                    <i className="fa-solid fa-calendar-days"></i>
+                  <i className='fa-solid fa-circle divider'></i>
+                  <span className='date'>
+                    <i className='fa-solid fa-calendar-days'></i>
                     {item.date}
                   </span>
-                  <i className="fa-solid fa-circle divider"></i>
-                  <span className="view">
-                    <i className="fa-solid fa-eye"></i>
-                    268
+                  <i className='fa-solid fa-circle divider'></i>
+                  <span className='view'>
+                    <i className='fa-solid fa-eye'></i>
+                    {item.viewTotal}
                   </span>
                 </div>
                 <h5>{item.title}</h5>
-                <div className="divider"></div>
+                <div className='divider'></div>
                 <span>{item.description}</span>
-                <div className="--more d-flex">
+                <div className='--more d-flex'>
                   <span>Xem thêm</span>
-                  <i className="fa-solid fa-arrow-right"></i>
+                  <i className='fa-solid fa-arrow-right'></i>
                 </div>
               </div>
             </div>
@@ -112,13 +112,13 @@ const Catalog = ({}: CatalogProps) => {
         ))}{" "}
       </div>
       <Pagination
-        className="--pagination"
+        className='--pagination'
         itemRender={(_, type, originalElement) => {
           if (type === "prev") {
-            return <i className="fa-solid fa-angles-left"></i>;
+            return <i className='fa-solid fa-angles-left'></i>;
           }
           if (type === "next") {
-            return <i className="fa-solid fa-angles-right"></i>;
+            return <i className='fa-solid fa-angles-right'></i>;
           }
           return originalElement;
         }}

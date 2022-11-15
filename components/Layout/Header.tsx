@@ -24,6 +24,8 @@ const AppHeader = (props: AppHeaderProps) => {
   const languageArr = useAppSelector(globalSelector).languageArr;
 
   const districtArr = useAppSelector(globalSelector).districtArr;
+  const webSetting = useAppSelector(globalSelector).webSetting;
+  const settingMap = useAppSelector(globalSelector).settingMap;
 
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -45,6 +47,7 @@ const AppHeader = (props: AppHeaderProps) => {
     if (districtArr.length === 0) {
       dispatch({ type: "GET_DISTRICT" });
     }
+    dispatch({ type: "GET_SETTING" });
     dispatch(changeLang(router.locale));
   }, [router.locale]);
 
@@ -53,6 +56,7 @@ const AppHeader = (props: AppHeaderProps) => {
     en: "Tiếng Anh",
     ja: "Tiếng Nhật",
   };
+
   return (
     <>
       {Object.keys(router.query).length === 2 ||
@@ -76,7 +80,7 @@ const AppHeader = (props: AppHeaderProps) => {
               </div>
               <div className='logo'>
                 <Link href={"/"}>
-                  <Image src={require("../../Asset/logo-2.png")} alt='' />
+                  <img src={webSetting?.logo?.path} alt='' />
                 </Link>
               </div>
               <div className='menu d-flex'>
@@ -88,7 +92,7 @@ const AppHeader = (props: AppHeaderProps) => {
                   }
                 >
                   <Link href='/'>
-                    <a>Trang chủ</a>
+                    <a>{settingMap.Home}</a>
                   </Link>
                 </div>
                 <div
@@ -99,7 +103,7 @@ const AppHeader = (props: AppHeaderProps) => {
                   }
                 >
                   <Link href='/About'>
-                    <a>Giới thiệu</a>
+                    <a>{settingMap.About}</a>
                   </Link>
                 </div>
                 <div
@@ -110,7 +114,7 @@ const AppHeader = (props: AppHeaderProps) => {
                   }
                 >
                   <Link href='/Discover'>
-                    <a>Điểm du lịch</a>
+                    <a>{settingMap.Discover}</a>
                   </Link>
                 </div>
                 <div
@@ -121,7 +125,7 @@ const AppHeader = (props: AppHeaderProps) => {
                   }
                 >
                   <Link href='/Hotel'>
-                    <a>Lưu trú</a>
+                    <a>{settingMap.Hotel}</a>
                   </Link>
                 </div>
                 <div
@@ -132,7 +136,7 @@ const AppHeader = (props: AppHeaderProps) => {
                   }
                 >
                   <Link href='/Tour'>
-                    <a>Lữ hành</a>
+                    <a>{settingMap.Tour}</a>
                   </Link>
                 </div>
                 <div
@@ -143,7 +147,7 @@ const AppHeader = (props: AppHeaderProps) => {
                   }
                 >
                   <Link href='/Restaurant'>
-                    <a>Ẩm thực</a>
+                    <a>{settingMap.Restaurant}</a>
                   </Link>
                 </div>
                 <div
@@ -154,7 +158,7 @@ const AppHeader = (props: AppHeaderProps) => {
                   }
                 >
                   <Link href='/News&Event'>
-                    <a>Tin tức</a>
+                    <a>{settingMap["News&Event"]}</a>
                   </Link>
                 </div>
                 <div
@@ -165,7 +169,7 @@ const AppHeader = (props: AppHeaderProps) => {
                   }
                 >
                   <Link href='/Contact'>
-                    <a>Liên hệ</a>
+                    <a>{settingMap.Contact}</a>
                   </Link>
                 </div>
               </div>
@@ -188,7 +192,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       dispatch(searchText(e.target.value));
                     }}
                     type='text'
-                    placeholder='Tìm kiếm'
+                    placeholder={settingMap.searchPlaceHolder}
                   />
                   <i className='fa-solid fa-magnifying-glass'></i>
                 </div>
@@ -303,7 +307,7 @@ const AppHeader = (props: AppHeaderProps) => {
                     }
                   >
                     <Link href='/'>
-                      <a>Trang chủ</a>
+                      <a>{settingMap.Home}</a>
                     </Link>
                   </div>
                   <div
@@ -314,7 +318,7 @@ const AppHeader = (props: AppHeaderProps) => {
                     }
                   >
                     <Link href='/About'>
-                      <a>Giới thiệu</a>
+                      <a>{settingMap.About}</a>
                     </Link>
                   </div>
                   <div
@@ -325,7 +329,7 @@ const AppHeader = (props: AppHeaderProps) => {
                     }
                   >
                     <Link href='/Discover'>
-                      <a>Điểm du lịch</a>
+                      <a>{settingMap.Discover}</a>
                     </Link>
                   </div>
                   <div
@@ -336,7 +340,7 @@ const AppHeader = (props: AppHeaderProps) => {
                     }
                   >
                     <Link href='/Hotel'>
-                      <a>Lưu trú</a>
+                      <a>{settingMap.Hotel}</a>
                     </Link>
                   </div>
                   <div
@@ -347,7 +351,7 @@ const AppHeader = (props: AppHeaderProps) => {
                     }
                   >
                     <Link href='/Tour'>
-                      <a>Lữ hành</a>
+                      <a>{settingMap.Tour}</a>
                     </Link>
                   </div>
                   <div
@@ -358,7 +362,7 @@ const AppHeader = (props: AppHeaderProps) => {
                     }
                   >
                     <Link href='/Restaurant'>
-                      <a>Ẩm thực</a>
+                      <a>{settingMap.Restaurant}</a>
                     </Link>
                   </div>
                   <div
@@ -369,7 +373,7 @@ const AppHeader = (props: AppHeaderProps) => {
                     }
                   >
                     <Link href='/News&Event'>
-                      <a>Tin tức</a>
+                      <a>{settingMap["News&Event"]}</a>
                     </Link>
                   </div>
                   <div
@@ -380,7 +384,7 @@ const AppHeader = (props: AppHeaderProps) => {
                     }
                   >
                     <Link href='/Contact'>
-                      <a>Liên hệ</a>
+                      <a>{settingMap.Contact}</a>
                     </Link>
                   </div>
                 </div>
@@ -412,7 +416,7 @@ const AppHeader = (props: AppHeaderProps) => {
               </div>
               <div className='logo'>
                 <Link href={"/"}>
-                  <img src={logo.src} alt='' />
+                  <img src={webSetting?.logo?.path} alt='' />
                 </Link>
               </div>
               <div className='menu d-flex'>
@@ -424,7 +428,7 @@ const AppHeader = (props: AppHeaderProps) => {
                   }
                 >
                   <Link href='/'>
-                    <a>Trang chủ</a>
+                    <a>{settingMap.Home}</a>
                   </Link>
                 </div>
                 <div
@@ -435,7 +439,7 @@ const AppHeader = (props: AppHeaderProps) => {
                   }
                 >
                   <Link href='/About'>
-                    <a>Giới thiệu</a>
+                    <a>{settingMap.About}</a>
                   </Link>
                 </div>
                 <div
@@ -446,7 +450,7 @@ const AppHeader = (props: AppHeaderProps) => {
                   }
                 >
                   <Link href='/Discover'>
-                    <a>Điểm du lịch</a>
+                    <a>{settingMap.Discover}</a>
                   </Link>
                 </div>
                 <div
@@ -457,7 +461,7 @@ const AppHeader = (props: AppHeaderProps) => {
                   }
                 >
                   <Link href='/Hotel'>
-                    <a>Lưu trú</a>
+                    <a>{settingMap.Hotel}</a>
                   </Link>
                 </div>
                 <div
@@ -468,7 +472,7 @@ const AppHeader = (props: AppHeaderProps) => {
                   }
                 >
                   <Link href='/Tour'>
-                    <a>Lữ hành</a>
+                    <a>{settingMap.Tour}</a>
                   </Link>
                 </div>
                 <div
@@ -479,7 +483,7 @@ const AppHeader = (props: AppHeaderProps) => {
                   }
                 >
                   <Link href='/Restaurant'>
-                    <a>Ẩm thực</a>
+                    <a>{settingMap.Restaurant}</a>
                   </Link>
                 </div>
                 <div
@@ -490,7 +494,7 @@ const AppHeader = (props: AppHeaderProps) => {
                   }
                 >
                   <Link href='/News&Event'>
-                    <a>Tin tức</a>
+                    <a>{settingMap["News&Event"]}</a>
                   </Link>
                 </div>
                 <div
@@ -501,7 +505,7 @@ const AppHeader = (props: AppHeaderProps) => {
                   }
                 >
                   <Link href='/Contact'>
-                    <a>Liên hệ</a>
+                    <a>{settingMap.Contact}</a>
                   </Link>
                 </div>
               </div>
@@ -524,7 +528,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       dispatch(searchText(e.target.value));
                     }}
                     type='text'
-                    placeholder='Tìm kiếm'
+                    placeholder={settingMap.searchPlaceHolder}
                   />
                   <i className='fa-solid fa-magnifying-glass'></i>
                 </div>
@@ -639,7 +643,7 @@ const AppHeader = (props: AppHeaderProps) => {
                     }
                   >
                     <Link href='/'>
-                      <a>Trang chủ</a>
+                      <a>{settingMap.Home}</a>
                     </Link>
                   </div>
                   <div
@@ -650,7 +654,7 @@ const AppHeader = (props: AppHeaderProps) => {
                     }
                   >
                     <Link href='/About'>
-                      <a>Giới thiệu</a>
+                      <a>{settingMap.About}</a>
                     </Link>
                   </div>
                   <div
@@ -661,7 +665,7 @@ const AppHeader = (props: AppHeaderProps) => {
                     }
                   >
                     <Link href='/Discover'>
-                      <a>Điểm du lịch</a>
+                      <a>{settingMap.Discover}</a>
                     </Link>
                   </div>
                   <div
@@ -672,7 +676,7 @@ const AppHeader = (props: AppHeaderProps) => {
                     }
                   >
                     <Link href='/Hotel'>
-                      <a>Lưu trú</a>
+                      <a>{settingMap.Hotel}</a>
                     </Link>
                   </div>
                   <div
@@ -683,7 +687,7 @@ const AppHeader = (props: AppHeaderProps) => {
                     }
                   >
                     <Link href='/Tour'>
-                      <a>Lữ hành</a>
+                      <a>{settingMap.Tour}</a>
                     </Link>
                   </div>
                   <div
@@ -694,7 +698,7 @@ const AppHeader = (props: AppHeaderProps) => {
                     }
                   >
                     <Link href='/Restaurant'>
-                      <a>Ẩm thực</a>
+                      <a>{settingMap.Restaurant}</a>
                     </Link>
                   </div>
                   <div
@@ -705,7 +709,7 @@ const AppHeader = (props: AppHeaderProps) => {
                     }
                   >
                     <Link href='/News&Event'>
-                      <a>Tin tức</a>
+                      <a>{settingMap["News&Event"]}</a>
                     </Link>
                   </div>
                   <div
@@ -716,7 +720,7 @@ const AppHeader = (props: AppHeaderProps) => {
                     }
                   >
                     <Link href='/Contact'>
-                      <a>Liên hệ</a>
+                      <a>{settingMap.Contact}</a>
                     </Link>
                   </div>
                 </div>

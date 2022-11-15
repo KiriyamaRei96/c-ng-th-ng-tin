@@ -9,6 +9,7 @@ export interface RestaurantCardProps {
   title?: string;
   address?: string;
   rate?: number;
+  view?: number;
 }
 
 const RestaurantCard = ({
@@ -17,22 +18,23 @@ const RestaurantCard = ({
   title,
   address,
   rate,
+  view,
 }: RestaurantCardProps) => {
   return (
     <Link href={`/Restaurant/detail~${id}}`}>
-      <div className="restaurant d-flex img_hover">
-        <div className="img-wrapper">
-          <div className="--img">
-            <img src={`${img}`} alt="" />
+      <div className='restaurant d-flex img_hover'>
+        <div className='img-wrapper'>
+          <div className='--img'>
+            <img src={`${img}`} alt='' />
           </div>
-       
-          <div className="--top">
-            <div className="--ribbon ">
-              <Image src={require("../../../../Asset/baggest.png")} alt="" />
+
+          <div className='--top'>
+            <div className='--ribbon '>
+              <Image src={require("../../../../Asset/baggest.png")} alt='' />
               <span>Best recommend</span>
             </div>
-            <div className="--item">
-              <i className="fa-solid fa-heart"></i>
+            <div className='--item'>
+              <i className='fa-solid fa-heart'></i>
             </div>
           </div>
         </div>
@@ -49,8 +51,7 @@ const RestaurantCard = ({
             </div>
 
             <div className='views'>
-              <i className='fa-solid fa-eye'></i>
-              120
+              <i className='fa-solid fa-eye'></i> {view}
             </div>
           </div>
         </div>

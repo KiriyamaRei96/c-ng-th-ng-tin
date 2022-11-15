@@ -11,9 +11,8 @@ import DiscoverCardList from "./component/discoverCard";
 import globalSelector from "../../../../ReduxStore/globalSlice/slice";
 import DiscoverItem from "./component/DiscoverItem";
 import Map from "../../../../components/Map";
-export interface IdiscoverSearchProps {}
 
-const DiscoverSearch = (props: IdiscoverSearchProps) => {
+const DiscoverSearch = ({ title }) => {
   const searchArr = useAppSelector(pointSelector).searchArr;
   const pointTypeArr = useAppSelector(pointSelector).pointType;
 
@@ -77,25 +76,25 @@ const DiscoverSearch = (props: IdiscoverSearchProps) => {
   }, [debouncedSearchTerm, limit, district, pointType, view, router.locale]);
 
   const list: any = useRef();
-  console.log(router);
+  const settingMap = useAppSelector(globalSelector).settingMap;
   return (
-    <div ref={list} className="discoverSearch">
-      <div className="container-fluid">
-        <h1 className="Title">Khám phá địa điểm</h1>
-        <div className="filter">
-          <div className="--top d-flex justify-content-between">
-            <div className="search">
+    <div ref={list} className='discoverSearch'>
+      <div className='container-fluid'>
+        <h1 className='Title'>{title}</h1>
+        <div className='filter'>
+          <div className='--top d-flex justify-content-between'>
+            <div className='search'>
               <input
                 onChange={(e) => {
                   setSearch(e.target.value);
                 }}
                 value={search}
-                type="text"
-                placeholder="Nhập từ khóa tìm kiếm"
+                type='text'
+                placeholder={settingMap.searchPlaceHolder2}
               />
-              <i className="fa-solid fa-magnifying-glass"></i>
+              <i className='fa-solid fa-magnifying-glass'></i>
             </div>
-            <div className="--tabtop d-flex">
+            <div className='--tabtop d-flex'>
               <button
                 onClick={(e) => {
                   setSelect("net");
@@ -103,8 +102,8 @@ const DiscoverSearch = (props: IdiscoverSearchProps) => {
                 }}
                 className={select === "net" ? "active" : ""}
               >
-                <i className="fa-solid fa-table-cells"></i>
-                Lưới
+                <i className='fa-solid fa-table-cells'></i>
+                {settingMap.discoverNet}
               </button>
               <button
                 onClick={(e) => {
@@ -113,7 +112,7 @@ const DiscoverSearch = (props: IdiscoverSearchProps) => {
                 }}
                 className={select === "list" ? "active" : ""}
               >
-                <i className="fa-solid fa-bars"></i>
+                <i className='fa-solid fa-bars'></i>
                 List
               </button>
               <button
@@ -123,26 +122,26 @@ const DiscoverSearch = (props: IdiscoverSearchProps) => {
                 }}
                 className={select === "map" ? "active" : ""}
               >
-                <i className="fa-solid fa-map"></i>
-                Bản đồ
+                <i className='fa-solid fa-map'></i>
+                {settingMap.discoverMap}
               </button>
             </div>
           </div>
-          <div className="--bot">
-            <div className="--filter d-flex align-items-center">
+          <div className='--bot'>
+            <div className='--filter d-flex align-items-center'>
               <span>
-                <i className="fa-solid fa-filter"></i>
+                <i className='fa-solid fa-filter'></i>
                 Bộ lọc
               </span>
-              <div className="--select d-flex">
-                <div className="--item">
+              <div className='--select d-flex'>
+                <div className='--item'>
                   <select
                     value={district}
                     onChange={(e) => {
                       setDistrict(e.target.value);
                     }}
                   >
-                    <option value="" selected>
+                    <option value='' selected>
                       Chọn quận huyện
                     </option>
                     {districtArr.map((item) => (
@@ -152,14 +151,14 @@ const DiscoverSearch = (props: IdiscoverSearchProps) => {
                     ))}
                   </select>
                 </div>
-                <div className="--item">
+                <div className='--item'>
                   <select
                     value={pointType}
                     onChange={(e) => {
                       setPointType(e.target.value);
                     }}
                   >
-                    <option value="" selected>
+                    <option value='' selected>
                       Chọn loại địa điểm
                     </option>
                     {pointTypeArr.map((item) => (
@@ -169,7 +168,7 @@ const DiscoverSearch = (props: IdiscoverSearchProps) => {
                     ))}
                   </select>
                 </div>
-                <div className="--item">
+                <div className='--item'>
                   <select
                     onChange={(e) => {
                       switch (e.target.value) {
@@ -193,18 +192,18 @@ const DiscoverSearch = (props: IdiscoverSearchProps) => {
                           break;
                       }
                     }}
-                    name=""
-                    id=""
+                    name=''
+                    id=''
                   >
-                    <option value="">Sắp xếp</option>
-                    <option value="desc">Lượt xem nhiều nhất</option>
-                    <option value="asc">Lượt xem ít nhất</option>
+                    <option value=''>Lượt view</option>
+                    <option value='desc'>Lượt xem nhiều nhất</option>
+                    <option value='asc'>Lượt xem ít nhất</option>
                   </select>
                 </div>
               </div>
             </div>
-            <div className="--tabbot">
-              <button className="active">
+            <div className='--tabbot'>
+              <button className='active'>
                 Tất Cả<span>({pagination?.totalCount})</span>
               </button>
               {/* {Object.keys(getResultByPoint(searchArr)).map((item) => (
@@ -217,12 +216,12 @@ const DiscoverSearch = (props: IdiscoverSearchProps) => {
         </div>
 
         {select === "net" ? (
-          <div className="--tab1">
-            <div className="list_discoverSearch list_discover">
+          <div className='--tab1'>
+            <div className='list_discoverSearch list_discover'>
               <DiscoverCardList searchArr={searchArr} />
             </div>
             <Pagination
-              className="--pagination"
+              className='--pagination'
               onChange={(page, size) => {
                 const top = list?.current?.offsetTop;
                 window.scrollTo({
@@ -242,10 +241,10 @@ const DiscoverSearch = (props: IdiscoverSearchProps) => {
               }}
               itemRender={(_, type, originalElement) => {
                 if (type === "prev") {
-                  return <i className="fa-solid fa-angles-left"></i>;
+                  return <i className='fa-solid fa-angles-left'></i>;
                 }
                 if (type === "next") {
-                  return <i className="fa-solid fa-angles-right"></i>;
+                  return <i className='fa-solid fa-angles-right'></i>;
                 }
                 return originalElement;
               }}
@@ -258,25 +257,25 @@ const DiscoverSearch = (props: IdiscoverSearchProps) => {
           false
         )}
         {select === "list" ? (
-          <div className="--tab2">
-            <div className="row">
-              <div className="col-md-6">
+          <div className='--tab2'>
+            <div className='row'>
+              <div className='col-md-6'>
                 <DiscoverItem searchArr={searchArr} />
               </div>
-              <div className="col-md-6">
-                <div className="--map">
-                  <Map arr={searchArr} height="100%" />
+              <div className='col-md-6'>
+                <div className='--map'>
+                  <Map arr={searchArr} height='100%' />
                 </div>
               </div>
             </div>
-            <a href="" className="--viewall button_2 button_hover2">
+            <a href='' className='--viewall button_2 button_hover2'>
               Xem tất cả điểm tham quan
             </a>
           </div>
         ) : (
           false
         )}
-        {select === "map" ? <Map arr={searchArr} height="450px" /> : false}
+        {select === "map" ? <Map arr={searchArr} height='450px' /> : false}
       </div>
     </div>
   );
