@@ -46,9 +46,9 @@ export async function getServerSideProps(context) {
     (await page?.data?.snippets?.find(
       (item) => item["snippet_name"] === "hotMenu"
     )) || null;
-  const navBar =
+  const listTilte =
     (await page?.data?.snippets?.find(
-      (item) => item["snippet_name"] === "navBar"
+      (item) => item["snippet_name"] === "List"
     )) || null;
   const hotTour =
     (await page?.data?.snippets?.find(
@@ -70,6 +70,7 @@ export async function getServerSideProps(context) {
         hotMenu,
         hotTour,
         hotPoint,
+        listTilte,
       },
     };
   } else {
@@ -83,12 +84,14 @@ export interface CommercialProps {
   hotMenu?: any;
   hotTour?: any;
   hotPoint?: any;
+  listTilte?: any;
 }
 const Commercial = ({
   banner,
   hotMenu,
   hotTour,
   hotPoint,
+  listTilte,
 }: CommercialProps) => {
   const router = useRouter();
   const searchArr = useAppSelector(commercialSelector).searchArr;
@@ -171,7 +174,7 @@ const Commercial = ({
               ) : (
                 false
               )}
-              <List />
+              <List List={listTilte} />
 
               {hotPoint ? (
                 <div className='Hotel-sliderWarpper'>

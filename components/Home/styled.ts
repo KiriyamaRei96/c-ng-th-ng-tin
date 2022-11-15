@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
-const HomeWrapper=styled.div` 
-.homeBanner {
+const HomeWrapper=styled.div` .homeBanner {
   .--background {
     width: 100%;
     height: 100vh;
@@ -25,6 +24,7 @@ const HomeWrapper=styled.div`
       object-fit: cover;
     }
   }
+
   .--txt {
     position: absolute;
     top: 50%;
@@ -89,6 +89,7 @@ const HomeWrapper=styled.div`
       }
     }
   }
+
   .filter {
     display: flex;
     filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.05));
@@ -174,46 +175,55 @@ const HomeWrapper=styled.div`
       }
     }
   }
-  @media (max-width: 768px){
+
+  @media (max-width: 768px) {
     position: relative;
-    margin-top:74px ;
+    margin-top: 74px;
     padding: 60px 0 0;
-    .--background{
+
+    .--background {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: calc(100% - 148px);
     }
-    .--txt{
+
+    .--txt {
       position: relative;
       top: unset;
       left: unset;
       transform: none;
       margin-bottom: 3rem;
       width: 100%;
-      .--name{
+
+      .--name {
         font-size: 48px;
         line-height: 1;
       }
-      .--des{
+
+      .--des {
         font-size: 36px;
         line-height: 1.2;
         margin: 1rem 0 .5rem;
       }
-      span{
+
+      span {
         margin-bottom: 1.5rem;
       }
     }
-    .filter{
+
+    .filter {
       flex-flow: column;
       margin-top: 0;
-      .form-group{
+
+      .form-group {
         width: 100% !important;
-        border-bottom:1px solid #e9e9e9 ;
-        border-right:unset ;
+        border-bottom: 1px solid #e9e9e9;
+        border-right: unset;
         padding: 0 16px;
-        &:last-child{
+
+        &:last-child {
           border: none;
         }
       }
@@ -227,6 +237,7 @@ const HomeWrapper=styled.div`
   .--left {
     width: 100%;
     height: 350px;
+
     img {
       width: 100%;
       height: 100%;
@@ -327,52 +338,64 @@ const HomeWrapper=styled.div`
       }
     }
   }
-  @media (min-width: 769px) and (max-width: 1279px){
-    .--right{
+
+  @media (min-width: 769px) and (max-width: 1279px) {
+    .--right {
       padding-left: 1.5rem;
     }
-    .list_homeIntro{
-      .--item{
+
+    .list_homeIntro {
+      .--item {
         padding: 0 24px;
       }
     }
   }
-  @media (max-width: 768px){
+
+  @media (max-width: 768px) {
     padding: 3rem 0;
-    .--left{
+
+    .--left {
       height: 220px;
     }
-    .--right{
+
+    .--right {
       padding-left: 0;
       padding-top: 16px;
-      .--des{
+
+      .--des {
         padding-left: 0;
         margin-top: 0;
-        &::before{
+
+        &::before {
           display: none;
         }
       }
-      ul{
+
+      ul {
         padding-left: 0;
       }
-      a{
+
+      a {
         margin-left: 0;
         margin-top: 1.5rem;
       }
     }
+
     .list_homeIntro {
-      padding-top: 3rem; 
-      flex-flow: column; 
-      .--item{
+      padding-top: 3rem;
+      flex-flow: column;
+
+      .--item {
         width: 100%;
         padding: 0;
         margin-top: 0 !important;
         margin-bottom: 1.5rem;
         padding-bottom: 1.5rem;
-        border-bottom:1px solid #e9e9e9 !important ;
-        border-right:unset ;
-        &:last-child{
-          border-bottom:none!important;
+        border-bottom: 1px solid #e9e9e9 !important;
+        border-right: unset;
+
+        &:last-child {
+          border-bottom: none !important;
           margin-bottom: 0;
           padding-bottom: 0;
         }
@@ -384,6 +407,7 @@ const HomeWrapper=styled.div`
 .homeDiscover {
   background: #f6f8fb;
   padding: 100px 0;
+
   .list_homeDiscover {
     margin-top: 60px;
 
@@ -416,8 +440,8 @@ const HomeWrapper=styled.div`
 
         &::after {
           background: linear-gradient(0deg,
-              rgba(0, 0, 0, 0.5),
-              rgba(0, 0, 0, 0.5));
+              rgba(0, 0, 0, 0.2),
+              rgba(0, 0, 0, 0.2));
           position: absolute;
           content: "";
           width: 100%;
@@ -509,40 +533,50 @@ const HomeWrapper=styled.div`
       }
     }
   }
+
   .--viewall {
     margin: 60px auto 0;
   }
-  @media (max-width: 768px){
+
+  @media (max-width: 768px) {
     padding: 3rem 0;
-    .list_homeDiscover{
+
+    .list_homeDiscover {
       margin-top: 2rem;
-      .--item{
+
+      .--item {
         width: 85vw;
         margin-right: 12px;
-        .--name{
+
+        .--name {
           margin-bottom: 20px;
           font-size: 20px;
         }
-        .--txt{
+
+        .--txt {
           padding: 1rem;
         }
-        .--bot{
+
+        .--bot {
           max-height: unset !important;
           opacity: 1 !important;
           flex-flow: column;
         }
-        article{
+
+        article {
           width: 100%;
           font-size: 12px;
           line-height: 16px;
         }
-        .--des{
+
+        .--des {
           margin-bottom: 12px;
           width: 100%;
         }
       }
     }
-    .--viewall{
+
+    .--viewall {
       margin: 2rem auto 0;
     }
   }
@@ -550,16 +584,20 @@ const HomeWrapper=styled.div`
 
 .homeMap {
   padding: 100px 0;
+
   .Title {
     margin-bottom: 60px;
   }
+
   iframe {
     width: 100%;
     height: 80vh;
   }
-  @media (max-width: 768px){
+
+  @media (max-width: 768px) {
     padding: 3rem 0;
-    .Title{
+
+    .Title {
       margin-bottom: 2rem;
     }
   }
@@ -567,9 +605,11 @@ const HomeWrapper=styled.div`
 
 .homeNews {
   padding-bottom: 100px;
+
   .Title {
     margin-bottom: 112px;
   }
+
   .--left {
     width: 50%;
     position: relative;
@@ -705,6 +745,7 @@ const HomeWrapper=styled.div`
       width: max-content;
     }
   }
+
   .--right {
     width: calc(50% + 57px);
     margin-left: -57px;
@@ -779,6 +820,7 @@ const HomeWrapper=styled.div`
       }
     }
   }
+
   .list_homeNews {
     .--img {
       width: 40%;
@@ -862,60 +904,75 @@ const HomeWrapper=styled.div`
       }
     }
   }
-  @media (max-width: 768px){
-    padding-bottom:0 ;
-    .Title{
+
+  @media (max-width: 768px) {
+    padding-bottom: 0;
+
+    .Title {
       margin-bottom: 2rem;
     }
-    .--content{
-      flex-flow:column ;
+
+    .--content {
+      flex-flow: column;
     }
-    .--left{
+
+    .--left {
       width: 100%;
       padding: 3rem 16px;
-      .--cate{
+
+      .--cate {
         margin-bottom: 24px;
         font-size: 10px;
         padding: 2px 8px;
       }
-      .--location{
+
+      .--location {
         margin-bottom: 1.5rem;
       }
-      h1{
-        p{
-          &:nth-child(1){
+
+      h1 {
+        p {
+          &:nth-child(1) {
             font-size: 28px;
             line-height: 32px;
           }
-          &:nth-child(2){
+
+          &:nth-child(2) {
             font-size: 24px;
             line-height: 28px;
           }
         }
       }
     }
-    .--right{
+
+    .--right {
       margin-left: 0;
       width: 100%;
       margin-top: 0;
-      padding:1rem;
-      border-width:12px ;
+      padding: 1rem;
+      border-width: 12px;
     }
+
     .list_homeNews {
-      .--cate{
+      .--cate {
         font-size: 10px;
       }
-      .--img{
+
+      .--img {
         margin-right: 12px;
         height: 100px;
       }
-      .--view,.--time{
+
+      .--view,
+      .--time {
         font-size: 12px !important;
       }
-      .--txt{
+
+      .--txt {
         width: calc(60% - 12px);
       }
-      h6{
+
+      h6 {
         font-size: 14px !important;
         line-height: 20px !important;
       }
@@ -926,6 +983,7 @@ const HomeWrapper=styled.div`
 .homeDiscover1 {
   position: relative;
   padding: 100px 0;
+
   .partent {
     position: absolute;
     width: 100%;
@@ -939,13 +997,16 @@ const HomeWrapper=styled.div`
       object-fit: cover;
     }
   }
+
   .container-fluid {
     position: relative;
     z-index: 1;
   }
+
   .Title {
     margin-bottom: 60px;
   }
+
   .list_homeDiscover1 {
     .col-md-3 {
       padding-right: calc(var(--bs-gutter-x) * 0.5);
@@ -1043,6 +1104,7 @@ const HomeWrapper=styled.div`
       }
     }
   }
+
   .slider_homeDiscover1 {
     position: relative;
 
@@ -1083,50 +1145,62 @@ const HomeWrapper=styled.div`
     .slick-list {
       display: flex;
       justify-content: center;
-    
+
     }
-    .slick-slide{
-      >div{
+
+    .slick-slide {
+      >div {
         height: 100%;
       }
-      .col-md-3{
+
+      .col-md-3 {
         height: 100%;
       }
     }
+
     .slick-dots {
       margin-top: 40px;
     }
   }
-  @media (min-width: 769px) and  (max-width: 1279px){
-    .list_homeDiscover1{
-      h4{
+
+  @media (min-width: 769px) and (max-width: 1279px) {
+    .list_homeDiscover1 {
+      h4 {
         font-size: 20px !important;
         line-height: 24px;
       }
     }
   }
-  @media (max-width: 768px){
+
+  @media (max-width: 768px) {
     padding: 3rem 0;
-    .Title{
-      margin-bottom:2rem;
+
+    .Title {
+      margin-bottom: 2rem;
     }
-    .arrow{
+
+    .arrow {
       display: none;
     }
-    .slider_homeDiscover1{
-      .slick-slide{
+
+    .slider_homeDiscover1 {
+      .slick-slide {
         width: 90vw;
       }
-      .slick-list{
+
+      .slick-list {
         justify-content: flex-start;
         padding-left: 0;
       }
-      .slick-dots{
+
+      .slick-dots {
         margin-top: 1.5rem;
       }
-      .col-md-3{
+
+      .col-md-3 {
         margin-bottom: 1.5rem;
-        &:last-child{
+
+        &:last-child {
           margin-bottom: 0
         }
       }

@@ -8,10 +8,9 @@ import TourCard from "../TourCard";
 import commercialSelector from "../../../../ReduxStore/commercial/slice";
 import { useAppDispatch, useAppSelector } from "../../../../ReduxStore/hooks";
 import useDebounce from "../../../../funcion/debounce";
+import globalSelector from "../../../../ReduxStore/globalSlice/slice";
 
-export interface ListProps {}
-
-const List = (props: ListProps) => {
+const List = ({ List }) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const searchArr = useAppSelector(commercialSelector).searchArr;
@@ -40,6 +39,7 @@ const List = (props: ListProps) => {
       },
     });
   }, [debouncedSearchTerm, page, sort, router.locale]);
+  const settingMap = useAppSelector(globalSelector).settingMap;
 
   return (
     <>
@@ -53,10 +53,10 @@ const List = (props: ListProps) => {
             type='text'
             placeholder={
               router.asPath.includes("Tour")
-                ? "Tìm kiếm tour"
+                ? settingMap.tourSearchPlaceholder
                 : router.asPath.includes("Restaurant")
-                ? "Nhập tên nhà hàng"
-                : "Nhập tên khách sạn"
+                ? settingMap.restaurantSearchPlaceholder
+                : settingMap.hotelSearchPlaceholder
             }
           />
           <i className='fa-solid fa-magnifying-glass'></i>
@@ -76,8 +76,8 @@ const List = (props: ListProps) => {
         </div>
       </div>
 
-      {router.asPath.includes("Tour") ? <h2>Tour nổi bật</h2> : false}
-      {router.asPath.includes("Restaurant") ? <h2>Nhà hàng nổi bật</h2> : false}
+      {router.asPath.includes("Tour") ? <h2>{List?.title}</h2> : false}
+      {router.asPath.includes("Restaurant") ? <h2>{List?.title}</h2> : false}
 
       {router.asPath.includes("Tour") ? (
         <div className='--list --tour'>
