@@ -201,6 +201,9 @@ const AppHeader = (props: AppHeaderProps) => {
                   <div className='select'>
                     <select
                       value={language}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
                       onChange={(e) => {
                         router.replace(router.asPath, undefined, {
                           locale: e.target.value,
@@ -267,9 +270,9 @@ const AppHeader = (props: AppHeaderProps) => {
                 ></i>
               </div>
               <div
-                onClick={(e) => {
-                  e.stopPropagation();
-                }}
+                // onClick={(e) => {
+                //   e.stopPropagation();
+                // }}
                 className={
                   menuActive ? "menu_mobi  d-none active" : "menu_mobi  d-none"
                 }
@@ -279,6 +282,9 @@ const AppHeader = (props: AppHeaderProps) => {
                   <div className='select'>
                     <select
                       value={language}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
                       onChange={(e) => {
                         router.replace(router.asPath, undefined, {
                           locale: e.target.value,
@@ -537,6 +543,9 @@ const AppHeader = (props: AppHeaderProps) => {
                   <div className='select'>
                     <select
                       value={language}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
                       onChange={(e) => {
                         router.replace(router.asPath, undefined, {
                           locale: e.target.value,
@@ -603,9 +612,9 @@ const AppHeader = (props: AppHeaderProps) => {
                 ></i>
               </div>
               <div
-                onClick={(e) => {
-                  e.stopPropagation();
-                }}
+                // onClick={(e) => {
+                //   e.stopPropagation();
+                // }}
                 className={
                   menuActive ? "menu_mobi  d-none active" : "menu_mobi  d-none"
                 }
@@ -615,6 +624,9 @@ const AppHeader = (props: AppHeaderProps) => {
                   <div className='select'>
                     <select
                       value={language}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
                       onChange={(e) => {
                         router.replace(router.asPath, undefined, {
                           locale: e.target.value,
