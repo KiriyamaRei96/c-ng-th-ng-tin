@@ -105,8 +105,8 @@ export default function Home({
                 </a>
               </Link>
             </div>
-            <div className='d-none container-fluid '>
-              <div className='filter '>
+            <div className='container-fluid d-none'>
+              <div className='filter'>
                 <div className='form-group'>
                   <div className='--icon'>
                     <img src={iconMap.src} alt='' />
@@ -323,6 +323,7 @@ export default function Home({
 
             <Map
               height='600px'
+              vr={true}
               arr={pointArr?.filter((item) => item.vr !== "")}
             />
           </div>

@@ -7,9 +7,10 @@ import AnyReactComponent from "./popOver";
 export interface MapProps {
   arr: any;
   height: string;
+  vr?: boolean;
 }
 
-const Map = ({ arr, height }: MapProps) => {
+const Map = ({ vr, arr, height }: MapProps) => {
   const [locationArr, setLocationArr] = useState<any>([]);
   const [loader, setLoader] = useState<any>();
 
@@ -61,6 +62,7 @@ const Map = ({ arr, height }: MapProps) => {
       >
         {arr?.map((lct) => (
           <AnyReactComponent
+            vr={vr}
             key={uuid()}
             lat={Number(lct.lat)}
             lng={Number(lct.lng)}
