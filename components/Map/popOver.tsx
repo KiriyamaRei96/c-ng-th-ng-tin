@@ -4,18 +4,18 @@ import { locationIcon } from "../img";
 
 const AnyReactComponent = ({ lat, lng, item, vr }) => {
   const [active, setActive] = useState(true);
+
   return (
     <div className='Marker'>
       {active ? (
         <div className='--item d-flex'>
           {item.vr !== "" && vr ? (
-            <Fancybox>
+            <Fancybox options={{ mainClass: "fancybox1" }}>
               <a
                 data-fancybox='360'
+                className='fancybox'
                 data-type='iframe'
                 data-src={item.vr}
-                // href={item.vr}
-                // target='blank'
               >
                 <div className='marker-content d-flex'>
                   <div className='--img'>

@@ -2164,3 +2164,18 @@ footer {
 
   }
 }
+
+
+.fancybox1 {
+  .fancybox__content {
+    height: 100vh !important;
+  }
+
+  .fancybox__thumbs {
+    display: none;
+  }
+}
+
+.fancybox__content {
+  height: 100vh !important;
+}

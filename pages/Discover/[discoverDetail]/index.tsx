@@ -133,9 +133,11 @@ const DiscoverDetail = ({ data, otherData }) => {
                     <div className='--img'>
                       <img src={image ? image : ""} alt='' />
                       {data?.featureImage.path === image && data?.vr !== "" ? (
-                        <Fancybox key={uuid()}>
+                        <Fancybox
+                          options={{ infinite: true, mainClass: "fancybox1" }}
+                        >
                           <a
-                            className='infame'
+                            className='infame fancybox'
                             key={uuid()}
                             data-fancybox='360'
                             data-type='iframe'
