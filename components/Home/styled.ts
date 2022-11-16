@@ -20,6 +20,7 @@ const HomeWrapper=styled.div` .homeBanner {
 
     img {
       width: 100%;
+
       height: 100%;
       object-fit: cover;
     }
@@ -179,14 +180,15 @@ const HomeWrapper=styled.div` .homeBanner {
   @media (max-width: 768px) {
     position: relative;
     margin-top: 74px;
-    padding: 60px 0 0;
+    padding: 60px 0;
 
     .--background {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      height: calc(100% - 148px);
+      // height: calc(100% - 148px);
+      height: 100%;
     }
 
     .--txt {
@@ -194,7 +196,8 @@ const HomeWrapper=styled.div` .homeBanner {
       top: unset;
       left: unset;
       transform: none;
-      margin-bottom: 3rem;
+      // margin-bottom: 3rem;
+      margin-bottom: 0;
       width: 100%;
 
       .--name {

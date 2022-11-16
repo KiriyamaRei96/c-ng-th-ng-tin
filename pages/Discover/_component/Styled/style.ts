@@ -1094,18 +1094,18 @@ const DiscoverWarpper=styled.div` .discoverBanner {
             }
 
             article {
-                font-size: 14px;
-                margin-bottom: 40px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                line-height: 20px;
-                -webkit-line-clamp: 5;
-                display: -webkit-box;
-                -webkit-box-orient: vertical;
-                transition: all .15s ease;
+                p {
+                    &:nth-child(n+2) {
+                        display: none;
+                    }
+                }
 
                 &.active {
-                    -webkit-line-clamp: unset;
+                    p {
+                        &:nth-child(n+2) {
+                            display: block;
+                        }
+                    }
                 }
             }
 
