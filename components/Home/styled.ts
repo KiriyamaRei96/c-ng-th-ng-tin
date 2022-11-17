@@ -180,15 +180,14 @@ const HomeWrapper=styled.div` .homeBanner {
   @media (max-width: 768px) {
     position: relative;
     margin-top: 74px;
-    padding: 60px 0;
+    padding: 60px 0 0;
 
     .--background {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      // height: calc(100% - 148px);
-      height: 100%;
+      height: calc(100% - 148px);
     }
 
     .--txt {
@@ -196,8 +195,7 @@ const HomeWrapper=styled.div` .homeBanner {
       top: unset;
       left: unset;
       transform: none;
-      // margin-bottom: 3rem;
-      margin-bottom: 0;
+      margin-bottom: 3rem;
       width: 100%;
 
       .--name {
