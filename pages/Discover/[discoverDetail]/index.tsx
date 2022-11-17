@@ -21,6 +21,7 @@ import pointSelector from "../../../ReduxStore/pointSlice/slice";
 import Link from "next/link";
 import Comment from "../../../components/Comment";
 import { useRouter } from "next/router";
+import globalSelector from "../../../ReduxStore/globalSlice/slice";
 
 export async function getServerSideProps(context) {
   let other;
@@ -71,7 +72,7 @@ const DiscoverDetail = ({ data, otherData }) => {
   const slider = otherData?.snippets.find(
     (snip) => snip["snippet_name"] === "slider"
   );
-  console.log(data);
+  const settingMap = useAppSelector(globalSelector).settingMap;
   return (
     <DiscoverWarpper>
       <div id='detaildiscover'>
@@ -113,19 +114,21 @@ const DiscoverDetail = ({ data, otherData }) => {
                         false
                       )}
 
-                      <span>84 đánh giá</span>
+                      <span>84 {settingMap.ratting}</span>
                     </div>
                     <div className='--sharecmt d-flex align-items-center'>
                       <div className='--link'>
                         <a href=''>
-                          <i className='fa-solid fa-share-nodes'></i>Chia sẻ
+                          <i className='fa-solid fa-share-nodes'></i>{" "}
+                          {settingMap.share}
                         </a>
                         <a href=''>
-                          <i className='fa-solid fa-heart'></i>Yêu thích
+                          <i className='fa-solid fa-heart'></i>
+                          {settingMap.flavor}
                         </a>
                       </div>
                       <button className='button_hover2 button_2'>
-                        Viết đánh giá
+                        {settingMap.writeRatting}
                       </button>
                     </div>
                   </div>
@@ -195,7 +198,7 @@ const DiscoverDetail = ({ data, otherData }) => {
                           active === "content" ? "--item active" : "--item"
                         }
                       >
-                        Tổng quan
+                        {settingMap.general}
                       </div>
                       {data?.plan ? (
                         <div
@@ -206,7 +209,7 @@ const DiscoverDetail = ({ data, otherData }) => {
                             active === "plan" ? "--item active" : "--item"
                           }
                         >
-                          Kế hoạch du lịch
+                          {settingMap.plan}
                         </div>
                       ) : (
                         false
@@ -247,7 +250,7 @@ const DiscoverDetail = ({ data, otherData }) => {
                           active === "potision" ? "--item active" : "--item"
                         }
                       >
-                        Địa điểm
+                        {settingMap.location}
                       </div>
                       <div
                         onClick={() => {
@@ -257,7 +260,7 @@ const DiscoverDetail = ({ data, otherData }) => {
                           active === "comments" ? "--item active" : "--item"
                         }
                       >
-                        Nhận xét
+                        {settingMap.comment}
                       </div>
                     </div>
                     {active === "content" ? (
@@ -268,7 +271,7 @@ const DiscoverDetail = ({ data, otherData }) => {
 
                     {active === "plan" ? (
                       <ContentBox
-                        title={"Kế hoạch du lịch"}
+                        title={settingMap.plan}
                         content={data?.plan}
                       />
                     ) : (
@@ -285,7 +288,7 @@ const DiscoverDetail = ({ data, otherData }) => {
                         <img src={icon13.default.src} alt='' />
                       </div>
                       <div className='--txt'>
-                        <div className='--title'>Điểm nổi bật</div>
+                        <div className='--title'>{settingMap.hightLight}</div>
                         <ul>
                           {data?.highlights?.split("/").map((text) => (
                             <li key={uuid()}>

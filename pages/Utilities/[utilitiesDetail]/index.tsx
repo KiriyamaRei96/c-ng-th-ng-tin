@@ -10,6 +10,8 @@ import {
   iconTW,
 } from "../../../components/img";
 import Map from "../../../components/Map";
+import globalSelector from "../../../ReduxStore/globalSlice/slice";
+import { useAppSelector } from "../../../ReduxStore/hooks";
 import UtilitiesDetailWrapper from "./_component/styled/style";
 export async function getServerSideProps(context) {
   const id = context.query?.utilitiesDetail?.replace("detail~", "");
@@ -27,6 +29,7 @@ export async function getServerSideProps(context) {
 
 const UtilitiesDetail = ({ data }) => {
   const router = useRouter();
+  const settingMap = useAppSelector(globalSelector).settingMap;
   return (
     <UtilitiesDetailWrapper>
       <div id='detailuti'>
@@ -35,11 +38,11 @@ const UtilitiesDetail = ({ data }) => {
             <div className='row'>
               <div className='col-md-9'>
                 <div className='--left'>
-                  <div className='subTitle'>Chi tiết Sự kiện</div>
+                  <div className='subTitle'>{settingMap.detailUtilities}</div>
                   <h1 className='Title'>{data?.title}</h1>
                   <ul>
                     <li>
-                      <span>Địa chỉ</span>
+                      <span>{settingMap.address}</span>
                       <span>
                         <i className='fa-solid fa-location-dot'></i>
                         {data?.address}
@@ -47,7 +50,7 @@ const UtilitiesDetail = ({ data }) => {
                     </li>
                     <li>
                       <a href=''>
-                        <span>Loại tiện ích</span>
+                        <span>{settingMap.utilitieType}</span>
                         <span>{data?.utilitiesType[0]?.title}</span>
                       </a>
                     </li>
@@ -70,10 +73,11 @@ const UtilitiesDetail = ({ data }) => {
                       }}
                       className='--back'
                     >
-                      <img src={iconBack.default.src} alt='' /> Quay lại
+                      <img src={iconBack.default.src} alt='' />
+                      {settingMap.return}
                     </a>
                     <ul>
-                      <li>Chia sẻ:</li>
+                      <li> {settingMap.share}:</li>
                       <li>
                         <a href=''>
                           <img src={iconTW.default.src} alt='' />

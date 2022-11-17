@@ -62,16 +62,18 @@ const List = ({ List }) => {
           <i className='fa-solid fa-magnifying-glass'></i>
         </div>
         <div className='--select'>
-          <span>Sắp xếp</span>
+          <span>{settingMap.Sort}</span>
           <Select
             onChange={(value) => {
               setSort(value);
             }}
             className='--item'
-            placeholder='Sắp xếp'
+            placeholder={settingMap.Sort}
           >
-            <Select.Option value='o_creationDate'>Gần nhất</Select.Option>
-            <Select.Option value='sort'>Theo thứ tự</Select.Option>
+            <Select.Option value='o_creationDate'>
+              {settingMap.sortcreationDate}
+            </Select.Option>
+            <Select.Option value='sort'>{settingMap.sortOrder}</Select.Option>
           </Select>
         </div>
       </div>
@@ -86,7 +88,7 @@ const List = ({ List }) => {
               id={i.id}
               img={i.featureImage?.path}
               tilte={i.title}
-              plan={i.plan ? i.plan : "Chưa có kế hoạch du lịch"}
+              plan={i.plan ? i.plan : ""}
               key={uuid()}
               pointCategory={i.destinationsType?.title}
             />

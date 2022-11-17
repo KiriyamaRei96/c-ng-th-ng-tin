@@ -9,6 +9,7 @@ import searchSelector, { searchText } from "../../ReduxStore/search/slice";
 import SearchWrapper from "./_component/styled/style";
 import { v4 as uuid } from "uuid";
 import useDebounce from "../../funcion/debounce";
+import globalSelector from "../../ReduxStore/globalSlice/slice";
 export async function getServerSideProps(context) {
   const res = await callApi
     .get(`/v2/page/Search?locale=${context.locale}`)
@@ -67,6 +68,7 @@ const Search = ({ banner }) => {
       payload,
     });
   }, [debouncedSearchTerm, page, sort, filter, type]);
+  const settingMap = useAppSelector(globalSelector).settingMap;
   return (
     <SearchWrapper>
       <div id='search'>
@@ -80,7 +82,7 @@ const Search = ({ banner }) => {
         <div ref={list} className='searchContent'>
           <div className='container-fluid'>
             <h1 className='Title'>
-              {pagination.totalCount} thông tin được tìm thấy
+              {pagination.totalCount} {settingMap.infoFound}
             </h1>
             <div className='filter d-flex justify-content-between align-items-center'>
               <div className='search'>
@@ -93,12 +95,12 @@ const Search = ({ banner }) => {
                     }
                     dispatch(searchText(e.target.value));
                   }}
-                  placeholder='Nhập từ khóa tìm kiếm'
+                  placeholder={settingMap.searchPlaceHolder2}
                 />
                 <i className='fa-solid fa-magnifying-glass'></i>
               </div>
               <div className='select'>
-                <span>Sắp xếp</span>
+                <span>{settingMap.Sort}</span>
                 <select
                   value={filter}
                   onChange={(e) => {

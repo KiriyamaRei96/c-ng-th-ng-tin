@@ -101,7 +101,7 @@ const Discover = ({
                         <div className='--content'>
                           <div className='--top'>
                             <div className='--title'>
-                              <span>{item?.subTitle}</span>
+                              <span>{settingMap?.hotPoint}</span>
                               <h1 className='Title mt-3'>{item?.title}</h1>
                             </div>
                           </div>

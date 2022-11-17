@@ -9,6 +9,7 @@ export interface BreadCrumbProps {}
 const BreadCrumb = (prop: BreadCrumbProps) => {
   const router = useRouter();
   const settingMap = useAppSelector(globalSelector).settingMap;
+  console.log(router.asPath.replace("/", ""));
   return (
     <div className='breadcrumb d-flex'>
       <Link href='/'>

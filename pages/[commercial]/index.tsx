@@ -273,9 +273,7 @@ const Commercial = ({
                           img={item.featureImage?.path}
                           key={uuid()}
                           tilte={item.title}
-                          plan={
-                            item.plan ? item.plan : "Chưa có kế hoạch du lịch"
-                          }
+                          plan={item.plan ? item.plan : ""}
                           pointCategory={item.destinationsType.title}
                         />
                       </div>

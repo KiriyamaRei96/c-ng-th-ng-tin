@@ -29,6 +29,8 @@ import pointSelector from "../../../ReduxStore/pointSlice/slice";
 import HotelCard from "../_component/HotelCard";
 import Comment from "../../../components/Comment";
 import { cp } from "fs";
+import globalSelector from "../../../ReduxStore/globalSlice/slice";
+import capitalizeFirstLetter from "../../../funcion/toUpperCase";
 export async function getServerSideProps(context) {
   let type;
   let other;
@@ -112,6 +114,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
   const slider = otherData?.snippets.find(
     (snip) => snip["snippet_name"] === "slider"
   );
+  const settingMap = useAppSelector(globalSelector).settingMap;
 
   return (
     <CommercialDetailWrapper>
@@ -121,7 +124,9 @@ const CommercialDetail = ({ type, data, otherData }) => {
             <div className='row'>
               <div className='col-md-9'>
                 <div className='--left'>
-                  <div className='subTitle'>{typeMap[type]}</div>
+                  <div className='subTitle'>
+                    {settingMap[capitalizeFirstLetter(data?.type)]}
+                  </div>
                   <h3 className='--titlepost'>{data?.title}</h3>
                   <div className='--interactive d-flex align-items-center justify-content-between'>
                     <div className='--evaluate d-flex align-items-center'>
@@ -154,19 +159,21 @@ const CommercialDetail = ({ type, data, otherData }) => {
                         false
                       )}
 
-                      <span>84 đánh giá</span>
+                      <span>84 {settingMap.ratting}</span>
                     </div>
                     <div className='--sharecmt d-flex align-items-center'>
                       <div className='--link'>
                         <a href=''>
-                          <i className='fa-solid fa-share-nodes'></i>Chia sẻ
+                          <i className='fa-solid fa-share-nodes'></i>
+                          {settingMap.share}
                         </a>
                         <a href=''>
-                          <i className='fa-solid fa-heart'></i>Yêu thích
+                          <i className='fa-solid fa-heart'></i>
+                          {settingMap.flavor}
                         </a>
                       </div>
                       <button className='button_hover2 button_2'>
-                        Viết đánh giá
+                        {settingMap.writeRatting}
                       </button>
                     </div>
                   </div>
@@ -215,7 +222,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
                           active === "content" ? "--item active" : "--item"
                         }
                       >
-                        Tổng quan
+                        {settingMap.general}
                       </div>
                       {data?.plan ? (
                         <div
@@ -226,7 +233,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
                             active === "plan" ? "--item active" : "--item"
                           }
                         >
-                          Kế hoạch du lịch
+                          {settingMap.plan}
                         </div>
                       ) : (
                         false
@@ -240,7 +247,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
                             active === "Menu" ? "--item active" : "--item"
                           }
                         >
-                          Menu
+                          {settingMap.restaurantMenu}
                         </div>
                       ) : (
                         false
@@ -254,7 +261,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
                             active === "rooms" ? "--item active" : "--item"
                           }
                         >
-                          Thông tin phòng
+                          {settingMap.rooms}
                         </div>
                       ) : (
                         false
@@ -267,7 +274,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
                           active === "potision" ? "--item active" : "--item"
                         }
                       >
-                        Địa điểm
+                        {settingMap.location}
                       </div>
                       <div
                         onClick={() => {
@@ -277,7 +284,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
                           active === "comments" ? "--item active" : "--item"
                         }
                       >
-                        Nhận xét
+                        {settingMap.comment}
                       </div>
                     </div>
                     {active === "content" ? (
@@ -292,7 +299,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
                     )}
                     {active === "plan" ? (
                       <ContentBox
-                        title={"Kế hoạch du lịch"}
+                        title={settingMap.plan}
                         content={data?.plan}
                       />
                     ) : (
@@ -314,7 +321,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
                         <img src={icon13.default.src} alt='' />
                       </div>
                       <div className='--txt'>
-                        <div className='--title'>Điểm nổi bật</div>
+                        <div className='--title'>{settingMap.hightLight}</div>
                         <ul>
                           {data?.highlights?.split("/").map((text) => (
                             <li key={uuid()}>
@@ -448,7 +455,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
                             breakpoint: 768,
                             settings: {
                               slidesToShow: 1,
-                            
+
                               slidesToScroll: 1,
                             },
                           },
@@ -528,7 +535,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
                             settings: {
                               slidesToShow: 1,
                               slidesToScroll: 1,
-                              variableWidth:true,
+                              variableWidth: true,
                             },
                           },
                         ],
@@ -624,7 +631,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
                             id={i.id}
                             img={i.featureImage?.path}
                             tilte={i.title}
-                            plan={i.plan ? i.plan : "Chưa có kế hoạch du lịch"}
+                            plan={i.plan ? i.plan : ""}
                             key={uuid()}
                             pointCategory={i.destinationsType?.title}
                           />
@@ -639,7 +646,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
                             id={i.id}
                             img={i.featureImage?.path}
                             tilte={i.title}
-                            plan={i.plan ? i.plan : "Chưa có kế hoạch du lịch"}
+                            plan={i.plan ? i.plan : ""}
                             key={uuid()}
                             pointCategory={i.destinationsType?.title}
                           />

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 const UtilitiesDetailWrapper = styled.div`
   .detailutiContent {
+    margin-top: 40px;
     padding: 100px 0;
     .Title {
       font-size: 40px;

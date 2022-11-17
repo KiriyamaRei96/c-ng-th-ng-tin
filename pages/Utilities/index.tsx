@@ -73,7 +73,7 @@ const Utilities = ({ page }) => {
                   }}
                   value={search}
                   type='text'
-                  placeholder='Nhập từ khóa tìm kiếm'
+                  placeholder={settingMap.searchPlaceHolder2}
                 />
                 <i className='fa-solid fa-magnifying-glass'></i>
               </div>
@@ -106,7 +106,7 @@ const Utilities = ({ page }) => {
                     name=''
                     id=''
                   >
-                    <option value=''>Loại tiện ích</option>
+                    <option value=''>{settingMap.utilitieType}</option>
                     {utilitiesType?.map((item) => (
                       <option key={uuid()} value={item?.id}>
                         {item?.title}
@@ -117,7 +117,7 @@ const Utilities = ({ page }) => {
                 <div className='--item d-flex align-items-center'>
                   <span>
                     <Image src={require("../../Asset/icon-11.svg")} alt='' />
-                    Sắp xếp
+                    {settingMap.Sort}
                   </span>
 
                   <select
@@ -128,8 +128,10 @@ const Utilities = ({ page }) => {
                     name=''
                     id=''
                   >
-                    <option value='o_creationDate'>gần nhất</option>
-                    <option value='sort'>theo thứ tự</option>
+                    <option value='o_creationDate'>
+                      {settingMap.sortcreationDate}
+                    </option>
+                    <option value='sort'>{settingMap.sortOrder}</option>
                   </select>
                 </div>
               </div>
