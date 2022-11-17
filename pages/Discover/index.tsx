@@ -72,7 +72,7 @@ const Discover = ({
   return (
     <DiscoverWarpper>
       <div id='discover'>
-        {discoverBanner?.articles ? (
+        {discoverBanner?.relations.length > 0 ? (
           <div className='discoverBanner'>
             <Slider
               ref={slider}
@@ -90,43 +90,47 @@ const Discover = ({
                 },
               }}
             >
-              {discoverBanner?.articles?.map((item) => (
-                <div key={uuid()}>
-                  <div className='--item'>
-                    <div className='--background'>
-                      <img src={item.image?.path} alt='' />
-                    </div>
-                    <div className='container-fluid'>
-                      <div className='--content'>
-                        <div className='--top'>
-                          <div className='--title'>
-                            <span>{item?.subTitle}</span>
-                            <h1 className='Title mt-3'>{item?.title}</h1>
+              {discoverBanner?.relations?.map((item) => {
+                return item?.type === "point" ? (
+                  <div key={uuid()}>
+                    <div className='--item'>
+                      <div className='--background'>
+                        <img src={item.featureImage?.path} alt='' />
+                      </div>
+                      <div className='container-fluid'>
+                        <div className='--content'>
+                          <div className='--top'>
+                            <div className='--title'>
+                              <span>{item?.subTitle}</span>
+                              <h1 className='Title mt-3'>{item?.title}</h1>
+                            </div>
                           </div>
-                        </div>
-                        <div className='--bot d-flex justify-content-between align-items-end'>
-                          <Link href={item?.link}>
-                            <a>
-                              <i className='fa-sharp fa-solid fa-arrow-down-long'></i>
-                              {settingMap.viewAll}
-                            </a>
-                          </Link>
+                          <div className='--bot d-flex justify-content-between align-items-end'>
+                            <Link href={`/Discover/detail~${item.id}`}>
+                              <a>
+                                <i className='fa-sharp fa-solid fa-arrow-down-long'></i>
+                                {settingMap.viewDetail}
+                              </a>
+                            </Link>
 
-                          <div className='--txt'>
-                            <article>{item?.description}</article>
+                            <div className='--txt'>
+                              <article>{item?.description}</article>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ) : (
+                  false
+                );
+              })}
             </Slider>
             <div className='Slider-action d-flex justify-content-between'>
               <div className='--number d-flex align-items-center'>
                 <span>{pad(current + 1)}</span>
                 <div className='line'></div>
-                <span>{pad(discoverBanner?.articles?.length)}</span>
+                <span>{pad(discoverBanner?.relations?.length)}</span>
               </div>
               <div className='--arrow'>
                 <i
@@ -189,35 +193,12 @@ const Discover = ({
                   className=''
                 >
                   {discoverBlock.relations.length > 1
-                    ? discoverBlock.relations?.map((item) => (
-                        <Link key={uuid()} href={`/Discover/detail~${item.id}`}>
-                          <div className='--item img_hover'>
-                            <a href=''>
-                              <div className='--img'>
-                                <img src={item.featureImage?.path} alt='' />
-                              </div>
-                              <div className='--txt'>
-                                <div className='--type'>
-                                  {item.pointType[0]
-                                    ? item.pointType[0].title
-                                    : false}
-                                </div>
-                                <h4>{item.title}</h4>
-                                <div className='--location '>
-                                  <Image
-                                    src={require("../../Asset/icon-map1.svg")}
-                                    alt=''
-                                  />
-                                  <span>{item.address}</span>
-                                </div>
-                              </div>
-                            </a>
-                          </div>
-                        </Link>
-                      ))
-                    : pointArr.map((item) => (
-                        <Link key={uuid()} href={`/Discover/detail~${item.id}`}>
-                          <div className='--wrapper'>
+                    ? discoverBlock.relations?.map((item) => {
+                        return item?.type === "point" ? (
+                          <Link
+                            key={uuid()}
+                            href={`/Discover/detail~${item.id}`}
+                          >
                             <div className='--item img_hover'>
                               <a href=''>
                                 <div className='--img'>
@@ -240,9 +221,44 @@ const Discover = ({
                                 </div>
                               </a>
                             </div>
-                          </div>
-                        </Link>
-                      ))}
+                          </Link>
+                        ) : (
+                          false
+                        );
+                      })
+                    : pointArr.map((item) => {
+                        return item?.type === "point" ? (
+                          <Link
+                            key={uuid()}
+                            href={`/Discover/detail~${item.id}`}
+                          >
+                            <div className='--item img_hover'>
+                              <a href=''>
+                                <div className='--img'>
+                                  <img src={item.featureImage?.path} alt='' />
+                                </div>
+                                <div className='--txt'>
+                                  <div className='--type'>
+                                    {item.pointType[0]
+                                      ? item.pointType[0].title
+                                      : false}
+                                  </div>
+                                  <h4>{item.title}</h4>
+                                  <div className='--location '>
+                                    <Image
+                                      src={require("../../Asset/icon-map1.svg")}
+                                      alt=''
+                                    />
+                                    <span>{item.address}</span>
+                                  </div>
+                                </div>
+                              </a>
+                            </div>
+                          </Link>
+                        ) : (
+                          false
+                        );
+                      })}
                 </Slider>
               </div>
               <div className='arrow_discoverBlock'></div>
@@ -302,37 +318,44 @@ const Discover = ({
                     className='row'
                   >
                     {discoverBlock1.relations.length > 1
-                      ? discoverBlock1.relations?.map((item) => (
-                          <Link
-                            key={uuid()}
-                            href={`/Discover/detail~${item.id}`}
-                          >
-                            <div className='--wrapper'>
-                              <div className='--item img_hover1'>
-                                <a href=''>
-                                  <div className='--img'>
-                                    <img src={item.featureImage?.path} alt='' />
-                                  </div>
-                                  <div className='--txt'>
-                                    <div className='--type'>
-                                      {item.pointType[0]
-                                        ? item.pointType[0]?.title
-                                        : false}
-                                    </div>
-                                    <h4>{item.title}</h4>
-                                    <div className='--location '>
-                                      <Image
-                                        src={require("../../Asset/icon-map1.svg")}
+                      ? discoverBlock1.relations?.map((item) => {
+                          return item?.type === "point" ? (
+                            <Link
+                              key={uuid()}
+                              href={`/Discover/detail~${item.id}`}
+                            >
+                              <div className='--wrapper'>
+                                <div className='--item img_hover1'>
+                                  <a href=''>
+                                    <div className='--img'>
+                                      <img
+                                        src={item.featureImage?.path}
                                         alt=''
                                       />
-                                      <span>{item.address}</span>
                                     </div>
-                                  </div>
-                                </a>
+                                    <div className='--txt'>
+                                      <div className='--type'>
+                                        {item.pointType[0]
+                                          ? item.pointType[0]?.title
+                                          : false}
+                                      </div>
+                                      <h4>{item.title}</h4>
+                                      <div className='--location '>
+                                        <Image
+                                          src={require("../../Asset/icon-map1.svg")}
+                                          alt=''
+                                        />
+                                        <span>{item.address}</span>
+                                      </div>
+                                    </div>
+                                  </a>
+                                </div>
                               </div>
-                            </div>
-                          </Link>
-                        ))
+                            </Link>
+                          ) : (
+                            false
+                          );
+                        })
                       : playPoint.map()}
                   </Slider>
                 </div>
