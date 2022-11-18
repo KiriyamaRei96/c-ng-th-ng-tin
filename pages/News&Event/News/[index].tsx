@@ -14,6 +14,7 @@ import {
   iconIN,
   iconTW,
 } from "../../../components/img";
+import globalSelector from "../../../ReduxStore/globalSlice/slice";
 
 export async function getServerSideProps(context) {
   const id = context.query?.index?.replace("detail~", "");
@@ -49,7 +50,7 @@ const NewsDetail = ({ data, newsBanner }: NewsDetailProps) => {
     }
   }, [newsArr, router.locale]);
   const otherNews = newsArr.filter((item) => item.id !== data.id);
-
+  const settingMap = useAppSelector(globalSelector).settingMap;
   return (
     <NewsDetailWarpper>
       <div id='detailnews'>
@@ -70,11 +71,11 @@ const NewsDetail = ({ data, newsBanner }: NewsDetailProps) => {
                   <div className='--note d-flex'>
                     <div className='--item'>
                       <a href=''>
-                        <span>32 Bình luận</span>
+                        <span>32 {settingMap.comment}</span>
                       </a>
                     </div>
                     <div className='--item'>
-                      <span>84 đánh giá</span>
+                      <span>84 {settingMap.ratting}</span>
                     </div>
                     <div className='--item'>
                       <i className='fa-regular fa-calendar'></i>
@@ -92,11 +93,12 @@ const NewsDetail = ({ data, newsBanner }: NewsDetailProps) => {
 
                   <div className='--backshare d-flex justify-content-between'>
                     <a onClick={() => router.back()} className='--back'>
-                      <img src={iconBack.default.src} alt='' /> Quay lại sự kiện
+                      <img src={iconBack.default.src} alt='' />{" "}
+                      {settingMap.return}
                     </a>
 
                     <ul>
-                      <li>Chia sẻ:</li>
+                      <li> {settingMap.share}:</li>
                       <li>
                         <a href=''>
                           <img src={iconTW.default.src} alt='' />
