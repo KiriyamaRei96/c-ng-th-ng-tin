@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import { v4 as uuid } from "uuid";
+import globalSelector from "../../../../ReduxStore/globalSlice/slice";
 import { useAppDispatch, useAppSelector } from "../../../../ReduxStore/hooks";
 import newsEventsSelector from "../../../../ReduxStore/newSlice/slice";
 export interface EventsListProps {
@@ -15,7 +16,7 @@ const EventsList = ({}: EventsListProps) => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const list: any = useRef();
-
+  const settingMap = useAppSelector(globalSelector).settingMap;
   useEffect(() => {
     dispatch({ type: "GET_EVENTS", payload: page });
   }, [page, router.locale]);
@@ -31,14 +32,17 @@ const EventsList = ({}: EventsListProps) => {
                 </div>
 
                 <div className='--txt'>
-                  <span className='--tag d-flex'>
-                    {item.tag[0] ? item.tag[0] : false}
-                  </span>
+                  {item.tag[0] ? (
+                    <span className='--tag d-flex'>{item.tag[0]}</span>
+                  ) : (
+                    false
+                  )}
+
                   <h5>{item.title}</h5>
                   <div className='Info'>
                     <span className='date'>
                       <i className='fa-solid fa-calendar-days'></i>
-                      Diễn ra ngày {item.date}
+                      {settingMap.onDay} {item.date}
                     </span>
                   </div>
                 </div>

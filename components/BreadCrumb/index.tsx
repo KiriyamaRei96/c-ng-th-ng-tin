@@ -31,7 +31,7 @@ const BreadCrumb = (prop: BreadCrumbProps) => {
             <a>{settingMap[router.asPath.split("/")[1]]}</a>
           </Link>
           <i className='devider fa-solid fa-angle-right'></i>
-          <span>Chi tiết</span>
+          <span>{settingMap.detail}</span>
         </>
       ) : (
         false

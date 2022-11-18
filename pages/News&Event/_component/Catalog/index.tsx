@@ -57,7 +57,15 @@ const Catalog = ({}: CatalogProps) => {
           }}
           className={catalog === "" ? "active" : ""}
         >
-          Tin địa phương
+          {settingMap.All}
+        </h4>
+        <h4
+          onClick={() => {
+            setCatalog("Tin địa phương");
+          }}
+          className={catalog === "Tin địa phương" ? "active" : ""}
+        >
+          {settingMap.localNews}
         </h4>
         <h4
           onClick={() => {
@@ -65,7 +73,7 @@ const Catalog = ({}: CatalogProps) => {
           }}
           className={catalog === "Tin trong nước" ? "active" : ""}
         >
-          Tin trong nước
+          {settingMap.VnNews}
         </h4>
         <h4
           className={catalog === "Tin quốc tế" ? "active" : ""}
@@ -73,7 +81,7 @@ const Catalog = ({}: CatalogProps) => {
             setCatalog("Tin quốc tế");
           }}
         >
-          Tin quốc tế
+          {settingMap.globalNews}
         </h4>
       </div>
       <div className='--list d-flex flex-wrap'>
