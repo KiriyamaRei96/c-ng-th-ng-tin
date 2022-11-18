@@ -51,7 +51,7 @@ export async function getServerSideProps(context) {
 }
 const DiscoverDetail = ({ data, otherData }) => {
   const [image, setImage] = useState<string | undefined>(
-    data?.featureImage.path
+    data?.featureImage?.path
   );
   const router = useRouter();
   let allIMG = [];
@@ -73,6 +73,7 @@ const DiscoverDetail = ({ data, otherData }) => {
     (snip) => snip["snippet_name"] === "slider"
   );
   const settingMap = useAppSelector(globalSelector).settingMap;
+  console.log(data.vr);
   return (
     <DiscoverWarpper>
       <div id='detaildiscover'>
@@ -135,7 +136,9 @@ const DiscoverDetail = ({ data, otherData }) => {
                   <div className='list_img'>
                     <div className='--img'>
                       <img src={image ? image : ""} alt='' />
-                      {data?.featureImage.path === image && data?.vr !== "" ? (
+                      {data?.featureImage?.path === image &&
+                      data?.vr !== "" &&
+                      data?.vr !== "null" ? (
                         <Fancybox
                           options={{ infinite: true, mainClass: "fancybox1" }}
                         >
@@ -161,18 +164,18 @@ const DiscoverDetail = ({ data, otherData }) => {
                       id < 3 ? (
                         <div
                           onClick={() => {
-                            setImage(img.path);
+                            setImage(img?.path);
                           }}
                           key={uuid()}
                           className={
-                            image === img.path ? "--img active" : "--img"
+                            image === img?.path ? "--img active" : "--img"
                           }
                         >
-                          <img src={img.path} alt='' />
+                          <img src={img?.path} alt='' />
                         </div>
                       ) : (
                         <div key={uuid()} className='--img'>
-                          <img src={img.path} alt='' />
+                          <img src={img?.path} alt='' />
                           <Fancybox key={uuid()} options={{ infinite: true }}>
                             {allIMG?.map((item) => (
                               <a
@@ -436,7 +439,7 @@ const DiscoverDetail = ({ data, otherData }) => {
                             </div>
                             <div className='--txt'>
                               <div className='--type'>
-                                {item?.pointType[0].title}
+                                {item?.pointType[0]?.title}
                               </div>
                               <h4>{item?.title}</h4>
                               <div className='--location '>
@@ -463,7 +466,7 @@ const DiscoverDetail = ({ data, otherData }) => {
                             </div>
                             <div className='--txt'>
                               <div className='--type'>
-                                {item?.pointType[0].title}
+                                {item?.pointType[0]?.title}
                               </div>
                               <h4>{item?.title}</h4>
                               <div className='--location '>

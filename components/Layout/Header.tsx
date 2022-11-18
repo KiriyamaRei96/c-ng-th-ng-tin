@@ -10,6 +10,7 @@ import { v4 as uuid } from "uuid";
 import searchSelector, {
   searchSlice,
   searchText,
+  setType,
 } from "../../ReduxStore/search/slice";
 export interface AppHeaderProps {}
 
@@ -178,6 +179,7 @@ const AppHeader = (props: AppHeaderProps) => {
                   <input
                     onKeyDown={(e) => {
                       if (e.key === "Enter") {
+                        dispatch(setType(""));
                         dispatch({
                           type: "SEARCH",
                           payload: {
@@ -239,6 +241,7 @@ const AppHeader = (props: AppHeaderProps) => {
                   value={search}
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
+                      dispatch(setType(""));
                       dispatch({
                         type: "SEARCH",
                         payload: {
@@ -257,6 +260,7 @@ const AppHeader = (props: AppHeaderProps) => {
                   onClick={(e) => {
                     if (searchActive) {
                       e.stopPropagation();
+                      dispatch(setType(""));
                       dispatch({
                         type: "SEARCH",
                         payload: {
@@ -520,6 +524,7 @@ const AppHeader = (props: AppHeaderProps) => {
                   <input
                     onKeyDown={(e) => {
                       if (e.key === "Enter") {
+                        dispatch(setType(""));
                         dispatch({
                           type: "SEARCH",
                           payload: {
@@ -580,6 +585,7 @@ const AppHeader = (props: AppHeaderProps) => {
                 <input
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
+                      dispatch(setType(""));
                       dispatch({
                         type: "SEARCH",
                         payload: {
@@ -599,6 +605,7 @@ const AppHeader = (props: AppHeaderProps) => {
                   onClick={(e) => {
                     if (searchActive) {
                       e.stopPropagation();
+                      dispatch(setType(""));
                       dispatch({
                         type: "SEARCH",
                         payload: {

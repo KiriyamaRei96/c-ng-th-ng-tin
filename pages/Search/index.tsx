@@ -5,7 +5,10 @@ import callApi from "../../Api/Axios";
 import BreadCrumb from "../../components/BreadCrumb";
 import { iconMap1 } from "../../components/img";
 import { useAppDispatch, useAppSelector } from "../../ReduxStore/hooks";
-import searchSelector, { searchText } from "../../ReduxStore/search/slice";
+import searchSelector, {
+  searchText,
+  setType,
+} from "../../ReduxStore/search/slice";
 import SearchWrapper from "./_component/styled/style";
 import { v4 as uuid } from "uuid";
 import useDebounce from "../../funcion/debounce";
@@ -32,12 +35,12 @@ const Search = ({ banner }) => {
   const types = useAppSelector(searchSelector).types;
   const filters = useAppSelector(searchSelector).filters;
   const search = useAppSelector(searchSelector).search;
+  const type = useAppSelector(searchSelector).type;
 
   const [filter, setFilter] = useState(filters[0]?.value);
   const [page, setPage] = useState(1);
 
   const [sort, setSort] = useState("");
-  const [type, setType] = useState("");
 
   const list: any = useRef();
   const debouncedSearchTerm = useDebounce(search, 500);
@@ -122,7 +125,7 @@ const Search = ({ banner }) => {
                 if (types[key].count > 0 && types[key].value !== "travel") {
                   return (
                     <div
-                      onClick={() => setType(types[key]?.value)}
+                      onClick={() => dispatch(setType(types[key]?.value))}
                       key={uuid()}
                       className={
                         type === types[key]?.value

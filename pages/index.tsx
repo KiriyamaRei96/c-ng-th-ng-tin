@@ -21,6 +21,11 @@ import pointSelector from "../ReduxStore/pointSlice/slice";
 import Map from "../components/Map";
 import { useRouter } from "next/router";
 import globalSelector from "../ReduxStore/globalSlice/slice";
+import searchSelector, {
+  searchText,
+  setType,
+} from "../ReduxStore/search/slice";
+import { signpost } from "../components/img";
 
 export async function getServerSideProps(context) {
   const res = await callApi
@@ -75,8 +80,12 @@ export default function Home({
   const router = useRouter();
   const dispatch = useAppDispatch();
   const [arr, setArr] = useState([]);
+
   const pointArr = useAppSelector(pointSelector).pointArr;
   const settingMap = useAppSelector(globalSelector).settingMap;
+  const types = useAppSelector(searchSelector).types;
+  const search = useAppSelector(searchSelector).search;
+  const type = useAppSelector(searchSelector).type;
 
   useEffect(() => {
     if (pointArr.length === 0) {
@@ -84,7 +93,13 @@ export default function Home({
     }
     setArr(pointArr);
   }, [pointArr, router.locale]);
-
+  useEffect(() => {
+    dispatch(searchText(""));
+    dispatch({
+      type: "SEARCH",
+      payload: { search: "" },
+    });
+  }, []);
   const chunkArr = chunk(3, homeNews.relations);
   return (
     <HomeWrapper>
@@ -106,44 +121,62 @@ export default function Home({
               </Link>
             </div>
             <div className='container-fluid'>
-              <div className='filter'>
+              <div className='filter justify-content-center'>
                 <div className='form-group'>
                   <div className='--icon'>
                     <img src={iconMap.src} alt='' />
                   </div>
                   <div className='--txtform'>
-                    <label htmlFor=''>Điểm đến</label>
-                    <input type='text' placeholder='Ví dụ: Ô Quy Hồ' />
+                    <label htmlFor=''>{settingMap.Search}</label>
+                    <input
+                      value={search}
+                      type='text'
+                      onChange={(e) => {
+                        dispatch(searchText(e.target.value));
+                      }}
+                      placeholder={settingMap.searchPlaceHolder2}
+                    />
                   </div>
                 </div>
+
                 <div className='form-group'>
                   <div className='--icon'>
-                    <img src={iconSign.src} alt='' />
-                  </div>
-                  <div className='--txtform'>
-                    <label htmlFor=''>Thời gian</label>
-                    <select name='' id=''>
-                      <option value=''>Chọn thời gian</option>
-                      <option value=''>abc</option>
-                      <option value=''>xyz</option>
-                    </select>
-                  </div>
-                </div>
-                <div className='form-group'>
-                  <div className='--icon'>
-                    <img src={iconMap.src} alt='' />
+                    <img src={signpost.default.src} alt='' />
                   </div>
                   <div className='--txtform'>
                     <label htmlFor=''>Loại hình</label>
-                    <select name='' id=''>
-                      <option value=''>Chọn loại hình</option>
-                      <option value=''>abc</option>
-                      <option value=''>xyz</option>
+                    <select
+                      onChange={(e) => {
+                        dispatch(setType(e.target.value));
+                      }}
+                      name=''
+                      id=''
+                      value={type}
+                    >
+                      {Object.keys(types).map((key) => (
+                        <option key={uuid()} value={types[key].value}>
+                          {types[key].name}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 </div>
-                <div className='form-group'>
-                  <button className='button_1 button_hover1'>
+                <div className='form-group justify-content-center'>
+                  <button
+                    onClick={() => {
+                      const payload = {
+                        page: 1,
+                        search,
+                        type,
+                      };
+                      dispatch({
+                        type: "SEARCH",
+                        payload,
+                      });
+                      router.push("/Search");
+                    }}
+                    className='button_1 button_hover1'
+                  >
                     {settingMap.FindOut}
                   </button>
                 </div>
@@ -180,26 +213,20 @@ export default function Home({
                       <h1 className='Title'>{homeIntro.title}</h1>
                       <div className='--des'>{homeIntro.description}</div>
                       <ul>
-                        <li>
-                          <span>Đèo - Núi</span>
-                          <span>(20)</span>
-                        </li>
-                        <li>
-                          <span>Khu bảo tồn</span>
-                          <span>(16)</span>
-                        </li>
-                        <li>
-                          <span>Ẩm thực</span>
-                          <span>(25)</span>
-                        </li>
-                        <li>
-                          <span>Di chuyển</span>
-                          <span>(05)</span>
-                        </li>
-                        <li>
-                          <span>Hang động</span>
-                          <span>(02)</span>
-                        </li>
+                        {Object.keys(types).map((key) => {
+                          if (
+                            key !== "all" &&
+                            key !== "news" &&
+                            key !== "event"
+                          ) {
+                            return (
+                              <li key={uuid()}>
+                                <span>{types[key].name}</span>
+                                <span>({types[key].count})</span>
+                              </li>
+                            );
+                          }
+                        })}
                       </ul>
                       <Link href={homeIntro.link}>
                         <a className='button_2 button_hover2'>

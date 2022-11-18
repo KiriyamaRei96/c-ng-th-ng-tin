@@ -8,6 +8,7 @@ export const iconMap2 = require("../Asset/icon-map2.svg");
 export const iconMap1 = require("../Asset/icon-map1.svg");
 export const locationIcon = require("../Asset/Frame 427319011.png");
 export const VRLogo = require("../Asset/25abd0d0de2c5fccd09bcacb411a99dd.png");
+export const signpost = require("../Asset/signpost.png");
 
 export const iconTime = require("../Asset/icon-time.svg");
 export const iconBooking = require("../Asset/icon-booking.svg");
