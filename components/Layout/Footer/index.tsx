@@ -126,11 +126,11 @@ const Footer = ({ iconSlider }) => {
             <div className='--right d-flex align-items-center'>
               <div className='--item d-flex align-items-center'>
                 <img src={globe.src} alt='' />
-                Đang online: <span>{view.online}</span>
+                Đang online: <span>{view?.online}</span>
               </div>
               <div className='--item d-flex align-items-center'>
                 <img src={chart.src} alt='' />
-                Tổng: <span>{view.total}</span>
+                Tổng: <span>{view?.total}</span>
               </div>
             </div>
           </div>
