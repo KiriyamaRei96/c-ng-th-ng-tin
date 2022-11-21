@@ -14,6 +14,8 @@ import { useRouter } from "next/router";
 const Footer = ({ iconSlider }) => {
   const router = useRouter();
   const [data, setData] = useState<any>();
+  const [view, setView] = useState<any>();
+
   useEffect(() => {
     (async () => {
       const data = await callApi
@@ -21,6 +23,13 @@ const Footer = ({ iconSlider }) => {
         .then((res) => res.data)
         .catch((err) => console.error(err));
       setData(data.data);
+    })();
+    (async () => {
+      const data = await callApi
+        .get(`/v2/main?locale=${router.locale}`)
+        .then((res) => res.data)
+        .catch((err) => console.error(err));
+      setView(data.data);
     })();
   }, [router.locale]);
 
@@ -117,11 +126,11 @@ const Footer = ({ iconSlider }) => {
             <div className='--right d-flex align-items-center'>
               <div className='--item d-flex align-items-center'>
                 <img src={globe.src} alt='' />
-                Đang online: <span>18</span>
+                Đang online: <span>{view.online}</span>
               </div>
               <div className='--item d-flex align-items-center'>
                 <img src={chart.src} alt='' />
-                Tổng: <span>9886</span>
+                Tổng: <span>{view.total}</span>
               </div>
             </div>
           </div>

@@ -66,7 +66,7 @@ const NewsDetail = ({ data, newsBanner }: NewsDetailProps) => {
             <div className='row'>
               <div className='col-md-9'>
                 <div className='--left'>
-                  <div className='subTitle'>Chi tiết tin tức</div>
+                  <div className='subTitle'>{newsBanner.subTitle}</div>
                   <h2 className='--title'>{data.title}</h2>
                   <div className='--note d-flex'>
                     <div className='--item'>
