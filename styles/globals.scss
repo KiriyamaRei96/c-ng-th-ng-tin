@@ -1432,6 +1432,13 @@ footer {
           }
         }
 
+        input[type="date"]::-webkit-calendar-picker-indicator {
+          color: transparent;
+          background: none;
+          z-index: 1;
+        }
+
+        input,
         select {
           border: 1px solid #DCDCDC;
           border-radius: 6px;
@@ -1449,6 +1456,7 @@ footer {
           transform: translate(0, -50%);
           right: 1rem;
           pointer-events: none;
+          cursor: pointer;
         }
       }
 
