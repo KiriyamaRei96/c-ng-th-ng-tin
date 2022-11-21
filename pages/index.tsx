@@ -272,66 +272,108 @@ export default function Home({
               <h1 className='Title text-center'>{homeDiscover.title}</h1>
             </div>
             <div className='container-fluid pe-0'>
-              <Slider
-                key={uuid()}
-                {...{
-                  dots: false,
-                  infinite: true,
-                  speed: 300,
-                  slidesToShow: 2,
-                  slidesToScroll: 1,
-                  variableWidth: true,
-                  arrows: false,
-                  responsive: [
-                    {
-                      breakpoint: 768,
-                      settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
+              {homeDiscover?.relations.length > 2 ? (
+                <Slider
+                  key={uuid()}
+                  {...{
+                    dots: false,
+                    infinite: true,
+                    speed: 300,
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    variableWidth: true,
+                    arrows: false,
+                    responsive: [
+                      {
+                        breakpoint: 768,
+                        settings: {
+                          slidesToShow: 1,
+                          slidesToScroll: 1,
+                        },
                       },
-                    },
-                  ],
-                }}
-                className='list_homeDiscover'
-              >
-                {homeDiscover?.relations?.map((item) => (
-                  <div key={uuid()}>
-                    <div className='--item img_hover1'>
-                      <div className='--img'>
-                        <img src={item?.featureImage?.path} alt='' />
-                      </div>
-                      <div className='--txt'>
-                        <div className='--subtitle'>
-                          {item?.pointType?.map((type) => type.title)}
+                    ],
+                  }}
+                  className='list_homeDiscover'
+                >
+                  {homeDiscover?.relations?.map((item) => (
+                    <div key={uuid()}>
+                      <div className='--item img_hover1'>
+                        <div className='--img'>
+                          <img src={item?.featureImage?.path} alt='' />
                         </div>
-                        <h4 className='--name'>{item.title}</h4>
-                        <div className='--bot d-flex justify-content-between align-items-end'>
-                          <div className='--des'>
-                            <div className='--location d-flex align-items-center'>
-                              <div className='--icon me-2'>
-                                <Image
-                                  src={require("./_asset/icon-map1.svg")}
-                                  alt=''
-                                />
-                              </div>
-                              {item.address}
-                            </div>
-                            <article>{item.description}</article>
+                        <div className='--txt'>
+                          <div className='--subtitle'>
+                            {item?.pointType?.map((type) => type.title)}
                           </div>
-                          <Link
-                            href={`/Discover/detail~${item.id}`}
-                            key={uuid()}
-                          >
-                            <a className='--viewdetail button_hover1' href=''>
-                              <i className='fa-solid fa-arrow-right'></i>
-                            </a>
-                          </Link>
+                          <h4 className='--name'>{item.title}</h4>
+                          <div className='--bot d-flex justify-content-between align-items-end'>
+                            <div className='--des'>
+                              <div className='--location d-flex align-items-center'>
+                                <div className='--icon me-2'>
+                                  <Image
+                                    src={require("./_asset/icon-map1.svg")}
+                                    alt=''
+                                  />
+                                </div>
+                                {item.address}
+                              </div>
+                              <article>{item.description}</article>
+                            </div>
+                            <Link
+                              href={`/Discover/detail~${item.id}`}
+                              key={uuid()}
+                            >
+                              <a className='--viewdetail button_hover1' href=''>
+                                <i className='fa-solid fa-arrow-right'></i>
+                              </a>
+                            </Link>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </Slider>
+                  ))}
+                </Slider>
+              ) : (
+                <div className='list_homeDiscover'>
+                  {homeDiscover?.relations?.map((item) => (
+                    <div key={uuid()}>
+                      <div className='--item img_hover1'>
+                        <div className='--img'>
+                          <img src={item?.featureImage?.path} alt='' />
+                        </div>
+                        <div className='--txt'>
+                          <div className='--subtitle'>
+                            {item?.pointType?.map((type) => type.title)}
+                          </div>
+                          <h4 className='--name'>{item.title}</h4>
+                          <div className='--bot d-flex justify-content-between align-items-end'>
+                            <div className='--des'>
+                              <div className='--location d-flex align-items-center'>
+                                <div className='--icon me-2'>
+                                  <Image
+                                    src={require("./_asset/icon-map1.svg")}
+                                    alt=''
+                                  />
+                                </div>
+                                {item.address}
+                              </div>
+                              <article>{item.description}</article>
+                            </div>
+                            <Link
+                              href={`/Discover/detail~${item.id}`}
+                              key={uuid()}
+                            >
+                              <a className='--viewdetail button_hover1' href=''>
+                                <i className='fa-solid fa-arrow-right'></i>
+                              </a>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
             <Link href={homeDiscover.link}>
               <a className='--viewall button_2 button_hover2'>
@@ -357,33 +399,33 @@ export default function Home({
         ) : (
           false
         )}
-        {homeNews ? (
+        {homeNews && homeNews.relations.length > 0 ? (
           <div className='homeNews'>
             <div className='subTitle text-center'>{homeNews.subTitle}</div>
             <h1 className='Title text-center'>{homeNews.title}</h1>
             <div className='--content d-flex'>
               <div className='--left'>
                 <div className='--img'>
-                  <img src={homeNews.relations[0].featureImage.path} alt='' />
+                  <img src={homeNews.relations[0]?.featureImage?.path} alt='' />
                 </div>
                 <div className='--txt'>
                   <div className='--cate'>
-                    {homeNews.relations[0].type} nổi bật
+                    {homeNews.relations[0]?.type} nổi bật
                   </div>
                   <div className='--subtitle'>
-                    {homeNews.relations[0].subTitle}
+                    {homeNews.relations[0]?.subTitle}
                   </div>
                   <a href=''>
                     <h1>
-                      <p> {homeNews.relations[0].title}</p>
-                      <p> {homeNews.relations[0].description}</p>
+                      <p> {homeNews.relations[0]?.title}</p>
+                      <p> {homeNews.relations[0]?.description}</p>
                     </h1>
                   </a>
                   <div className='--time d-flex align-items-center'>
                     <div className='--icon'>
                       <Image src={require("./_asset/icon-time.svg")} alt='' />
                     </div>
-                    {homeNews.relations[0].date}
+                    {homeNews.relations[0]?.date}
                   </div>
                   {homeNews.relations[0]?.address ? (
                     <div className='--location d-flex align-items-center'>
