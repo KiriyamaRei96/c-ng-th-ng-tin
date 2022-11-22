@@ -33,6 +33,15 @@ import capitalizeFirstLetter from "../../../funcion/toUpperCase";
 import BookingCard from "../../../components/BookingCard";
 import commentSelector from "../../../ReduxStore/commentSlice/slice";
 import CommentBtn from "../../../components/CommentBtn";
+import ShareBox from "../../../components/ShareBox";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  TwitterIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+  FacebookIcon,
+} from "react-share";
 export async function getServerSideProps(context) {
   let type;
   let other;
@@ -123,7 +132,10 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
     (snip) => snip["snippet_name"] === "slider"
   );
   const settingMap = useAppSelector(globalSelector).settingMap;
-
+  let url;
+  if (typeof window !== "undefined") {
+    url = window.location.href;
+  }
   return (
     <CommercialDetailWrapper>
       <div id="detailservice">
@@ -171,13 +183,26 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                         {commentArr?.length} {settingMap.ratting}
                       </span>
                     </div>
-                    <div className="--sharecmt d-flex align-items-center">
+                    <div className="--sharecmt  d-flex align-items-center">
                       <div className="--link">
-                        <a href="">
+                        <a className="share-hover">
                           <i className="fa-solid fa-share-nodes"></i>
-                          {settingMap.share}
+                          <span className="txt"> {settingMap.share}</span>
+
+                          <div className="--share">
+                            <TwitterShareButton url={url}>
+                              <TwitterIcon />
+                            </TwitterShareButton>
+                            <FacebookShareButton url={url}>
+                              <FacebookIcon />
+                            </FacebookShareButton>
+                            <LinkedinShareButton url={url}>
+                              <LinkedinIcon />
+                            </LinkedinShareButton>
+                          </div>
                         </a>
                       </div>
+
                       <CommentBtn id={id}>
                         <button className="button_hover2 button_2">
                           {settingMap.writeRatting}

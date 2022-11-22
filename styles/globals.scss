@@ -2050,6 +2050,48 @@ footer {
   }
 }
 
+.share-hover {
+  display: flex;
+  align-items: center;
+
+  .--share {
+    display: none;
+
+
+
+
+
+
+
+    button {
+      margin-right: 5px;
+      border-radius: 50% !important;
+      width: 30px !important;
+      height: 30px !important;
+      overflow: hidden;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    :last-child {
+      margin: 0;
+    }
+  }
+
+  &:hover {
+    .txt {
+      display: none;
+    }
+
+    .--share {
+      display: flex;
+    }
+  }
+}
+
 .comment-form {
   font: var(--font-body) !important;
   flex-direction: column;

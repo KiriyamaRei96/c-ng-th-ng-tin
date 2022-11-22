@@ -25,7 +25,14 @@ import globalSelector from "../../../ReduxStore/globalSlice/slice";
 import BookingCard from "../../../components/BookingCard";
 import CommentBtn from "../../../components/CommentBtn";
 import commentSelector from "../../../ReduxStore/commentSlice/slice";
-
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  TwitterIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+  FacebookIcon,
+} from "react-share";
 export async function getServerSideProps(context) {
   let other;
 
@@ -81,6 +88,10 @@ const DiscoverDetail = ({ data, otherData, id }) => {
   useEffect(() => {
     dispatch({ type: "GET_COMMENT", payload: id });
   }, [id]);
+  let url;
+  if (typeof window !== "undefined") {
+    url = window.location.href;
+  }
   return (
     <DiscoverWarpper>
       <div id="detaildiscover">
@@ -126,13 +137,26 @@ const DiscoverDetail = ({ data, otherData, id }) => {
                         {commentArr.length} {settingMap.ratting}
                       </span>
                     </div>
-                    <div className="--sharecmt d-flex align-items-center">
+                    <div className="--sharecmt share-hover d-flex align-items-center">
                       <div className="--link">
-                        <a href="">
-                          <i className="fa-solid fa-share-nodes"></i>{" "}
-                          {settingMap.share}
+                        <a className="share-hover">
+                          <i className="fa-solid fa-share-nodes"></i>
+                          <span className="txt"> {settingMap.share}</span>
+
+                          <div className="--share">
+                            <TwitterShareButton url={url}>
+                              <TwitterIcon />
+                            </TwitterShareButton>
+                            <FacebookShareButton url={url}>
+                              <FacebookIcon />
+                            </FacebookShareButton>
+                            <LinkedinShareButton url={url}>
+                              <LinkedinIcon />
+                            </LinkedinShareButton>
+                          </div>
                         </a>
                       </div>
+
                       <CommentBtn id={id}>
                         <button className="button_hover2 button_2">
                           {settingMap.writeRatting}

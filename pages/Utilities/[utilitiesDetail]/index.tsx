@@ -55,14 +55,6 @@ const UtilitiesDetail = ({ data }) => {
                         <span>{data?.utilitiesType[0]?.title}</span>
                       </a>
                     </li>
-                    {/* <li>
-                      <a href=''>
-                        <span>Hotline</span>
-                        <span>
-                          <i className='fa-solid fa-phone'></i>0213.3877.727
-                        </span>
-                      </a>
-                    </li> */}
                   </ul>
                   <article
                     dangerouslySetInnerHTML={{ __html: data?.content }}

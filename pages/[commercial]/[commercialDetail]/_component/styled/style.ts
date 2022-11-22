@@ -670,6 +670,8 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
         }
 
         .--sharecmt {
+
+
             a {
                 text-decoration: none;
                 color: #6F7378;
@@ -737,8 +739,9 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
             &:nth-child(4n+1) {
                 margin-right: 0;
             }
-            &:nth-child(5){
-                &::after{
+
+            &:nth-child(5) {
+                &::after {
                     background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
                     content: '';
                     position: absolute;
@@ -748,6 +751,7 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
                     height: 100%;
                 }
             }
+
             a {
                 text-decoration: none;
                 position: absolute;
@@ -1128,7 +1132,7 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
 
         .slick-dots {
             margin-top: 16px;
-         
+
         }
 
         .--item {
@@ -1277,15 +1281,16 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
     .slider1 {
         position: relative;
 
-        .slick-track{
+        .slick-track {
             display: flex;
         }
 
         .slick-dots {
             margin-top: 60px;
         }
-        .--txt{
-            span{
+
+        .--txt {
+            span {
                 overflow: hidden;
                 text-overflow: ellipsis;
                 line-height: 20px;
@@ -1294,9 +1299,11 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
                 -webkit-box-orient: vertical;
             }
         }
+
         .--wrapper {
             padding: 12px;
         }
+
         .arrow_servicediscover1 {
             position: absolute;
             top: 0;
@@ -1330,38 +1337,47 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
             }
         }
     }
-    @media (max-width: 768px){
+
+    @media (max-width: 768px) {
         padding-bottom: 3rem;
-        .--title{
+
+        .--title {
             margin-bottom: 2rem;
         }
-        .slider1{
+
+        .slider1 {
             .slick-dots {
                 margin-top: 1.5rem !important;
             }
-            .slick-slide{
+
+            .slick-slide {
                 width: 80vw;
                 margin-right: 12px;
                 // >div{
                 //     height: 100%;
                 // }
             }
-            .row{
-                --bs-gutter-x:0;
+
+            .row {
+                --bs-gutter-x: 0;
             }
-            .--wrapper{
+
+            .--wrapper {
                 padding: 12px 0 !important;
                 height: 100%;
-                .tour{
+
+                .tour {
                     height: 100%;
                 }
             }
+
             .slick-track,
             .slick-list {
                 display: block;
             }
         }
-        .arrow{
+
+        .arrow {
             display: none;
         }
     }
@@ -1375,58 +1391,74 @@ const CommercialDetailWrapper=styled.div` .discoverBanner {
         width: 100%;
     }
 }
-.detailhotel{
-    .col-md-3{
-        display: flex !important ;
+
+.detailhotel {
+    .col-md-3 {
+        display: flex !important;
         flex-flow: column;
     }
-    .hotel{
+
+    .hotel {
         flex-flow: column;
         box-shadow: none;
-        .--warpper{
+
+        .--warpper {
             width: 100%;
-            img{
+
+            img {
                 height: 230px;
             }
-            .slick-slide{
+
+            .slick-slide {
                 height: 230px;
             }
         }
-        .--andress{
+
+        .--andress {
             margin-bottom: 12px;
         }
-        .--item{
+
+        .--item {
             width: 100%;
             box-shadow: none;
         }
-      
+
     }
-    .slick-dots{
+
+    .slick-dots {
         margin-top: 60px !important;
     }
-    @media (max-width: 768px){
+
+    @media (max-width: 768px) {
         padding-bottom: 3rem;
-        .arrow{
+
+        .arrow {
             display: none;
         }
-        .slick-slide{
+
+        .slick-slide {
             width: 80vw !important;
             margin-right: 12px;
         }
-        .slick-list{
+
+        .slick-list {
             padding: 0;
         }
-        .col-md-3{
+
+        .col-md-3 {
             padding: 0 !important;
         }
-        .list_servicediscover{
+
+        .list_servicediscover {
             padding-left: 1rem
         }
-        .slick-dots{
+
+        .slick-dots {
             margin-top: 1.5rem !important;
         }
     }
 }
+
 `;
 
 
