@@ -263,7 +263,7 @@ export default function Home({
         ) : (
           false
         )}
-        {homeDiscover ? (
+        {homeDiscover && homeDiscover?.relations.length > 0 ? (
           <div className="homeDiscover">
             <div className="container-fluid">
               <div className="subTitle text-center">

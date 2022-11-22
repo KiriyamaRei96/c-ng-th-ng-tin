@@ -30,13 +30,14 @@ export async function getServerSideProps(context) {
   const eventsBanner = await page.data?.snippets?.find(
     (item) => item["snippet_name"] === "eventsBanner"
   );
-  const comment = await callApi
-    .get(`/v2/comment/get?id=${id}`)
-    .then((res) => res.data)
-    .catch((err) => console.error(err));
-  const commentArr = comment.data;
+  const comment =
+    (await callApi
+      .get(`/v2/comment/get?id=${id}`)
+      .then((res) => res.data)
+      .catch((err) => console.error(err))) || null;
+  console.log(comment);
   return {
-    props: { data, eventsBanner, commentArr },
+    props: { data, eventsBanner },
   };
 }
 export interface EventDetailsProps {

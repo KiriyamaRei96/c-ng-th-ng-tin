@@ -102,6 +102,28 @@ const BookingWrapper=styled.div` .pageBody {
             display: grid;
             margin-bottom: 60px
         }
+
+    }
+
+
+}
+
+.map-modal {
+    position: fixed;
+    padding: 70px;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.535);
+    display: flex;
+    overflow: hidden;
+
+    &>div {
+        height: 100%;
+        width: 100%;
     }
 }
 
