@@ -12,8 +12,10 @@ import {
   iconIN,
   iconTW,
 } from "../../../components/img";
+import ShareBox from "../../../components/ShareBox";
+import commentSelector from "../../../ReduxStore/commentSlice/slice";
 import globalSelector from "../../../ReduxStore/globalSlice/slice";
-import { useAppSelector } from "../../../ReduxStore/hooks";
+import { useAppDispatch, useAppSelector } from "../../../ReduxStore/hooks";
 import EventsWrapper from "./_component/styled/stye";
 export async function getServerSideProps(context) {
   const id = context.query?.index?.replace("detail~", "");
@@ -30,12 +32,7 @@ export async function getServerSideProps(context) {
   const eventsBanner = await page.data?.snippets?.find(
     (item) => item["snippet_name"] === "eventsBanner"
   );
-  const comment =
-    (await callApi
-      .get(`/v2/comment/get?postsId=${id}`)
-      .then((res) => res.data)
-      .catch((err) => console.error(err))) || null;
-  console.log(comment);
+
   return {
     props: { data, eventsBanner, id },
   };
@@ -50,12 +47,16 @@ export interface EventDetailsProps {
 const EventDetails = ({
   data,
   eventsBanner,
-  commentArr,
+
   id,
 }: EventDetailsProps) => {
   const router = useRouter();
+  const dispatch = useAppDispatch();
   const settingMap = useAppSelector(globalSelector).settingMap;
-
+  const commentArr = useAppSelector(commentSelector).commentArr;
+  useEffect(() => {
+    dispatch({ type: "GET_COMMENT", payload: id });
+  }, [id]);
   return (
     <EventsWrapper>
       <div id="detailevent">
@@ -75,7 +76,9 @@ const EventDetails = ({
                   <h2 className="--title">{data.title}</h2>
                   <div className="--note d-flex">
                     <div className="--item">
-                      <span>84 {settingMap.ratting}</span>
+                      <span>
+                        {commentArr.length} {settingMap.ratting}
+                      </span>
                     </div>
                     <div className="--item">
                       <i className="fa-regular fa-calendar"></i>
@@ -93,29 +96,7 @@ const EventDetails = ({
                       <img src={iconBack.default.src} alt="" />{" "}
                       {settingMap.return}
                     </a>
-                    <ul>
-                      <li> {settingMap.share}:</li>
-                      <li>
-                        <a href="">
-                          <img src={iconTW.default.src} alt="" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="">
-                          <img src={iconFB.default.src} alt="" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="">
-                          <img src={iconIN.default.src} alt="" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="">
-                          <img src={iconGG.default.src} alt="" />
-                        </a>
-                      </li>
-                    </ul>
+                    <ShareBox />
                   </div>
                   <Comment id={id} />
                 </div>
