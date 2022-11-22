@@ -1,4 +1,5 @@
 import { all } from "redux-saga/effects";
+import CommentlSaga from "./commentSlice/saga";
 import commercailSaga from "./commercial/saga";
 import globalSaga from "./globalSlice/saga";
 import newsEventsSaga from "./newSlice/saga";
@@ -13,6 +14,7 @@ export default function* rootSaga() {
     newsEventsSaga(),
     commercailSaga(),
     utilitiesSaga(),
-    searchSaga()
+    searchSaga(),
+    CommentlSaga()
   ]);
 }

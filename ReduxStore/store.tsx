@@ -2,6 +2,7 @@ import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
 // ...
 import createSagaMiddleware from "redux-saga";
+import { commentSlice } from "./commentSlice/slice";
 import { commercialSlice } from "./commercial/slice";
 import { globalSlice } from "./globalSlice/slice";
 import { newsEventsSlice } from "./newSlice/slice";
@@ -18,6 +19,7 @@ export const store = configureStore({
     commercial: commercialSlice.reducer,
     utilities: utilitiesSlice.reducer,
     search: searchSlice.reducer,
+    comment: commentSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => [sagaMiddleware],
 });

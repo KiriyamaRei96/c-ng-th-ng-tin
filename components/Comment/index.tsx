@@ -1,62 +1,87 @@
-import * as React from "react";
-import { banner } from "../img";
+import React from "react";
+import commentSelector from "../../ReduxStore/commentSlice/slice";
+import { useAppSelector } from "../../ReduxStore/hooks";
+import { banner, comment, iconTime } from "../img";
+import { v4 as uuid } from "uuid";
+import CommentBtn from "../CommentBtn";
 
-export interface CommentProps {}
+export interface CommentProps {
+  id: string | number;
+}
 
-const Comment = (props: CommentProps) => {
+const Comment = ({ id }: CommentProps) => {
+  const commentArr = useAppSelector(commentSelector).commentArr;
+
   return (
     <div className="--coment">
-      <h3 className="--title">3 comments</h3>
+      <div className="d-flex --top">
+        <h3 className="--title">{commentArr?.length} comments</h3>
+        <CommentBtn id={id}>
+          <button>
+            <img src={comment.default.src} alt="" /> Viết bình luận
+          </button>
+        </CommentBtn>
+      </div>
+
       <div className="list_coment">
-        <div className="--comentcustomer ">
-          <div className="--item d-flex ">
-            <div className="--avatar">
-              <img src={banner.default.src} alt="" />
-            </div>
-            <div className="--txt">
-              <div className="--top d-flex justify-content-between align-items-center">
-                <div className="--name_customer">
-                  <h6>Trịnh Tùng Anh</h6>
-                  <div className="--time">
-                    <i className="fa-regular fa-calendar"></i> 01/09/2022
+        {commentArr?.map((comment) => (
+          <div key={uuid()} className="--comentcustomer ">
+            <div className="--item d-flex ">
+              <div className="--avatar">
+                <img src={banner.default.src} alt="" />
+              </div>
+              <div className="--txt">
+                <div className="--top d-flex justify-content-between align-items-center">
+                  <div className="--name_customer">
+                    <h6>{comment?.nameUser}</h6>
+                    <div className="--time">
+                      <img src={iconTime.default.src} alt="" />{" "}
+                      {comment.creationDate}
+                    </div>
                   </div>
+                  <CommentBtn
+                    reply={comment?.nameUser}
+                    parentId={comment?.id}
+                    id={id}
+                  >
+                    <div className="--answer">
+                      <i className="fa-solid fa-reply"></i>Trả lời
+                    </div>
+                  </CommentBtn>
                 </div>
-                <div className="--answer">
-                  <i className="fa-solid fa-reply"></i>Trả lời
+                <article>{comment?.content}</article>
+              </div>
+            </div>
+            {comment?.children.map((cmt) => (
+              <div key={uuid()} className="--item --feedback d-flex ">
+                <div className="--avatar">
+                  <img src={banner.default.src} alt="" />
+                </div>
+                <div className="--txt">
+                  <div className="--top d-flex justify-content-between align-items-center">
+                    <div className="--name_customer">
+                      <h6>{cmt.nameUser}</h6>
+                      <div className="--time">
+                        <img src={iconTime.default.src} alt="" />
+                        {cmt.creationDate}
+                      </div>
+                    </div>
+                    <CommentBtn
+                      reply={cmt?.nameUser}
+                      parentId={comment?.id}
+                      id={id}
+                    >
+                      <div className="--answer">
+                        <i className="fa-solid fa-reply"></i>Trả lời
+                      </div>
+                    </CommentBtn>
+                  </div>
+                  <article>{cmt.content}</article>
                 </div>
               </div>
-              <article>
-                Lorem Ipsum chỉ đơn giản là một đoạn văn bản giả, được dùng vào
-                việc trình bày và dàn trang phục vụ cho in ấn. Lorem Ipsum đã
-                được sử dụng như một văn bản
-              </article>
-            </div>
+            ))}
           </div>
-          <div className="--item --feedback d-flex ">
-            <div className="--avatar">
-              <img src={banner.default.src} alt="" />
-            </div>
-            <div className="--txt">
-              <div className="--top d-flex justify-content-between align-items-center">
-                <div className="--name_customer">
-                  <h6>Trịnh Tùng Anh</h6>
-                  <div className="--time">
-                    <i className=" potision fa-regular fa-calendar"></i>{" "}
-                    01/09/2022
-                  </div>
-                </div>
-                <div className="--answer">
-                  <i className="fa-solid fa-reply"></i>Trả lời
-                </div>
-              </div>
-              <article>
-                Lorem Ipsum chỉ đơn giản là một đoạn văn bản giả, được dùng vào
-                việc trình bày và dàn trang phục vụ cho in ấn. Lorem Ipsum đã
-                được sử dụng như một văn bản
-              </article>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

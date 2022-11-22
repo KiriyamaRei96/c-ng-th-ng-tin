@@ -2005,8 +2005,86 @@ footer {
 
 }
 
+.commentBtn {
+  position: relative;
+
+
+
+
+
+
+}
+
+.comment-form {
+  font: var(--font-body) !important;
+  flex-direction: column;
+  font-weight: 400;
+  font-size: 16px !important;
+  line-height: 22px !important;
+
+  textarea,
+  input {
+    background: #FFFFFF;
+    border: 1px solid #DCDCDC;
+    border-radius: 3px;
+    padding: 14px;
+    outline: none;
+
+  }
+
+  button {
+    padding: 14px 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+    width: 189px;
+    height: 54px;
+    border: none;
+    background: #FB8500;
+    border-radius: 3px;
+  }
+
+  .--content {
+    width: 100%;
+    height: 300px;
+  }
+}
+
+.comment-modal {
+  h3 {
+    font-family: 'Canela';
+
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 38px;
+  }
+}
+
 .--coment {
   margin-top: 60px;
+
+  .--top {
+    justify-content: space-between;
+
+
+    button {
+      display: flex;
+      align-items: center;
+      background: #F5F5F5;
+      border: 1px solid #DCDCDC;
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 14px;
+      line-height: 20px;
+      color: #6F7378;
+
+      img {
+        margin-right: 5px;
+      }
+    }
+  }
 
   h3 {
     font-size: 30px;
@@ -2039,6 +2117,7 @@ footer {
     padding: 20px;
     background: #F6F8FB;
     border-radius: 0px 0px 0px 30px;
+    flex: 1;
 
     h6 {
       font-weight: 600;

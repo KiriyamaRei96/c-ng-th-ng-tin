@@ -3,8 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import CommercialDetailWrapper from "./_component/styled/style";
-import Image from "next/image";
-import Sider from "antd/lib/layout/Sider";
+
 import Slider from "react-slick";
 import RestaurantCard from "../_component/RestaurantCard";
 import TourCard from "../_component/TourCard";
@@ -18,9 +17,9 @@ import {
 } from "../../../components/img";
 import callApi from "../../../Api/Axios";
 import { v4 as uuid } from "uuid";
-import Item from "antd/lib/list/Item";
+
 import Fancybox from "../../../components/fancybox";
-import { all } from "redux-saga/effects";
+
 import ContentBox from "./_component/ContentBox";
 import Map from "../../../components/Map";
 import RoomsList from "./_component/RoomsList";
@@ -28,10 +27,11 @@ import { useAppDispatch, useAppSelector } from "../../../ReduxStore/hooks";
 import pointSelector from "../../../ReduxStore/pointSlice/slice";
 import HotelCard from "../_component/HotelCard";
 import Comment from "../../../components/Comment";
-import { cp } from "fs";
+
 import globalSelector from "../../../ReduxStore/globalSlice/slice";
 import capitalizeFirstLetter from "../../../funcion/toUpperCase";
 import BookingCard from "../../../components/BookingCard";
+import commentSelector from "../../../ReduxStore/commentSlice/slice";
 export async function getServerSideProps(context) {
   let type;
   let other;
@@ -76,6 +76,7 @@ export async function getServerSideProps(context) {
         type,
         data,
         otherData,
+        id,
       },
     };
   } else {
@@ -84,15 +85,20 @@ export async function getServerSideProps(context) {
     };
   }
 }
-const CommercialDetail = ({ type, data, otherData }) => {
+const CommercialDetail = ({ type, data, otherData, id }) => {
   const router = useRouter();
   const pointArr = useAppSelector(pointSelector).pointArr;
+  const commentArr = useAppSelector(commentSelector).commentArr;
+
   const dispatch = useAppDispatch();
   useEffect(() => {
     if (pointArr.length === 0) {
       dispatch({ type: "GET_POINT" });
     }
   }, [pointArr, router.locale]);
+  useEffect(() => {
+    dispatch({ type: "GET_COMMENT", payload: id });
+  }, [id]);
 
   const [image, setImage] = useState<string | undefined>(
     data?.featureImage.path
@@ -119,27 +125,27 @@ const CommercialDetail = ({ type, data, otherData }) => {
 
   return (
     <CommercialDetailWrapper>
-      <div id='detailservice'>
-        <div className='detailserviceContent detailAll'>
-          <div className='container-fluid'>
-            <div className='row'>
-              <div className='col-md-9'>
-                <div className='--left'>
-                  <div className='subTitle'>
+      <div id="detailservice">
+        <div className="detailserviceContent detailAll">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-9">
+                <div className="--left">
+                  <div className="subTitle">
                     {settingMap[capitalizeFirstLetter(data?.type)]}
                   </div>
-                  <h3 className='--titlepost'>{data?.title}</h3>
-                  <div className='--interactive d-flex align-items-center justify-content-between'>
-                    <div className='--evaluate d-flex align-items-center'>
+                  <h3 className="--titlepost">{data?.title}</h3>
+                  <div className="--interactive d-flex align-items-center justify-content-between">
+                    <div className="--evaluate d-flex align-items-center">
                       {data?.star ? (
-                        <div className='--star d-flex align-items-center'>
+                        <div className="--star d-flex align-items-center">
                           <span>{data?.star}</span>
                           {Array.apply(null, Array(Number(data?.star))).map(
                             function (x, i) {
                               return (
                                 <i
                                   key={uuid()}
-                                  className='fa-solid fa-star'
+                                  className="fa-solid fa-star"
                                 ></i>
                               );
                             }
@@ -150,7 +156,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
                                 <i
                                   key={uuid()}
                                   style={{ color: "wheat" }}
-                                  className='fa-solid fa-star'
+                                  className="fa-solid fa-star"
                                 ></i>
                               );
                             }
@@ -160,27 +166,25 @@ const CommercialDetail = ({ type, data, otherData }) => {
                         false
                       )}
 
-                      <span>84 {settingMap.ratting}</span>
+                      <span>
+                        {commentArr?.length} {settingMap.ratting}
+                      </span>
                     </div>
-                    <div className='--sharecmt d-flex align-items-center'>
-                      <div className='--link'>
-                        <a href=''>
-                          <i className='fa-solid fa-share-nodes'></i>
+                    <div className="--sharecmt d-flex align-items-center">
+                      <div className="--link">
+                        <a href="">
+                          <i className="fa-solid fa-share-nodes"></i>
                           {settingMap.share}
                         </a>
-                        <a href=''>
-                          <i className='fa-solid fa-heart'></i>
-                          {settingMap.flavor}
-                        </a>
                       </div>
-                      <button className='button_hover2 button_2'>
+                      <button className="button_hover2 button_2">
                         {settingMap.writeRatting}
                       </button>
                     </div>
                   </div>
-                  <div className='list_img'>
-                    <div className='--img'>
-                      <img src={image ? image : ""} alt='' />
+                  <div className="list_img">
+                    <div className="--img">
+                      <img src={image ? image : ""} alt="" />
                     </div>
                     {allIMG?.slice(0, 4).map((img, id) =>
                       id < 3 ? (
@@ -193,16 +197,16 @@ const CommercialDetail = ({ type, data, otherData }) => {
                             image === img.path ? "--img active" : "--img"
                           }
                         >
-                          <img src={img.path} alt='' />
+                          <img src={img.path} alt="" />
                         </div>
                       ) : (
-                        <div key={uuid()} className='--img'>
-                          <img src={img.path} alt='' />
+                        <div key={uuid()} className="--img">
+                          <img src={img.path} alt="" />
                           <Fancybox key={uuid()} options={{ infinite: true }}>
                             {allIMG?.map((item) => (
                               <a
                                 key={uuid()}
-                                data-fancybox='gallery'
+                                data-fancybox="gallery"
                                 data-src={item.path}
                               >
                                 {data?.galleries.length - 3}+
@@ -213,8 +217,8 @@ const CommercialDetail = ({ type, data, otherData }) => {
                       )
                     )}
                   </div>
-                  <div className='list_content'>
-                    <div className='--tab'>
+                  <div className="list_content">
+                    <div className="--tab">
                       <div
                         onClick={() => {
                           setActive("content");
@@ -307,7 +311,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
                       false
                     )}
                     {active === "potision" ? (
-                      <Map arr={[data]} height='400px' />
+                      <Map arr={[data]} height="400px" />
                     ) : (
                       false
                     )}
@@ -316,18 +320,18 @@ const CommercialDetail = ({ type, data, otherData }) => {
                           <RoomsList key={uuid()} rooms={room} />
                         ))
                       : false}
-                    {active === "comments" ? <Comment /> : false}
-                    <div className='--card'>
-                      <div className='--icon'>
-                        <img src={icon13.default.src} alt='' />
+                    {active === "comments" ? <Comment id={id} /> : false}
+                    <div className="--card">
+                      <div className="--icon">
+                        <img src={icon13.default.src} alt="" />
                       </div>
-                      <div className='--txt'>
-                        <div className='--title'>{settingMap.hightLight}</div>
+                      <div className="--txt">
+                        <div className="--title">{settingMap.hightLight}</div>
                         <ul>
                           {data?.highlights?.split("/").map((text) => (
                             <li key={uuid()}>
-                              <div className='--check'>
-                                <img src={iconCheck.default.src} alt='' />
+                              <div className="--check">
+                                <img src={iconCheck.default.src} alt="" />
                               </div>
                               <span>{text}</span>
                             </li>
@@ -338,21 +342,21 @@ const CommercialDetail = ({ type, data, otherData }) => {
                   </div>
                 </div>
               </div>
-              <div className='col-md-3'>
-                <div className='--right cardbook'>
+              <div className="col-md-3">
+                <div className="--right cardbook">
                   <BookingCard />
-                  <div className='--map'>
-                    <Map height='450px' arr={pointArr} />
+                  <div className="--map">
+                    <Map height="450px" arr={pointArr} />
                   </div>
-                  <div className='--endow'>
-                    <div className='--img'>
-                      <img src={event?.image?.path} alt='' />
+                  <div className="--endow">
+                    <div className="--img">
+                      <img src={event?.image?.path} alt="" />
                     </div>
                     <Link href={event?.link ? event?.link : "/"}>
-                      <div className='--txt'>
+                      <div className="--txt">
                         <span>{event?.subTitle}</span>
                         <h2>{event?.title}</h2>
-                        <div className='--des'>{event?.description}</div>
+                        <div className="--des">{event?.description}</div>
                       </div>
                     </Link>
                   </div>
@@ -362,14 +366,14 @@ const CommercialDetail = ({ type, data, otherData }) => {
           </div>
         </div>
         {router?.query?.commercial === "Restaurant" ? (
-          <div className='detailservicediscover'>
-            <div className='container-fluid'>
-              <div className='--title'>
-                <div className='subTitle text-center'>{slider?.subTitle}</div>
-                <h1 className='Title text-center'>{slider?.tilte}</h1>
+          <div className="detailservicediscover">
+            <div className="container-fluid">
+              <div className="--title">
+                <div className="subTitle text-center">{slider?.subTitle}</div>
+                <h1 className="Title text-center">{slider?.tilte}</h1>
               </div>
-              <div className='slider'>
-                <div className='list_servicediscover'>
+              <div className="slider">
+                <div className="list_servicediscover">
                   {slider?.relations?.length > 4 ? (
                     <Slider
                       {...{
@@ -382,12 +386,12 @@ const CommercialDetail = ({ type, data, otherData }) => {
 
                         nextArrow: (
                           <div>
-                            <i className='fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long'></i>
+                            <i className="fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long"></i>
                           </div>
                         ),
                         prevArrow: (
                           <div>
-                            <i className='fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long'></i>
+                            <i className="fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long"></i>
                           </div>
                         ),
                         responsive: [
@@ -401,10 +405,10 @@ const CommercialDetail = ({ type, data, otherData }) => {
                           },
                         ],
                       }}
-                      className='row'
+                      className="row"
                     >
                       {slider?.relations?.map((i) => (
-                        <div key={uuid()} className='col-md-3'>
+                        <div key={uuid()} className="col-md-3">
                           <RestaurantCard
                             title={i.title}
                             address={i.address}
@@ -417,9 +421,9 @@ const CommercialDetail = ({ type, data, otherData }) => {
                       ))}
                     </Slider>
                   ) : (
-                    <div className='row'>
+                    <div className="row">
                       {slider?.relations?.map((i) => (
-                        <div key={uuid()} className='col-md-3'>
+                        <div key={uuid()} className="col-md-3">
                           <RestaurantCard
                             title={i.title}
                             address={i.address}
@@ -434,7 +438,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
                     </div>
                   )}
                 </div>
-                <div className='arrow_servicediscover'></div>
+                <div className="arrow_servicediscover"></div>
               </div>
             </div>
           </div>
@@ -442,14 +446,14 @@ const CommercialDetail = ({ type, data, otherData }) => {
           false
         )}
         {router?.query?.commercial === "Hotel" ? (
-          <div className='detailservicediscover detailhotel'>
-            <div className='container-fluid'>
-              <div className='--title'>
-                <div className='subTitle text-center'>{slider?.subTitle}</div>
-                <h1 className='Title text-center'>{slider?.title}</h1>
+          <div className="detailservicediscover detailhotel">
+            <div className="container-fluid">
+              <div className="--title">
+                <div className="subTitle text-center">{slider?.subTitle}</div>
+                <h1 className="Title text-center">{slider?.title}</h1>
               </div>
-              <div className='slider'>
-                <div className='list_servicediscover'>
+              <div className="slider">
+                <div className="list_servicediscover">
                   {slider?.relations?.length > 4 ? (
                     <Slider
                       {...{
@@ -462,12 +466,12 @@ const CommercialDetail = ({ type, data, otherData }) => {
 
                         nextArrow: (
                           <div>
-                            <i className='fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long'></i>
+                            <i className="fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long"></i>
                           </div>
                         ),
                         prevArrow: (
                           <div>
-                            <i className='fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long'></i>
+                            <i className="fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long"></i>
                           </div>
                         ),
                         responsive: [
@@ -481,10 +485,10 @@ const CommercialDetail = ({ type, data, otherData }) => {
                           },
                         ],
                       }}
-                      className='row'
+                      className="row"
                     >
                       {slider?.relations?.map((i) => (
-                        <div key={uuid()} className='col-md-3'>
+                        <div key={uuid()} className="col-md-3">
                           <HotelCard
                             galaley={i.galleries}
                             title={i.title}
@@ -498,9 +502,9 @@ const CommercialDetail = ({ type, data, otherData }) => {
                       ))}
                     </Slider>
                   ) : (
-                    <div className='row'>
+                    <div className="row">
                       {slider?.relations?.map((i) => (
-                        <div key={uuid()} className='col-md-3'>
+                        <div key={uuid()} className="col-md-3">
                           <HotelCard
                             galaley={i.galleries}
                             title={i.title}
@@ -515,9 +519,9 @@ const CommercialDetail = ({ type, data, otherData }) => {
                     </div>
                   )}
 
-                  <div className='row'></div>
+                  <div className="row"></div>
                 </div>
-                <div className='arrow_servicediscover'></div>
+                <div className="arrow_servicediscover"></div>
               </div>
             </div>
           </div>
@@ -525,14 +529,14 @@ const CommercialDetail = ({ type, data, otherData }) => {
           false
         )}
         {router?.query?.commercial === "Tour" ? (
-          <div className='detailservicediscover1 detailservicediscover'>
-            <div className='container-fluid'>
-              <div className='--title'>
-                <div className='subTitle text-center'>{slider?.subTitle}</div>
-                <h1 className='Title text-center'>{slider?.title}</h1>
+          <div className="detailservicediscover1 detailservicediscover">
+            <div className="container-fluid">
+              <div className="--title">
+                <div className="subTitle text-center">{slider?.subTitle}</div>
+                <h1 className="Title text-center">{slider?.title}</h1>
               </div>
-              <div className='slider1'>
-                <div className='list_servicediscover1 dicover_all'>
+              <div className="slider1">
+                <div className="list_servicediscover1 dicover_all">
                   {slider?.relations?.length > 4 ? (
                     <Slider
                       {...{
@@ -544,12 +548,12 @@ const CommercialDetail = ({ type, data, otherData }) => {
                         arrows: true,
                         nextArrow: (
                           <div>
-                            <i className='fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long'></i>
+                            <i className="fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long"></i>
                           </div>
                         ),
                         prevArrow: (
                           <div>
-                            <i className='fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long'></i>
+                            <i className="fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long"></i>
                           </div>
                         ),
                         responsive: [
@@ -564,10 +568,10 @@ const CommercialDetail = ({ type, data, otherData }) => {
                           },
                         ],
                       }}
-                      className='list_slider'
+                      className="list_slider"
                     >
                       {slider?.relations?.map((i) => (
-                        <div key={uuid()} className='--wrapper'>
+                        <div key={uuid()} className="--wrapper">
                           <TourCard
                             id={i.id}
                             img={i.featureImage?.path}
@@ -580,9 +584,9 @@ const CommercialDetail = ({ type, data, otherData }) => {
                       ))}
                     </Slider>
                   ) : (
-                    <div className='row'>
+                    <div className="row">
                       {slider?.relations?.map((i) => (
-                        <div key={uuid()} className='--wrapper'>
+                        <div key={uuid()} className="--wrapper">
                           <TourCard
                             id={i.id}
                             img={i.featureImage?.path}
@@ -596,7 +600,7 @@ const CommercialDetail = ({ type, data, otherData }) => {
                     </div>
                   )}
                 </div>
-                <div className='arrow_servicediscover1'></div>
+                <div className="arrow_servicediscover1"></div>
               </div>
             </div>
           </div>

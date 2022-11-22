@@ -32,24 +32,26 @@ export async function getServerSideProps(context) {
   );
   const comment =
     (await callApi
-      .get(`/v2/comment/get?id=${id}`)
+      .get(`/v2/comment/get?postsId=${id}`)
       .then((res) => res.data)
       .catch((err) => console.error(err))) || null;
   console.log(comment);
   return {
-    props: { data, eventsBanner },
+    props: { data, eventsBanner, id },
   };
 }
 export interface EventDetailsProps {
   data: any;
   eventsBanner?: any;
   commentArr?: any;
+  id: number | string;
 }
 
 const EventDetails = ({
   data,
   eventsBanner,
   commentArr,
+  id,
 }: EventDetailsProps) => {
   const router = useRouter();
   const settingMap = useAppSelector(globalSelector).settingMap;
@@ -115,7 +117,7 @@ const EventDetails = ({
                       </li>
                     </ul>
                   </div>
-                  <Comment />
+                  <Comment id={id} />
                 </div>
               </div>
               <div className="col-md-3">

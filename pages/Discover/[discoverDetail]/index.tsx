@@ -47,10 +47,11 @@ export async function getServerSideProps(context) {
     props: {
       data,
       otherData,
+      id,
     },
   };
 }
-const DiscoverDetail = ({ data, otherData }) => {
+const DiscoverDetail = ({ data, otherData, id }) => {
   const [image, setImage] = useState<string | undefined>(
     data?.featureImage?.path
   );
@@ -123,10 +124,6 @@ const DiscoverDetail = ({ data, otherData }) => {
                         <a href="">
                           <i className="fa-solid fa-share-nodes"></i>{" "}
                           {settingMap.share}
-                        </a>
-                        <a href="">
-                          <i className="fa-solid fa-heart"></i>
-                          {settingMap.flavor}
                         </a>
                       </div>
                       <button className="button_hover2 button_2">
@@ -286,7 +283,7 @@ const DiscoverDetail = ({ data, otherData }) => {
                     ) : (
                       false
                     )}
-                    {active === "comments" ? <Comment /> : false}
+                    {active === "comments" ? <Comment id={id} /> : false}
                     <div className="--card">
                       <div className="--icon">
                         <img src={icon13.default.src} alt="" />
