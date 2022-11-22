@@ -23,6 +23,8 @@ import Comment from "../../../components/Comment";
 import { useRouter } from "next/router";
 import globalSelector from "../../../ReduxStore/globalSlice/slice";
 import BookingCard from "../../../components/BookingCard";
+import CommentBtn from "../../../components/CommentBtn";
+import commentSelector from "../../../ReduxStore/commentSlice/slice";
 
 export async function getServerSideProps(context) {
   let other;
@@ -75,7 +77,10 @@ const DiscoverDetail = ({ data, otherData, id }) => {
     (snip) => snip["snippet_name"] === "slider"
   );
   const settingMap = useAppSelector(globalSelector).settingMap;
-  console.log(data.vr);
+  const commentArr = useAppSelector(commentSelector).commentArr;
+  useEffect(() => {
+    dispatch({ type: "GET_COMMENT", payload: id });
+  }, [id]);
   return (
     <DiscoverWarpper>
       <div id="detaildiscover">
@@ -117,7 +122,9 @@ const DiscoverDetail = ({ data, otherData, id }) => {
                         false
                       )}
 
-                      <span>84 {settingMap.ratting}</span>
+                      <span>
+                        {commentArr.length} {settingMap.ratting}
+                      </span>
                     </div>
                     <div className="--sharecmt d-flex align-items-center">
                       <div className="--link">
@@ -126,9 +133,11 @@ const DiscoverDetail = ({ data, otherData, id }) => {
                           {settingMap.share}
                         </a>
                       </div>
-                      <button className="button_hover2 button_2">
-                        {settingMap.writeRatting}
-                      </button>
+                      <CommentBtn id={id}>
+                        <button className="button_hover2 button_2">
+                          {settingMap.writeRatting}
+                        </button>
+                      </CommentBtn>
                     </div>
                   </div>
                   <div className="list_img">
@@ -370,24 +379,29 @@ const DiscoverDetail = ({ data, otherData, id }) => {
                     {slider?.relations.map((item) => (
                       <div key={uuid()} className="--warrper ">
                         <div className="--item img_hover">
-                          <a>
-                            <div className="--img">
-                              <img src={item?.featureImage.path} alt="" />
-                            </div>
-                            <div className="--txt">
-                              <div className="--type">
-                                {item?.pointType[0]?.title}
+                          <Link
+                            key={uuid()}
+                            href={`/Discover/detail~${item.id}`}
+                          >
+                            <a>
+                              <div className="--img">
+                                <img src={item?.featureImage.path} alt="" />
                               </div>
-                              <h4>{item?.title}</h4>
-                              <div className="--location ">
-                                <Image
-                                  src={require("./_asset/icon-map1.svg")}
-                                  alt=""
-                                />
-                                <span>{item?.address}</span>
+                              <div className="--txt">
+                                <div className="--type">
+                                  {item?.pointType[0]?.title}
+                                </div>
+                                <h4>{item?.title}</h4>
+                                <div className="--location ">
+                                  <Image
+                                    src={require("./_asset/icon-map1.svg")}
+                                    alt=""
+                                  />
+                                  <span>{item?.address}</span>
+                                </div>
                               </div>
-                            </div>
-                          </a>
+                            </a>
+                          </Link>
                         </div>
                       </div>
                     ))}
@@ -397,24 +411,29 @@ const DiscoverDetail = ({ data, otherData, id }) => {
                     {slider?.relations.map((item) => (
                       <div key={uuid()} className="--warrper col-md-3">
                         <div className="--item img_hover">
-                          <a>
-                            <div className="--img">
-                              <img src={item?.featureImage.path} alt="" />
-                            </div>
-                            <div className="--txt">
-                              <div className="--type">
-                                {item?.pointType[0]?.title}
+                          <Link
+                            key={uuid()}
+                            href={`/Discover/detail~${item.id}`}
+                          >
+                            <a>
+                              <div className="--img">
+                                <img src={item?.featureImage.path} alt="" />
                               </div>
-                              <h4>{item?.title}</h4>
-                              <div className="--location ">
-                                <Image
-                                  src={require("./_asset/icon-map1.svg")}
-                                  alt=""
-                                />
-                                <span>{item?.address}</span>
+                              <div className="--txt">
+                                <div className="--type">
+                                  {item?.pointType[0]?.title}
+                                </div>
+                                <h4>{item?.title}</h4>
+                                <div className="--location ">
+                                  <Image
+                                    src={require("./_asset/icon-map1.svg")}
+                                    alt=""
+                                  />
+                                  <span>{item?.address}</span>
+                                </div>
                               </div>
-                            </div>
-                          </a>
+                            </a>
+                          </Link>
                         </div>
                       </div>
                     ))}

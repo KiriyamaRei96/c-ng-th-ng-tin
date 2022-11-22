@@ -15,6 +15,7 @@ import {
   iconTW,
 } from "../../../components/img";
 import globalSelector from "../../../ReduxStore/globalSlice/slice";
+import ShareBox from "../../../components/ShareBox";
 
 export async function getServerSideProps(context) {
   const id = context.query?.index?.replace("detail~", "");
@@ -53,86 +54,63 @@ const NewsDetail = ({ data, newsBanner }: NewsDetailProps) => {
   const settingMap = useAppSelector(globalSelector).settingMap;
   return (
     <NewsDetailWarpper>
-      <div id='detailnews'>
-        <div className='Banner d-flex'>
-          <img src={newsBanner.image?.path} alt=''></img>
-          <div className='--Item'>
+      <div id="detailnews">
+        <div className="Banner d-flex">
+          <img src={newsBanner.image?.path} alt=""></img>
+          <div className="--Item">
             <h1>{newsBanner.title}</h1>
             <BreadCrumb />
           </div>
         </div>
-        <div className='detailnewsContent'>
-          <div className='container-fluid'>
-            <div className='row'>
-              <div className='col-md-9'>
-                <div className='--left'>
-                  <div className='subTitle'>{newsBanner.subTitle}</div>
-                  <h2 className='--title'>{data.title}</h2>
-                  <div className='--note d-flex'>
-                    <div className='--item'>
-                      <a href=''>
+        <div className="detailnewsContent">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-9">
+                <div className="--left">
+                  <div className="subTitle">{newsBanner.subTitle}</div>
+                  <h2 className="--title">{data.title}</h2>
+                  <div className="--note d-flex">
+                    <div className="--item">
+                      <a href="">
                         <span>32 {settingMap.comment}</span>
                       </a>
                     </div>
-                    <div className='--item'>
+                    <div className="--item">
                       <span>84 {settingMap.ratting}</span>
                     </div>
-                    <div className='--item'>
-                      <i className='fa-regular fa-calendar'></i>
+                    <div className="--item">
+                      <i className="fa-regular fa-calendar"></i>
                       <span>{data.date}</span>
                     </div>
-                    <div className='--item'>
-                      <i className='fa-regular fa-eye'></i>
+                    <div className="--item">
+                      <i className="fa-regular fa-eye"></i>
                       <span>{data.viewTotal}</span>
                     </div>
                   </div>
-                  <div className='--des'>{data.description}</div>
+                  <div className="--des">{data.description}</div>
                   <article
                     dangerouslySetInnerHTML={{ __html: data.content }}
                   ></article>
 
-                  <div className='--backshare d-flex justify-content-between'>
-                    <a onClick={() => router.back()} className='--back'>
-                      <img src={iconBack.default.src} alt='' />{" "}
+                  <div className="--backshare d-flex justify-content-between">
+                    <a onClick={() => router.back()} className="--back">
+                      <img src={iconBack.default.src} alt="" />{" "}
                       {settingMap.return}
                     </a>
-
-                    <ul>
-                      <li> {settingMap.share}:</li>
-                      <li>
-                        <a href=''>
-                          <img src={iconTW.default.src} alt='' />
-                        </a>
-                      </li>
-                      <li>
-                        <a href=''>
-                          <img src={iconFB.default.src} alt='' />
-                        </a>
-                      </li>
-                      <li>
-                        <a href=''>
-                          <img src={iconIN.default.src} alt='' />
-                        </a>
-                      </li>
-                      <li>
-                        <a href=''>
-                          <img src={iconGG.default.src} alt='' />
-                        </a>
-                      </li>
-                    </ul>
+                    <ShareBox />
                   </div>
                 </div>
               </div>
-              <div className='col-md-3'>
-                <div className='--right'>
-                  <h3 className='--titlenews'>Bài viết khác</h3>
-                  <div className='othernews'>
+              <div className="col-md-3">
+                <div className="--right">
+                  <h3 className="--titlenews">Bài viết khác</h3>
+                  <div className="othernews">
                     {otherNews.map((item) => (
-                      <div key={uuid()} className='--item '>
-                        <div className='--img img_hover'>
+                      <div key={uuid()} className="--item ">
+                        <div className="--img img_hover">
                           <Link href={`/News&Event/news/detail~${item.id}`}>
                             <a>
-                              <img src={item.featureImage?.path} alt='' />
+                              <img src={item.featureImage?.path} alt="" />
                             </a>
                           </Link>
                         </div>

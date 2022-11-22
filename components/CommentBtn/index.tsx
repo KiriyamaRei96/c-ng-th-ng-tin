@@ -49,6 +49,7 @@ const CommentBtn = ({ children, id, parentId, reply }: CommentBtnProps) => {
               type: "CREATE_COMMENT",
               payload,
             });
+            setOpen(false);
           }}
           layout="vertical"
           className="d-flex comment-form"

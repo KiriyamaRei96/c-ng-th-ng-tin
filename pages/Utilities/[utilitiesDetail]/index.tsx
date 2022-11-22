@@ -10,6 +10,7 @@ import {
   iconTW,
 } from "../../../components/img";
 import Map from "../../../components/Map";
+import ShareBox from "../../../components/ShareBox";
 import globalSelector from "../../../ReduxStore/globalSlice/slice";
 import { useAppSelector } from "../../../ReduxStore/hooks";
 import UtilitiesDetailWrapper from "./_component/styled/style";
@@ -32,24 +33,24 @@ const UtilitiesDetail = ({ data }) => {
   const settingMap = useAppSelector(globalSelector).settingMap;
   return (
     <UtilitiesDetailWrapper>
-      <div id='detailuti'>
-        <div className='detailutiContent'>
-          <div className='container-fluid'>
-            <div className='row'>
-              <div className='col-md-9'>
-                <div className='--left'>
-                  <div className='subTitle'>{settingMap.detailUtilities}</div>
-                  <h1 className='Title'>{data?.title}</h1>
+      <div id="detailuti">
+        <div className="detailutiContent">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-9">
+                <div className="--left">
+                  <div className="subTitle">{settingMap.detailUtilities}</div>
+                  <h1 className="Title">{data?.title}</h1>
                   <ul>
                     <li>
                       <span>{settingMap.address}</span>
                       <span>
-                        <i className='fa-solid fa-location-dot'></i>
+                        <i className="fa-solid fa-location-dot"></i>
                         {data?.address}
                       </span>
                     </li>
                     <li>
-                      <a href=''>
+                      <a href="">
                         <span>{settingMap.utilitieType}</span>
                         <span>{data?.utilitiesType[0]?.title}</span>
                       </a>
@@ -66,45 +67,23 @@ const UtilitiesDetail = ({ data }) => {
                   <article
                     dangerouslySetInnerHTML={{ __html: data?.content }}
                   ></article>
-                  <div className='--backshare d-flex justify-content-between'>
+                  <div className="--backshare d-flex justify-content-between">
                     <a
                       onClick={(e) => {
                         router.back();
                       }}
-                      className='--back'
+                      className="--back"
                     >
-                      <img src={iconBack.default.src} alt='' />
+                      <img src={iconBack.default.src} alt="" />
                       {settingMap.return}
                     </a>
-                    <ul>
-                      <li> {settingMap.share}:</li>
-                      <li>
-                        <a href=''>
-                          <img src={iconTW.default.src} alt='' />
-                        </a>
-                      </li>
-                      <li>
-                        <a href=''>
-                          <img src={iconFB.default.src} alt='' />
-                        </a>
-                      </li>
-                      <li>
-                        <a href=''>
-                          <img src={iconIN.default.src} alt='' />
-                        </a>
-                      </li>
-                      <li>
-                        <a href=''>
-                          <img src={iconGG.default.src} alt='' />
-                        </a>
-                      </li>
-                    </ul>
+                    <ShareBox />
                   </div>
                 </div>
               </div>
-              <div className='col-md-3'>
-                <div className='--right'>
-                  <Map height='450px' arr={[data]} />
+              <div className="col-md-3">
+                <div className="--right">
+                  <Map height="450px" arr={[data]} />
                 </div>
               </div>
             </div>

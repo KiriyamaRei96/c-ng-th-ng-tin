@@ -12,6 +12,7 @@ export const signpost = require("../Asset/signpost.png");
 export const comment = require("../Asset/comment.png");
 
 
+export const user = require("../Asset/pngwing.com.png");
 export const mapB = require("../Asset/map-b.png");
 
 export const Moon = require("../Asset/Vector.svg");

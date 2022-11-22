@@ -1,7 +1,7 @@
 import React from "react";
 import commentSelector from "../../ReduxStore/commentSlice/slice";
 import { useAppSelector } from "../../ReduxStore/hooks";
-import { banner, comment, iconTime } from "../img";
+import { banner, comment, iconTime, user } from "../img";
 import { v4 as uuid } from "uuid";
 import CommentBtn from "../CommentBtn";
 
@@ -28,7 +28,7 @@ const Comment = ({ id }: CommentProps) => {
           <div key={uuid()} className="--comentcustomer ">
             <div className="--item d-flex ">
               <div className="--avatar">
-                <img src={banner.default.src} alt="" />
+                <img src={user.default.src} alt="" />
               </div>
               <div className="--txt">
                 <div className="--top d-flex justify-content-between align-items-center">
@@ -55,7 +55,7 @@ const Comment = ({ id }: CommentProps) => {
             {comment?.children.map((cmt) => (
               <div key={uuid()} className="--item --feedback d-flex ">
                 <div className="--avatar">
-                  <img src={banner.default.src} alt="" />
+                  <img src={user.default.src} alt="" />
                 </div>
                 <div className="--txt">
                   <div className="--top d-flex justify-content-between align-items-center">

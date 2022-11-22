@@ -32,6 +32,7 @@ import globalSelector from "../../../ReduxStore/globalSlice/slice";
 import capitalizeFirstLetter from "../../../funcion/toUpperCase";
 import BookingCard from "../../../components/BookingCard";
 import commentSelector from "../../../ReduxStore/commentSlice/slice";
+import CommentBtn from "../../../components/CommentBtn";
 export async function getServerSideProps(context) {
   let type;
   let other;
@@ -89,6 +90,9 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
   const router = useRouter();
   const pointArr = useAppSelector(pointSelector).pointArr;
   const commentArr = useAppSelector(commentSelector).commentArr;
+  useEffect(() => {
+    dispatch({ type: "GET_COMMENT", payload: id });
+  }, [id]);
 
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -96,9 +100,6 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
       dispatch({ type: "GET_POINT" });
     }
   }, [pointArr, router.locale]);
-  useEffect(() => {
-    dispatch({ type: "GET_COMMENT", payload: id });
-  }, [id]);
 
   const [image, setImage] = useState<string | undefined>(
     data?.featureImage.path
@@ -177,9 +178,11 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                           {settingMap.share}
                         </a>
                       </div>
-                      <button className="button_hover2 button_2">
-                        {settingMap.writeRatting}
-                      </button>
+                      <CommentBtn id={id}>
+                        <button className="button_hover2 button_2">
+                          {settingMap.writeRatting}
+                        </button>
+                      </CommentBtn>
                     </div>
                   </div>
                   <div className="list_img">
