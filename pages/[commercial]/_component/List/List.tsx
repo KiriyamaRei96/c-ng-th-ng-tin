@@ -16,7 +16,7 @@ const List = ({ List }) => {
   const searchArr = useAppSelector(commercialSelector).searchArr;
   const pagination = useAppSelector(commercialSelector).pagination;
   const filter = useAppSelector(commercialSelector).filter;
-
+  const listType = useAppSelector(commercialSelector).listType;
   const [page, setPage] = useState<Number>(1);
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("");
@@ -81,7 +81,7 @@ const List = ({ List }) => {
       {router.asPath.includes("Tour") ? <h2>{List?.title}</h2> : false}
       {router.asPath.includes("Restaurant") ? <h2>{List?.title}</h2> : false}
 
-      {router.asPath.includes("Tour") ? (
+      {listType === "tour_list" ? (
         <div className='--list --tour'>
           {searchArr.map((i) => (
             <TourCard
@@ -97,7 +97,7 @@ const List = ({ List }) => {
       ) : (
         false
       )}
-      {router.asPath.includes("Hotel") ? (
+      {listType === "hotel_list" ? (
         <div className='--list --Hotel'>
           {searchArr.map((i) => (
             <HotelCard
@@ -115,7 +115,7 @@ const List = ({ List }) => {
       ) : (
         false
       )}
-      {router.asPath.includes("Restaurant") ? (
+      {listType === "restaurant_list" ? (
         <div className='--list --Restaurant'>
           {searchArr.map((i) => (
             <RestaurantCard

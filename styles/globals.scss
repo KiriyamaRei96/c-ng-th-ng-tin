@@ -1438,7 +1438,7 @@ footer {
           z-index: 1;
         }
 
-        input,
+        input[type="date"],
         select {
           border: 1px solid #DCDCDC;
           border-radius: 6px;
@@ -1447,6 +1447,11 @@ footer {
           padding-left: 40px;
           box-shadow: none;
           font-size: 14px;
+        }
+
+        .potision {
+          right: unset !important;
+          color: #6F7378 !important;
         }
 
         i {
@@ -1921,10 +1926,14 @@ footer {
 
   }
 
-
+  .ant-rate-star:not(:last-child) {
+    margin-right: 4px
+  }
 
   .ant-rate-star {
     height: fit-content;
+
+
 
     svg {
       width: 14px;
