@@ -440,9 +440,7 @@ const HomeWrapper=styled.div` .homeBanner {
         position: relative;
 
         &::after {
-          background: linear-gradient(0deg,
-              rgba(0, 0, 0, 0.2),
-              rgba(0, 0, 0, 0.2));
+          background: linear-gradient(0deg, rgb(0 0 0 / 52%), rgba(0,0,0,0.2));
           position: absolute;
           content: "";
           width: 100%;

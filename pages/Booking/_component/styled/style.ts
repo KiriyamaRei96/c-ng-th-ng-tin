@@ -97,15 +97,73 @@ const BookingWrapper=styled.div` .pageBody {
         }
 
         .--list {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px 24px;
-            display: grid;
-            margin-bottom: 60px
+            margin-bottom: 60px;
+            display:flex;
+            flex-wrap: wrap;
+            .hotel{
+                width: calc(50% - 8px);
+                margin-right: 16px;
+                &:nth-child(n+3){
+                    margin-top: 16px;
+                }
+                &:nth-child(2n+2){
+                    margin-right: 0;
+                }
+            }
         }
 
     }
 
-
+    @media (max-width: 768px){
+        .row{
+            flex-flow: column;
+        }
+        .col-md-3,.col-md-9{
+            width: 100%;
+            padding: 0 1rem;
+        }
+        .--content{
+            h2{
+                font-size:32px !important;
+                line-height: 1 !important;
+            }
+            .--top{
+                flex-flow: column;
+                .wrapper{
+                    width: 100%;
+                }
+            }
+            .search{
+                flex-flow: column;
+                margin-top: 1rem;
+                align-items: flex-start;
+                .--input{
+                    width: 100%;
+                    margin-bottom: 8px;
+                }
+            }
+        }
+        .--list{
+            .hotel{
+                width: 100% !important;
+                margin-right: 0 !important;
+                flex-flow: column;
+                .--warpper{
+                    width: 100%;
+                }
+                .--item{
+                    width: 100%;
+                    padding: 12px;
+                    .--andress{
+                        margin-bottom: 12px;
+                    }
+                }
+                &:nth-child(n+2){
+                    margin-top: 1rem;
+                }
+            }
+        }
+    }
 }
 
 .map-modal {

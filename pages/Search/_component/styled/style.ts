@@ -244,6 +244,9 @@ const SearchWrapper=styled.div` .list_discover {
 
 .--pagination {
     margin-top: 60px;
+    @media (max-width: 768px) {
+        margin-top: 2rem;
+    }
 }
 
 .search-Card {
