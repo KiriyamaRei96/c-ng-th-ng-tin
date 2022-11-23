@@ -18,6 +18,7 @@
     "bootstrap": "^5.2.2",
     "clsx": "^1.2.1",
     "google-map-react": "^2.2.0",
+    "ip": "^1.1.8",
     "next": "12.3.1",
     "next-redux-wrapper": "^8.0.0",
     "query-string": "^7.1.1",

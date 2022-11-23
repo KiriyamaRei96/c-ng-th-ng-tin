@@ -4,6 +4,8 @@ import AppHeader from "../components/Layout/Header";
 import Footer from "../components/Layout/Footer";
 import { Provider } from "react-redux";
 import { wrapper } from "../ReduxStore/store";
+import { loadGetInitialProps } from "next/dist/shared/lib/utils";
+import ip from "ip";
 function MyApp({ Component, pageProps }) {
   return (
     <>

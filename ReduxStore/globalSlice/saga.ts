@@ -1,5 +1,6 @@
-import { debounce, put, select, takeLatest } from "redux-saga/effects";
+import { debounce, delay, put, select, takeLatest } from "redux-saga/effects";
 import callApi from "../../Api/Axios";
+
 function* getlanguage(action) {
   try {
     const res = yield callApi
@@ -11,7 +12,21 @@ function* getlanguage(action) {
     console.error(err);
   }
 }
+function* getOnline(action) {
+  console.log(action.payload);
 
+  while (true) {
+    try {
+      const data = yield callApi
+        .get(`/v2/main/main?key=${action.payload}`)
+        .then((res) => res.data)
+        .catch((err) => console.error(err));
+    } catch (err) {
+      console.log(err);
+    }
+    yield delay(60000);
+  }
+}
 function* getDistrict(action) {
   const state = yield select();
   const locale = state.global.language;
@@ -44,6 +59,7 @@ function* getSetting(action) {
 }
 function* globalSaga() {
   yield takeLatest("GET_LANG", getlanguage);
+  yield takeLatest("GET_ONLINE", getOnline);
 
   yield takeLatest("GET_DISTRICT", getDistrict);
   yield takeLatest("GET_SETTING", getSetting);
