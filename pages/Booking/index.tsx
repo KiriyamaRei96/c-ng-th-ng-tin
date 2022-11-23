@@ -47,8 +47,8 @@ const Booking = ({ banner }: BookingProps) => {
             </div>
           </div>
           <div className="container-fluid">
-            <div className="pageBody d-flex ">
-              <div className="--right cardbook col-md-3 ">
+            <div className="pageBody row ">
+              <div className=" cardbook col-md-3 ">
                 <BookingCard />
               </div>
               <div className="--content  col-md-9">
