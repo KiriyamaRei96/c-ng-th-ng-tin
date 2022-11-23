@@ -94,25 +94,25 @@ const DiscoverDetail = ({ data, otherData, id }) => {
   }
   return (
     <DiscoverWarpper>
-      <div id="detaildiscover">
-        <div className="detaildiscoverContent detailAll">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-md-9">
-                <div className="--left">
-                  <div className="subTitle">Du lịch</div>
-                  <h3 className="--titlepost">{data?.title}</h3>
-                  <div className="--interactive d-flex align-items-center justify-content-between">
-                    <div className="--evaluate d-flex align-items-center">
+      <div id='detaildiscover'>
+        <div className='detaildiscoverContent detailAll'>
+          <div className='container-fluid'>
+            <div className='row'>
+              <div className='col-md-9'>
+                <div className='--left'>
+                  <div className='subTitle'>Du lịch</div>
+                  <h3 className='--titlepost'>{data?.title}</h3>
+                  <div className='--interactive d-flex align-items-center justify-content-between'>
+                    <div className='--evaluate d-flex align-items-center'>
                       {data?.star ? (
-                        <div className="--star d-flex align-items-center">
+                        <div className='--star d-flex align-items-center'>
                           <span>{data?.star}</span>
                           {Array.apply(null, Array(Number(data?.star))).map(
                             function (x, i) {
                               return (
                                 <i
                                   key={uuid()}
-                                  className="fa-solid fa-star"
+                                  className='fa-solid fa-star'
                                 ></i>
                               );
                             }
@@ -123,7 +123,7 @@ const DiscoverDetail = ({ data, otherData, id }) => {
                                 <i
                                   key={uuid()}
                                   style={{ color: "wheat" }}
-                                  className="fa-solid fa-star"
+                                  className='fa-solid fa-star'
                                 ></i>
                               );
                             }
@@ -137,13 +137,13 @@ const DiscoverDetail = ({ data, otherData, id }) => {
                         {commentArr.length} {settingMap.ratting}
                       </span>
                     </div>
-                    <div className="--sharecmt share-hover d-flex align-items-center">
-                      <div className="--link">
-                        <a className="share-hover">
-                          <i className="fa-solid fa-share-nodes"></i>
-                          <span className="txt"> {settingMap.share}</span>
+                    <div className='--sharecmt  d-flex align-items-center'>
+                      <div className='--link'>
+                        <a className='share-hover'>
+                          <i className='fa-solid fa-share-nodes'></i>
+                          <span className='txt'> {settingMap.share}</span>
 
-                          <div className="--share">
+                          <div className='--share'>
                             <TwitterShareButton url={url}>
                               <TwitterIcon />
                             </TwitterShareButton>
@@ -158,15 +158,15 @@ const DiscoverDetail = ({ data, otherData, id }) => {
                       </div>
 
                       <CommentBtn id={id}>
-                        <button className="button_hover2 button_2">
+                        <button className='button_hover2 button_2'>
                           {settingMap.writeRatting}
                         </button>
                       </CommentBtn>
                     </div>
                   </div>
-                  <div className="list_img">
-                    <div className="--img">
-                      <img src={image ? image : ""} alt="" />
+                  <div className='list_img'>
+                    <div className='--img'>
+                      <img src={image ? image : ""} alt='' />
                       {data?.featureImage?.path === image &&
                       data?.vr !== "" &&
                       data?.vr !== "null" ? (
@@ -174,16 +174,16 @@ const DiscoverDetail = ({ data, otherData, id }) => {
                           options={{ infinite: true, mainClass: "fancybox1" }}
                         >
                           <a
-                            className="infame fancybox"
+                            className='infame fancybox'
                             key={uuid()}
-                            data-fancybox="360"
-                            data-type="iframe"
+                            data-fancybox='360'
+                            data-type='iframe'
                             data-src={data?.vr}
                           >
                             <img
                               style={{ width: "100px", height: "100px" }}
                               src={VRLogo.default.src}
-                              alt=""
+                              alt=''
                             />
                           </a>
                         </Fancybox>
@@ -202,16 +202,16 @@ const DiscoverDetail = ({ data, otherData, id }) => {
                             image === img?.path ? "--img active" : "--img"
                           }
                         >
-                          <img src={img?.path} alt="" />
+                          <img src={img?.path} alt='' />
                         </div>
                       ) : (
-                        <div key={uuid()} className="--img">
-                          <img src={img?.path} alt="" />
+                        <div key={uuid()} className='--img'>
+                          <img src={img?.path} alt='' />
                           <Fancybox key={uuid()} options={{ infinite: true }}>
                             {allIMG?.map((item) => (
                               <a
                                 key={uuid()}
-                                data-fancybox="gallery"
+                                data-fancybox='gallery'
                                 data-src={item.path}
                               >
                                 {data?.galleries.length - 3}+
@@ -222,8 +222,8 @@ const DiscoverDetail = ({ data, otherData, id }) => {
                       )
                     )}
                   </div>
-                  <div className="list_content">
-                    <div className="--tab">
+                  <div className='list_content'>
+                    <div className='--tab'>
                       <div
                         onClick={() => {
                           setActive("content");
@@ -312,22 +312,22 @@ const DiscoverDetail = ({ data, otherData, id }) => {
                       false
                     )}
                     {active === "potision" ? (
-                      <Map arr={[data]} height="400px" />
+                      <Map arr={[data]} height='400px' />
                     ) : (
                       false
                     )}
                     {active === "comments" ? <Comment id={id} /> : false}
-                    <div className="--card">
-                      <div className="--icon">
-                        <img src={icon13.default.src} alt="" />
+                    <div className='--card'>
+                      <div className='--icon'>
+                        <img src={icon13.default.src} alt='' />
                       </div>
-                      <div className="--txt">
-                        <div className="--title">{settingMap.hightLight}</div>
+                      <div className='--txt'>
+                        <div className='--title'>{settingMap.hightLight}</div>
                         <ul>
                           {data?.highlights?.split("/").map((text) => (
                             <li key={uuid()}>
-                              <div className="--check">
-                                <img src={iconCheck.default.src} alt="" />
+                              <div className='--check'>
+                                <img src={iconCheck.default.src} alt='' />
                               </div>
                               <span>{text}</span>
                             </li>
@@ -338,21 +338,21 @@ const DiscoverDetail = ({ data, otherData, id }) => {
                   </div>
                 </div>
               </div>
-              <div className="col-md-3">
-                <div className="--right cardbook">
+              <div className='col-md-3'>
+                <div className='--right cardbook'>
                   <BookingCard />
-                  <div className="--map">
-                    <Map height="450px" arr={pointArr} />
+                  <div className='--map'>
+                    <Map height='450px' arr={pointArr} />
                   </div>
-                  <div className="--endow">
-                    <div className="--img">
-                      <img src={event?.image?.path} alt="" />
+                  <div className='--endow'>
+                    <div className='--img'>
+                      <img src={event?.image?.path} alt='' />
                     </div>
                     <Link href={event?.link ? event?.link : "/"}>
-                      <div className="--txt">
+                      <div className='--txt'>
                         <span>{event?.subTitle}</span>
                         <h2>{event?.title}</h2>
-                        <div className="--des">{event?.description}</div>
+                        <div className='--des'>{event?.description}</div>
                       </div>
                     </Link>
                   </div>
@@ -361,12 +361,12 @@ const DiscoverDetail = ({ data, otherData, id }) => {
             </div>
           </div>
         </div>
-        <div className="detaildiscoverLocation">
-          <div className="container-fluid">
-            <div className="subTitle text-center">{slider?.subTitle}</div>
-            <h1 className="Title text-center">{slider?.title}</h1>
-            <div className="slider_listLocation">
-              <div className="list_discover">
+        <div className='detaildiscoverLocation'>
+          <div className='container-fluid'>
+            <div className='subTitle text-center'>{slider?.subTitle}</div>
+            <h1 className='Title text-center'>{slider?.title}</h1>
+            <div className='slider_listLocation'>
+              <div className='list_discover'>
                 {slider?.relations.length > 4 ? (
                   <Slider
                     {...{
@@ -379,12 +379,12 @@ const DiscoverDetail = ({ data, otherData, id }) => {
 
                       nextArrow: (
                         <div>
-                          <i className="fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long"></i>
+                          <i className='fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long'></i>
                         </div>
                       ),
                       prevArrow: (
                         <div>
-                          <i className="fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long"></i>
+                          <i className='fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long'></i>
                         </div>
                       ),
                       responsive: [
@@ -398,28 +398,28 @@ const DiscoverDetail = ({ data, otherData, id }) => {
                         },
                       ],
                     }}
-                    className="row"
+                    className='row'
                   >
                     {slider?.relations.map((item) => (
-                      <div key={uuid()} className="--warrper ">
-                        <div className="--item img_hover">
+                      <div key={uuid()} className='--warrper '>
+                        <div className='--item img_hover'>
                           <Link
                             key={uuid()}
                             href={`/Discover/detail~${item.id}`}
                           >
                             <a>
-                              <div className="--img">
-                                <img src={item?.featureImage.path} alt="" />
+                              <div className='--img'>
+                                <img src={item?.featureImage.path} alt='' />
                               </div>
-                              <div className="--txt">
-                                <div className="--type">
+                              <div className='--txt'>
+                                <div className='--type'>
                                   {item?.pointType[0]?.title}
                                 </div>
                                 <h4>{item?.title}</h4>
-                                <div className="--location ">
+                                <div className='--location '>
                                   <Image
                                     src={require("./_asset/icon-map1.svg")}
-                                    alt=""
+                                    alt=''
                                   />
                                   <span>{item?.address}</span>
                                 </div>
@@ -431,27 +431,27 @@ const DiscoverDetail = ({ data, otherData, id }) => {
                     ))}
                   </Slider>
                 ) : (
-                  <div className="row">
+                  <div className='row'>
                     {slider?.relations.map((item) => (
-                      <div key={uuid()} className="--warrper col-md-3">
-                        <div className="--item img_hover">
+                      <div key={uuid()} className='--warrper col-md-3'>
+                        <div className='--item img_hover'>
                           <Link
                             key={uuid()}
                             href={`/Discover/detail~${item.id}`}
                           >
                             <a>
-                              <div className="--img">
-                                <img src={item?.featureImage.path} alt="" />
+                              <div className='--img'>
+                                <img src={item?.featureImage.path} alt='' />
                               </div>
-                              <div className="--txt">
-                                <div className="--type">
+                              <div className='--txt'>
+                                <div className='--type'>
                                   {item?.pointType[0]?.title}
                                 </div>
                                 <h4>{item?.title}</h4>
-                                <div className="--location ">
+                                <div className='--location '>
                                   <Image
                                     src={require("./_asset/icon-map1.svg")}
-                                    alt=""
+                                    alt=''
                                   />
                                   <span>{item?.address}</span>
                                 </div>
@@ -464,7 +464,7 @@ const DiscoverDetail = ({ data, otherData, id }) => {
                   </div>
                 )}
               </div>
-              <div className="arrow_detaildiscoverLocation"></div>
+              <div className='arrow_detaildiscoverLocation'></div>
             </div>
           </div>
         </div>
