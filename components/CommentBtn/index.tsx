@@ -20,7 +20,7 @@ const CommentBtn = ({ children, id, parentId, reply }: CommentBtnProps) => {
     }
   }, [reply]);
   return (
-    <div className="commentBtn">
+    <div className='commentBtn'>
       <div
         onClick={() => {
           setOpen(true);
@@ -34,8 +34,8 @@ const CommentBtn = ({ children, id, parentId, reply }: CommentBtnProps) => {
         footer={null}
         open={open}
         onCancel={() => setOpen(false)}
-        width="50%"
-        className="comment-modal"
+        width='676px'
+        className='comment-modal'
       >
         <Form
           onFinish={(value) => {
@@ -51,30 +51,30 @@ const CommentBtn = ({ children, id, parentId, reply }: CommentBtnProps) => {
             });
             setOpen(false);
           }}
-          layout="vertical"
-          className="d-flex comment-form"
+          layout='vertical'
+          className='d-flex comment-form'
           form={form}
         >
           <Form.Item
-            label="Tên của bạn:"
-            name="name"
+            label='Tên của bạn:'
+            name='name'
             rules={[
               { required: true, message: "Không được bỏ trống trường này!" },
             ]}
           >
-            <input type="text" placeholder="Tên của bạn" />
+            <input type='text' placeholder='Tên của bạn' />
           </Form.Item>
 
           <Form.Item
-            label="Nội dung bình luận:"
-            name="content"
+            label='Nội dung bình luận:'
+            name='content'
             rules={[
               { required: true, message: "Không được bỏ trống trường này!" },
             ]}
           >
-            <textarea className="--content" placeholder="Nội dung bình luận" />
+            <textarea className='--content' placeholder='Nội dung bình luận' />
           </Form.Item>
-          <button type="submit">Đăng bình luận</button>
+          <button type='submit'>Đăng bình luận</button>
         </Form>
       </Modal>
       {/* {open ? (
