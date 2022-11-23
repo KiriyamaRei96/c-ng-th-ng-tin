@@ -13,7 +13,7 @@ function* getlanguage(action) {
   }
 }
 function* getOnline(action) {
-  console.log(action.payload);
+  // console.log(action.payload);
 
   while (true) {
     try {
@@ -21,6 +21,7 @@ function* getOnline(action) {
         .get(`/v2/main/main?key=${action.payload}`)
         .then((res) => res.data)
         .catch((err) => console.error(err));
+      yield put({ type: "SET_VIEW", payload: data.data });
     } catch (err) {
       console.log(err);
     }

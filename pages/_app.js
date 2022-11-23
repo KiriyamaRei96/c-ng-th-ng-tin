@@ -3,10 +3,19 @@ import { store } from "../ReduxStore/store";
 import AppHeader from "../components/Layout/Header";
 import Footer from "../components/Layout/Footer";
 import { Provider } from "react-redux";
+
 import { wrapper } from "../ReduxStore/store";
 import { loadGetInitialProps } from "next/dist/shared/lib/utils";
 import ip from "ip";
-function MyApp({ Component, pageProps }) {
+import { useEffect } from "react";
+import { useAppDispatch } from "../ReduxStore/hooks";
+
+const MyApp = ({ Component, pageProps, ip }) => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch({ type: "GET_ONLINE", payload: ip });
+  }, [ip]);
   return (
     <>
       {/* <Provider store={store}> */}
@@ -21,10 +30,16 @@ function MyApp({ Component, pageProps }) {
 
       <AppHeader />
       <Component {...pageProps} />
-      <Footer />
+      <Footer key={ip} />
+
       {/* </Provider> */}
     </>
   );
-}
+};
+MyApp.getInitialProps = async (appContext) => {
+  const key = await ip.address();
+  const text = key.toString();
 
+  return { ip: text };
+};
 export default wrapper.withRedux(MyApp);

@@ -10,17 +10,15 @@ import FooterInfo from "./component/FooterInfo";
 import FooterLink from "./component/FooterLink";
 import FooterForm from "./component/FooterForm";
 import { useRouter } from "next/router";
-import { useAppDispatch } from "../../../ReduxStore/hooks";
+import { useAppDispatch, useAppSelector } from "../../../ReduxStore/hooks";
 import ip from "ip";
+import globalSelector from "../../../ReduxStore/globalSlice/slice";
 
-const Footer = ({}) => {
-  const key = ip.address();
-
-  // console.log(key);
+const Footer = ({ key }) => {
   const router = useRouter();
   const [data, setData] = useState<any>();
-  const [view, setView] = useState<any>();
-  const dispatch = useAppDispatch();
+  const view = useAppSelector(globalSelector).view;
+
   useEffect(() => {
     (async () => {
       const data = await callApi
@@ -29,14 +27,6 @@ const Footer = ({}) => {
         .catch((err) => console.error(err));
       setData(data.data);
     })();
-    // (async () => {
-    //   const data = await callApi
-    //     .get(`/v2/main/main`)
-    //     .then((res) => res.data)
-    //     .catch((err) => console.error(err));
-    //   setView(data?.data);
-    // })();
-    dispatch({ type: "GET_ONLINE", payload: key });
   }, [router.locale]);
 
   const slider = data?.snippets?.find(

@@ -9,6 +9,7 @@ export const globalSlice = createSlice({
     districtArr: [],
     webSetting: {},
     settingMap: {},
+    view: {},
   },
   reducers: {
     changeLang: (state, action) => {
@@ -25,6 +26,10 @@ export const globalSlice = createSlice({
       })
       .addCase("SET_LANG", (state, action: any) => {
         state.languageArr = action.payload;
+        return state;
+      })
+      .addCase("SET_VIEW", (state, action: any) => {
+        state.view = action.payload;
         return state;
       })
       .addCase("SET_DISTRICT", (state, action: any) => {
