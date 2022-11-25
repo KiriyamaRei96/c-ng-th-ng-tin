@@ -35,6 +35,9 @@ export async function getServerSideProps(context) {
   const discoverSearch = await page.data?.snippets?.find(
     (item) => item["snippet_name"] === "discoverSearch"
   );
+  const discover1Banner = await page.data?.snippets?.find(
+    (item) => item["snippet_name"] === "discover1Banner"
+  );
   return {
     props: {
       discoverBanner,
@@ -42,6 +45,7 @@ export async function getServerSideProps(context) {
       discoverVideo,
       discoverBlock1,
       discoverSearch,
+      discover1Banner,
     },
   };
 }
@@ -52,12 +56,15 @@ const Discover = ({
   discoverVideo,
   discoverBlock1,
   discoverSearch,
+  discover1Banner,
 }) => {
   const dispatch = useAppDispatch();
   const pointArr = useAppSelector(pointSelector).pointArr;
   const settingMap = useAppSelector(globalSelector).settingMap;
   const [current, setCurrent] = useState<number>(0);
-  const [currentImage, setCurrentImage] = useState<string>(banner.default.src);
+  const [currentImage, setCurrentImage] = useState<string>(
+    discover1Banner?.image.path
+  );
   const router = useRouter();
   useEffect(() => {
     if (pointArr.length === 0) {
