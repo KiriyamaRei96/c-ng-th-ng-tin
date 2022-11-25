@@ -265,104 +265,109 @@ const Discover = ({
             </div>
           </div>
         </div>
-        <div className='discoverBlock1'>
-          <div className='row '>
-            <div className='col-md-5'>
-              <div className='--left'>
-                <img src={currentImage} alt='' />
-              </div>
-            </div>
-            <div className='col-md-7'>
-              <div className='--right'>
-                <div className='--title'>
-                  <div className='subTitle'>{discoverBlock1.subTitle}</div>
-                  <h1 className='Title'>{discoverBlock1.title}</h1>
+        {discoverBlock1.relations.length > 1 ? (
+          <div className='discoverBlock1'>
+            <div className='row '>
+              <div className='col-md-5'>
+                <div className='--left'>
+                  <img src={currentImage} alt='' />
                 </div>
-                <div className='list_discoverBlock1 list_discover'>
-                  <Slider
-                    {...{
-                      dots: true,
-                      infinite: true,
-                      speed: 800,
-                      slidesToShow: 3,
-                      slidesToScroll: 1,
-                      arrows: false,
-                      afterChange(currentSlide) {
-                        discoverBlock1.relations.length > 1
-                          ? setCurrentImage(
-                              discoverBlock1.relations[currentSlide]
-                                .featureImage?.path
-                            )
-                          : setCurrentImage(
-                              playPoint[currentSlide].featureImage?.path
-                            );
-                      },
-                      responsive: [
-                        {
-                          breakpoint: 1279,
-                          settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 1,
-                          },
+              </div>
+              <div className='col-md-7'>
+                <div className='--right'>
+                  <div className='--title'>
+                    <div className='subTitle'>{discoverBlock1.subTitle}</div>
+                    <h1 className='Title'>{discoverBlock1.title}</h1>
+                  </div>
+                  <div className='list_discoverBlock1 list_discover'>
+                    <Slider
+                      {...{
+                        dots: true,
+                        infinite: true,
+                        speed: 800,
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        arrows: false,
+                        afterChange(currentSlide) {
+                          discoverBlock1.relations.length > 1
+                            ? setCurrentImage(
+                                discoverBlock1.relations[currentSlide]
+                                  .featureImage?.path
+                              )
+                            : setCurrentImage(
+                                playPoint[currentSlide].featureImage?.path
+                              );
                         },
-                        {
-                          breakpoint: 768,
-                          settings: {
-                            slidesToShow: 1,
-                            variableWidth: true,
-                            slidesToScroll: 1,
+                        responsive: [
+                          {
+                            breakpoint: 1279,
+                            settings: {
+                              slidesToShow: 2,
+                              slidesToScroll: 1,
+                            },
                           },
-                        },
-                      ],
-                    }}
-                    className='row'
-                  >
-                    {discoverBlock1.relations.length > 1
-                      ? discoverBlock1.relations?.map((item) => {
-                          return item?.type === "point" ? (
-                            <Link
-                              key={uuid()}
-                              href={`/Discover/detail~${item.id}`}
-                            >
-                              <div className='--wrapper'>
-                                <div className='--item img_hover1'>
-                                  <a href=''>
-                                    <div className='--img'>
-                                      <img
-                                        src={item.featureImage?.path}
-                                        alt=''
-                                      />
-                                    </div>
-                                    <div className='--txt'>
-                                      <div className='--type'>
-                                        {item.pointType[0]
-                                          ? item.pointType[0]?.title
-                                          : false}
-                                      </div>
-                                      <h4>{item.title}</h4>
-                                      <div className='--location '>
-                                        <Image
-                                          src={require("../../Asset/icon-map1.svg")}
+                          {
+                            breakpoint: 768,
+                            settings: {
+                              slidesToShow: 1,
+                              variableWidth: true,
+                              slidesToScroll: 1,
+                            },
+                          },
+                        ],
+                      }}
+                      className='row'
+                    >
+                      {discoverBlock1.relations.length > 1
+                        ? discoverBlock1.relations?.map((item) => {
+                            return item?.type === "point" ? (
+                              <Link
+                                key={uuid()}
+                                href={`/Discover/detail~${item.id}`}
+                              >
+                                <div className='--wrapper'>
+                                  <div className='--item img_hover1'>
+                                    <a href=''>
+                                      <div className='--img'>
+                                        <img
+                                          src={item.featureImage?.path}
                                           alt=''
                                         />
-                                        <span>{item.address}</span>
                                       </div>
-                                    </div>
-                                  </a>
+                                      <div className='--txt'>
+                                        <div className='--type'>
+                                          {item.pointType[0]
+                                            ? item.pointType[0]?.title
+                                            : false}
+                                        </div>
+                                        <h4>{item.title}</h4>
+                                        <div className='--location '>
+                                          <Image
+                                            src={require("../../Asset/icon-map1.svg")}
+                                            alt=''
+                                          />
+                                          <span>{item.address}</span>
+                                        </div>
+                                      </div>
+                                    </a>
+                                  </div>
                                 </div>
-                              </div>
-                            </Link>
-                          ) : (
-                            false
-                          );
-                        })
-                      : playPoint.map()}
-                  </Slider>
+                              </Link>
+                            ) : (
+                              false
+                            );
+                          })
+                        : playPoint.map()}
+                    </Slider>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        ) : (
+          false
+        )}
+
         <DiscoverSearch title={discoverSearch?.title} />
         <div className='discoverVideo'>
           <div className='--img'>
