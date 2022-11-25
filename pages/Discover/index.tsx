@@ -158,120 +158,124 @@ const Discover = ({
         ) : (
           false
         )}
-
-        <div className='discoverBlock'>
-          <div className='container-fluid'>
-            <div className='--title'>
-              <div className='subTitle'>{discoverBlock.subTitle}</div>
-              <h1 className='Title'>{discoverBlock.title}</h1>
-            </div>
-            <div className='slider_discoverBlock'>
-              <div className='list_discoverBlock list_discover'>
-                <Slider
-                  {...{
-                    dots: false,
-                    infinite: true,
-                    speed: 800,
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    arrows: true,
-
-                    nextArrow: (
-                      <div>
-                        <i className='fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long'></i>
-                      </div>
-                    ),
-                    prevArrow: (
-                      <div>
-                        <i className='fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long'></i>
-                      </div>
-                    ),
-                    responsive: [
-                      {
-                        breakpoint: 768,
-                        settings: {
-                          slidesToShow: 1,
-                          variableWidth: true,
-                          slidesToScroll: 1,
-                        },
-                      },
-                    ],
-                  }}
-                  className=''
-                >
-                  {discoverBlock.relations.length > 1
-                    ? discoverBlock.relations?.map((item) => {
-                        return item?.type === "point" ? (
-                          <Link
-                            key={uuid()}
-                            href={`/Discover/detail~${item.id}`}
-                          >
-                            <div className='--item img_hover'>
-                              <a href=''>
-                                <div className='--img'>
-                                  <img src={item.featureImage?.path} alt='' />
-                                </div>
-                                <div className='--txt'>
-                                  <div className='--type'>
-                                    {item.pointType[0]
-                                      ? item.pointType[0].title
-                                      : false}
-                                  </div>
-                                  <h4>{item.title}</h4>
-                                  <div className='--location '>
-                                    <Image
-                                      src={require("../../Asset/icon-map1.svg")}
-                                      alt=''
-                                    />
-                                    <span>{item.address}</span>
-                                  </div>
-                                </div>
-                              </a>
-                            </div>
-                          </Link>
-                        ) : (
-                          false
-                        );
-                      })
-                    : pointArr.map((item) => {
-                        return item?.type === "point" ? (
-                          <Link
-                            key={uuid()}
-                            href={`/Discover/detail~${item.id}`}
-                          >
-                            <div className='--item img_hover'>
-                              <a href=''>
-                                <div className='--img'>
-                                  <img src={item.featureImage?.path} alt='' />
-                                </div>
-                                <div className='--txt'>
-                                  <div className='--type'>
-                                    {item.pointType[0]
-                                      ? item.pointType[0].title
-                                      : false}
-                                  </div>
-                                  <h4>{item.title}</h4>
-                                  <div className='--location '>
-                                    <Image
-                                      src={require("../../Asset/icon-map1.svg")}
-                                      alt=''
-                                    />
-                                    <span>{item.address}</span>
-                                  </div>
-                                </div>
-                              </a>
-                            </div>
-                          </Link>
-                        ) : (
-                          false
-                        );
-                      })}
-                </Slider>
+        {discoverBlock.relations.length > 0 ? (
+          <div className='discoverBlock'>
+            <div className='container-fluid'>
+              <div className='--title'>
+                <div className='subTitle'>{discoverBlock.subTitle}</div>
+                <h1 className='Title'>{discoverBlock.title}</h1>
               </div>
-              <div className='arrow_discoverBlock'></div>
+              <div className='slider_discoverBlock'>
+                <div className='list_discoverBlock list_discover'>
+                  <Slider
+                    {...{
+                      dots: false,
+                      infinite: true,
+                      speed: 800,
+                      slidesToShow: 3,
+                      slidesToScroll: 1,
+                      arrows: true,
+
+                      nextArrow: (
+                        <div>
+                          <i className='fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long'></i>
+                        </div>
+                      ),
+                      prevArrow: (
+                        <div>
+                          <i className='fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long'></i>
+                        </div>
+                      ),
+                      responsive: [
+                        {
+                          breakpoint: 768,
+                          settings: {
+                            slidesToShow: 1,
+                            variableWidth: true,
+                            slidesToScroll: 1,
+                          },
+                        },
+                      ],
+                    }}
+                    className=''
+                  >
+                    {discoverBlock.relations.length > 1
+                      ? discoverBlock.relations?.map((item) => {
+                          return item?.type === "point" ? (
+                            <Link
+                              key={uuid()}
+                              href={`/Discover/detail~${item.id}`}
+                            >
+                              <div className='--item img_hover'>
+                                <a href=''>
+                                  <div className='--img'>
+                                    <img src={item.featureImage?.path} alt='' />
+                                  </div>
+                                  <div className='--txt'>
+                                    <div className='--type'>
+                                      {item.pointType[0]
+                                        ? item.pointType[0].title
+                                        : false}
+                                    </div>
+                                    <h4>{item.title}</h4>
+                                    <div className='--location '>
+                                      <Image
+                                        src={require("../../Asset/icon-map1.svg")}
+                                        alt=''
+                                      />
+                                      <span>{item.address}</span>
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
+                            </Link>
+                          ) : (
+                            false
+                          );
+                        })
+                      : pointArr.map((item) => {
+                          return item?.type === "point" ? (
+                            <Link
+                              key={uuid()}
+                              href={`/Discover/detail~${item.id}`}
+                            >
+                              <div className='--item img_hover'>
+                                <a href=''>
+                                  <div className='--img'>
+                                    <img src={item.featureImage?.path} alt='' />
+                                  </div>
+                                  <div className='--txt'>
+                                    <div className='--type'>
+                                      {item.pointType[0]
+                                        ? item.pointType[0].title
+                                        : false}
+                                    </div>
+                                    <h4>{item.title}</h4>
+                                    <div className='--location '>
+                                      <Image
+                                        src={require("../../Asset/icon-map1.svg")}
+                                        alt=''
+                                      />
+                                      <span>{item.address}</span>
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
+                            </Link>
+                          ) : (
+                            false
+                          );
+                        })}
+                  </Slider>
+                </div>
+                <div className='arrow_discoverBlock'></div>
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          false
+        )}
+
         {discoverBlock1.relations.length > 1 ? (
           <div className='discoverBlock1'>
             <div className='row '>

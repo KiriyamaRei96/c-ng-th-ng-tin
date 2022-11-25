@@ -67,74 +67,79 @@ const NewsEvent = ({ newsBanner, hotNews, Events }) => {
             <BreadCrumb />
           </div>
         </div>
-        <div className='News'>
-          <div className='container-fluid'>
-            <div className='--hotNews'>
-              <h3>{hotNews.title}</h3>
-              <Slider
-                {...{
-                  dots: false,
-                  infinite: true,
-                  speed: 500,
-                  slidesToShow: 1,
-                  slidesToScroll: 1,
-                  arrows: true,
-                  adaptiveHeight: true,
-                  nextArrow: (
-                    <div>
-                      <i className='fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long'></i>
-                    </div>
-                  ),
-
-                  prevArrow: (
-                    <div>
-                      <i className='fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long'></i>
-                    </div>
-                  ),
-                }}
-                className='--hotSlider'
-              >
-                {hotNews.relations?.map((item) => (
-                  <div key={uuid()}>
-                    <div className='--item d-flex'>
-                      <div className='--img img_hover'>
-                        <img src={item.featureImage?.path} alt='' />
+        {hotNews.relations?.length > 0 ? (
+          <div className='News'>
+            <div className='container-fluid'>
+              <div className='--hotNews'>
+                <h3>{hotNews.title}</h3>
+                <Slider
+                  {...{
+                    dots: false,
+                    infinite: true,
+                    speed: 500,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: true,
+                    adaptiveHeight: true,
+                    nextArrow: (
+                      <div>
+                        <i className='fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long'></i>
                       </div>
-                      <div className='--txt'>
-                        <div className='Info d-flex'>
-                          <span className='type'>
-                            {item.category[0]?.title}
-                          </span>
-                          <i className='fa-solid fa-circle divider'></i>
-                          <span className='date'>
-                            <i className='fa-solid fa-calendar-days'></i>
-                            {item.date}
-                          </span>
-                          <i className='fa-solid fa-circle divider'></i>
-                          <span className='view'>
-                            <i className='fa-solid fa-eye'></i>
-                            {item.viewTotal}
-                          </span>
+                    ),
+
+                    prevArrow: (
+                      <div>
+                        <i className='fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long'></i>
+                      </div>
+                    ),
+                  }}
+                  className='--hotSlider'
+                >
+                  {hotNews.relations?.map((item) => (
+                    <div key={uuid()}>
+                      <div className='--item d-flex'>
+                        <div className='--img img_hover'>
+                          <img src={item.featureImage?.path} alt='' />
                         </div>
-                        <h4>{item.title}</h4>
-                        <div className='divider'></div>
-                        <span>{item.description}</span>
+                        <div className='--txt'>
+                          <div className='Info d-flex'>
+                            <span className='type'>
+                              {item.category[0]?.title}
+                            </span>
+                            <i className='fa-solid fa-circle divider'></i>
+                            <span className='date'>
+                              <i className='fa-solid fa-calendar-days'></i>
+                              {item.date}
+                            </span>
+                            <i className='fa-solid fa-circle divider'></i>
+                            <span className='view'>
+                              <i className='fa-solid fa-eye'></i>
+                              {item.viewTotal}
+                            </span>
+                          </div>
+                          <h4>{item.title}</h4>
+                          <div className='divider'></div>
+                          <span>{item.description}</span>
 
-                        <Link href={`/News&Event/news/detail~${item.id}`}>
-                          <a className='button_2 button_hover2'>
-                            {settingMap?.viewDetail}
-                            <i className='fa-sharp ms-2 fa-solid fa-arrow-right-long'></i>
-                          </a>
-                        </Link>
+                          <Link href={`/News&Event/news/detail~${item.id}`}>
+                            <a className='button_2 button_hover2'>
+                              {settingMap?.viewDetail}
+                              <i className='fa-sharp ms-2 fa-solid fa-arrow-right-long'></i>
+                            </a>
+                          </Link>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </Slider>
+                  ))}
+                </Slider>
+              </div>
+              <Catalog />
             </div>
-            <Catalog />
           </div>
-        </div>
+        ) : (
+          false
+        )}
+
         <div className='Events'>
           <div className='container-fluid'>
             <div className='--title '>

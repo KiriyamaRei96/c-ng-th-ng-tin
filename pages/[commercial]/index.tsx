@@ -133,7 +133,7 @@ const Commercial = ({
           <div className='pageBody'>
             <Navbar />
             <div className='--content'>
-              {hotMenu ? (
+              {hotMenu && hotMenu?.articles.length > 0 ? (
                 <div className='hot-menu'>
                   <h2>{hotMenu.title}</h2>
 
@@ -176,7 +176,7 @@ const Commercial = ({
               )}
               <List List={listTilte} />
 
-              {hotPoint ? (
+              {hotPoint && hotPoint?.relations > 0 ? (
                 <div className='Hotel-sliderWarpper'>
                   <h3>{hotPoint.title}</h3>
                   <Slider
@@ -231,7 +231,7 @@ const Commercial = ({
               ) : (
                 false
               )}
-              {hotTour ? (
+              {hotTour && hotTour.relations.length > 0 ? (
                 <div className='tour-sliderWarpper'>
                   <h3>{hotTour.title}</h3>
                   <Slider

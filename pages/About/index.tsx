@@ -151,87 +151,92 @@ const About = ({
             </div>
           </div>
         </div>
-        <div className='aboutDiscover'>
-          <div className='container-fluid'>
-            <div className='subTitle text-center'>
-              {aboutDiscover?.subTitle}
-            </div>
-            <h1 className='Title text-center'>{aboutDiscover?.title}</h1>
-            {aboutDiscover?.articles?.length >= 4 ? (
-              <Slider
-                {...{
-                  dots: true,
-                  infinite: true,
-                  speed: 800,
-                  slidesToShow: 4,
-                  slidesToScroll: 4,
-                  arrows: false,
-                  responsive: [
-                    {
-                      breakpoint: 1279,
-                      settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 1,
-                      },
-                    },
-                    {
-                      breakpoint: 768,
-                      settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                      },
-                    },
-                  ],
-                }}
-                className='list_aboutDiscover'
-              >
-                {aboutDiscover?.articles.map((item) => (
-                  <div key={uuid()}>
-                    <div className='--warpper'>
-                      <div className='--item'>
-                        <div className='--img img_hover'>
-                          <img src={item?.image?.path} alt='' />
-                        </div>
-                        <div className='--txt'>
-                          <h4>{item?.title}</h4>
-                          <Link href={item?.link}>
-                            <a>
-                              {settingMap.viewDetail}
-                              <i className='fa-solid ms-2 fa-arrow-right-long'></i>
-                            </a>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </Slider>
-            ) : (
-              <div className='list_aboutDiscover d-flex'>
-                {aboutDiscover?.articles.map((item) => (
-                  <div key={uuid()}>
-                    <div className='--warpper'>
-                      <div className='--item'>
-                        <div className='--img img_hover'>
-                          <img src={item?.image?.path} alt='' />
-                        </div>
-                        <div className='--txt'>
-                          <h4>{item?.title}</h4>
-                          <Link href={item?.link}>
-                            <a>
-                              {settingMap.viewDetail}
-                              <i className='fa-solid ms-2 fa-arrow-right-long'></i>
-                            </a>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+        {aboutDiscover?.articles?.length >= 0 ? (
+          <div className='aboutDiscover'>
+            <div className='container-fluid'>
+              <div className='subTitle text-center'>
+                {aboutDiscover?.subTitle}
               </div>
-            )}
+              <h1 className='Title text-center'>{aboutDiscover?.title}</h1>
+              {aboutDiscover?.articles?.length >= 4 ? (
+                <Slider
+                  {...{
+                    dots: true,
+                    infinite: true,
+                    speed: 800,
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    arrows: false,
+                    responsive: [
+                      {
+                        breakpoint: 1279,
+                        settings: {
+                          slidesToShow: 3,
+                          slidesToScroll: 1,
+                        },
+                      },
+                      {
+                        breakpoint: 768,
+                        settings: {
+                          slidesToShow: 1,
+                          slidesToScroll: 1,
+                        },
+                      },
+                    ],
+                  }}
+                  className='list_aboutDiscover'
+                >
+                  {aboutDiscover?.articles.map((item) => (
+                    <div key={uuid()}>
+                      <div className='--warpper'>
+                        <div className='--item'>
+                          <div className='--img img_hover'>
+                            <img src={item?.image?.path} alt='' />
+                          </div>
+                          <div className='--txt'>
+                            <h4>{item?.title}</h4>
+                            <Link href={item?.link}>
+                              <a>
+                                {settingMap.viewDetail}
+                                <i className='fa-solid ms-2 fa-arrow-right-long'></i>
+                              </a>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </Slider>
+              ) : (
+                <div className='list_aboutDiscover d-flex'>
+                  {aboutDiscover?.articles.map((item) => (
+                    <div key={uuid()}>
+                      <div className='--warpper'>
+                        <div className='--item'>
+                          <div className='--img img_hover'>
+                            <img src={item?.image?.path} alt='' />
+                          </div>
+                          <div className='--txt'>
+                            <h4>{item?.title}</h4>
+                            <Link href={item?.link}>
+                              <a>
+                                {settingMap.viewDetail}
+                                <i className='fa-solid ms-2 fa-arrow-right-long'></i>
+                              </a>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        ) : (
+          false
+        )}
+
         <div className='aboutWhy'>
           <div className='container-fluid'>
             <div className='subTitle text-center'>{aboutWhy?.subTitle}</div>
