@@ -108,14 +108,20 @@ const NewsDetail = ({ data, newsBanner }: NewsDetailProps) => {
                     {otherNews.map((item) => (
                       <div key={uuid()} className="--item ">
                         <div className="--img img_hover">
-                          <Link href={`/News&Event/news/detail~${item.id}`}>
+                          <Link
+                            shallow
+                            href={`/News&Event/news/detail~${item.id}`}
+                          >
                             <a>
                               <img src={item.featureImage?.path} alt="" />
                             </a>
                           </Link>
                         </div>
                         <h5>
-                          <Link href={`/News&Event/news/detail~${item.id}`}>
+                          <Link
+                            shallow
+                            href={`/News&Event/news/detail~${item.id}`}
+                          >
                             <a>{item.title}</a>
                           </Link>
                         </h5>

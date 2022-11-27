@@ -21,7 +21,7 @@ const RestaurantCard = ({
   view,
 }: RestaurantCardProps) => {
   return (
-    <Link href={`/Restaurant/detail~${id}`}>
+    <Link shallow href={`/Restaurant/detail~${id}`}>
       <div className="restaurant d-flex img_hover">
         <div className="img-wrapper">
           <div className="--img">

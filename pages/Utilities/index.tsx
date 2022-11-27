@@ -61,26 +61,26 @@ const Utilities = ({ page }) => {
   const settingMap = useAppSelector(globalSelector).settingMap;
   return (
     <UtilitiesWrapper>
-      <div id='uti'>
-        <div className='utiMap'>
-          <div className='container-fluid'>
-            <h1 className='Title'>{page?.title}</h1>
-            <div className='filter d-flex justify-content-between'>
-              <div className='search'>
+      <div id="uti">
+        <div className="utiMap">
+          <div className="container-fluid">
+            <h1 className="Title">{page?.title}</h1>
+            <div className="filter d-flex justify-content-between">
+              <div className="search">
                 <input
                   onChange={(e) => {
                     setSearch(e.target.value);
                   }}
                   value={search}
-                  type='text'
+                  type="text"
                   placeholder={settingMap.searchPlaceHolder2}
                 />
-                <i className='fa-solid fa-magnifying-glass'></i>
+                <i className="fa-solid fa-magnifying-glass"></i>
               </div>
-              <div className='--filter d-flex'>
-                <div className='--item d-flex align-items-center'>
+              <div className="--filter d-flex">
+                <div className="--item d-flex align-items-center">
                   <span>
-                    <Image src={require("../../Asset/icon-11.svg")} alt='' />
+                    <Image src={require("../../Asset/icon-11.svg")} alt="" />
                     {settingMap.filter}
                   </span>
                   <select
@@ -88,10 +88,10 @@ const Utilities = ({ page }) => {
                     onChange={(e) => {
                       setDistrict(e.target.value);
                     }}
-                    name=''
-                    id=''
+                    name=""
+                    id=""
                   >
-                    <option value=''>{settingMap.selectDistrict}</option>
+                    <option value="">{settingMap.selectDistrict}</option>
                     {districtArr?.map((item) => (
                       <option key={uuid()} value={item?.id}>
                         {item?.title}
@@ -103,10 +103,10 @@ const Utilities = ({ page }) => {
                     onChange={(e) => {
                       setType(e.target.value);
                     }}
-                    name=''
-                    id=''
+                    name=""
+                    id=""
                   >
-                    <option value=''>{settingMap.utilitieType}</option>
+                    <option value="">{settingMap.utilitieType}</option>
                     {utilitiesType?.map((item) => (
                       <option key={uuid()} value={item?.id}>
                         {item?.title}
@@ -114,9 +114,9 @@ const Utilities = ({ page }) => {
                     ))}
                   </select>
                 </div>
-                <div className='--item d-flex align-items-center'>
+                <div className="--item d-flex align-items-center">
                   <span>
-                    <Image src={require("../../Asset/icon-11.svg")} alt='' />
+                    <Image src={require("../../Asset/icon-11.svg")} alt="" />
                     {settingMap.Sort}
                   </span>
 
@@ -125,54 +125,54 @@ const Utilities = ({ page }) => {
                     onChange={(e) => {
                       setSort(e.target.value);
                     }}
-                    name=''
-                    id=''
+                    name=""
+                    id=""
                   >
-                    <option value='o_creationDate'>
+                    <option value="o_creationDate">
                       {settingMap.sortcreationDate}
                     </option>
-                    <option value='sort'>{settingMap.sortOrder}</option>
+                    <option value="sort">{settingMap.sortOrder}</option>
                   </select>
                 </div>
               </div>
             </div>
-            <div className='--content'>
-              <div className='row'>
-                <div className='col-md-6'>
-                  <div className='list_utiMap'>
+            <div className="--content">
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="list_utiMap">
                     {searchArr?.map((item) => (
                       <div
                         key={uuid()}
-                        className='--item d-flex align-items-center justify-content-between'
+                        className="--item d-flex align-items-center justify-content-between"
                       >
-                        <div className='--txt'>
+                        <div className="--txt">
                           <h6>{item?.title}</h6>
                           <ul>
                             <li>
-                              <div className='--icon'>
+                              <div className="--icon">
                                 <Image
                                   src={require("../../Asset/icon-map2.svg")}
-                                  alt=''
+                                  alt=""
                                 />
                               </div>
                               <span>{item.address}</span>
                             </li>
                             <li>
-                              <div className='--icon'>
+                              <div className="--icon">
                                 <Image
                                   src={require("../../Asset/icon-12.svg")}
-                                  alt=''
+                                  alt=""
                                 />
                               </div>
                               <span>Cách bạn 3km</span>
                             </li>
                           </ul>
                         </div>
-                        <Link href={`/Utilities/detail~${item.id}`}>
-                          <a className='arrow_hover'>
+                        <Link shallow href={`/Utilities/detail~${item.id}`}>
+                          <a className="arrow_hover">
                             <Image
                               src={require("../../Asset/navigation.svg")}
-                              alt=''
+                              alt=""
                             />
                           </a>
                         </Link>
@@ -180,9 +180,9 @@ const Utilities = ({ page }) => {
                     ))}
                   </div>
                 </div>
-                <div className='col-md-6'>
-                  <div className='--map'>
-                    {<Map height='450px' arr={searchArr} />}
+                <div className="col-md-6">
+                  <div className="--map">
+                    {<Map height="450px" arr={searchArr} />}
                   </div>
                 </div>
               </div>

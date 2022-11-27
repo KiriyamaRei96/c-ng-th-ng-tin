@@ -103,34 +103,34 @@ export default function Home({
   const chunkArr = chunk(3, homeNews.relations);
   return (
     <HomeWrapper>
-      <div id='home'>
+      <div id="home">
         {homeBanner ? (
-          <div className='homeBanner'>
-            <div className='--background'>
-              <img src={homeBanner.image["path_1024px"]} alt='' />
+          <div className="homeBanner">
+            <div className="--background">
+              <img src={homeBanner.image["path_1024px"]} alt="" />
             </div>
-            <div className='--txt'>
-              <div className='--name'>{homeBanner.subTitle}</div>
-              <div className='--des'>{homeBanner.title}</div>
+            <div className="--txt">
+              <div className="--name">{homeBanner.subTitle}</div>
+              <div className="--des">{homeBanner.title}</div>
               <span>{homeBanner.description}</span>
-              <Link href={homeBanner.link}>
-                <a className='button_hover1'>
+              <Link shallow href={homeBanner.link}>
+                <a className="button_hover1">
                   {settingMap.FindOutMore}
-                  <i className='fa-sharp fa-solid fa-arrow-right'></i>
+                  <i className="fa-sharp fa-solid fa-arrow-right"></i>
                 </a>
               </Link>
             </div>
-            <div className='container-fluid'>
-              <div className='filter justify-content-center'>
-                <div className='form-group'>
-                  <div className='--icon'>
-                    <img src={iconMap.src} alt='' />
+            <div className="container-fluid">
+              <div className="filter justify-content-center">
+                <div className="form-group">
+                  <div className="--icon">
+                    <img src={iconMap.src} alt="" />
                   </div>
-                  <div className='--txtform'>
-                    <label htmlFor=''>{settingMap.Search}</label>
+                  <div className="--txtform">
+                    <label htmlFor="">{settingMap.Search}</label>
                     <input
                       value={search}
-                      type='text'
+                      type="text"
                       onChange={(e) => {
                         dispatch(searchText(e.target.value));
                       }}
@@ -139,18 +139,18 @@ export default function Home({
                   </div>
                 </div>
 
-                <div className='form-group'>
-                  <div className='--icon'>
-                    <img src={signpost.default.src} alt='' />
+                <div className="form-group">
+                  <div className="--icon">
+                    <img src={signpost.default.src} alt="" />
                   </div>
-                  <div className='--txtform'>
-                    <label htmlFor=''>Loại hình</label>
+                  <div className="--txtform">
+                    <label htmlFor="">Loại hình</label>
                     <select
                       onChange={(e) => {
                         dispatch(setType(e.target.value));
                       }}
-                      name=''
-                      id=''
+                      name=""
+                      id=""
                       value={type}
                     >
                       {Object.keys(types).map((key) => (
@@ -161,7 +161,7 @@ export default function Home({
                     </select>
                   </div>
                 </div>
-                <div className='form-group justify-content-center'>
+                <div className="form-group justify-content-center">
                   <button
                     onClick={() => {
                       const payload = {
@@ -175,22 +175,22 @@ export default function Home({
                       });
                       router.push("/Search");
                     }}
-                    className='button_1 button_hover1'
+                    className="button_1 button_hover1"
                   >
                     {settingMap.FindOut}
                   </button>
                 </div>
               </div>
             </div>
-            <div className='social'>
-              <a className='arrow_hover' href=''>
-                <i className='fa-brands fa-facebook-f'></i>
+            <div className="social">
+              <a className="arrow_hover" href="">
+                <i className="fa-brands fa-facebook-f"></i>
               </a>
-              <a className='arrow_hover' href=''>
-                <i className='fa-solid fa-envelope'></i>
+              <a className="arrow_hover" href="">
+                <i className="fa-solid fa-envelope"></i>
               </a>
-              <a className='arrow_hover' href=''>
-                <i className='fa-solid fa-phone'></i>
+              <a className="arrow_hover" href="">
+                <i className="fa-solid fa-phone"></i>
               </a>
             </div>
           </div>
@@ -198,20 +198,20 @@ export default function Home({
           false
         )}
         {homeIntro ? (
-          <div className='homeIntro'>
-            <div className='container-fluid'>
-              <div className='--content'>
-                <div className='row'>
-                  <div className='col-md-6'>
-                    <div className='--left'>
-                      <img src={homeIntro.image["path"]} alt='' />
+          <div className="homeIntro">
+            <div className="container-fluid">
+              <div className="--content">
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="--left">
+                      <img src={homeIntro.image["path"]} alt="" />
                     </div>
                   </div>
-                  <div className='col-md-6'>
-                    <div className='--right'>
-                      <div className='subTitle'>{homeIntro.subTitle}</div>
-                      <h1 className='Title'>{homeIntro.title}</h1>
-                      <div className='--des'>{homeIntro.description}</div>
+                  <div className="col-md-6">
+                    <div className="--right">
+                      <div className="subTitle">{homeIntro.subTitle}</div>
+                      <h1 className="Title">{homeIntro.title}</h1>
+                      <div className="--des">{homeIntro.description}</div>
                       <ul>
                         {Object.keys(types).map((key) => {
                           if (
@@ -228,10 +228,10 @@ export default function Home({
                           }
                         })}
                       </ul>
-                      <Link href={homeIntro.link}>
-                        <a className='button_2 button_hover2'>
+                      <Link shallow href={homeIntro.link}>
+                        <a className="button_2 button_hover2">
                           {settingMap.viewAll}
-                          <i className='fa-sharp ms-2 fa-solid fa-arrow-right-long'></i>
+                          <i className="fa-sharp ms-2 fa-solid fa-arrow-right-long"></i>
                         </a>
                       </Link>
                     </div>
@@ -239,16 +239,16 @@ export default function Home({
                 </div>
               </div>
               {listHomeIntro ? (
-                <div className='list_homeIntro d-flex flex-wrap'>
+                <div className="list_homeIntro d-flex flex-wrap">
                   {listHomeIntro.articles.map((item) => (
                     <div
                       key={uuid()}
-                      className='--item d-flex flex-column align-items-center'
+                      className="--item d-flex flex-column align-items-center"
                     >
-                      <div className='--icon'>
-                        <img src={item.image?.path} alt='' />
+                      <div className="--icon">
+                        <img src={item.image?.path} alt="" />
                       </div>
-                      <div className='--txt'>
+                      <div className="--txt">
                         <h4>{item.title}</h4>
                         <article>{item.description}</article>
                       </div>
@@ -264,14 +264,14 @@ export default function Home({
           false
         )}
         {homeDiscover && homeDiscover?.relations.length > 0 ? (
-          <div className='homeDiscover'>
-            <div className='container-fluid'>
-              <div className='subTitle text-center'>
+          <div className="homeDiscover">
+            <div className="container-fluid">
+              <div className="subTitle text-center">
                 {homeDiscover.subTitle}
               </div>
-              <h1 className='Title text-center'>{homeDiscover.title}</h1>
+              <h1 className="Title text-center">{homeDiscover.title}</h1>
             </div>
-            <div className='container-fluid pe-0'>
+            <div className="container-fluid pe-0">
               {homeDiscover?.relations.length > 2 ? (
                 <Slider
                   key={uuid()}
@@ -293,26 +293,26 @@ export default function Home({
                       },
                     ],
                   }}
-                  className='list_homeDiscover'
+                  className="list_homeDiscover"
                 >
                   {homeDiscover?.relations?.map((item) => (
                     <div key={uuid()}>
-                      <div className='--item img_hover1'>
-                        <div className='--img'>
-                          <img src={item?.featureImage?.path} alt='' />
+                      <div className="--item img_hover1">
+                        <div className="--img">
+                          <img src={item?.featureImage?.path} alt="" />
                         </div>
-                        <div className='--txt'>
-                          <div className='--subtitle'>
+                        <div className="--txt">
+                          <div className="--subtitle">
                             {item?.pointType?.map((type) => type.title)}
                           </div>
-                          <h4 className='--name'>{item.title}</h4>
-                          <div className='--bot d-flex justify-content-between align-items-end'>
-                            <div className='--des'>
-                              <div className='--location d-flex align-items-center'>
-                                <div className='--icon me-2'>
+                          <h4 className="--name">{item.title}</h4>
+                          <div className="--bot d-flex justify-content-between align-items-end">
+                            <div className="--des">
+                              <div className="--location d-flex align-items-center">
+                                <div className="--icon me-2">
                                   <Image
                                     src={require("./_asset/icon-map1.svg")}
-                                    alt=''
+                                    alt=""
                                   />
                                 </div>
                                 {item.address}
@@ -320,11 +320,12 @@ export default function Home({
                               <article>{item.description}</article>
                             </div>
                             <Link
+                              shallow
                               href={`/Discover/detail~${item.id}`}
                               key={uuid()}
                             >
-                              <a className='--viewdetail button_hover1' href=''>
-                                <i className='fa-solid fa-arrow-right'></i>
+                              <a className="--viewdetail button_hover1" href="">
+                                <i className="fa-solid fa-arrow-right"></i>
                               </a>
                             </Link>
                           </div>
@@ -334,25 +335,25 @@ export default function Home({
                   ))}
                 </Slider>
               ) : (
-                <div className='list_homeDiscover'>
+                <div className="list_homeDiscover">
                   {homeDiscover?.relations?.map((item) => (
                     <div key={uuid()}>
-                      <div className='--item img_hover1'>
-                        <div className='--img'>
-                          <img src={item?.featureImage?.path} alt='' />
+                      <div className="--item img_hover1">
+                        <div className="--img">
+                          <img src={item?.featureImage?.path} alt="" />
                         </div>
-                        <div className='--txt'>
-                          <div className='--subtitle'>
+                        <div className="--txt">
+                          <div className="--subtitle">
                             {item?.pointType?.map((type) => type.title)}
                           </div>
-                          <h4 className='--name'>{item.title}</h4>
-                          <div className='--bot d-flex justify-content-between align-items-end'>
-                            <div className='--des'>
-                              <div className='--location d-flex align-items-center'>
-                                <div className='--icon me-2'>
+                          <h4 className="--name">{item.title}</h4>
+                          <div className="--bot d-flex justify-content-between align-items-end">
+                            <div className="--des">
+                              <div className="--location d-flex align-items-center">
+                                <div className="--icon me-2">
                                   <Image
                                     src={require("./_asset/icon-map1.svg")}
-                                    alt=''
+                                    alt=""
                                   />
                                 </div>
                                 {item.address}
@@ -360,11 +361,12 @@ export default function Home({
                               <article>{item.description}</article>
                             </div>
                             <Link
+                              shallow
                               href={`/Discover/detail~${item.id}`}
                               key={uuid()}
                             >
-                              <a className='--viewdetail button_hover1' href=''>
-                                <i className='fa-solid fa-arrow-right'></i>
+                              <a className="--viewdetail button_hover1" href="">
+                                <i className="fa-solid fa-arrow-right"></i>
                               </a>
                             </Link>
                           </div>
@@ -375,10 +377,10 @@ export default function Home({
                 </div>
               )}
             </div>
-            <Link href={homeDiscover.link}>
-              <a className='--viewall button_2 button_hover2'>
+            <Link shallow href={homeDiscover.link}>
+              <a className="--viewall button_2 button_hover2">
                 {settingMap.viewAll}
-                <i className='fa-solid ms-2 fa-arrow-right-long'></i>
+                <i className="fa-solid ms-2 fa-arrow-right-long"></i>
               </a>
             </Link>
           </div>
@@ -386,12 +388,12 @@ export default function Home({
           false
         )}
         {homeMap ? (
-          <div className='homeMap'>
-            <div className='subTitle text-center'>{homeMap.subTitle}</div>
-            <h1 className='Title text-center'>{homeMap.title}</h1>
+          <div className="homeMap">
+            <div className="subTitle text-center">{homeMap.subTitle}</div>
+            <h1 className="Title text-center">{homeMap.title}</h1>
 
             <Map
-              height='600px'
+              height="600px"
               vr={true}
               arr={pointArr?.filter((item) => item.vr !== "")}
             />
@@ -400,37 +402,37 @@ export default function Home({
           false
         )}
         {homeNews && homeNews.relations.length > 0 ? (
-          <div className='homeNews'>
-            <div className='subTitle text-center'>{homeNews.subTitle}</div>
-            <h1 className='Title text-center'>{homeNews.title}</h1>
-            <div className='--content d-flex'>
-              <div className='--left'>
-                <div className='--img'>
-                  <img src={homeNews.relations[0]?.featureImage?.path} alt='' />
+          <div className="homeNews">
+            <div className="subTitle text-center">{homeNews.subTitle}</div>
+            <h1 className="Title text-center">{homeNews.title}</h1>
+            <div className="--content d-flex">
+              <div className="--left">
+                <div className="--img">
+                  <img src={homeNews.relations[0]?.featureImage?.path} alt="" />
                 </div>
-                <div className='--txt'>
-                  <div className='--cate'>
+                <div className="--txt">
+                  <div className="--cate">
                     {homeNews.relations[0]?.type} nổi bật
                   </div>
-                  <div className='--subtitle'>
+                  <div className="--subtitle">
                     {homeNews.relations[0]?.subTitle}
                   </div>
-                  <a href=''>
+                  <a href="">
                     <h1>
                       <p> {homeNews.relations[0]?.title}</p>
                       <p> {homeNews.relations[0]?.description}</p>
                     </h1>
                   </a>
-                  <div className='--time d-flex align-items-center'>
-                    <div className='--icon'>
-                      <Image src={require("./_asset/icon-time.svg")} alt='' />
+                  <div className="--time d-flex align-items-center">
+                    <div className="--icon">
+                      <Image src={require("./_asset/icon-time.svg")} alt="" />
                     </div>
                     {homeNews.relations[0]?.date}
                   </div>
                   {homeNews.relations[0]?.address ? (
-                    <div className='--location d-flex align-items-center'>
-                      <div className='--icon'>
-                        <Image src={require("./_asset/icon-map1.svg")} alt='' />
+                    <div className="--location d-flex align-items-center">
+                      <div className="--icon">
+                        <Image src={require("./_asset/icon-map1.svg")} alt="" />
                       </div>
                       {homeNews.relations[0]?.address}
                     </div>
@@ -439,16 +441,17 @@ export default function Home({
                   )}
 
                   <Link
+                    shallow
                     href={`/News&Event/${homeNews.relations[0].type}/detail~${homeNews.relations[0].id}`}
                   >
-                    <a className='--viewdetail button_hover1'>
+                    <a className="--viewdetail button_hover1">
                       {settingMap.FindOutMore}
-                      <i className='fa-solid ms-2 fa-arrow-right-long'></i>
+                      <i className="fa-solid ms-2 fa-arrow-right-long"></i>
                     </a>
                   </Link>
                 </div>
               </div>
-              <div className='--right'>
+              <div className="--right">
                 <Slider
                   ref={sliderRef}
                   key={uuid()}
@@ -471,25 +474,26 @@ export default function Home({
                       },
                     ],
                   }}
-                  className='list_homeNews'
+                  className="list_homeNews"
                 >
                   {chunkArr?.map((item) => (
-                    <div key={uuid()} className='--item'>
+                    <div key={uuid()} className="--item">
                       {item?.map((news) => (
-                        <div key={uuid()} className='--itemNews d-flex'>
-                          <div className='--img img_hover'>
+                        <div key={uuid()} className="--itemNews d-flex">
+                          <div className="--img img_hover">
                             <Link
+                              shallow
                               href={`/News&Event/${news.type}/detail~${news.id}`}
                             >
                               <a>
-                                <img src={news.featureImage?.path} alt='' />
+                                <img src={news.featureImage?.path} alt="" />
                               </a>
                             </Link>
                           </div>
-                          <div className='--txt d-flex flex-column justify-content-between'>
-                            <div className='--top'>
+                          <div className="--txt d-flex flex-column justify-content-between">
+                            <div className="--top">
                               {news?.category[0] ? (
-                                <div className='--cate'>
+                                <div className="--cate">
                                   {news?.category[0]?.title}
                                 </div>
                               ) : (
@@ -497,27 +501,28 @@ export default function Home({
                               )}
 
                               <Link
+                                shallow
                                 href={`/News&Event/${news.type}/detail~${news.id}`}
                               >
-                                <a href=''>
+                                <a href="">
                                   <h6>{news.title}</h6>
                                 </a>
                               </Link>
                             </div>
-                            <div className='--bot d-flex'>
-                              <div className='--time d-flex align-items-center'>
-                                <div className='--icon'>
+                            <div className="--bot d-flex">
+                              <div className="--time d-flex align-items-center">
+                                <div className="--icon">
                                   <Image
                                     src={require("./_asset/icon-time.svg")}
-                                    alt=''
+                                    alt=""
                                   />
                                 </div>
                                 <span>{news.date}</span>
                               </div>
-                              <div className='--view d-flex align-items-center'>
+                              <div className="--view d-flex align-items-center">
                                 <Image
                                   src={require("./_asset/icon-eye.svg")}
-                                  alt=''
+                                  alt=""
                                 />{" "}
                                 {news.viewTotal}
                               </div>
@@ -528,14 +533,14 @@ export default function Home({
                     </div>
                   ))}
                 </Slider>
-                <div className='--botnews'>
-                  <ul className='slick-dots'>
+                <div className="--botnews">
+                  <ul className="slick-dots">
                     {chunkArr.map((chunk, id) => (
                       <>
                         <input
-                          className='test'
-                          type='radio'
-                          name='slider'
+                          className="test"
+                          type="radio"
+                          name="slider"
                           id={id.toString()}
                           defaultChecked={id === 0}
                         />
@@ -548,10 +553,10 @@ export default function Home({
                       </>
                     ))}
                   </ul>
-                  <Link href={homeNews.link}>
-                    <a className='--viewall'>
+                  <Link shallow href={homeNews.link}>
+                    <a className="--viewall">
                       {settingMap.viewAll}
-                      <i className='fa-solid ms-2 fa-arrow-right-long'></i>
+                      <i className="fa-solid ms-2 fa-arrow-right-long"></i>
                     </a>
                   </Link>
                 </div>
@@ -562,14 +567,14 @@ export default function Home({
           false
         )}
         {homeDiscover1 && homeDiscover1.relations?.length > 0 ? (
-          <div className='homeDiscover1'>
-            <div className='container-fluid'>
-              <div className='subTitle text-center'>
+          <div className="homeDiscover1">
+            <div className="container-fluid">
+              <div className="subTitle text-center">
                 {homeDiscover1.subTitle}
               </div>
-              <h1 className='Title text-center'>{homeDiscover1.title}</h1>
-              <div className='slider_homeDiscover1'>
-                <div className='list_homeDiscover1'>
+              <h1 className="Title text-center">{homeDiscover1.title}</h1>
+              <div className="slider_homeDiscover1">
+                <div className="list_homeDiscover1">
                   {homeDiscover1.relations?.length > 4 ? (
                     <Slider
                       {...{
@@ -581,12 +586,12 @@ export default function Home({
                         arrows: true,
                         nextArrow: (
                           <div>
-                            <i className='fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long'></i>
+                            <i className="fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long"></i>
                           </div>
                         ),
                         prevArrow: (
                           <div>
-                            <i className='fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long'></i>
+                            <i className="fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long"></i>
                           </div>
                         ),
                         responsive: [
@@ -600,34 +605,34 @@ export default function Home({
                           },
                         ],
                       }}
-                      className='row'
+                      className="row"
                     >
                       {homeDiscover1.relations?.map((item) => (
-                        <div key={uuid()} className='col-md-3'>
-                          <Link href={`/Tour/${item.id}`}>
-                            <div className='--item'>
-                              <div className='--img img_hover'>
-                                <a href=''>
-                                  <img src={item.featureImage?.path} alt='' />
+                        <div key={uuid()} className="col-md-3">
+                          <Link shallow href={`/Tour/${item.id}`}>
+                            <div className="--item">
+                              <div className="--img img_hover">
+                                <a href="">
+                                  <img src={item.featureImage?.path} alt="" />
                                 </a>
                               </div>
-                              <div className='--txt d-flex flex-column justify-content-between'>
-                                <div className='--top'>
-                                  <a href=''>
+                              <div className="--txt d-flex flex-column justify-content-between">
+                                <div className="--top">
+                                  <a href="">
                                     <h4>{item.title}</h4>
                                   </a>
                                   <article>{item.description}</article>
                                 </div>
-                                <div className='--bot'>
-                                  <div className='--time'>
-                                    <div className='--icon'>
-                                      <img src={iconTime.src} alt='' />
+                                <div className="--bot">
+                                  <div className="--time">
+                                    <div className="--icon">
+                                      <img src={iconTime.src} alt="" />
                                     </div>
                                     <span>2N1Đ</span>
                                   </div>
-                                  <div className='--location'>
-                                    <div className='--icon'>
-                                      <img src={iconMap2.src} alt='' />
+                                  <div className="--location">
+                                    <div className="--icon">
+                                      <img src={iconMap2.src} alt="" />
                                     </div>
                                     <span>{item?.destinationsType?.title}</span>
                                   </div>
@@ -639,33 +644,33 @@ export default function Home({
                       ))}
                     </Slider>
                   ) : (
-                    <div className='row'>
+                    <div className="row">
                       {homeDiscover1.relations?.map((item) => (
-                        <div key={uuid()} className='col-md-3'>
-                          <Link href={`/Tour/${item.id}`}>
-                            <div className='--item'>
-                              <div className='--img img_hover'>
-                                <a href=''>
-                                  <img src={item.featureImage?.path} alt='' />
+                        <div key={uuid()} className="col-md-3">
+                          <Link shallow href={`/Tour/${item.id}`}>
+                            <div className="--item">
+                              <div className="--img img_hover">
+                                <a href="">
+                                  <img src={item.featureImage?.path} alt="" />
                                 </a>
                               </div>
-                              <div className='--txt d-flex flex-column justify-content-between'>
-                                <div className='--top'>
-                                  <a href=''>
+                              <div className="--txt d-flex flex-column justify-content-between">
+                                <div className="--top">
+                                  <a href="">
                                     <h4>{item.title}</h4>
                                   </a>
                                   <article>{item.description}</article>
                                 </div>
-                                <div className='--bot'>
-                                  <div className='--time'>
-                                    <div className='--icon'>
-                                      <img src={iconTime.src} alt='' />
+                                <div className="--bot">
+                                  <div className="--time">
+                                    <div className="--icon">
+                                      <img src={iconTime.src} alt="" />
                                     </div>
                                     <span>2N1Đ</span>
                                   </div>
-                                  <div className='--location'>
-                                    <div className='--icon'>
-                                      <img src={iconMap2.src} alt='' />
+                                  <div className="--location">
+                                    <div className="--icon">
+                                      <img src={iconMap2.src} alt="" />
                                     </div>
                                     <span>{item?.destinationsType?.title}</span>
                                   </div>
@@ -678,11 +683,11 @@ export default function Home({
                     </div>
                   )}
                 </div>
-                <div className='arrow_homeDiscover1'></div>
+                <div className="arrow_homeDiscover1"></div>
               </div>
             </div>
-            <div className='partent'>
-              <img src={partent.src} alt='' />
+            <div className="partent">
+              <img src={partent.src} alt="" />
             </div>
           </div>
         ) : (

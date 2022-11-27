@@ -27,28 +27,28 @@ const FooterForm = ({ footerForm }) => {
         <span>Kết nối:</span>
         <ul>
           <li>
-            <Link href={facebook?.link ? facebook?.link : ""}>
+            <Link shallow href={facebook?.link ? facebook?.link : ""}>
               <a>
                 <i className="fa-brands fa-facebook"></i>
               </a>
             </Link>
           </li>
           <li>
-            <Link href={twitter?.link ? twitter?.link : ""}>
+            <Link shallow href={twitter?.link ? twitter?.link : ""}>
               <a>
                 <i className="fa-brands fa-twitter"></i>
               </a>
             </Link>
           </li>
           <li>
-            <Link href={instagram?.link ? instagram?.link : ""}>
+            <Link shallow href={instagram?.link ? instagram?.link : ""}>
               <a>
                 <i className="fa-brands fa-instagram"></i>
               </a>
             </Link>
           </li>
           <li>
-            <Link href={google?.link ? google?.link : ""}>
+            <Link shallow href={google?.link ? google?.link : ""}>
               <a>
                 <i className="fa-brands fa-google"></i>
               </a>
