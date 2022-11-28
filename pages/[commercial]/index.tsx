@@ -120,21 +120,21 @@ const Commercial = ({
 
   return (
     <CommercialWrapper>
-      <div id='hotel'>
-        <div className='Banner d-flex'>
-          <img src={banner?.image?.path} alt=''></img>
-          <div className='--Item'>
+      <div id="hotel">
+        <div className="Banner d-flex">
+          <img src={banner?.image?.path} alt=""></img>
+          <div className="--Item">
             <h1>{banner?.title}</h1>
 
             <BreadCrumb />
           </div>
         </div>
-        <div className='container-fluid'>
-          <div className='pageBody'>
+        <div className="container-fluid">
+          <div className="pageBody">
             <Navbar />
-            <div className='--content'>
+            <div className="--content">
               {hotMenu && hotMenu?.articles.length > 0 ? (
-                <div className='hot-menu'>
+                <div className="hot-menu">
                   <h2>{hotMenu.title}</h2>
 
                   <Slider
@@ -160,11 +160,11 @@ const Commercial = ({
                   >
                     {hotMenu?.articles?.map((item) => (
                       <div
-                        className='--item img_hover d-flex flex-column'
+                        className="--item img_hover d-flex flex-column"
                         key={uuid()}
                       >
-                        <div className='--img'>
-                          <img src={item?.image?.path} alt='' />
+                        <div className="--img">
+                          <img src={item?.image?.path} alt="" />
                         </div>
                         <span>{item?.title}</span>
                       </div>
@@ -177,7 +177,7 @@ const Commercial = ({
               <List List={listTilte} />
 
               {hotPoint && hotPoint?.relations > 0 ? (
-                <div className='Hotel-sliderWarpper'>
+                <div className="Hotel-sliderWarpper">
                   <h3>{hotPoint.title}</h3>
                   <Slider
                     {...{
@@ -209,15 +209,15 @@ const Commercial = ({
                     }}
                   >
                     {hotPoint?.relations?.map((item) => (
-                      <div key={uuid()} className='--warpper'>
-                        <div className='placeCard d-flex'>
-                          <div className='--img img_hover'>
-                            <img src={item.featureImage?.path} alt='' />
+                      <div key={uuid()} className="--warpper">
+                        <div className="placeCard d-flex">
+                          <div className="--img img_hover">
+                            <img src={item.featureImage?.path} alt="" />
                           </div>
-                          <div className='--txt pt-3 d-flex flex-column'>
+                          <div className="--txt pt-3 d-flex flex-column">
                             <h4>{item.title}</h4>
                             <span>{item.highlights}</span>
-                            <Link href={`/Discover/detail~${item.id}`}>
+                            <Link shallow href={`/Discover/detail~${item.id}`}>
                               {settingMap?.FindOutMore
                                 ? settingMap?.FindOutMore
                                 : ""}
@@ -232,7 +232,7 @@ const Commercial = ({
                 false
               )}
               {hotTour && hotTour.relations.length > 0 ? (
-                <div className='tour-sliderWarpper'>
+                <div className="tour-sliderWarpper">
                   <h3>{hotTour.title}</h3>
                   <Slider
                     {...{
@@ -245,13 +245,13 @@ const Commercial = ({
                       arrows: true,
                       nextArrow: (
                         <div>
-                          <i className='fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long'></i>
+                          <i className="fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long"></i>
                         </div>
                       ),
 
                       prevArrow: (
                         <div>
-                          <i className='fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long'></i>
+                          <i className="fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long"></i>
                         </div>
                       ),
                       responsive: [
@@ -267,7 +267,7 @@ const Commercial = ({
                     }}
                   >
                     {hotTour.relations?.map((item) => (
-                      <div key={uuid()} className='--warpper'>
+                      <div key={uuid()} className="--warpper">
                         <TourCard
                           id={item.id}
                           img={item.featureImage?.path}

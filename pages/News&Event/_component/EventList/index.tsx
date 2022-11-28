@@ -22,26 +22,30 @@ const EventsList = ({}: EventsListProps) => {
   }, [page, router.locale]);
   return (
     <>
-      <div ref={list} className='row'>
+      <div ref={list} className="row">
         {eventsArr?.map((item) => (
-          <Link key={uuid()} href={`/News&Event/event/detail~${item.id}`}>
-            <div className='col-md-4 eventCard'>
-              <div className='--item img_hover1 '>
-                <div className='--img '>
-                  <img src={item.featureImage?.path} alt='' />
+          <Link
+            shallow
+            key={uuid()}
+            href={`/News&Event/event/detail~${item.id}`}
+          >
+            <div className="col-md-4 eventCard">
+              <div className="--item img_hover1 ">
+                <div className="--img ">
+                  <img src={item.featureImage?.path} alt="" />
                 </div>
 
-                <div className='--txt'>
+                <div className="--txt">
                   {item.tag[0] ? (
-                    <span className='--tag d-flex'>{item.tag[0]}</span>
+                    <span className="--tag d-flex">{item.tag[0]}</span>
                   ) : (
                     false
                   )}
 
                   <h5>{item.title}</h5>
-                  <div className='Info'>
-                    <span className='date'>
-                      <i className='fa-solid fa-calendar-days'></i>
+                  <div className="Info">
+                    <span className="date">
+                      <i className="fa-solid fa-calendar-days"></i>
                       {settingMap.onDay} {item.date}
                     </span>
                   </div>
@@ -52,13 +56,13 @@ const EventsList = ({}: EventsListProps) => {
         ))}
       </div>
       <Pagination
-        className='--pagination'
+        className="--pagination"
         itemRender={(_, type, originalElement) => {
           if (type === "prev") {
-            return <i className='fa-solid fa-angles-left'></i>;
+            return <i className="fa-solid fa-angles-left"></i>;
           }
           if (type === "next") {
-            return <i className='fa-solid fa-angles-right'></i>;
+            return <i className="fa-solid fa-angles-right"></i>;
           }
           return originalElement;
         }}

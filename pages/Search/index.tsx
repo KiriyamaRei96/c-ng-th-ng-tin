@@ -74,23 +74,23 @@ const Search = ({ banner }) => {
   const settingMap = useAppSelector(globalSelector).settingMap;
   return (
     <SearchWrapper>
-      <div id='search'>
-        <div className='Banner d-flex'>
-          <img src={banner?.image?.path} alt=''></img>
-          <div className='--Item'>
+      <div id="search">
+        <div className="Banner d-flex">
+          <img src={banner?.image?.path} alt=""></img>
+          <div className="--Item">
             <h1>{banner.title}</h1>
             <BreadCrumb />
           </div>
         </div>
-        <div ref={list} className='searchContent'>
-          <div className='container-fluid'>
-            <h1 className='Title'>
+        <div ref={list} className="searchContent">
+          <div className="container-fluid">
+            <h1 className="Title">
               {pagination.totalCount} {settingMap.infoFound}
             </h1>
-            <div className='filter d-flex justify-content-between align-items-center'>
-              <div className='search'>
+            <div className="filter d-flex justify-content-between align-items-center">
+              <div className="search">
                 <input
-                  type='text'
+                  type="text"
                   value={search}
                   onChange={(e) => {
                     if (page !== 1) {
@@ -100,17 +100,17 @@ const Search = ({ banner }) => {
                   }}
                   placeholder={settingMap.searchPlaceHolder2}
                 />
-                <i className='fa-solid fa-magnifying-glass'></i>
+                <i className="fa-solid fa-magnifying-glass"></i>
               </div>
-              <div className='select'>
+              <div className="select">
                 <span>{settingMap.Sort}</span>
                 <select
                   value={filter}
                   onChange={(e) => {
                     setFilter(e.target.value);
                   }}
-                  name=''
-                  id=''
+                  name=""
+                  id=""
                 >
                   {filters.map((item) => (
                     <option value={item.value} key={uuid()}>
@@ -120,7 +120,7 @@ const Search = ({ banner }) => {
                 </select>
               </div>
             </div>
-            <div className='--tab d-flex'>
+            <div className="--tab d-flex">
               {Object.keys(types).map((key) => {
                 if (types[key].count > 0 && types[key].value !== "travel") {
                   return (
@@ -139,29 +139,30 @@ const Search = ({ banner }) => {
                 }
               })}
             </div>
-            <div className=' list_discover'>
-              <div className='row'>
+            <div className=" list_discover">
+              <div className="row">
                 {searchArr.map((item) => {
                   if (item.type !== "travel_companies") {
                     return (
-                      <div key={uuid()} className='col-md-4'>
-                        <div className='--item img_hover search-Card'>
+                      <div key={uuid()} className="col-md-4">
+                        <div className="--item img_hover search-Card">
                           <Link
+                            shallow
                             href={`/${linkMap[item.type]}detail~${item.id}`}
                           >
                             <a>
-                              <div className='--img'>
-                                <img src={item?.featureImage?.path} alt='' />
+                              <div className="--img">
+                                <img src={item?.featureImage?.path} alt="" />
                               </div>
-                              <div className='--txt'>
-                                <div className='--type'>
+                              <div className="--txt">
+                                <div className="--type">
                                   {types[item?.type]?.name}
                                 </div>
                                 <h4>{item?.title}</h4>
-                                <div className='--location '>
+                                <div className="--location ">
                                   {item?.address ? (
                                     <>
-                                      <img src={iconMap1.default.src} alt='' />
+                                      <img src={iconMap1.default.src} alt="" />
                                       <span>{item?.address}</span>
                                     </>
                                   ) : item?.subTitle ? (
@@ -181,13 +182,13 @@ const Search = ({ banner }) => {
               </div>
             </div>
             <Pagination
-              className='--pagination'
+              className="--pagination"
               itemRender={(_, type, originalElement) => {
                 if (type === "prev") {
-                  return <i className='fa-solid fa-angles-left'></i>;
+                  return <i className="fa-solid fa-angles-left"></i>;
                 }
                 if (type === "next") {
-                  return <i className='fa-solid fa-angles-right'></i>;
+                  return <i className="fa-solid fa-angles-right"></i>;
                 }
                 return originalElement;
               }}

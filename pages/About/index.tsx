@@ -129,7 +129,7 @@ const About = ({
                       __html: aboutIntroContent?.content,
                     }}
                   ></article>
-                  <Link href={aboutIntroContent?.link}>
+                  <Link shallow href={aboutIntroContent?.link}>
                     <a className='button_2 button_hover2'>
                       Liên Hệ ngay{" "}
                       <i className='fa-solid ms-2 fa-arrow-right-long'></i>
@@ -211,16 +211,16 @@ const About = ({
                 </Slider>
               ) : (
                 <div className='list_aboutDiscover d-flex'>
-                  {aboutDiscover?.relations.map((item) => (
+                  {aboutDiscover?.articles.map((item) => (
                     <div key={uuid()}>
                       <div className='--warpper'>
                         <div className='--item'>
                           <div className='--img img_hover'>
-                            <img src={item?.featureImage?.path} alt='' />
+                            <img src={item?.image?.path} alt='' />
                           </div>
                           <div className='--txt'>
                             <h4>{item?.title}</h4>
-                            <Link href={`/Discover/detail~${item.id}`}>
+                            <Link href={item?.link}>
                               <a>
                                 {settingMap.viewDetail}
                                 <i className='fa-solid ms-2 fa-arrow-right-long'></i>
@@ -264,7 +264,7 @@ const About = ({
           </div>
           <div className='--txt'>
             <h1 className='Title'>{aboutBlock?.title}</h1>
-            <Link href={aboutBlock?.link}>
+            <Link shallow href={aboutBlock?.link}>
               <a>
                 {settingMap.FindOut}
                 <i className='fa-solid ms-2 fa-arrow-right-long'></i>

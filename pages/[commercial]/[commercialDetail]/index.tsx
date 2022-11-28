@@ -380,7 +380,7 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                     <div className="--img">
                       <img src={event?.image?.path} alt="" />
                     </div>
-                    <Link href={event?.link ? event?.link : "/"}>
+                    <Link shallow href={event?.link ? event?.link : "/"}>
                       <div className="--txt">
                         <span>{event?.subTitle}</span>
                         <h2>{event?.title}</h2>
