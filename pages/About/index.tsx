@@ -40,6 +40,7 @@ export async function getServerSideProps(context) {
   const aboutBlock = await res.data?.snippets?.find(
     (item) => item["snippet_name"] === "aboutBlock"
   );
+
   return {
     props: {
       aboutBanner,
@@ -77,6 +78,7 @@ const About = ({
     (item) => item.title === "icon"
   );
   const settingMap = useAppSelector(globalSelector).settingMap;
+  console.log(aboutDiscover);
   return (
     <AboutWrapper>
       <div id='about'>
@@ -151,14 +153,14 @@ const About = ({
             </div>
           </div>
         </div>
-        {aboutDiscover?.articles?.length >= 0 ? (
+        {aboutDiscover?.relations?.length > 0 ? (
           <div className='aboutDiscover'>
             <div className='container-fluid'>
               <div className='subTitle text-center'>
                 {aboutDiscover?.subTitle}
               </div>
               <h1 className='Title text-center'>{aboutDiscover?.title}</h1>
-              {aboutDiscover?.articles?.length >= 4 ? (
+              {aboutDiscover?.relations?.length >= 4 ? (
                 <Slider
                   {...{
                     dots: true,
@@ -186,16 +188,16 @@ const About = ({
                   }}
                   className='list_aboutDiscover'
                 >
-                  {aboutDiscover?.articles.map((item) => (
+                  {aboutDiscover?.relations.map((item) => (
                     <div key={uuid()}>
                       <div className='--warpper'>
                         <div className='--item'>
                           <div className='--img img_hover'>
-                            <img src={item?.image?.path} alt='' />
+                            <img src={item?.featureImage?.path} alt='' />
                           </div>
                           <div className='--txt'>
                             <h4>{item?.title}</h4>
-                            <Link href={item?.link}>
+                            <Link href={`/Discover/detail~${item.id}`}>
                               <a>
                                 {settingMap.viewDetail}
                                 <i className='fa-solid ms-2 fa-arrow-right-long'></i>
@@ -209,16 +211,16 @@ const About = ({
                 </Slider>
               ) : (
                 <div className='list_aboutDiscover d-flex'>
-                  {aboutDiscover?.articles.map((item) => (
+                  {aboutDiscover?.relations.map((item) => (
                     <div key={uuid()}>
                       <div className='--warpper'>
                         <div className='--item'>
                           <div className='--img img_hover'>
-                            <img src={item?.image?.path} alt='' />
+                            <img src={item?.featureImage?.path} alt='' />
                           </div>
                           <div className='--txt'>
                             <h4>{item?.title}</h4>
-                            <Link href={item?.link}>
+                            <Link href={`/Discover/detail~${item.id}`}>
                               <a>
                                 {settingMap.viewDetail}
                                 <i className='fa-solid ms-2 fa-arrow-right-long'></i>
