@@ -138,27 +138,27 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
   }
   return (
     <CommercialDetailWrapper>
-      <div id="detailservice">
-        <div className="detailserviceContent detailAll">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-md-9">
-                <div className="--left">
-                  <div className="subTitle">
+      <div id='detailservice'>
+        <div className='detailserviceContent detailAll'>
+          <div className='container-fluid'>
+            <div className='row'>
+              <div className='col-md-9'>
+                <div className='--left'>
+                  <div className='subTitle'>
                     {settingMap[capitalizeFirstLetter(data?.type)]}
                   </div>
-                  <h3 className="--titlepost">{data?.title}</h3>
-                  <div className="--interactive d-flex align-items-center justify-content-between">
-                    <div className="--evaluate d-flex align-items-center">
+                  <h3 className='--titlepost'>{data?.title}</h3>
+                  <div className='--interactive d-flex align-items-center justify-content-between'>
+                    <div className='--evaluate d-flex align-items-center'>
                       {data?.star ? (
-                        <div className="--star d-flex align-items-center">
+                        <div className='--star d-flex align-items-center'>
                           <span>{data?.star}</span>
                           {Array.apply(null, Array(Number(data?.star))).map(
                             function (x, i) {
                               return (
                                 <i
                                   key={uuid()}
-                                  className="fa-solid fa-star"
+                                  className='fa-solid fa-star'
                                 ></i>
                               );
                             }
@@ -169,7 +169,7 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                                 <i
                                   key={uuid()}
                                   style={{ color: "wheat" }}
-                                  className="fa-solid fa-star"
+                                  className='fa-solid fa-star'
                                 ></i>
                               );
                             }
@@ -183,13 +183,13 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                         {commentArr?.length} {settingMap.ratting}
                       </span>
                     </div>
-                    <div className="--sharecmt  d-flex align-items-center">
-                      <div className="--link">
-                        <a className="share-hover">
-                          <i className="fa-solid fa-share-nodes"></i>
-                          <span className="txt"> {settingMap.share}</span>
+                    <div className='--sharecmt  d-flex align-items-center'>
+                      <div className='--link'>
+                        <a className='share-hover'>
+                          <i className='fa-solid fa-share-nodes'></i>
+                          <span className='txt'> {settingMap.share}</span>
 
-                          <div className="--share">
+                          <div className='--share'>
                             <TwitterShareButton url={url}>
                               <TwitterIcon />
                             </TwitterShareButton>
@@ -204,15 +204,15 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                       </div>
 
                       <CommentBtn id={id}>
-                        <button className="button_hover2 button_2">
+                        <button className='button_hover2 button_2'>
                           {settingMap.writeRatting}
                         </button>
                       </CommentBtn>
                     </div>
                   </div>
-                  <div className="list_img">
-                    <div className="--img">
-                      <img src={image ? image : ""} alt="" />
+                  <div className='list_img'>
+                    <div className='--img'>
+                      <img src={image ? image : ""} alt='' />
                     </div>
                     {allIMG?.slice(0, 4).map((img, id) =>
                       id < 3 ? (
@@ -225,16 +225,16 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                             image === img.path ? "--img active" : "--img"
                           }
                         >
-                          <img src={img.path} alt="" />
+                          <img src={img.path} alt='' />
                         </div>
                       ) : (
-                        <div key={uuid()} className="--img">
-                          <img src={img.path} alt="" />
+                        <div key={uuid()} className='--img'>
+                          <img src={img.path} alt='' />
                           <Fancybox key={uuid()} options={{ infinite: true }}>
                             {allIMG?.map((item) => (
                               <a
                                 key={uuid()}
-                                data-fancybox="gallery"
+                                data-fancybox='gallery'
                                 data-src={item.path}
                               >
                                 {data?.galleries.length - 3}+
@@ -245,8 +245,8 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                       )
                     )}
                   </div>
-                  <div className="list_content">
-                    <div className="--tab">
+                  <div className='list_content'>
+                    <div className='--tab'>
                       <div
                         onClick={() => {
                           setActive("content");
@@ -339,7 +339,7 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                       false
                     )}
                     {active === "potision" ? (
-                      <Map arr={[data]} height="400px" />
+                      <Map arr={[data]} height='400px' />
                     ) : (
                       false
                     )}
@@ -349,17 +349,17 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                         ))
                       : false}
                     {active === "comments" ? <Comment id={id} /> : false}
-                    <div className="--card">
-                      <div className="--icon">
-                        <img src={icon13.default.src} alt="" />
+                    <div className='--card'>
+                      <div className='--icon'>
+                        <img src={icon13.default.src} alt='' />
                       </div>
-                      <div className="--txt">
-                        <div className="--title">{settingMap.hightLight}</div>
+                      <div className='--txt'>
+                        <div className='--title'>{settingMap.hightLight}</div>
                         <ul>
-                          {data?.highlights?.split("/").map((text) => (
+                          {data?.highlights?.map((text) => (
                             <li key={uuid()}>
-                              <div className="--check">
-                                <img src={iconCheck.default.src} alt="" />
+                              <div className='--check'>
+                                <img src={iconCheck.default.src} alt='' />
                               </div>
                               <span>{text}</span>
                             </li>
@@ -370,21 +370,21 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                   </div>
                 </div>
               </div>
-              <div className="col-md-3">
-                <div className="--right cardbook">
+              <div className='col-md-3'>
+                <div className='--right cardbook'>
                   <BookingCard />
-                  <div className="--map">
-                    <Map height="450px" arr={pointArr} />
+                  <div className='--map'>
+                    <Map height='450px' arr={pointArr} />
                   </div>
-                  <div className="--endow">
-                    <div className="--img">
-                      <img src={event?.image?.path} alt="" />
+                  <div className='--endow'>
+                    <div className='--img'>
+                      <img src={event?.image?.path} alt='' />
                     </div>
                     <Link shallow href={event?.link ? event?.link : "/"}>
-                      <div className="--txt">
+                      <div className='--txt'>
                         <span>{event?.subTitle}</span>
                         <h2>{event?.title}</h2>
-                        <div className="--des">{event?.description}</div>
+                        <div className='--des'>{event?.description}</div>
                       </div>
                     </Link>
                   </div>
@@ -394,14 +394,14 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
           </div>
         </div>
         {router?.query?.commercial === "Restaurant" ? (
-          <div className="detailservicediscover">
-            <div className="container-fluid">
-              <div className="--title">
-                <div className="subTitle text-center">{slider?.subTitle}</div>
-                <h1 className="Title text-center">{slider?.tilte}</h1>
+          <div className='detailservicediscover'>
+            <div className='container-fluid'>
+              <div className='--title'>
+                <div className='subTitle text-center'>{slider?.subTitle}</div>
+                <h1 className='Title text-center'>{slider?.tilte}</h1>
               </div>
-              <div className="slider">
-                <div className="list_servicediscover">
+              <div className='slider'>
+                <div className='list_servicediscover'>
                   {slider?.relations?.length > 4 ? (
                     <Slider
                       {...{
@@ -414,12 +414,12 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
 
                         nextArrow: (
                           <div>
-                            <i className="fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long"></i>
+                            <i className='fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long'></i>
                           </div>
                         ),
                         prevArrow: (
                           <div>
-                            <i className="fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long"></i>
+                            <i className='fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long'></i>
                           </div>
                         ),
                         responsive: [
@@ -433,10 +433,10 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                           },
                         ],
                       }}
-                      className="row"
+                      className='row'
                     >
                       {slider?.relations?.map((i) => (
-                        <div key={uuid()} className="col-md-3">
+                        <div key={uuid()} className='col-md-3'>
                           <RestaurantCard
                             title={i.title}
                             address={i.address}
@@ -449,9 +449,9 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                       ))}
                     </Slider>
                   ) : (
-                    <div className="row">
+                    <div className='row'>
                       {slider?.relations?.map((i) => (
-                        <div key={uuid()} className="col-md-3">
+                        <div key={uuid()} className='col-md-3'>
                           <RestaurantCard
                             title={i.title}
                             address={i.address}
@@ -466,7 +466,7 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                     </div>
                   )}
                 </div>
-                <div className="arrow_servicediscover"></div>
+                <div className='arrow_servicediscover'></div>
               </div>
             </div>
           </div>
@@ -474,14 +474,14 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
           false
         )}
         {router?.query?.commercial === "Hotel" ? (
-          <div className="detailservicediscover detailhotel">
-            <div className="container-fluid">
-              <div className="--title">
-                <div className="subTitle text-center">{slider?.subTitle}</div>
-                <h1 className="Title text-center">{slider?.title}</h1>
+          <div className='detailservicediscover detailhotel'>
+            <div className='container-fluid'>
+              <div className='--title'>
+                <div className='subTitle text-center'>{slider?.subTitle}</div>
+                <h1 className='Title text-center'>{slider?.title}</h1>
               </div>
-              <div className="slider">
-                <div className="list_servicediscover">
+              <div className='slider'>
+                <div className='list_servicediscover'>
                   {slider?.relations?.length > 4 ? (
                     <Slider
                       {...{
@@ -494,12 +494,12 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
 
                         nextArrow: (
                           <div>
-                            <i className="fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long"></i>
+                            <i className='fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long'></i>
                           </div>
                         ),
                         prevArrow: (
                           <div>
-                            <i className="fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long"></i>
+                            <i className='fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long'></i>
                           </div>
                         ),
                         responsive: [
@@ -513,10 +513,10 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                           },
                         ],
                       }}
-                      className="row"
+                      className='row'
                     >
                       {slider?.relations?.map((i) => (
-                        <div key={uuid()} className="col-md-3">
+                        <div key={uuid()} className='col-md-3'>
                           <HotelCard
                             galaley={i.galleries}
                             title={i.title}
@@ -530,9 +530,9 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                       ))}
                     </Slider>
                   ) : (
-                    <div className="row">
+                    <div className='row'>
                       {slider?.relations?.map((i) => (
-                        <div key={uuid()} className="col-md-3">
+                        <div key={uuid()} className='col-md-3'>
                           <HotelCard
                             galaley={i.galleries}
                             title={i.title}
@@ -547,9 +547,9 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                     </div>
                   )}
 
-                  <div className="row"></div>
+                  <div className='row'></div>
                 </div>
-                <div className="arrow_servicediscover"></div>
+                <div className='arrow_servicediscover'></div>
               </div>
             </div>
           </div>
@@ -557,14 +557,14 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
           false
         )}
         {router?.query?.commercial === "Tour" ? (
-          <div className="detailservicediscover1 detailservicediscover">
-            <div className="container-fluid">
-              <div className="--title">
-                <div className="subTitle text-center">{slider?.subTitle}</div>
-                <h1 className="Title text-center">{slider?.title}</h1>
+          <div className='detailservicediscover1 detailservicediscover'>
+            <div className='container-fluid'>
+              <div className='--title'>
+                <div className='subTitle text-center'>{slider?.subTitle}</div>
+                <h1 className='Title text-center'>{slider?.title}</h1>
               </div>
-              <div className="slider1">
-                <div className="list_servicediscover1 dicover_all">
+              <div className='slider1'>
+                <div className='list_servicediscover1 dicover_all'>
                   {slider?.relations?.length > 4 ? (
                     <Slider
                       {...{
@@ -576,12 +576,12 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                         arrows: true,
                         nextArrow: (
                           <div>
-                            <i className="fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long"></i>
+                            <i className='fa-solid nextarrow arrow arrow_hover  fa-arrow-right-long'></i>
                           </div>
                         ),
                         prevArrow: (
                           <div>
-                            <i className="fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long"></i>
+                            <i className='fa-solid prevarrow arrow arrow_hover  fa-arrow-left-long'></i>
                           </div>
                         ),
                         responsive: [
@@ -596,10 +596,10 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                           },
                         ],
                       }}
-                      className="list_slider"
+                      className='list_slider'
                     >
                       {slider?.relations?.map((i) => (
-                        <div key={uuid()} className="--wrapper">
+                        <div key={uuid()} className='--wrapper'>
                           <TourCard
                             id={i.id}
                             img={i.featureImage?.path}
@@ -612,9 +612,9 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                       ))}
                     </Slider>
                   ) : (
-                    <div className="row">
+                    <div className='row'>
                       {slider?.relations?.map((i) => (
-                        <div key={uuid()} className="--wrapper">
+                        <div key={uuid()} className='--wrapper'>
                           <TourCard
                             id={i.id}
                             img={i.featureImage?.path}
@@ -628,7 +628,7 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                     </div>
                   )}
                 </div>
-                <div className="arrow_servicediscover1"></div>
+                <div className='arrow_servicediscover1'></div>
               </div>
             </div>
           </div>
