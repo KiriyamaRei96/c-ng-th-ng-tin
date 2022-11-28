@@ -117,8 +117,6 @@ const Commercial = ({
     });
     dispatch(clearFilter());
   }, [router.query.commercial, router.locale]);
-  console.log(hotPoint);
-  console.log(hotTour);
 
   return (
     <CommercialWrapper>
