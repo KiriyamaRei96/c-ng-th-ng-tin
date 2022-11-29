@@ -90,7 +90,7 @@ const BookingCard = (props: BookingCardProps) => {
           </div>
         </div>
         <div className='form-group'>
-          <label htmlFor=''>With:</label>
+          <label htmlFor=''>Số đêm:</label>
           <div className='--select'>
             <div className='--icon'>
               <img className=' potision' src={Moon.default.src} alt='' />
@@ -108,7 +108,7 @@ const BookingCard = (props: BookingCardProps) => {
           </div>
         </div>
         <div className='form-group'>
-          <label htmlFor=''>Điểm đến: </label>
+          <label htmlFor=''>With: </label>
           <div className='--select'>
             <div className='--icon'>
               <i className='potision fa-regular fa-pen-to-square'></i>
