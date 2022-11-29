@@ -9,25 +9,25 @@ export interface DiscoverCardListProps {
 
 const DiscoverCardList = ({ searchArr }: DiscoverCardListProps) => {
   return (
-    <div className="row">
+    <div className='row'>
       {searchArr?.map((item) => (
-        <Link shallow key={uuid()} href={`/Discover/detail~${item.id}`}>
-          <div className="col-md-4">
-            <div className="--item img_hover1">
-              <a href="">
+        <Link key={uuid()} href={`/Discover/detail~${item.id}`}>
+          <div className='col-md-4'>
+            <div className='--item img_hover1'>
+              <a href=''>
                 <>
-                  <div className="--img">
-                    <img src={item.featureImage?.path} alt="" />
+                  <div className='--img'>
+                    <img src={item.featureImage?.path} alt='' />
                   </div>
-                  <div className="--txt">
-                    <div className="--type">
+                  <div className='--txt'>
+                    <div className='--type'>
                       {item.pointType[0] ? item.pointType[0]?.title : false}
                     </div>
                     <h4>{item.title}</h4>
-                    <div className="--location ">
+                    <div className='--location '>
                       <Image
                         src={require("../../../../../Asset/icon-map1.svg")}
-                        alt=""
+                        alt=''
                       />
                       <span>{item.address}</span>
                     </div>

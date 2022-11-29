@@ -61,9 +61,7 @@ export async function getServerSideProps(context) {
   };
 }
 const DiscoverDetail = ({ data, otherData, id }) => {
-  const [image, setImage] = useState<string | undefined>(
-    data?.featureImage?.path
-  );
+  const [image, setImage] = useState<string | undefined>("");
   const router = useRouter();
   let allIMG = [];
   const [active, setActive] = useState("content");
@@ -87,6 +85,7 @@ const DiscoverDetail = ({ data, otherData, id }) => {
   const commentArr = useAppSelector(commentSelector).commentArr;
   useEffect(() => {
     dispatch({ type: "GET_COMMENT", payload: id });
+    setImage(data?.featureImage?.path);
   }, [id]);
   let url;
   if (typeof window !== "undefined") {
@@ -348,7 +347,7 @@ const DiscoverDetail = ({ data, otherData, id }) => {
                     <div className='--img'>
                       <img src={event?.image?.path} alt='' />
                     </div>
-                    <Link shallow href={event?.link ? event?.link : "/"}>
+                    <Link href={event?.link ? event?.link : "/"}>
                       <div className='--txt'>
                         <span>{event?.subTitle}</span>
                         <h2>{event?.title}</h2>
@@ -404,7 +403,6 @@ const DiscoverDetail = ({ data, otherData, id }) => {
                       <div key={uuid()} className='--warrper '>
                         <div className='--item img_hover'>
                           <Link
-                            shallow
                             key={uuid()}
                             href={`/Discover/detail~${item.id}`}
                           >
@@ -437,7 +435,6 @@ const DiscoverDetail = ({ data, otherData, id }) => {
                       <div key={uuid()} className='--warrper col-md-3'>
                         <div className='--item img_hover'>
                           <Link
-                            shallow
                             key={uuid()}
                             href={`/Discover/detail~${item.id}`}
                           >

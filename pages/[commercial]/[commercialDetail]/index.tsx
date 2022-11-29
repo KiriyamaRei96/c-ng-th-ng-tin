@@ -101,6 +101,7 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
   const commentArr = useAppSelector(commentSelector).commentArr;
   useEffect(() => {
     dispatch({ type: "GET_COMMENT", payload: id });
+    setImage(data?.featureImage.path);
   }, [id]);
 
   const dispatch = useAppDispatch();
@@ -110,9 +111,7 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
     }
   }, [pointArr, router.locale]);
 
-  const [image, setImage] = useState<string | undefined>(
-    data?.featureImage.path
-  );
+  const [image, setImage] = useState<string | undefined>("");
 
   const [active, setActive] = useState("content");
 
@@ -380,7 +379,7 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                     <div className='--img'>
                       <img src={event?.image?.path} alt='' />
                     </div>
-                    <Link shallow href={event?.link ? event?.link : "/"}>
+                    <Link href={event?.link ? event?.link : "/"}>
                       <div className='--txt'>
                         <span>{event?.subTitle}</span>
                         <h2>{event?.title}</h2>

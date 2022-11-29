@@ -26,38 +26,38 @@ const HotelCard = ({
   const [current, setCurrent] = useState<number>(0);
   const slider: any = useRef();
   return (
-    <div className="hotel d-flex">
-      <Link shallow href={`/Hotel/detail~${id}`}>
-        <div className="--warpper">
-          <img src={`${img}`} alt="" />
+    <div className='hotel d-flex'>
+      <Link href={`/Hotel/detail~${id}`}>
+        <div className='--warpper'>
+          <img src={`${img}`} alt='' />
 
-          <div className="--ribbon ">
-            <Image src={require("../../../../Asset/baggest.png")} alt="" />
+          <div className='--ribbon '>
+            <Image src={require("../../../../Asset/baggest.png")} alt='' />
             <span>Best recommend</span>
           </div>
-          <div className="--heart">
-            <i className="fa-solid fa-heart"></i>
+          <div className='--heart'>
+            <i className='fa-solid fa-heart'></i>
           </div>
         </div>
       </Link>
-      <div className="--item d-flex">
-        <Link shallow href={`/Hotel/detail~${id}`}>
+      <div className='--item d-flex'>
+        <Link href={`/Hotel/detail~${id}`}>
           <h5>{title}</h5>
         </Link>
 
-        <div className="--andress d-flex">
-          <i className="fa-solid fa-location-dot"></i>
+        <div className='--andress d-flex'>
+          <i className='fa-solid fa-location-dot'></i>
           <span>{address}</span>
         </div>
 
-        <div className="ranks d-flex">
+        <div className='ranks d-flex'>
           <div>
             <Rate disabled defaultValue={rate}></Rate>
             <span>{rate}</span>
           </div>
 
-          <div className="views">
-            <i className="fa-solid fa-eye"></i> {view}
+          <div className='views'>
+            <i className='fa-solid fa-eye'></i> {view}
           </div>
         </div>
       </div>

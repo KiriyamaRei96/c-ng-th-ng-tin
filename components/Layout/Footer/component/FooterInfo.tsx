@@ -14,20 +14,20 @@ const FooterInfo = ({ footerInfo }) => {
   );
 
   return (
-    <div className="footer_info">
-      <h1 className="--title">{footerInfo?.title}</h1>
+    <div className='footer_info'>
+      <h1 className='--title'>{footerInfo?.title}</h1>
       <ul>
         <li>
-          <i className="fa-solid fa-location-dot"></i>
-          <div className="--txt">{address?.title}</div>
+          <i className='fa-solid fa-location-dot'></i>
+          <div className='--txt'>{address?.title}</div>
         </li>
         <li>
-          <i className="fa-solid fa-house-chimney"></i>
-          <div className="--txt">{address?.subTitle}</div>
+          <i className='fa-solid fa-house-chimney'></i>
+          <div className='--txt'>{address?.subTitle}</div>
         </li>
         <li>
-          <i className="fa-solid fa-phone-volume"></i>
-          <div className="--txt">
+          <i className='fa-solid fa-phone-volume'></i>
+          <div className='--txt'>
             {phone?.link.split("/").map((number, id) => {
               if (id === 0) {
                 return (
@@ -49,10 +49,10 @@ const FooterInfo = ({ footerInfo }) => {
           </div>
         </li>
         <li>
-          <Link shallow href="/Contact">
+          <Link href='/Contact'>
             <a>
-              <i className="fa-solid fa-envelope-open"></i>
-              <div className="--txt">Email:{email?.title}</div>
+              <i className='fa-solid fa-envelope-open'></i>
+              <div className='--txt'>Email:{email?.title}</div>
             </a>
           </Link>
         </li>

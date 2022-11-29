@@ -80,7 +80,7 @@ const AppHeader = (props: AppHeaderProps) => {
                 <p></p>
               </div>
               <div className='logo'>
-                <Link shallow href={"/"}>
+                <Link href={"/"}>
                   <img src={webSetting?.logoBW?.path} alt='' />
                 </Link>
               </div>
@@ -92,7 +92,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link shallow href='/'>
+                  <Link href='/'>
                     <a>{settingMap.Home}</a>
                   </Link>
                 </div>
@@ -103,7 +103,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link shallow href='/About'>
+                  <Link href='/About'>
                     <a>{settingMap.About}</a>
                   </Link>
                 </div>
@@ -114,7 +114,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link shallow href='/Discover'>
+                  <Link href='/Discover'>
                     <a>{settingMap.Discover}</a>
                   </Link>
                 </div>
@@ -158,7 +158,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link shallow href='/News&Event'>
+                  <Link href='/News&Event'>
                     <a>{settingMap["News&Event"]}</a>
                   </Link>
                 </div>
@@ -169,7 +169,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link shallow href='/Contact'>
+                  <Link href='/Contact'>
                     <a>{settingMap.Contact}</a>
                   </Link>
                 </div>
@@ -316,7 +316,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link shallow href='/'>
+                    <Link href='/'>
                       <a>{settingMap.Home}</a>
                     </Link>
                   </div>
@@ -327,7 +327,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link shallow href='/About'>
+                    <Link href='/About'>
                       <a>{settingMap.About}</a>
                     </Link>
                   </div>
@@ -338,7 +338,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link shallow href='/Discover'>
+                    <Link href='/Discover'>
                       <a>{settingMap.Discover}</a>
                     </Link>
                   </div>
@@ -382,7 +382,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link shallow href='/News&Event'>
+                    <Link href='/News&Event'>
                       <a>{settingMap["News&Event"]}</a>
                     </Link>
                   </div>
@@ -393,7 +393,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link shallow href='/Contact'>
+                    <Link href='/Contact'>
                       <a>{settingMap.Contact}</a>
                     </Link>
                   </div>
@@ -425,7 +425,7 @@ const AppHeader = (props: AppHeaderProps) => {
                 <p></p>
               </div>
               <div className='logo'>
-                <Link shallow href={"/"}>
+                <Link href={"/"}>
                   <img src={webSetting?.logo?.path} alt='' />
                 </Link>
               </div>
@@ -437,7 +437,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link shallow href='/'>
+                  <Link href='/'>
                     <a>{settingMap.Home}</a>
                   </Link>
                 </div>
@@ -448,7 +448,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link shallow href='/About'>
+                  <Link href='/About'>
                     <a>{settingMap.About}</a>
                   </Link>
                 </div>
@@ -459,7 +459,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link shallow href='/Discover'>
+                  <Link href='/Discover'>
                     <a>{settingMap.Discover}</a>
                   </Link>
                 </div>
@@ -503,7 +503,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link shallow href='/News&Event'>
+                  <Link href='/News&Event'>
                     <a>{settingMap["News&Event"]}</a>
                   </Link>
                 </div>
@@ -514,7 +514,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link shallow href='/Contact'>
+                  <Link href='/Contact'>
                     <a>{settingMap.Contact}</a>
                   </Link>
                 </div>
@@ -661,7 +661,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link shallow href='/'>
+                    <Link href='/'>
                       <a>{settingMap.Home}</a>
                     </Link>
                   </div>
@@ -672,7 +672,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link shallow href='/About'>
+                    <Link href='/About'>
                       <a>{settingMap.About}</a>
                     </Link>
                   </div>
@@ -683,7 +683,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link shallow href='/Discover'>
+                    <Link href='/Discover'>
                       <a>{settingMap.Discover}</a>
                     </Link>
                   </div>
@@ -727,7 +727,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link shallow href='/News&Event'>
+                    <Link href='/News&Event'>
                       <a>{settingMap["News&Event"]}</a>
                     </Link>
                   </div>
@@ -738,7 +738,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link shallow href='/Contact'>
+                    <Link href='/Contact'>
                       <a>{settingMap.Contact}</a>
                     </Link>
                   </div>

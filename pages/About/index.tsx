@@ -129,7 +129,7 @@ const About = ({
                       __html: aboutIntroContent?.content,
                     }}
                   ></article>
-                  <Link shallow href={aboutIntroContent?.link}>
+                  <Link href={aboutIntroContent?.link}>
                     <a className='button_2 button_hover2'>
                       Liên Hệ ngay{" "}
                       <i className='fa-solid ms-2 fa-arrow-right-long'></i>
@@ -264,7 +264,7 @@ const About = ({
           </div>
           <div className='--txt'>
             <h1 className='Title'>{aboutBlock?.title}</h1>
-            <Link shallow href={aboutBlock?.link}>
+            <Link href={aboutBlock?.link}>
               <a>
                 {settingMap.FindOut}
                 <i className='fa-solid ms-2 fa-arrow-right-long'></i>

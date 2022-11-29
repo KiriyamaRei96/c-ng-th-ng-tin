@@ -217,7 +217,7 @@ const Commercial = ({
                           <div className='--txt pt-3 d-flex flex-column'>
                             <h4>{item.title}</h4>
                             <span>{item?.highlights[0]}</span>
-                            <Link shallow href={`/Discover/detail~${item.id}`}>
+                            <Link href={`/Discover/detail~${item.id}`}>
                               {settingMap?.FindOutMore
                                 ? settingMap?.FindOutMore
                                 : ""}

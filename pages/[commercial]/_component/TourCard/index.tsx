@@ -11,23 +11,23 @@ export interface TourCardProps {
 
 const TourCard = ({ id, img, tilte, plan, pointCategory }: TourCardProps) => {
   return (
-    <Link shallow href={`/Tour/detail~${id}`}>
-      <div className="tour">
-        <div className="--img img_hover">
-          <img src={`${img}`} alt="" />
+    <Link href={`/Tour/detail~${id}`}>
+      <div className='tour'>
+        <div className='--img img_hover'>
+          <img src={`${img}`} alt='' />
         </div>
-        <div className="--txt">
+        <div className='--txt'>
           <h4>{tilte}</h4>
           <span>{plan}</span>
-          <div className="divider"></div>
-          <div className="Info d-flex">
-            <span className="date">
-              <i className="fa-solid fa-calendar-days"></i>
+          <div className='divider'></div>
+          <div className='Info d-flex'>
+            <span className='date'>
+              <i className='fa-solid fa-calendar-days'></i>
               2N1Đ
             </span>
-            <i className="fa-solid fa-circle divider"></i>
-            <span className="view">
-              <i className="fa-solid fa-location-dot"></i>
+            <i className='fa-solid fa-circle divider'></i>
+            <span className='view'>
+              <i className='fa-solid fa-location-dot'></i>
               {pointCategory}
             </span>
           </div>
