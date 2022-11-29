@@ -71,14 +71,6 @@ const NewsDetail = ({ data, newsBanner }: NewsDetailProps) => {
                   <h2 className='--title'>{data.title}</h2>
                   <div className='--note d-flex'>
                     <div className='--item'>
-                      <a href=''>
-                        <span>32 {settingMap.comment}</span>
-                      </a>
-                    </div>
-                    <div className='--item'>
-                      <span>84 {settingMap.ratting}</span>
-                    </div>
-                    <div className='--item'>
                       <i className='fa-regular fa-calendar'></i>
                       <span>{data.date}</span>
                     </div>
