@@ -29,6 +29,15 @@ export async function getServerSideProps(context) {
     },
   };
 }
+export const linkMap = {
+  hotel: "/Hotel/",
+  restaurant: "/Restaurant/",
+  tour: "/Tour/",
+  news: "/News&Event/news/",
+  event: "/News&Event/event/",
+
+  point: "/Discover/",
+};
 const Search = ({ banner }) => {
   const pagination = useAppSelector(searchSelector).pagination;
   const searchArr = useAppSelector(searchSelector).searchArr;
@@ -45,15 +54,7 @@ const Search = ({ banner }) => {
   const list: any = useRef();
   const debouncedSearchTerm = useDebounce(search, 500);
   const dispatch = useAppDispatch();
-  const linkMap = {
-    hotel: "/Hotel/",
-    restaurant: "/Restaurant/",
-    tour: "/Tour/",
-    news: "/News&Event/news/",
-    event: "/News&Event/event/",
 
-    point: "/Discover/",
-  };
   useEffect(() => {
     const payload = {
       page,
