@@ -199,6 +199,7 @@ const AppHeader = (props: AppHeaderProps) => {
                     placeholder={settingMap.searchPlaceHolder}
                   />
                   <i className='fa-solid fa-magnifying-glass'></i>
+                  <div className='--hover'></div>
                   {searchArr?.length > 0 && search !== "" ? (
                     <div className='suggest'>
                       {searchArr.map((item) => (
@@ -562,6 +563,7 @@ const AppHeader = (props: AppHeaderProps) => {
                     type='text'
                     placeholder={settingMap.searchPlaceHolder}
                   />
+                  <div className='--hover'></div>
                   {searchArr?.length > 0 && search !== "" ? (
                     <div className='suggest'>
                       {searchArr.map((item) => (

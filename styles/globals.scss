@@ -206,8 +206,8 @@ header {
 
     .suggest {
       display: none;
-      position: relative;
-      flex-direction: column;
+
+      margin-top: 8px;
       width: 150px;
       background: rgba(255, 255, 255, 0.2);
       z-index: 8;
@@ -215,7 +215,7 @@ header {
       box-shadow: 8px 16px 64px rgba(0, 0, 0, 0.24);
       backdrop-filter: blur(8px);
       /* Note: backdrop-filter has minimal browser support */
-      margin-top: 8px;
+
       border-radius: 8px;
       max-height: 286px;
       overflow: auto;
@@ -270,7 +270,16 @@ header {
 
     }
 
-    input:focus~.suggest {
+    .--hover {
+      width: 150px;
+      height: 8px;
+      position: absolute;
+      bottom: -8px;
+    }
+
+    &:hover>.suggest,
+    .suggest:hover,
+    .--hover:hover {
       display: block;
 
 
@@ -346,6 +355,14 @@ header {
   &.white {
     background: #FFF !important;
 
+    .suggest {
+      background: rgba(0, 0, 0, 0.24);
+
+      .--item {
+        color: white;
+      }
+    }
+
     .--item-menu {
       a {
         color: #5C626A !important;
@@ -361,9 +378,10 @@ header {
     .search {
       input {
         border: 1px solid #DCDCDC;
+        color: #5C626A;
 
         &::placeholder {
-          color: #D1D1D1;
+          color: #5C626A;
         }
       }
 
