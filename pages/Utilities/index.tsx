@@ -3,13 +3,13 @@ import React, { useEffect, useState } from "react";
 import callApi from "../../Api/Axios";
 import globalSelector from "../../ReduxStore/globalSlice/slice";
 import { useAppDispatch, useAppSelector } from "../../ReduxStore/hooks";
-import UtilitiesWrapper from "./_component/styled/style";
 import { v4 as uuid } from "uuid";
 import utilitiesSelector from "../../ReduxStore/utilitieSlice/slice";
 import useDebounce from "../../funcion/debounce";
 import Map from "../../components/Map";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import UtilitiesWrapper from "./_component/styled/style";
 export async function getServerSideProps(context) {
   // page
   const page = await callApi
