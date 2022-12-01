@@ -221,8 +221,12 @@ header {
       overflow: auto;
       padding: 8px;
 
-      .--item {
+      a {
         z-index: 10;
+      }
+
+      .--item {
+
         height: 28px;
         padding: 8px;
         display: flex;
