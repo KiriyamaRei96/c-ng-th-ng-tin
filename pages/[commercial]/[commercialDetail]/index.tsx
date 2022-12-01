@@ -600,6 +600,7 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                       {slider?.relations?.map((i) => (
                         <div key={uuid()} className='--wrapper'>
                           <TourCard
+                            time={i.time}
                             id={i.id}
                             img={i.featureImage?.path}
                             tilte={i.title}
@@ -615,6 +616,7 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                       {slider?.relations?.map((i) => (
                         <div key={uuid()} className='--wrapper'>
                           <TourCard
+                            time={i.time}
                             id={i.id}
                             img={i.featureImage?.path}
                             tilte={i.title}

@@ -14,13 +14,17 @@ import searchSelector, {
 } from "../../ReduxStore/search/slice";
 import { EnterOutlined } from "@ant-design/icons";
 import { linkMap } from "../../pages/Search";
+import useDebounce from "../../funcion/debounce";
 export interface AppHeaderProps {}
 
 const AppHeader = (props: AppHeaderProps) => {
   const [change, setChange] = useState(false);
   const [searchActive, setSearchActive] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
+  const [suggestActive, setSuggestActive] = useState(false);
+
   const search = useAppSelector(searchSelector).search;
+  const debouncedSearchTerm = useDebounce(search, 500);
 
   const router = useRouter();
   const language = useAppSelector(globalSelector).language;
@@ -31,6 +35,13 @@ const AppHeader = (props: AppHeaderProps) => {
   const settingMap = useAppSelector(globalSelector).settingMap;
 
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: "SEARCH",
+      payload: { search },
+    });
+  }, [debouncedSearchTerm]);
   useEffect(() => {
     window.addEventListener("scroll", (e) => {
       if (window.scrollY >= 100) {
@@ -42,6 +53,7 @@ const AppHeader = (props: AppHeaderProps) => {
     window.addEventListener("click", (e) => {
       setSearchActive(false);
       setMenuActive(false);
+      setSuggestActive(false);
     });
 
     if (languageArr.length === 0) {
@@ -177,8 +189,11 @@ const AppHeader = (props: AppHeaderProps) => {
                 </div>
               </div>
               <div className='header_right d-flex align-items-center'>
-                <div className='search'>
+                <div onClick={(e) => e.stopPropagation()} className='search'>
                   <input
+                    onFocus={(e) => {
+                      setSuggestActive(true);
+                    }}
                     onKeyDown={(e) => {
                       if (e.key === "Enter") {
                         dispatch(setType(""));
@@ -200,7 +215,7 @@ const AppHeader = (props: AppHeaderProps) => {
                   />
                   <i className='fa-solid fa-magnifying-glass'></i>
                   <div className='--hover'></div>
-                  {searchArr?.length > 0 && search !== "" ? (
+                  {searchArr?.length > 0 && search !== "" && suggestActive ? (
                     <div className='suggest'>
                       {searchArr.map((item) => (
                         <Link
@@ -542,8 +557,16 @@ const AppHeader = (props: AppHeaderProps) => {
                 </div>
               </div>
               <div className='header_right d-flex align-items-center'>
-                <div className='search'>
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                  }}
+                  className='search'
+                >
                   <input
+                    onFocus={(e) => {
+                      setSuggestActive(true);
+                    }}
                     onKeyDown={(e) => {
                       if (e.key === "Enter") {
                         dispatch(setType(""));
@@ -564,7 +587,7 @@ const AppHeader = (props: AppHeaderProps) => {
                     placeholder={settingMap.searchPlaceHolder}
                   />
                   <div className='--hover'></div>
-                  {searchArr?.length > 0 && search !== "" ? (
+                  {searchArr?.length > 0 && search !== "" && suggestActive ? (
                     <div className='suggest'>
                       {searchArr.map((item) => (
                         <Link

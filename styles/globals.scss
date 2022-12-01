@@ -205,7 +205,7 @@ header {
     }
 
     .suggest {
-      display: none;
+      display: block;
 
       margin-top: 8px;
       width: 150px;
@@ -277,13 +277,13 @@ header {
       bottom: -8px;
     }
 
-    &:hover>.suggest,
-    .suggest:hover,
-    .--hover:hover {
-      display: block;
+    // &:hover>.suggest,
+    // .suggest:hover,
+    // .--hover:hover {
+    //   display: block;
 
 
-    }
+    // }
 
     ::-webkit-scrollbar {
       height: 4px !important;

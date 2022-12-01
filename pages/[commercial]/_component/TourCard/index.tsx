@@ -7,9 +7,17 @@ export interface TourCardProps {
   plan?: String;
   pointCategory?: String;
   id: number | string;
+  time?: String;
 }
 
-const TourCard = ({ id, img, tilte, plan, pointCategory }: TourCardProps) => {
+const TourCard = ({
+  id,
+  img,
+  tilte,
+  plan,
+  time,
+  pointCategory,
+}: TourCardProps) => {
   return (
     <Link href={`/Tour/detail~${id}`}>
       <div className='tour'>
@@ -21,11 +29,18 @@ const TourCard = ({ id, img, tilte, plan, pointCategory }: TourCardProps) => {
           <span>{plan}</span>
           <div className='divider'></div>
           <div className='Info d-flex'>
-            <span className='date'>
-              <i className='fa-solid fa-calendar-days'></i>
-              2N1Đ
-            </span>
-            <i className='fa-solid fa-circle divider'></i>
+            {time ? (
+              <>
+                <span className='date'>
+                  <i className='fa-solid fa-calendar-days'></i>
+                  {time}
+                </span>
+                <i className='fa-solid fa-circle divider'></i>
+              </>
+            ) : (
+              false
+            )}
+
             <span className='view'>
               <i className='fa-solid fa-location-dot'></i>
               {pointCategory}

@@ -88,6 +88,7 @@ const List = ({ List }) => {
           {searchArr.map((i) => (
             <Suspense key={uuid()} fallback={<Skeleton active />}>
               <TourCard
+                time={i.time}
                 id={i.id}
                 img={i.featureImage?.path}
                 tilte={i.title}

@@ -269,6 +269,7 @@ const Commercial = ({
                     {hotTour.relations?.map((item) => (
                       <div key={uuid()} className='--warpper'>
                         <TourCard
+                          time={item.time}
                           id={item.id}
                           img={item.featureImage?.path}
                           key={uuid()}
