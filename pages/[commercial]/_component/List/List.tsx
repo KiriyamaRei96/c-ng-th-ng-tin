@@ -1,6 +1,5 @@
 import { Pagination, Select, Skeleton } from "antd";
 import React, { memo, Suspense, useEffect, useRef, useState } from "react";
-import { HotelCard, RestaurantCard, TourCard } from "../Lazyload";
 
 import { v4 as uuid } from "uuid";
 import { useRouter } from "next/router";
@@ -9,6 +8,9 @@ import commercialSelector from "../../../../ReduxStore/commercial/slice";
 import { useAppDispatch, useAppSelector } from "../../../../ReduxStore/hooks";
 import useDebounce from "../../../../funcion/debounce";
 import globalSelector from "../../../../ReduxStore/globalSlice/slice";
+import TourCard from "../TourCard/Lazyload";
+import HotelCard from "../HotelCard/Lazyload";
+import RestaurantCard from "../RestaurantCard/Lazyload";
 
 const List = ({ List }) => {
   const router = useRouter();
@@ -43,14 +45,14 @@ const List = ({ List }) => {
 
   return (
     <>
-      <div ref={list} className="search d-flex">
-        <div className="--input">
+      <div ref={list} className='search d-flex'>
+        <div className='--input'>
           <input
             value={search}
             onChange={(e) => {
               setSearch(e.target.value);
             }}
-            type="text"
+            type='text'
             placeholder={
               router.asPath.includes("Tour")
                 ? settingMap.tourSearchPlaceholder
@@ -59,21 +61,21 @@ const List = ({ List }) => {
                 : settingMap.hotelSearchPlaceholder
             }
           />
-          <i className="fa-solid fa-magnifying-glass"></i>
+          <i className='fa-solid fa-magnifying-glass'></i>
         </div>
-        <div className="--select">
+        <div className='--select'>
           <span>{settingMap.Sort}</span>
           <Select
             onChange={(value) => {
               setSort(value);
             }}
-            className="--item"
+            className='--item'
             placeholder={settingMap.Sort}
           >
-            <Select.Option value="o_creationDate">
+            <Select.Option value='o_creationDate'>
               {settingMap.sortcreationDate}
             </Select.Option>
-            <Select.Option value="sort">{settingMap.sortOrder}</Select.Option>
+            <Select.Option value='sort'>{settingMap.sortOrder}</Select.Option>
           </Select>
         </div>
       </div>
@@ -82,7 +84,7 @@ const List = ({ List }) => {
       {router.asPath.includes("Restaurant") ? <h2>{List?.title}</h2> : false}
 
       {listType === "tour_list" ? (
-        <div className="--list --tour">
+        <div className='--list --tour'>
           {searchArr.map((i) => (
             <Suspense key={uuid()} fallback={<Skeleton active />}>
               <TourCard
@@ -100,7 +102,7 @@ const List = ({ List }) => {
         false
       )}
       {listType === "hotel_list" ? (
-        <div className="--list --Hotel">
+        <div className='--list --Hotel'>
           {searchArr.map((i) => (
             <Suspense key={uuid()} fallback={<Skeleton active />}>
               <HotelCard
@@ -120,7 +122,7 @@ const List = ({ List }) => {
         false
       )}
       {listType === "restaurant_list" ? (
-        <div className="--list --Restaurant">
+        <div className='--list --Restaurant'>
           {searchArr.map((i) => (
             <Suspense key={uuid()} fallback={<Skeleton active />}>
               <RestaurantCard
@@ -139,13 +141,13 @@ const List = ({ List }) => {
         false
       )}
       <Pagination
-        className="--pagination"
+        className='--pagination'
         itemRender={(_, type, originalElement) => {
           if (type === "prev") {
-            return <i className="fa-solid fa-angles-left"></i>;
+            return <i className='fa-solid fa-angles-left'></i>;
           }
           if (type === "next") {
-            return <i className="fa-solid fa-angles-right"></i>;
+            return <i className='fa-solid fa-angles-right'></i>;
           }
           return originalElement;
         }}
