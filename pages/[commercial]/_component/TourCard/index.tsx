@@ -18,18 +18,19 @@ const TourCard = ({
   time,
   pointCategory,
 }: TourCardProps) => {
+  console.log(time);
   return (
     <Link href={`/Tour/detail~${id}`}>
-      <div className='tour'>
+      <div className='tour d-flex'>
         <div className='--img img_hover'>
           <img src={`${img}`} alt='' />
         </div>
         <div className='--txt'>
           <h4>{tilte}</h4>
           <span>{plan}</span>
-          <div className='divider'></div>
+
           <div className='Info d-flex'>
-            {time ? (
+            {time && time !== "null" ? (
               <>
                 <span className='date'>
                   <i className='fa-solid fa-calendar-days'></i>

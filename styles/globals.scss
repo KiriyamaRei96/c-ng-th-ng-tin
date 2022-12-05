@@ -1695,6 +1695,7 @@ footer {
   cursor: pointer;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
   height: 367px;
+  flex-direction: column;
 
   .--img {
     width: 100%;
@@ -1709,6 +1710,10 @@ footer {
 
   .--txt {
     padding: 16px;
+    flex: 1;
+    justify-content: space-between;
+    display: inherit;
+    flex-direction: column;
 
     h4 {
       font-style: normal;
@@ -1731,14 +1736,18 @@ footer {
       -webkit-line-clamp: 2;
       display: -webkit-box;
       -webkit-box-orient: vertical;
+
     }
 
-    &>.divider {
-      margin: 10px 0;
-      border-bottom: 1px solid #DCDCDC;
-    }
+    // &>.divider {
+    //   margin: 10px 0;
+
+    // }
 
     .Info {
+      border-top: 1px solid #DCDCDC;
+      margin-top: 10px;
+      padding-top: 10px;
       font-size: 12px;
       line-height: 16px;
       color: #6F7378;
