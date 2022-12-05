@@ -92,7 +92,7 @@ const List = ({ List }) => {
                 id={i.id}
                 img={i.featureImage?.path}
                 tilte={i.title}
-                plan={i.plan ? i.plan : ""}
+                description={i.description ? i.description : ""}
                 key={uuid()}
                 pointCategory={i.destinationsType?.title}
               />

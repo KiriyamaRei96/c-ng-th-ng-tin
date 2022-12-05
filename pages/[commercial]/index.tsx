@@ -274,7 +274,7 @@ const Commercial = ({
                           img={item.featureImage?.path}
                           key={uuid()}
                           tilte={item.title}
-                          plan={item.plan ? item.plan : ""}
+                          description={item.description ? item.description : ""}
                           pointCategory={item.destinationsType.title}
                         />
                       </div>

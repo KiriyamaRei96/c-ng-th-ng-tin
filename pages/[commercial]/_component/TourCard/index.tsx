@@ -4,7 +4,7 @@ import * as React from "react";
 export interface TourCardProps {
   img?: String;
   tilte?: String;
-  plan?: String;
+  description?: String;
   pointCategory?: String;
   id: number | string;
   time?: String;
@@ -14,7 +14,7 @@ const TourCard = ({
   id,
   img,
   tilte,
-  plan,
+  description,
   time,
   pointCategory,
 }: TourCardProps) => {
@@ -27,7 +27,7 @@ const TourCard = ({
         </div>
         <div className='--txt'>
           <h4>{tilte}</h4>
-          <span>{plan}</span>
+          <span>{description}</span>
 
           <div className='Info d-flex'>
             {time && time !== "null" ? (

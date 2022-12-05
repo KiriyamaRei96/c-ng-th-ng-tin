@@ -604,7 +604,7 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                             id={i.id}
                             img={i.featureImage?.path}
                             tilte={i.title}
-                            plan={i.plan ? i.plan : ""}
+                            description={i.description ? i.description : ""}
                             key={uuid()}
                             pointCategory={i.destinationsType?.title}
                           />
@@ -620,7 +620,7 @@ const CommercialDetail = ({ type, data, otherData, id }) => {
                             id={i.id}
                             img={i.featureImage?.path}
                             tilte={i.title}
-                            plan={i.plan ? i.plan : ""}
+                            description={i.description ? i.description : ""}
                             key={uuid()}
                             pointCategory={i.destinationsType?.title}
                           />
