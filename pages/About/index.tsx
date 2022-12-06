@@ -100,7 +100,10 @@ const About = ({
                     </div>
                     <Fancybox options={{ infinite: false }}>
                       <a
-                        data-fancybox="iframe"
+                        // data-fancybox="iframe"
+                        data-type="iframe"
+                        data-fancybox="gallery-video"
+                        // href={aboutIntroLeft.link}
                         data-src={aboutIntroLeft.link}
                         className="play"
                       >
