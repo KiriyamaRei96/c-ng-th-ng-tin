@@ -81,36 +81,39 @@ const About = ({
   console.log(aboutDiscover);
   return (
     <AboutWrapper>
-      <div id='about'>
-        <div className='Banner d-flex'>
-          <img src={aboutBanner?.image.path} alt=''></img>
-          <div className='--Item'>
+      <div id="about">
+        <div className="Banner d-flex">
+          <img src={aboutBanner?.image.path} alt=""></img>
+          <div className="--Item">
             <h1>{aboutBanner?.title}</h1>
             <BreadCrumb />
           </div>
         </div>
-        <div className='aboutIntro'>
-          <div className='container-fluid'>
-            <div className='row'>
-              <div className='col-md-6'>
-                <div className='--left'>
-                  <div className='--video'>
-                    <div className='--img'>
-                      <img src={introBanner?.image.path} alt='' />
+        <div className="aboutIntro">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-6">
+                <div className="--left">
+                  <div className="--video">
+                    <div className="--img">
+                      <img src={introBanner?.image.path} alt="" />
                     </div>
                     <Fancybox options={{ infinite: false }}>
                       <a
-                        data-fancybox='iframe'
+                        // data-fancybox="iframe"
+                        data-type="iframe"
+                        data-fancybox="gallery-video"
+                        // href={aboutIntroLeft.link}
                         data-src={aboutIntroLeft.link}
-                        className='play'
+                        className="play"
                       >
-                        <i className='fa-solid fa-play'></i>
+                        <i className="fa-solid fa-play"></i>
                       </a>
                     </Fancybox>
                   </div>
-                  <div className='--card '>
-                    <div className='--icon'>
-                      <img src={introIcon?.image.path} alt='' />
+                  <div className="--card ">
+                    <div className="--icon">
+                      <img src={introIcon?.image.path} alt="" />
                     </div>
 
                     <h4
@@ -119,32 +122,32 @@ const About = ({
                   </div>
                 </div>
               </div>
-              <div className='col-md-6'>
-                <div className='--content'>
-                  <div className='subTitle'>{aboutIntroContent?.subTitle}</div>
-                  <h1 className='Title'>{aboutIntroContent?.title}</h1>
-                  <div className='--des'>{aboutIntroContent?.description}</div>
+              <div className="col-md-6">
+                <div className="--content">
+                  <div className="subTitle">{aboutIntroContent?.subTitle}</div>
+                  <h1 className="Title">{aboutIntroContent?.title}</h1>
+                  <div className="--des">{aboutIntroContent?.description}</div>
                   <article
                     dangerouslySetInnerHTML={{
                       __html: aboutIntroContent?.content,
                     }}
                   ></article>
                   <Link href={aboutIntroContent?.link}>
-                    <a className='button_2 button_hover2'>
+                    <a className="button_2 button_hover2">
                       Liên Hệ ngay{" "}
-                      <i className='fa-solid ms-2 fa-arrow-right-long'></i>
+                      <i className="fa-solid ms-2 fa-arrow-right-long"></i>
                     </a>
                   </Link>
                 </div>
               </div>
             </div>
-            <div className='list_aboutIntro d-flex'>
+            <div className="list_aboutIntro d-flex">
               {listAboutIntro?.articles.map((item) => (
-                <div key={uuid()} className='--item d-flex'>
-                  <div className='--icon'>
-                    <img src={item?.image?.path} alt='' />
+                <div key={uuid()} className="--item d-flex">
+                  <div className="--icon">
+                    <img src={item?.image?.path} alt="" />
                   </div>
-                  <div className='--txt d-flex flex-column justify-content-center'>
+                  <div className="--txt d-flex flex-column justify-content-center">
                     <h4>{item.title}</h4>
                     <span>{item.subTitle}</span>
                   </div>
@@ -154,12 +157,12 @@ const About = ({
           </div>
         </div>
         {aboutDiscover?.relations?.length > 0 ? (
-          <div className='aboutDiscover'>
-            <div className='container-fluid'>
-              <div className='subTitle text-center'>
+          <div className="aboutDiscover">
+            <div className="container-fluid">
+              <div className="subTitle text-center">
                 {aboutDiscover?.subTitle}
               </div>
-              <h1 className='Title text-center'>{aboutDiscover?.title}</h1>
+              <h1 className="Title text-center">{aboutDiscover?.title}</h1>
               {aboutDiscover?.relations?.length >= 4 ? (
                 <Slider
                   {...{
@@ -186,21 +189,21 @@ const About = ({
                       },
                     ],
                   }}
-                  className='list_aboutDiscover'
+                  className="list_aboutDiscover"
                 >
                   {aboutDiscover?.relations.map((item) => (
                     <div key={uuid()}>
-                      <div className='--warpper'>
-                        <div className='--item'>
-                          <div className='--img img_hover'>
-                            <img src={item?.featureImage?.path} alt='' />
+                      <div className="--warpper">
+                        <div className="--item">
+                          <div className="--img img_hover">
+                            <img src={item?.featureImage?.path} alt="" />
                           </div>
-                          <div className='--txt'>
+                          <div className="--txt">
                             <h4>{item?.title}</h4>
                             <Link href={`/Discover/detail~${item.id}`}>
                               <a>
                                 {settingMap.viewDetail}
-                                <i className='fa-solid ms-2 fa-arrow-right-long'></i>
+                                <i className="fa-solid ms-2 fa-arrow-right-long"></i>
                               </a>
                             </Link>
                           </div>
@@ -210,20 +213,20 @@ const About = ({
                   ))}
                 </Slider>
               ) : (
-                <div className='list_aboutDiscover d-flex'>
+                <div className="list_aboutDiscover d-flex">
                   {aboutDiscover?.articles.map((item) => (
                     <div key={uuid()}>
-                      <div className='--warpper'>
-                        <div className='--item'>
-                          <div className='--img img_hover'>
-                            <img src={item?.image?.path} alt='' />
+                      <div className="--warpper">
+                        <div className="--item">
+                          <div className="--img img_hover">
+                            <img src={item?.image?.path} alt="" />
                           </div>
-                          <div className='--txt'>
+                          <div className="--txt">
                             <h4>{item?.title}</h4>
                             <Link href={item?.link}>
                               <a>
                                 {settingMap.viewDetail}
-                                <i className='fa-solid ms-2 fa-arrow-right-long'></i>
+                                <i className="fa-solid ms-2 fa-arrow-right-long"></i>
                               </a>
                             </Link>
                           </div>
@@ -239,35 +242,35 @@ const About = ({
           false
         )}
 
-        <div className='aboutWhy'>
-          <div className='container-fluid'>
-            <div className='subTitle text-center'>{aboutWhy?.subTitle}</div>
-            <h1 className='Title text-center'>{aboutWhy?.title}</h1>
-            <div className='list_Why'>
+        <div className="aboutWhy">
+          <div className="container-fluid">
+            <div className="subTitle text-center">{aboutWhy?.subTitle}</div>
+            <h1 className="Title text-center">{aboutWhy?.title}</h1>
+            <div className="list_Why">
               {aboutWhy?.articles?.map((item, id) => (
-                <div key={uuid()} className='--item'>
-                  <div className='--top'>
-                    <img src={item?.image?.path} alt='' />
+                <div key={uuid()} className="--item">
+                  <div className="--top">
+                    <img src={item?.image?.path} alt="" />
 
                     <h4>{item?.title}</h4>
                   </div>
-                  <div className='--des'>{item?.description}</div>
-                  <div className='--number'>{pad(id + 1)}</div>
+                  <div className="--des">{item?.description}</div>
+                  <div className="--number">{pad(id + 1)}</div>
                 </div>
               ))}
             </div>
           </div>
         </div>
-        <div className='aboutBlock'>
-          <div className='--img'>
-            <img src={aboutBlock?.image?.path} alt='' />
+        <div className="aboutBlock">
+          <div className="--img">
+            <img src={aboutBlock?.image?.path} alt="" />
           </div>
-          <div className='--txt'>
-            <h1 className='Title'>{aboutBlock?.title}</h1>
+          <div className="--txt">
+            <h1 className="Title">{aboutBlock?.title}</h1>
             <Link href={aboutBlock?.link}>
               <a>
                 {settingMap.FindOut}
-                <i className='fa-solid ms-2 fa-arrow-right-long'></i>
+                <i className="fa-solid ms-2 fa-arrow-right-long"></i>
               </a>
             </Link>
           </div>
