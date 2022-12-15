@@ -32,42 +32,42 @@ const Contact = ({ banner, left }) => {
 
   return (
     <ContactWrapper>
-      <div id="contact">
-        <div className="Banner d-flex">
-          <img src={banner.image?.path} alt=""></img>
-          <div className="--Item">
+      <div id='contact'>
+        <div className='Banner d-flex'>
+          <img src={banner.image?.path} alt=''></img>
+          <div className='--Item'>
             <h1>{banner.title}</h1>
             <BreadCrumb />
           </div>
         </div>
-        <div className="contactForm">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-md-6">
+        <div className='contactForm'>
+          <div className='container-fluid'>
+            <div className='row'>
+              <div className='col-md-6'>
                 <Left article={left?.articles} />
               </div>
-              <div className="col-md-6">
-                <div className="--right">
-                  <h4 className="--title">Để lại câu hỏi</h4>
+              <div className='col-md-6'>
+                <div className='--right'>
+                  <h4 className='--title'>Để lại câu hỏi</h4>
                   <span>
-                    Nếu bạn có bất kỳ câu hỏi nào về du lịch Lai Châu, vui lòng
+                    Nếu bạn có bất kỳ câu hỏi nào về du lịch Đồ Sơn, vui lòng
                     liên hệ với chúng tôi hoặc để lại câu hỏi bên dưới.
                   </span>
-                  <div className="form">
-                    <div className="form-group">
-                      <input type="text" placeholder="Họ và tên" />
+                  <div className='form'>
+                    <div className='form-group'>
+                      <input type='text' placeholder='Họ và tên' />
                     </div>
-                    <div className="form-group">
-                      <input type="text" placeholder="Số điện thoại" />
+                    <div className='form-group'>
+                      <input type='text' placeholder='Số điện thoại' />
                     </div>
-                    <div className="form-group">
-                      <input type="text" placeholder="Email" />
+                    <div className='form-group'>
+                      <input type='text' placeholder='Email' />
                     </div>
-                    <div className="form-group">
-                      <input type="text" placeholder="Nội dung" />
+                    <div className='form-group'>
+                      <input type='text' placeholder='Nội dung' />
                     </div>
                   </div>
-                  <button className="button_1 button_hover1">
+                  <button className='button_1 button_hover1'>
                     Gửi tin nhắn
                   </button>
                 </div>
