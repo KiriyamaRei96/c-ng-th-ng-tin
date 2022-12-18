@@ -45,11 +45,11 @@ function* getDistrict(action) {
 }
 function* getSetting(action) {
   const state = yield select();
-  const locale = state.global.language;
+
 
   try {
     const res = yield callApi
-      .get(`v2/webSetting?locale=${locale}`)
+      .get(`v2/webSetting?locale=${action.payload}`)
       .then((res) => res.data)
       .catch((err) => console.error(err));
 

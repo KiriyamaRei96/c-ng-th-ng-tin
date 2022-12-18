@@ -62,7 +62,7 @@ const AppHeader = (props: AppHeaderProps) => {
     if (districtArr.length === 0) {
       dispatch({ type: "GET_DISTRICT" });
     }
-    dispatch({ type: "GET_SETTING" });
+    dispatch({ type: "GET_SETTING", payload: router.locale });
     dispatch(changeLang(router.locale));
   }, [router.locale]);
 
@@ -77,9 +77,9 @@ const AppHeader = (props: AppHeaderProps) => {
       {Object.keys(router.query).length === 2 ||
       router.asPath.includes("Utilities") ||
       router.pathname.includes("discoverDetail") ? (
-        <header className='white'>
-          <div className='container-fluid'>
-            <div className='header d-flex justify-content-between align-items-center'>
+        <header className="white">
+          <div className="container-fluid">
+            <div className="header d-flex justify-content-between align-items-center">
               <div
                 onClick={(e) => {
                   e.stopPropagation();
@@ -93,12 +93,12 @@ const AppHeader = (props: AppHeaderProps) => {
                 <p></p>
                 <p></p>
               </div>
-              <div className='logo'>
+              <div className="logo">
                 <Link href={"/"}>
-                  <img src={webSetting?.logoBW?.path} alt='' />
+                  <img src={webSetting?.logoBW?.path} alt="" />
                 </Link>
               </div>
-              <div className='menu d-flex'>
+              <div className="menu d-flex">
                 <div
                   className={
                     router.asPath.length === 1
@@ -106,7 +106,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/'>
+                  <Link href="/">
                     <a>{settingMap.Home}</a>
                   </Link>
                 </div>
@@ -117,7 +117,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/About'>
+                  <Link href="/About">
                     <a>{settingMap.About}</a>
                   </Link>
                 </div>
@@ -128,7 +128,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Discover'>
+                  <Link href="/Discover">
                     <a>{settingMap.Discover}</a>
                   </Link>
                 </div>
@@ -139,7 +139,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Hotel'>
+                  <Link href="/Hotel">
                     <a>{settingMap.Hotel}</a>
                   </Link>
                 </div>
@@ -150,7 +150,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Tour'>
+                  <Link href="/Tour">
                     <a>{settingMap.Tour}</a>
                   </Link>
                 </div>
@@ -161,7 +161,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Restaurant'>
+                  <Link href="/Restaurant">
                     <a>{settingMap.Restaurant}</a>
                   </Link>
                 </div>
@@ -172,7 +172,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/News&Event'>
+                  <Link href="/News&Event">
                     <a>{settingMap["News&Event"]}</a>
                   </Link>
                 </div>
@@ -183,13 +183,13 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Contact'>
+                  <Link href="/Contact">
                     <a>{settingMap.Contact}</a>
                   </Link>
                 </div>
               </div>
-              <div className='header_right d-flex align-items-center'>
-                <div onClick={(e) => e.stopPropagation()} className='search'>
+              <div className="header_right d-flex align-items-center">
+                <div onClick={(e) => e.stopPropagation()} className="search">
                   <input
                     onFocus={(e) => {
                       setSuggestActive(true);
@@ -210,20 +210,20 @@ const AppHeader = (props: AppHeaderProps) => {
                     onChange={(e) => {
                       dispatch(searchText(e.target.value));
                     }}
-                    type='text'
+                    type="text"
                     placeholder={settingMap.searchPlaceHolder}
                   />
-                  <i className='fa-solid fa-magnifying-glass'></i>
-                  <div className='--hover'></div>
+                  <i className="fa-solid fa-magnifying-glass"></i>
+                  <div className="--hover"></div>
                   {searchArr?.length > 0 && search !== "" && suggestActive ? (
-                    <div className='suggest'>
+                    <div className="suggest">
                       {searchArr.map((item) => (
                         <Link
                           key={uuid()}
                           href={`/${linkMap[item.type]}detail~${item.id}`}
                         >
                           <a>
-                            <div className='--item'>
+                            <div className="--item">
                               <span>{item.title}</span>
                               <EnterOutlined />
                             </div>
@@ -235,9 +235,9 @@ const AppHeader = (props: AppHeaderProps) => {
                     false
                   )}
                 </div>
-                <div className='language d-flex'>
-                  <img src={languageArr[language]?.icon} alt='' />
-                  <div className='select'>
+                <div className="language d-flex">
+                  <img src={languageArr[language]?.icon} alt="" />
+                  <div className="select">
                     <select
                       value={language}
                       onClick={(e) => {
@@ -249,9 +249,9 @@ const AppHeader = (props: AppHeaderProps) => {
                         });
                         dispatch(changeLang(e.target.value));
                       }}
-                      className='form-control'
-                      name=''
-                      id=''
+                      className="form-control"
+                      name=""
+                      id=""
                     >
                       {Object.keys(languageArr)?.map((key) => (
                         <option key={uuid()} value={key}>
@@ -259,7 +259,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         </option>
                       ))}
                     </select>
-                    <i className='fa-sfa-caret-down'></i>
+                    <i className="fa-sfa-caret-down"></i>
                   </div>
                 </div>
               </div>
@@ -291,7 +291,7 @@ const AppHeader = (props: AppHeaderProps) => {
                   onChange={(e) => {
                     dispatch(searchText(e.target.value));
                   }}
-                  type='text'
+                  type="text"
                 />
                 <i
                   onClick={(e) => {
@@ -307,7 +307,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       router.push("/Search");
                     }
                   }}
-                  className='fa-solid fa-magnifying-glass'
+                  className="fa-solid fa-magnifying-glass"
                 ></i>
               </div>
               <div
@@ -318,9 +318,9 @@ const AppHeader = (props: AppHeaderProps) => {
                   menuActive ? "menu_mobi  d-none active" : "menu_mobi  d-none"
                 }
               >
-                <div className='language d-flex'>
-                  <img src={languageArr[language]?.icon} alt='' />
-                  <div className='select'>
+                <div className="language d-flex">
+                  <img src={languageArr[language]?.icon} alt="" />
+                  <div className="select">
                     <select
                       value={language}
                       onClick={(e) => {
@@ -332,9 +332,9 @@ const AppHeader = (props: AppHeaderProps) => {
                         });
                         dispatch(changeLang(e.target.value));
                       }}
-                      className='form-control'
-                      name=''
-                      id=''
+                      className="form-control"
+                      name=""
+                      id=""
                     >
                       {Object.keys(languageArr)?.map((key) => (
                         <option key={uuid()} value={key}>
@@ -342,10 +342,10 @@ const AppHeader = (props: AppHeaderProps) => {
                         </option>
                       ))}
                     </select>
-                    <i className='fa-solid fa-caret-down'></i>
+                    <i className="fa-solid fa-caret-down"></i>
                   </div>
                 </div>
-                <div className='menu d-flex'>
+                <div className="menu d-flex">
                   <div
                     className={
                       router.asPath.length === 1
@@ -353,7 +353,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/'>
+                    <Link href="/">
                       <a>{settingMap.Home}</a>
                     </Link>
                   </div>
@@ -364,7 +364,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/About'>
+                    <Link href="/About">
                       <a>{settingMap.About}</a>
                     </Link>
                   </div>
@@ -375,7 +375,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/Discover'>
+                    <Link href="/Discover">
                       <a>{settingMap.Discover}</a>
                     </Link>
                   </div>
@@ -386,7 +386,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/Hotel'>
+                    <Link href="/Hotel">
                       <a>{settingMap.Hotel}</a>
                     </Link>
                   </div>
@@ -397,7 +397,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/Tour'>
+                    <Link href="/Tour">
                       <a>{settingMap.Tour}</a>
                     </Link>
                   </div>
@@ -408,7 +408,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/Restaurant'>
+                    <Link href="/Restaurant">
                       <a>{settingMap.Restaurant}</a>
                     </Link>
                   </div>
@@ -419,7 +419,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/News&Event'>
+                    <Link href="/News&Event">
                       <a>{settingMap["News&Event"]}</a>
                     </Link>
                   </div>
@@ -430,7 +430,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/Contact'>
+                    <Link href="/Contact">
                       <a>{settingMap.Contact}</a>
                     </Link>
                   </div>
@@ -446,8 +446,8 @@ const AppHeader = (props: AppHeaderProps) => {
       !router.asPath.includes("Utilities") &&
       !router.pathname.includes("discoverDetail") ? (
         <header className={change ? "change" : ""}>
-          <div className='container-fluid'>
-            <div className='header d-flex justify-content-between align-items-center'>
+          <div className="container-fluid">
+            <div className="header d-flex justify-content-between align-items-center">
               <div
                 onClick={(e) => {
                   e.stopPropagation();
@@ -461,12 +461,12 @@ const AppHeader = (props: AppHeaderProps) => {
                 <p></p>
                 <p></p>
               </div>
-              <div className='logo'>
+              <div className="logo">
                 <Link href={"/"}>
-                  <img src={webSetting?.logo?.path} alt='' />
+                  <img src={webSetting?.logo?.path} alt="" />
                 </Link>
               </div>
-              <div className='menu d-flex'>
+              <div className="menu d-flex">
                 <div
                   className={
                     router.asPath.length === 1
@@ -474,7 +474,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/'>
+                  <Link href="/">
                     <a>{settingMap.Home}</a>
                   </Link>
                 </div>
@@ -485,7 +485,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/About'>
+                  <Link href="/About">
                     <a>{settingMap.About}</a>
                   </Link>
                 </div>
@@ -496,7 +496,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Discover'>
+                  <Link href="/Discover">
                     <a>{settingMap.Discover}</a>
                   </Link>
                 </div>
@@ -507,7 +507,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Hotel'>
+                  <Link href="/Hotel">
                     <a>{settingMap.Hotel}</a>
                   </Link>
                 </div>
@@ -518,7 +518,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Tour'>
+                  <Link href="/Tour">
                     <a>{settingMap.Tour}</a>
                   </Link>
                 </div>
@@ -529,7 +529,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Restaurant'>
+                  <Link href="/Restaurant">
                     <a>{settingMap.Restaurant}</a>
                   </Link>
                 </div>
@@ -540,7 +540,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/News&Event'>
+                  <Link href="/News&Event">
                     <a>{settingMap["News&Event"]}</a>
                   </Link>
                 </div>
@@ -551,17 +551,17 @@ const AppHeader = (props: AppHeaderProps) => {
                       : "--item-menu"
                   }
                 >
-                  <Link href='/Contact'>
+                  <Link href="/Contact">
                     <a>{settingMap.Contact}</a>
                   </Link>
                 </div>
               </div>
-              <div className='header_right d-flex align-items-center'>
+              <div className="header_right d-flex align-items-center">
                 <div
                   onClick={(e) => {
                     e.stopPropagation();
                   }}
-                  className='search'
+                  className="search"
                 >
                   <input
                     onFocus={(e) => {
@@ -583,19 +583,19 @@ const AppHeader = (props: AppHeaderProps) => {
                     onChange={(e) => {
                       dispatch(searchText(e.target.value));
                     }}
-                    type='text'
+                    type="text"
                     placeholder={settingMap.searchPlaceHolder}
                   />
-                  <div className='--hover'></div>
+                  <div className="--hover"></div>
                   {searchArr?.length > 0 && search !== "" && suggestActive ? (
-                    <div className='suggest'>
+                    <div className="suggest">
                       {searchArr.map((item) => (
                         <Link
                           key={uuid()}
                           href={`/${linkMap[item.type]}detail~${item.id}`}
                         >
                           <a>
-                            <div className='--item'>
+                            <div className="--item">
                               <span>{item.title}</span>
                               <EnterOutlined />
                             </div>
@@ -607,11 +607,11 @@ const AppHeader = (props: AppHeaderProps) => {
                     false
                   )}
 
-                  <i className='fa-solid fa-magnifying-glass'></i>
+                  <i className="fa-solid fa-magnifying-glass"></i>
                 </div>
-                <div className='language d-flex'>
-                  <img src={languageArr[language]?.icon} alt='' />
-                  <div className='select'>
+                <div className="language d-flex">
+                  <img src={languageArr[language]?.icon} alt="" />
+                  <div className="select">
                     <select
                       value={language}
                       onClick={(e) => {
@@ -623,9 +623,9 @@ const AppHeader = (props: AppHeaderProps) => {
                         });
                         dispatch(changeLang(e.target.value));
                       }}
-                      className='form-control'
-                      name=''
-                      id=''
+                      className="form-control"
+                      name=""
+                      id=""
                     >
                       {Object.keys(languageArr)?.map((key) => (
                         <option key={uuid()} value={key}>
@@ -633,7 +633,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         </option>
                       ))}
                     </select>
-                    <i className='fa-solid fa-caret-down'></i>
+                    <i className="fa-solid fa-caret-down"></i>
                   </div>
                 </div>
               </div>
@@ -665,7 +665,7 @@ const AppHeader = (props: AppHeaderProps) => {
                   onChange={(e) => {
                     dispatch(searchText(e.target.value));
                   }}
-                  type='text'
+                  type="text"
                 />
                 <i
                   onClick={(e) => {
@@ -681,7 +681,7 @@ const AppHeader = (props: AppHeaderProps) => {
                       router.push("/Search");
                     }
                   }}
-                  className='fa-solid fa-magnifying-glass'
+                  className="fa-solid fa-magnifying-glass"
                 ></i>
               </div>
               <div
@@ -692,9 +692,9 @@ const AppHeader = (props: AppHeaderProps) => {
                   menuActive ? "menu_mobi  d-none active" : "menu_mobi  d-none"
                 }
               >
-                <div className='language d-flex'>
-                  <img src={languageArr[language]?.icon} alt='' />
-                  <div className='select'>
+                <div className="language d-flex">
+                  <img src={languageArr[language]?.icon} alt="" />
+                  <div className="select">
                     <select
                       value={language}
                       onClick={(e) => {
@@ -706,9 +706,9 @@ const AppHeader = (props: AppHeaderProps) => {
                         });
                         dispatch(changeLang(e.target.value));
                       }}
-                      className='form-control'
-                      name=''
-                      id=''
+                      className="form-control"
+                      name=""
+                      id=""
                     >
                       {Object.keys(languageArr)?.map((key) => (
                         <option key={uuid()} value={key}>
@@ -716,10 +716,10 @@ const AppHeader = (props: AppHeaderProps) => {
                         </option>
                       ))}
                     </select>
-                    <i className='fa-solid fa-caret-down'></i>
+                    <i className="fa-solid fa-caret-down"></i>
                   </div>
                 </div>
-                <div className='menu d-flex'>
+                <div className="menu d-flex">
                   <div
                     className={
                       router.asPath.length === 1
@@ -727,7 +727,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/'>
+                    <Link href="/">
                       <a>{settingMap.Home}</a>
                     </Link>
                   </div>
@@ -738,7 +738,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/About'>
+                    <Link href="/About">
                       <a>{settingMap.About}</a>
                     </Link>
                   </div>
@@ -749,7 +749,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/Discover'>
+                    <Link href="/Discover">
                       <a>{settingMap.Discover}</a>
                     </Link>
                   </div>
@@ -760,7 +760,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/Hotel'>
+                    <Link href="/Hotel">
                       <a>{settingMap.Hotel}</a>
                     </Link>
                   </div>
@@ -771,7 +771,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/Tour'>
+                    <Link href="/Tour">
                       <a>{settingMap.Tour}</a>
                     </Link>
                   </div>
@@ -782,7 +782,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/Restaurant'>
+                    <Link href="/Restaurant">
                       <a>{settingMap.Restaurant}</a>
                     </Link>
                   </div>
@@ -793,7 +793,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/News&Event'>
+                    <Link href="/News&Event">
                       <a>{settingMap["News&Event"]}</a>
                     </Link>
                   </div>
@@ -804,7 +804,7 @@ const AppHeader = (props: AppHeaderProps) => {
                         : "--item-menu"
                     }
                   >
-                    <Link href='/Contact'>
+                    <Link href="/Contact">
                       <a>{settingMap.Contact}</a>
                     </Link>
                   </div>
